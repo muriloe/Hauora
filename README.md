@@ -74,7 +74,7 @@ o terminal mostra em que porta o servidor vai rodar
 Como já comentado o projeto node e angular funcionam de formas independentes. Um funciona sem que o outro estar funcionando. Claro que se iniciarmos o angular sem o node a aplicação não consigira obter nenhuma informação.
 Dessa maneira também o servidor node pode responder tanto para o app iOS quando para o web Angular.
 
-###Banco de dados
+### Banco de dados
 Estamos utilizando o banco de dados mongodb, para facilitar a vida estou utilizando o [mLab](https://mlab.com/home), nele o banco já está configurado, portanto a aplicação node aponta direto para ele, não precisando assim levantar o servidor localmente.
 
 
