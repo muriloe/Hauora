@@ -18,11 +18,10 @@
   "homepage": "https://github.com/muriloe/Hauora#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
     "express": "^4.16.3",
     "mongoose": "^5.0.11",
-    "ejs": "^2.5.7"
+    "nodemon": "^1.17.2"
   },
-  "devDependencies": {
-
-  }
+  "devDependencies": {}
 }
