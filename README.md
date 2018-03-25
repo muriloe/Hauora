@@ -45,6 +45,11 @@ localhost:3000
 ou também já acessar pedindo um dado
 http://localhost:3000/api/pessoas/Murilo
 ````
+Caso o banco estaja zerado, esse URL pode instanciar alguns dados:
+````
+http://localhost:3000/api/iniciarBanco
+````
+
 ### Angular
 
 Para instala o angular devemos navegar pelo terminal até a pasta /Haoura/front-end, então devemos instalar o angular:

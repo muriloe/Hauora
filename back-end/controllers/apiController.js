@@ -1,4 +1,5 @@
 var Pessoas = require('../models/pessoaModel');
+var Clientes = require('../models/clienteModel');
 var bodyParser = require('body-parser');
 
 module.exports = function(app) {
@@ -58,5 +59,33 @@ module.exports = function(app) {
             if(err) throw err;
             res.send('Deletou o maluco');
         })
-    })
+    });
+
+    app.post('/api/cliente', function(req, res){
+        if(req.body.id) {
+            //TODO: terminar 
+        }
+        else{
+            var novaPessoa = Pessoas({
+                nome: req.body.nome, 
+                email: req.body.email,
+                telefone: req.body.telefone,
+                sexo: req.body.sexo,
+                data_nascimento: req.body.data_nascimento    
+            });
+            novaPessoa.save(function (err) {
+                if (err) return handleError(err);
+            });
+
+            var novoCliente = Clientes({
+                objetivo: req.body.objetivo, 
+                pessoa: novaPessoa._id
+   
+            });
+            novoCliente.save(function(err, results){
+                if (err) throw err;
+                res.send(results);
+            });
+        }
+    });
 }
