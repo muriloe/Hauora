@@ -1,6 +1,8 @@
 var Pessoas = require('../models/pessoaModel');
 var Clientes = require('../models/clienteModel');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
 
 module.exports = function(app) {
     app.use(bodyParser.urlencoded({
@@ -61,9 +63,50 @@ module.exports = function(app) {
         })
     });
 
+    //Obtem um cliente pelo id. Internamente ele busca a refência por pessoa no banco
+    //O $match ser como um WHERE no SQL normal e o LOOKUP como um innerjoin
+    app.get('/api/cliente/:id', function(req, res){
+        Clientes.aggregate([
+            { $match : {_id: ObjectId(req.params.id)}
+            },
+            { $lookup:
+              {
+                from: 'pessoas',
+                localField: 'pessoa',
+                foreignField: '_id',
+                as: 'pessoa'
+              }
+            },
+          ],function (err, cliente){
+            if (err) throw err;
+            res.send(cliente);
+        } );
+    });
+
+    //TODO: criar método para verificar se email já existe, isso está crashando a palicação
     app.post('/api/cliente', function(req, res){
         if(req.body.id) {
-            //TODO: terminar 
+            Clientes.findById(req.body.id, function(err, cliente){
+                if (err) throw err;
+                //res.send(cliente.pessoa);
+                Pessoas.findByIdAndUpdate(cliente.pessoa, {
+                    nome: req.body.nome, 
+                    email: req.body.email,
+                    telefone: req.body.telefone,
+                    sexo: req.body.sexo,
+                    data_nascimento: req.body.data_nascimento
+                }, function(err, pessoa){
+                    if (err) throw err;
+                });
+                Clientes.findByIdAndUpdate(req.body.id, {
+                    objetivo: req.body.objetivo
+                }, function(err, ncliente){
+                    if (err) throw err;
+                    res.send("cliente atualizado:" + ncliente);
+                });
+                
+            });
+            
         }
         else{
             var novaPessoa = Pessoas({
@@ -74,7 +117,7 @@ module.exports = function(app) {
                 data_nascimento: req.body.data_nascimento    
             });
             novaPessoa.save(function (err) {
-                if (err) return handleError(err);
+                if (err) throw err;
             });
 
             var novoCliente = Clientes({
