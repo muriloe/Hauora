@@ -31,6 +31,10 @@ const routes: Routes = [{
   }, {
     path: 'tables',
     loadChildren: './tables/tables.module#TablesModule',
+  },
+  {
+    path: 'anamnese',
+    loadChildren: './anamnese/anamnese.module#AnamneseModule',
   }, {
     path: '',
     redirectTo: 'dashboard',

@@ -17,6 +17,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/ui-features',
     children: [
       {
+            title: 'New Page', // menu title
+            link: '/pages/anamnese', // menu icon
+      },
+      {
         title: 'Buttons',
         link: '/pages/ui-features/buttons',
       },
