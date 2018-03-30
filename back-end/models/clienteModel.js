@@ -4,7 +4,8 @@ var ObjectId = Schema.Types.ObjectId;
 
 var clientSchema = new Schema({
     objetivo: String,
-    //TODO: acesso: tyneint. Verificar o que é esse acesso
+    //Caso false o cliente está no modo de anamnese
+    acessoCompleto: {type: Boolean, default: false}, 
     pessoa: {type: ObjectId, ref: 'Pessoas'}
 });
 
