@@ -102,11 +102,7 @@ module.exports = function(app){
         consumo2.save(function (err){
             if (err) return handleError(err);
         });
-
-
-
-
-
+        
         
         res.send('DEU BOIAa');
     });

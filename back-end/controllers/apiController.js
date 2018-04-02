@@ -1,6 +1,11 @@
 var Pessoas = require('../models/pessoaModel');
 var Clientes = require('../models/clienteModel');
+var Anamneses = require('../models/anamneseModel');
+var Doencas = require('../models/doencaModel');
+var Consumos = require('../models/consumoModel');
+var Remedios = require('../models/remedioModel');
 var bodyParser = require('body-parser');
+var async = require('async');
 var mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
@@ -130,5 +135,42 @@ module.exports = function(app) {
                 res.send(results);
             });
         }
+    });
+
+     //TODO: doing
+    //Obtem a anamnese de um cliente a partir do seu ID de cliente
+    app.get('/api/anamnese/remedio/:id', function(req, res){
+        Anamneses.aggregate([
+            { $match : {cliente: ObjectId(req.params.id)}
+            },
+
+        ],function (err, anamneses){
+            if (err) throw err;
+            anamneses.forEach(anam => {
+                Remedios.aggregate([
+                    {
+                        $match: {anamnese: anam._id}
+                    }
+                ],function(err, rem){
+                    console.log(rem);
+                });
+                
+            });
+        }
+        ) 
+    });
+    
+    //TODO: doing
+    app.get('/api/anamnese/consumo/:id', function(req, res){
+        Anamneses.find({cliente: req.params.id}, function (err, aaa){
+            async.forEach(aaa, function(bbb, done){
+                Consumos.find().where('anamnese').in([bbb._id]).exec(function(err, ccc){
+                    console.log(ccc);
+                    
+                })
+            });
+        });
+     
+
     });
 }
