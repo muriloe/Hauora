@@ -85,6 +85,8 @@ Estamos utilizando o banco de dados mongodb, para facilitar a vida estou utiliza
 login: murilo0121
 senha: S0uMongo
 
+### Postman
+https://www.getpostman.com/collections/c052fbbfbd59f8c50446
 
 
 
