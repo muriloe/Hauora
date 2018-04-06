@@ -82,6 +82,9 @@ Dessa maneira também o servidor node pode responder tanto para o app iOS quando
 ### Banco de dados
 Estamos utilizando o banco de dados mongodb, para facilitar a vida estou utilizando o [mLab](https://mlab.com/home), nele o banco já está configurado, portanto a aplicação node aponta direto para ele, não precisando assim levantar o servidor localmente.
 
+login: murilo0121
+senha: S0uMongo
+
 
 
 
