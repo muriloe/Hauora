@@ -86,7 +86,11 @@ Estamos utilizando o banco de dados mongodb, para facilitar a vida estou utiliza
 ### Amazon
 Para acessar a máquina amazon você pode utilzar o terminal para fazer um conexão ssh. Será necessário baixar o arquivo .pem o qual serve como um senha para conectar. O arquivo encontra-se na pasta raiz do projeto (druber.pem)
 =======
+login: murilo0121
+senha: S0uMongo
 
+### Postman
+https://www.getpostman.com/collections/c052fbbfbd59f8c50446
 
 Primeiro copie o arquivo druber.pem na pasta ~/.ssh
 ````
