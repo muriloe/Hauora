@@ -8,6 +8,12 @@ var mongoose = require('mongoose');
 
 module.exports = function(app){
 
+    app.get('/api/teste', function(req, res){
+        
+
+        res.send('oi');
+    });
+
     //Método utilizado para inicar a base de dados
     app.get('/api/iniciarBanco', function(req, res){
         
