@@ -82,6 +82,21 @@ Dessa maneira também o servidor node pode responder tanto para o app iOS quando
 ### Banco de dados
 Estamos utilizando o banco de dados mongodb, para facilitar a vida estou utilizando o [mLab](https://mlab.com/home), nele o banco já está configurado, portanto a aplicação node aponta direto para ele, não precisando assim levantar o servidor localmente.
 
+### Amazon
+Para acessar a máquina amazon você pode utilzar o terminal para fazer um conexão ssh. Será necessário baixar o arquivo .pem o qual serve como um senha para conectar. O arquivo encontra-se na pasta raiz do projeto (druber.pem)
 
+Primeiro copie o arquivo druber.pem na pasta ~/.ssh
+````
+cd ~/.ssh
+ou 
+$ open ~/.ssh
 
+crie permissão para o arquivo
+sudo chmod 400 ~/.ssh/druber.pem
+````
+
+Então basta acessar a máquina:
+````
+sudo ssh -i ~/.ssh/druber.pem ubuntu@ec2-54-191-75-41.us-west-2.compute.amazonaws.com
+````
 
