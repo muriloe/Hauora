@@ -1,12 +1,15 @@
 var mongoose = require('mongoose');
+extend = require('mongoose-schema-extend');
 var Schema = mongoose.Schema;
 
 var pessoaSchema = new Schema({
-    nome: String,
-    email: { type: String, unique: true },
-    telefone: String,
-    sexo: Boolean,
-    data_nascimento: Date
+    nome:               { type: String, required: true},
+    email:              { type: String, unique: true, required: true },
+    senha:              { type: String, required: true },
+    telefone:           { type: String},
+    sexo:               { type: String, required: true},
+    data_nascimento:    { type: Date, required: true},
+    foto:               { type: String}
 
 });
 

@@ -86,6 +86,8 @@ login: murilo0121
 senha: S0uMongo
 
 
+## Extras
+
 ### Postman
 https://www.getpostman.com/collections/c052fbbfbd59f8c50446
 
@@ -107,4 +109,9 @@ Então basta acessar a máquina:
 ````
 sudo ssh -i ~/.ssh/druber.pem ubuntu@ec2-54-191-75-41.us-west-2.compute.amazonaws.com
 ````
+### API
 
+A URL do servidor amazon é:
+````
+http://ec2-54-191-75-41.us-west-2.compute.amazonaws.com:3000/api/teste
+````
