@@ -1,13 +1,15 @@
-var express = require('express');
-var app = express();
-var mongoose = require('mongoose');
-var config = require('./config');
-var setupController = require('./controllers/setupController');
-var apiController = require('./controllers/apiController');
-var anamneseController = require('./controllers/anamnese/anamneseController');
-var fotoController = require('./controllers/foto/fotoController');
+var express =                       require('express');
+var app =                           express();
+var mongoose =                      require('mongoose');
+var config =                        require('./config');
+var setupController =               require('./controllers/setupController');
+var apiController =                 require('./controllers/apiController');
+var anamneseController =            require('./controllers/anamnese/anamneseController');
+var fotoController =                require('./controllers/foto/fotoController');
+var clienteController =             require('./controllers/cliente/clienteController')
+var bodyParser =                    require('body-parser');
 var port = process.env.port || 3000;
-var bodyParser = require('body-parser');
+
 
 app.use('/assets', express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
