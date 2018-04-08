@@ -37,7 +37,7 @@ exports.criarAnamneseCompleta = function(dat){
             var urlServer = '/uploads/'+nCliente._id+'.jpeg';
             console.log("FIM FOTO");
             require("fs").writeFile(urlPhoto, base64Foto, 'base64', function(err) {
-                reject({"status":false, "message":"Erro ao salvar a forto", "error": err});
+                reject({"status":false, "message":"Erro ao salvar a foto", "error": err});
             });
             console.log("-------------------------------------------------------");
             nCliente.foto = urlServer;
