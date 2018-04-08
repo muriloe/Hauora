@@ -6,8 +6,8 @@ var anamneseSchema = new Schema({
     data:       {type: Date, default:Date.now()},
     cliente:    {type: ObjectId, ref: 'Clientes', required: true},
     remedio:    [{type: ObjectId, ref: 'Remedios'}],
-    doenca:     [{type: ObjectId, ref: 'doenca'}],
-    consumo:    [{type: ObjectId, ref: 'consumo'}]
+    doenca:     [{type: ObjectId, ref: 'Doencas'}],
+    consumo:    [{type: ObjectId, ref: 'Consumos'}]
 
 });
 
