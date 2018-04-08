@@ -13,7 +13,7 @@ exports.criarAnamneseCompleta = function(dat){
         let doencaList = [];
         let remedioList = [];
         let consumoList = [];
-        console.log(dat.cliente.foto);
+        console.log(dat);
         
         //Salva a imagem no servidor
         var base64Foto = dat.cliente.foto.replace(/^data:image\/jpeg;base64,/, "");
