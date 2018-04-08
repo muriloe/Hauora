@@ -14,6 +14,28 @@ exports.criarAnamneseCompleta = function(dat){
         let remedioList = [];
         let consumoList = [];
         console.log(dat);
+
+        /*
+        aREA DE TESTE
+        */
+       cCliente = new Cliente({
+           email: dat.cliente.email,
+           nome: dat.cliente.nome
+       });
+       console.log("buceta");
+       console.log(cCliente);
+       cCliente.save(function (err, results) {
+        if(err) {
+            console.log("Erro ao salvar cliente");  
+            reject({"status":false, "message":"Erro ao salvar cliente", "error": err});
+        }
+        else{
+            console.log("Cliente Salvo");  
+        }
+        });
+
+        /**/ 
+
         
         //Salva a imagem no servidor
         var base64Foto = dat.cliente.foto.replace(/^data:image\/jpeg;base64,/, "");
