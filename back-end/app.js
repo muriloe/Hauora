@@ -7,9 +7,12 @@ var apiController = require('./controllers/apiController');
 var anamneseController = require('./controllers/anamnese/anamneseController');
 var fotoController = require('./controllers/foto/fotoController');
 var port = process.env.port || 3000;
+var bodyParser = require('body-parser');
 
 app.use('/assets', express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 mongoose.connect(config.getDbConnectionString());
 
 //Inicia as API's

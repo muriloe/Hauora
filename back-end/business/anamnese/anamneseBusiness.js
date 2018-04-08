@@ -15,6 +15,8 @@ exports.criarAnamneseCompleta = function(dat){
             nome: dat.cliente.nome,
             data_nascimento: new Date(dat.cliente.data_nascimento),
         });
+        console.log("novo cliente");
+        console.log(nCliente);
         let nAnamnese = new Anamnese();
         nAnamnese.cliente = nCliente._id;
         let doencaList = [];
@@ -23,19 +25,25 @@ exports.criarAnamneseCompleta = function(dat){
         console.log(dat);
 
 
-        
+        console.log("INICIO FOTO");
         //Salva a imagem no servidor
-        var base64Foto = dat.cliente.foto.replace(/^data:image\/jpeg;base64,/, "");
-        var urlPhoto = './uploads/'+nCliente._id+'.jpeg';
-        var urlServer = '/uploads/'+nCliente._id+'.jpeg';
-        require("fs").writeFile(urlPhoto, base64Foto, 'base64', function(err) {
-            reject({"status":false, "message":"Erro ao salvar a forto", "error": err});
-        });
-        console.log("-------------------------------------------------------");
-        nCliente.foto = urlServer;
-        console.log("111111111111111111");
-        console.log(nCliente);
-        console.log("11111111111110");
+        if(dat.cliente.foto){
+            var base64Foto = dat.cliente.foto.replace(/^data:image\/jpeg;base64,/, "");
+            console.log("INICIO FOTO1");
+            var urlPhoto = './uploads/'+nCliente._id+'.jpeg';
+            console.log("INICIO FOTO2");
+            var urlServer = '/uploads/'+nCliente._id+'.jpeg';
+            console.log("FIM FOTO");
+            require("fs").writeFile(urlPhoto, base64Foto, 'base64', function(err) {
+                reject({"status":false, "message":"Erro ao salvar a forto", "error": err});
+            });
+            console.log("-------------------------------------------------------");
+            nCliente.foto = urlServer;
+            console.log("111111111111111111");
+            console.log(nCliente);
+            console.log("11111111111110");
+        }
+        
 
 
         //Salva as doenças em uma array e adicionar o id na anamnese
