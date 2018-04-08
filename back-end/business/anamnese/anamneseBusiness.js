@@ -25,26 +25,34 @@ exports.criarAnamneseCompleta = function(dat){
         console.log("-------------------------------------------------------");
         nCliente.foto = urlServer;
         nCliente.data_nascimento = new Date(dat.cliente.data_nascimento);
-        
+        console.log("111111111111111111");
         console.log(nCliente);
+        console.log("11111111111110");
 
 
         //Salva as doenças em uma array e adicionar o id na anamnese
-        for(var i = 0; i< Object.keys(dat.doenca).length; i++){
+        console.log("0000000000000000000000");
+        console.log(dat.doencas);
+        console.log("0000000000000000000000");
+        console.log("1" + Object.keys(dat.doencas).length);
+        for(var i = 0; i< Object.keys(dat.doencas).length; i++){
+            console.log("2" + Object.keys(dat.doencas).length);
             nDoenca = new Doenca({
-                nome:       dat.doenca[i].nome,
-                descricao:  dat.doenca[i].descricao,
+                nome:       dat.doencas[i].nome,
+                descricao:  dat.doencas[i].descricao,
                 anamnese:   nAnamnese._id
             });
             doencaList.push(nDoenca);
             nAnamnese.doenca.push(nDoenca._id);
         }
-
+        console.log("3" + Object.keys(dat.remedios).length);
         //Salva os remedios em uma array e adicionar o id na anamnese
-        for(var i = 0; i< Object.keys(dat.remedio).length; i++){
+        for(var i = 0; i< Object.keys(dat.remedios).length; i++){
+            
+
             nRemedio = new Remedio({
-                nome:       dat.remedio[i].nome,
-                descricao:  dat.remedio[i].descricao,
+                nome:       dat.remedios[i].nome,
+                descricao:  dat.remedios[i].descricao,
                 anamnese:   nAnamnese._id
             });
             remedioList.push(nRemedio);
@@ -52,19 +60,21 @@ exports.criarAnamneseCompleta = function(dat){
         }
         
         //Salva os consumos em uma array e adicionar o id na anamnese
-        for(var i = 0; i< Object.keys(dat.consumo).length; i++){
-         
+        console.log("4" + Object.keys(dat.consumos).length);
+        for(var i = 0; i< Object.keys(dat.consumos).length; i++){
+            console.log("5 " + Object.keys(dat.consumos).length);
             nConsumo = new Consumo({
-                texto:          dat.consumo[i].texto,
-                data:           new Date(dat.consumo[i].data),
-                sentimento:     dat.consumo[i].sentimento,
-                observacao:     dat.consumo[i].observacao,
+                texto:          dat.consumos[i].texto,
+                data:           new Date(dat.consumos[i].data),
+                sentimento:     dat.consumos[i].sentimento,
+                observacao:     dat.consumos[i].observacao,
                 anamnese:       nAnamnese._id
             });
             consumoList.push(nConsumo);
             nAnamnese.consumo.push(nConsumo._id);
         }
 
+        console.log("salva 1" + Object.keys(dat.consumos).length);
         nCliente.save(function (err, results) {
             if(err) {
                 console.log("Erro ao salvar cliente");  
