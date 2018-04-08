@@ -19,8 +19,12 @@ exports.criarAnamneseCompleta = function(dat){
         aREA DE TESTE
         */
        cCliente = new Cliente({
-           email: dat.cliente.email,
-           nome: dat.cliente.nome
+            objetivo: dat.cliente.objetivo,
+            sexo: dat.cliente.sexo,
+            telefone: dat.cliente.telefone,
+            email: dat.cliente.email,
+            nome: dat.cliente.nome,
+            data_nascimento: new Date(dat.cliente.data_nascimento),
        });
        console.log("buceta");
        console.log(cCliente);
