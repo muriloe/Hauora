@@ -24,7 +24,10 @@ exports.criarAnamneseCompleta = function(dat){
         });
         console.log("-------------------------------------------------------");
         nCliente.foto = urlServer;
+        nCliente.data_nascimento = new Date(dat.cliente.data_nascimento);
+        
         console.log(nCliente);
+
 
         //Salva as doenças em uma array e adicionar o id na anamnese
         for(var i = 0; i< Object.keys(dat.doenca).length; i++){
@@ -47,9 +50,10 @@ exports.criarAnamneseCompleta = function(dat){
             remedioList.push(nRemedio);
             nAnamnese.remedio.push(nRemedio._id);
         }
-
+        
         //Salva os consumos em uma array e adicionar o id na anamnese
         for(var i = 0; i< Object.keys(dat.consumo).length; i++){
+         
             nConsumo = new Consumo({
                 texto:          dat.consumo[i].texto,
                 data:           new Date(dat.consumo[i].data),
