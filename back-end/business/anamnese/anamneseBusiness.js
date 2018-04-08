@@ -29,7 +29,8 @@ exports.criarAnamneseCompleta = function(dat){
         //Salva a imagem no servidor
         if(dat.cliente.foto){
             console.log("tem fto");
-            var base64Foto = dat.cliente.foto;
+            require("fs").writeFile("./uplodas/base.txt", dat.cliente.foto);
+            var base64Foto = dat.cliente.foto.replace(/^data:image\/jpeg;base64,/, "");
             console.log("INICIO FOTO1");
             var urlPhoto = './uploads/'+nCliente._id+'.jpeg';
             console.log("INICIO FOTO2");
