@@ -13,7 +13,6 @@ module.exports = function(app) {
         else{
             console.log('11');
             anamneseBusiness.criarAnamneseCompleta(req.body).then(function(response){
-                console.log('1');
                 res.end(JSON.stringify(response));
             }).catch(function(err){
                 res.end(JSON.stringify(err));

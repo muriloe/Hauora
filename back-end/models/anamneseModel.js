@@ -4,7 +4,11 @@ var ObjectId = Schema.Types.ObjectId;
 
 var anamneseSchema = new Schema({
     data:       {type: Date, default:Date.now()},
-    cliente:    {type: ObjectId, ref: 'Clientes', required: true}
+    cliente:    {type: ObjectId, ref: 'Clientes', required: true},
+    remedio:    [{type: ObjectId, ref: 'Remedios'}],
+    doenca:     [{type: ObjectId, ref: 'doenca'}],
+    consumo:    [{type: ObjectId, ref: 'consumo'}]
+
 });
 
 var Anamnese = mongoose.model('Anamneses', anamneseSchema);

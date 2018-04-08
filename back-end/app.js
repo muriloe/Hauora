@@ -5,6 +5,7 @@ var config = require('./config');
 var setupController = require('./controllers/setupController');
 var apiController = require('./controllers/apiController');
 var anamneseController = require('./controllers/anamnese/anamneseController');
+var fotoController = require('./controllers/foto/fotoController');
 var port = process.env.port || 3000;
 
 app.use('/assets', express.static(__dirname + '/public'));
@@ -15,6 +16,8 @@ mongoose.connect(config.getDbConnectionString());
 setupController(app);
 apiController(app);
 anamneseController(app);
+fotoController(app);
+
 //Fim: Inicia as API's
 
 app.listen(port);
