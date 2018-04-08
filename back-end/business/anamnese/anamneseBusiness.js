@@ -52,7 +52,7 @@ exports.criarAnamneseCompleta = function(dat){
         for(var i = 0; i< Object.keys(dat.consumo).length; i++){
             nConsumo = new Consumo({
                 texto:          dat.consumo[i].texto,
-                data:           dat.consumo[i].data,
+                data:           new Date(dat.consumo[i].data),
                 sentimento:     dat.consumo[i].sentimento,
                 observacao:     dat.consumo[i].observacao,
                 anamnese:       nAnamnese._id

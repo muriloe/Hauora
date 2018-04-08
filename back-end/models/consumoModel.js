@@ -7,7 +7,7 @@ var consumoSchema = new Schema({
     data:           {type: Date, default:Date.now()},
     sentimento:     {type: String},
     observacao:     {type: String},
-    anamnese:       {type: ObjectId, ref: 'Anamneses', required: true} 
+    anamnese:       {type: ObjectId, ref: 'Anamneses'} 
 });
 
 var Consumo = mongoose.model('Consumos', consumoSchema);
