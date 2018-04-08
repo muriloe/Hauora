@@ -7,7 +7,14 @@ let Consumo = require("../../models/consumoModel");
 //Cria um anamnese completa salvando cliente, anamnese e (remedio, doença, consumos)
 exports.criarAnamneseCompleta = function(dat){
     return new Promise(function(resolve,reject){
-        let nCliente = new Cliente(dat.cliente);
+        let nCliente = new Cliente({
+            objetivo: dat.cliente.objetivo,
+            sexo: dat.cliente.sexo,
+            telefone: dat.cliente.telefone,
+            email: dat.cliente.email,
+            nome: dat.cliente.nome,
+            data_nascimento: new Date(dat.cliente.data_nascimento),
+        });
         let nAnamnese = new Anamnese();
         nAnamnese.cliente = nCliente._id;
         let doencaList = [];
@@ -15,30 +22,6 @@ exports.criarAnamneseCompleta = function(dat){
         let consumoList = [];
         console.log(dat);
 
-        /*
-        aREA DE TESTE
-        */
-       cCliente = new Cliente({
-            objetivo: dat.cliente.objetivo,
-            sexo: dat.cliente.sexo,
-            telefone: dat.cliente.telefone,
-            email: dat.cliente.email,
-            nome: dat.cliente.nome,
-            data_nascimento: new Date(dat.cliente.data_nascimento),
-       });
-       console.log("buceta");
-       console.log(cCliente);
-       cCliente.save(function (err, results) {
-        if(err) {
-            console.log("Erro ao salvar cliente");  
-            reject({"status":false, "message":"Erro ao salvar cliente", "error": err});
-        }
-        else{
-            console.log("Cliente Salvo");  
-        }
-        });
-
-        /**/ 
 
         
         //Salva a imagem no servidor
@@ -50,7 +33,6 @@ exports.criarAnamneseCompleta = function(dat){
         });
         console.log("-------------------------------------------------------");
         nCliente.foto = urlServer;
-        nCliente.data_nascimento = new Date(dat.cliente.data_nascimento);
         console.log("111111111111111111");
         console.log(nCliente);
         console.log("11111111111110");
@@ -102,6 +84,7 @@ exports.criarAnamneseCompleta = function(dat){
 
         console.log("salva 1" + Object.keys(dat.consumos).length);
         nCliente.save(function (err, results) {
+            console.log("iniciando salvção de cliente");
             if(err) {
                 console.log("Erro ao salvar cliente");  
                 reject({"status":false, "message":"Erro ao salvar cliente", "error": err});
@@ -112,6 +95,7 @@ exports.criarAnamneseCompleta = function(dat){
         });
 
         nAnamnese.save(function (err, results) {
+            console.log("iniciando salvção de anamnes");
             if(err) {
                 console.log("Erro ao salvar anamnese"); 
                 reject({"status":false, "message":"Erro ao salvar anamnese", "error": err});
@@ -122,6 +106,7 @@ exports.criarAnamneseCompleta = function(dat){
         });
 
         for(var i = 0; i< doencaList.length; i++){
+            console.log("iniciando salvção de doebnca");
             nDoenca = new Doenca(doencaList[i]);
             nDoenca.save(function (err, results) {
                 if(err) {
@@ -136,6 +121,7 @@ exports.criarAnamneseCompleta = function(dat){
         }
 
         for(var i = 0; i< remedioList.length; i++){
+            console.log("iniciando salvção de remedio");
             nRemedio = new Remedio(remedioList[i]);
             nRemedio.save(function (err, results) {
                 if(err) {
@@ -149,6 +135,7 @@ exports.criarAnamneseCompleta = function(dat){
         }
 
         for(var i = 0; i< consumoList.length; i++){
+            console.log("iniciando salvção de consumo");
             nConsumo = new Consumo(consumoList[i]);
             nConsumo.save(function (err, results) {
                 if(err) {
