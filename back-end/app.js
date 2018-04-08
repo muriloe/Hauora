@@ -18,10 +18,12 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 mongoose.connect(config.getDbConnectionString());
 
 //Inicia as API's
+clienteController(app);
 setupController(app);
 apiController(app);
 anamneseController(app);
 fotoController(app);
+
 
 //Fim: Inicia as API's
 
