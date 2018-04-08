@@ -49,7 +49,6 @@ exports.criarAnamneseCompleta = function(dat){
         }
 
         //Salva os consumos em uma array e adicionar o id na anamnese
-        console.log("-_10-");
         for(var i = 0; i< Object.keys(dat.consumo).length; i++){
             nConsumo = new Consumo({
                 texto:          dat.consumo[i].texto,

@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./anamnese-card.component.scss'],
 })
 export class AnamneseCardComponent implements OnInit {
-
-  constructor() { }
+  imagePath: 'http://ec2-54-191-75-41.us-west-2.compute.amazonaws.com:3000/uploads/5ac9cc857ec7ab7d729998a8.jpeg';
+  constructor() {imagePath: 'http://ec2-54-191-75-41.us-west-2.compute.amazonaws.com:3000/uploads/5ac9cc857ec7ab7d729998a8.jpeg'; }
 
   ngOnInit() {
   }
