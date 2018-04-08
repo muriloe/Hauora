@@ -18,9 +18,13 @@ exports.criarAnamneseCompleta = function(dat){
         //Salva a imagem no servidor
         var base64Foto = dat.cliente.foto.replace(/^data:image\/jpeg;base64,/, "");
         var urlPhoto = './uploads/'+nCliente._id+'.jpeg';
+        var urlServer = '/uploads/'+nCliente._id+'.jpeg';
         require("fs").writeFile(urlPhoto, base64Foto, 'base64', function(err) {
             reject({"status":false, "message":"Erro ao salvar a forto", "error": err});
         });
+        console.log("-------------------------------------------------------");
+        nCliente.foto = urlServer;
+        console.log(nCliente);
 
         //Salva as doenças em uma array e adicionar o id na anamnese
         for(var i = 0; i< Object.keys(dat.doenca).length; i++){
