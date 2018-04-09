@@ -15,6 +15,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { AnamneseService } from './pages/anamnese/anamnese.service';
+import { HttpModule } from '@angular/http';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -22,6 +25,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    HttpModule,
 
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
@@ -30,6 +34,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   bootstrap: [AppComponent],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
+    [ AnamneseService ],
+
   ],
 })
 export class AppModule {

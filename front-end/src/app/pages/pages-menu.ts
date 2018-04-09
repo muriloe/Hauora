@@ -20,16 +20,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Consulta', // menu title
     icon: 'nb-compose',
-    link: '/pages/anamnese', // menu icon
+    link: '/pages/1', // menu icon
   },
   {
     title: 'Pacientes', // menu title
     icon: 'fa fa fa-book',
-    link: '/pages/anamnese', // menu icon
+    link: '/pages/2', // menu icon
   },
   {
     title: 'Configuração', // menu title
     icon: 'nb-gear',
-    link: '/pages/anamnese', // menu icon
+    link: '/pages/3', // menu icon
   },
 ];
