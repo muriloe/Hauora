@@ -115,3 +115,8 @@ A URL do servidor amazon é:
 ````
 http://ec2-54-191-75-41.us-west-2.compute.amazonaws.com:3000/api/teste
 ````
+
+### Extensão de front
+Caso os dados não sejam exibidos usar a extensão:
+
+https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related?hl=en-US
