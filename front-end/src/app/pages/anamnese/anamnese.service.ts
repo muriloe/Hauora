@@ -1,5 +1,5 @@
-import { EventEmitter, Injectable } from '@angular/core';
-import { Http, Response, HttpModule  } from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Http, Response  } from '@angular/http';
 import 'rxjs/Rx';
 // tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs';
