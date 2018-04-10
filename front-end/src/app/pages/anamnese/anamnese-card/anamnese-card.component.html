@@ -1,15 +1,9 @@
+<nb-card>
+    <div class="separa">
+        <nb-user [picture]="clienteAnamnese.foto" [name]="clienteAnamnese.nome" [title]="clienteAnamnese.email" size="xlarge"></nb-user>
+        <br>
+        <p>Telefone: {{clienteAnamnese.telefone}}</p>
+    </div>
+</nb-card>
 
-<div class="col-md-12">
-    <nb-card > 
-        <div>
-            <div class="col-md-4">
-                <img [src]="clienteAnamnese.foto" />
-            </div>
-            <div class="col-md-8">
-                {{clienteAnamnese.nome}}<br>
-                {{clienteAnamnese.email}}<br>
-                {{clienteAnamnese.telefone}}
-            </div>
-        </div>
-    </nb-card>
-</div>
+
