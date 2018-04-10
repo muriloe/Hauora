@@ -6,7 +6,8 @@ var setupController =               require('./controllers/setupController');
 var apiController =                 require('./controllers/apiController');
 var anamneseController =            require('./controllers/anamnese/anamneseController');
 var fotoController =                require('./controllers/foto/fotoController');
-var clienteController =             require('./controllers/cliente/clienteController')
+var clienteController =             require('./controllers/cliente/clienteController');
+var loginController =               require('./controllers/login/loginController');
 var bodyParser =                    require('body-parser');
 var port = process.env.port || 3000;
 
@@ -23,6 +24,7 @@ setupController(app);
 apiController(app);
 anamneseController(app);
 fotoController(app);
+loginController(app);
 
 
 //Fim: Inicia as API's
