@@ -35,7 +35,12 @@ const routes: Routes = [{
   {
     path: 'anamnese',
     loadChildren: './anamnese/anamnese.module#AnamneseModule',
-  }, {
+  },
+  {
+    path: 'clientes',
+    loadChildren: './clientes/clientes.module#ClientesModule',
+  },
+   {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',

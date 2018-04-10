@@ -13,6 +13,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/anamnese', // menu icon
   },
   {
+    title: 'Pacientes', // menu title
+    icon: 'fa fa fa-book',
+    link: '/pages/clientes', // menu icon
+  },
+  {
     title: 'Postagens', // menu title
     icon: 'nb-layout-centre',
     link: '/pages/c', // menu icon
@@ -22,11 +27,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'nb-compose',
     link: '/pages/1', // menu icon
   },
-  {
-    title: 'Pacientes', // menu title
-    icon: 'fa fa fa-book',
-    link: '/pages/2', // menu icon
-  },
+
   {
     title: 'Configuração', // menu title
     icon: 'nb-gear',
