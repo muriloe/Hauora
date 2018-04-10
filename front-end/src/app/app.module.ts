@@ -1,3 +1,4 @@
+
 /**
  * @license
  * Copyright Akveo. All Rights Reserved.
@@ -16,6 +17,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AnamneseService } from './pages/anamnese/anamnese.service';
+import { ClientesService } from './pages/clientes/clientes.service';
 import { HttpModule } from '@angular/http';
 
 @NgModule({
@@ -35,6 +37,7 @@ import { HttpModule } from '@angular/http';
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
     [ AnamneseService ],
+    [ ClientesService ],
 
   ],
 })

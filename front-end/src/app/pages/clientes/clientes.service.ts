@@ -5,18 +5,15 @@ import 'rxjs/Rx';
 import { Observable } from 'rxjs';
 import { Cliente } from '../../shared/model/cliente.model';
 
-
-
-
 @Injectable()
-export class AnamneseService {
+export class ClientesService {
 
     constructor(private http: Http) {}
 
-    private clientesEmAnamnese: Cliente[] = [];
+    private clientesPacientes: Cliente[] = [];
 
-    getClienteEmAnamnese () {
-        return this.http.get('http://ec2-54-191-75-41.us-west-2.compute.amazonaws.com:3000/api/clientes/anamnese')
+    getClientesPacientes () {
+        return this.http.get('http://ec2-54-191-75-41.us-west-2.compute.amazonaws.com:3000/api/clientes')
             .map((response: Response) => {
                 const cliAnm = response.json().obj;
                 const nCli: Cliente[] = [];
@@ -33,11 +30,10 @@ export class AnamneseService {
                     nCli.push(new Cliente(cli.nome, cli.email, '', cli.telefone,
                     cli.sexo, null, enderecoCompletoFoto, cli.objetivo, false));
                 }
-                this.clientesEmAnamnese = nCli;
+                this.clientesPacientes = nCli;
                 return nCli;
             })
             .catch((error: Response) => Observable.throw(error.json()));
     }
-
 
 }

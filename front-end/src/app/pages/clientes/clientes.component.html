@@ -1,1 +1,12 @@
-BABACA
+<div class="col">
+        <div class="row">
+            <div>
+                <h1>Pacientes</h1>
+            </div>
+        </div>
+        <div class="row">
+                <ngx-cliente-card
+                    *ngFor="let cliAnam of listaClientesPacientes"
+                    [cliente]="cliAnam"></ngx-cliente-card>
+        </div>
+    </div>
