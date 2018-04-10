@@ -5,8 +5,29 @@ const ObjectId = mongoose.Types.ObjectId;
 
 module.exports = function(app) {
     app.get('/api/clientes/anamnese', function(req, res){
-        console.log("asdasd1");
+        console.log("GET CLIENTES ANAMNESE");
         Cliente.find({ acesso: false }, function (err, clientes) {
+            console.log(clientes);
+            if (err){
+                return res.status(500).json({
+                    title: 'Ocorreu um erro',
+                    error: err
+                })
+            }
+            else{
+                res.status(200).json({
+                    message: 'Success',
+                    obj: clientes
+                });
+
+            }
+            
+        });
+    });
+
+    app.get('/api/clientes', function(req, res){
+        console.log("GET CLIENTES");
+        Cliente.find({ acesso: true }, function (err, clientes) {
             console.log(clientes);
             if (err){
                 return res.status(500).json({

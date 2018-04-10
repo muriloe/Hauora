@@ -122,3 +122,6 @@ Caso os dados não sejam exibidos usar a extensão:
 https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related?hl=en-US
 
 [ver issue](https://stackoverflow.com/questions/20035101/why-does-my-javascript-get-a-no-access-control-allow-origin-header-is-present)
+
+### Links úteis
+Criação de uma nova page https://akveo.github.io/ng2-admin/articles/013-create-new-page/
