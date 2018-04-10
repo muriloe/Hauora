@@ -7,10 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
-  children: [{
-    path: 'dashboard',
-    component: DashboardComponent,
-  }, {
+  children: [ {
     path: 'ui-features',
     loadChildren: './ui-features/ui-features.module#UiFeaturesModule',
   }, {
