@@ -1,5 +1,6 @@
 # Created by Muriloe
 back-end/uploads/*.jpeg
+back-end/uploads/min/*.jpeg
 
 # Logs
 logs
@@ -59,4 +60,5 @@ typings/
 
 # dotenv environment variables file
 .env
+
 
