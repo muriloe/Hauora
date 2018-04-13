@@ -9,7 +9,7 @@ let serverInfo =    require("../../config/server");
 //Cria um anamnese completa salvando cliente, anamnese e (remedio, doença, consumos)
 exports.criarAnamneseCompleta = function(dat){
     return new Promise(function(resolve,reject){
-        
+        //TODO: validar se email já está em uso
         //Cria um novo cliente com base nos dados enviados(json).
         //Caso precise adicionar um novo atributo adicione aqui
         //O banco salvará automaticamente
