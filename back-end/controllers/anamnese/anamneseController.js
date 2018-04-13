@@ -12,8 +12,10 @@ module.exports = function(app) {
         }
         else{
             anamneseBusiness.criarAnamneseCompleta(req.body).then(function(response){
+                console.log(response);
                 res.end(JSON.stringify(response));
             }).catch(function(err){
+                console.log(err);
                 res.end(JSON.stringify(err));
             });
         }

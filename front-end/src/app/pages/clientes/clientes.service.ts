@@ -24,7 +24,7 @@ export class ClientesService {
                     if (cli.foto) {
                         // tslint:disable-next-line:max-line-length
                         const fotoCliente = cli.foto.replace('/uploads', '/uploads/min');
-                        enderecoCompletoFoto = 'http://ec2-54-191-75-41.us-west-2.compute.amazonaws.com:3000' + fotoCliente;
+                        enderecoCompletoFoto = fotoCliente;
                     }
 
                     nCli.push(new Cliente(cli.nome, cli.email, '', cli.telefone,

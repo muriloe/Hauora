@@ -3,6 +3,8 @@ let Anamnese = require("../../models/anamneseModel");
 let Remedio = require("../../models/remedioModel");
 let Doenca = require("../../models/doencaModel");
 let Consumo = require("../../models/consumoModel");
+let serverInfo = require("../../config/server");
+
 
 //Cria um anamnese completa salvando cliente, anamnese e (remedio, doença, consumos)
 exports.criarAnamneseCompleta = function(dat){
@@ -16,7 +18,6 @@ exports.criarAnamneseCompleta = function(dat){
             data_nascimento: new Date(dat.cliente.data_nascimento),
         });
         console.log("novo cliente");
-        console.log(nCliente);
         let nAnamnese = new Anamnese();
         nAnamnese.cliente = nCliente._id;
         let doencaList = [];
@@ -33,7 +34,7 @@ exports.criarAnamneseCompleta = function(dat){
             console.log("INICIO FOTO1");
             var urlPhoto = './uploads/'+nCliente._id+'.jpeg';
             console.log("INICIO FOTO2");
-            var urlServer = '/uploads/'+nCliente._id+'.jpeg';
+            var urlServer = serverInfo.serverUrl + '/uploads/'+nCliente._id+'.jpeg';
             console.log("FIM FOTO");
             require("fs").writeFile(urlPhoto, base64Foto, 'base64', function(err) {
                 reject({"status":false, "message":"Erro ao salvar a foto", "error": err});
@@ -167,23 +168,9 @@ exports.criarAnamneseCompleta = function(dat){
             consumo: consumoList
  
         };
-        console.log("a responder: ");
 
-        console.log(anamnseSend);
+        
         resolve({ "status":true,"anamnese":anamnseSend });
-
-        console.log("----------doenca------");
-        console.log(doenca);
-        console.log("----------remedio------");
-        console.log(remedio);
-        console.log("----------consumo------");
-        console.log(consumo);
-        console.log("----------anamnese------");
-        console.log(nAnamnese);
-
-
-
-
         
     });
 }

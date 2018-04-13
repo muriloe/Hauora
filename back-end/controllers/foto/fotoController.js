@@ -1,6 +1,7 @@
 var path = require('path');
 const sharp = require('sharp');
 var fs = require("fs");
+let ServerInfo = require("../../config/server");
 
 module.exports = function(app){
 
