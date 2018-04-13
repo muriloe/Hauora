@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-let Cliente = require("../../models/clienteModel");
+var mongoose =      require('mongoose');
+var bodyParser =    require('body-parser');
+let Cliente =       require("../../models/clienteModel");
 
 exports.logar = function(data){
     return new Promise(function(resolve,reject){

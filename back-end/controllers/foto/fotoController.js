@@ -1,15 +1,13 @@
-var path = require('path');
-const sharp = require('sharp');
-var fs = require("fs");
-let ServerInfo = require("../../config/server");
+var path =          require('path');
+const sharp =       require('sharp');
+var fs =            require("fs");
+let ServerInfo =    require("../../config/server");
 
 module.exports = function(app){
 
     app.get('/uploads/:fotoId', function(req, res){
-
         res.sendFile(path.resolve('./uploads/'+req.params.fotoId),  function(err) {
-            if(err){console.log("Erro ao obter foto");}
-            
+            if(err){console.log("Erro ao obter foto");}     
         });
    });
 
@@ -22,10 +20,7 @@ module.exports = function(app){
             res.sendfile(path.resolve('./uploads/min/'+req.params.fotoId),  function(err) {
                 if (err){console.log("erro image mins");}
             });
-
         });
-
     });
-
 
 }

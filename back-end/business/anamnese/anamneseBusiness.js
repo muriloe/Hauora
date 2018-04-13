@@ -1,9 +1,9 @@
-let Cliente = require("../../models/clienteModel");
-let Anamnese = require("../../models/anamneseModel");
-let Remedio = require("../../models/remedioModel");
-let Doenca = require("../../models/doencaModel");
-let Consumo = require("../../models/consumoModel");
-let serverInfo = require("../../config/server");
+let Cliente =       require("../../models/clienteModel");
+let Anamnese =      require("../../models/anamneseModel");
+let Remedio =       require("../../models/remedioModel");
+let Doenca =        require("../../models/doencaModel");
+let Consumo =       require("../../models/consumoModel");
+let serverInfo =    require("../../config/server");
 
 
 //Cria um anamnese completa salvando cliente, anamnese e (remedio, doença, consumos)
@@ -159,9 +159,7 @@ exports.criarAnamneseCompleta = function(dat){
             consumo: consumoList
         };
 
-        
-        resolve({ "status":true,"anamnese":anamnseSend });
-        
+        resolve({ "status":true,"anamnese":anamnseSend });       
     });
 }
 

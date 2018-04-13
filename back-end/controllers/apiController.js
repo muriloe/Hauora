@@ -1,12 +1,14 @@
-var Pessoas = require('../models/pessoaModel');
-var Clientes = require('../models/clienteModel');
-var Anamneses = require('../models/anamneseModel');
-var Doencas = require('../models/doencaModel');
-var Consumos = require('../models/consumoModel');
-var Remedios = require('../models/remedioModel');
-var bodyParser = require('body-parser');
-var async = require('async');
-var mongoose = require('mongoose');
+//UTILIZADA SOMENTE PARA TESTES
+
+var Pessoas =       require('../models/pessoaModel');
+var Clientes =      require('../models/clienteModel');
+var Anamneses =     require('../models/anamneseModel');
+var Doencas =       require('../models/doencaModel');
+var Consumos =      require('../models/consumoModel');
+var Remedios =      require('../models/remedioModel');
+var bodyParser =    require('body-parser');
+var async =         require('async');
+var mongoose =      require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
 module.exports = function(app) {
@@ -16,6 +18,7 @@ module.exports = function(app) {
 
     app.use(bodyParser.json());
 
+    /*
     app.get('/api/pessoas/:nome', function(req, res){
         Pessoas.find({ nome: req.params.nome }, 
         function(err, pessoa){
@@ -173,4 +176,5 @@ module.exports = function(app) {
      
 
     });
+    */
 }

@@ -1,7 +1,7 @@
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var Cliente =  require('../../models/clienteModel');
-const ObjectId = mongoose.Types.ObjectId;
+var bodyParser =    require('body-parser');
+var mongoose =      require('mongoose');
+var Cliente =       require('../../models/clienteModel');
+const ObjectId =    mongoose.Types.ObjectId;
 
 module.exports = function(app) {
     

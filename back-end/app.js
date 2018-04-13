@@ -26,7 +26,6 @@ anamneseController(app);
 fotoController(app);
 loginController(app);
 
-
 //Fim: Inicia as API's
 
 app.listen(port);
