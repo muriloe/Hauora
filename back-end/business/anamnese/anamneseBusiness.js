@@ -23,7 +23,6 @@ exports.criarAnamneseCompleta = function(dat){
         let doencaList = [];
         let remedioList = [];
         let consumoList = [];
-        console.log(dat);
 
 
         console.log("INICIO FOTO");
