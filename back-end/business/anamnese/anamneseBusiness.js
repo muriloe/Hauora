@@ -41,17 +41,12 @@ exports.criarAnamneseCompleta = function(dat){
             });
             console.log("-------------------------------------------------------");
             nCliente.foto = urlServer;
-            console.log("111111111111111111");
-            console.log(nCliente);
-            console.log("11111111111110");
         }
         
 
 
         //Salva as doenças em uma array e adicionar o id na anamnese
-        console.log("0000000000000000000000");
         console.log(dat.doencas);
-        console.log("0000000000000000000000");
         console.log("1" + Object.keys(dat.doencas).length);
         for(var i = 0; i< Object.keys(dat.doencas).length; i++){
             console.log("2" + Object.keys(dat.doencas).length);

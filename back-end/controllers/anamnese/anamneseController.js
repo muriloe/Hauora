@@ -11,11 +11,9 @@ module.exports = function(app) {
             //TODO editar anamnese
         }
         else{
-            anamneseBusiness.criarAnamneseCompleta(req.body).then(function(response){
-                console.log(response);
+            anamneseBusiness.criarAnamneseCompleta(req.body).then(function(response){          
                 res.end(JSON.stringify(response));
             }).catch(function(err){
-                console.log(err);
                 res.end(JSON.stringify(err));
             });
         }
