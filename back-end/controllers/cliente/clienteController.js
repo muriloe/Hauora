@@ -4,6 +4,8 @@ var Cliente =  require('../../models/clienteModel');
 const ObjectId = mongoose.Types.ObjectId;
 
 module.exports = function(app) {
+    
+    //Obtem todos os cliente que estão fazendo anamnese. acesso = false;
     app.get('/api/clientes/anamnese', function(req, res){
         console.log("GET CLIENTES ANAMNESE");
         Cliente.find({ acesso: false }, function (err, clientes) {
@@ -19,12 +21,11 @@ module.exports = function(app) {
                     message: 'Success',
                     obj: clientes
                 });
-
-            }
-            
+            }   
         });
     });
 
+    //Obtem todos os paciêntes. acesso = true;
     app.get('/api/clientes', function(req, res){
         console.log("GET CLIENTES");
         Cliente.find({ acesso: true }, function (err, clientes) {
@@ -40,9 +41,7 @@ module.exports = function(app) {
                     message: 'Success',
                     obj: clientes
                 });
-
-            }
-            
+            }          
         });
     });
 

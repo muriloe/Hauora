@@ -9,6 +9,10 @@ let serverInfo = require("../../config/server");
 //Cria um anamnese completa salvando cliente, anamnese e (remedio, doença, consumos)
 exports.criarAnamneseCompleta = function(dat){
     return new Promise(function(resolve,reject){
+        
+        //Cria um novo cliente com base nos dados enviados(json).
+        //Caso precise adicionar um novo atributo adicione aqui
+        //O banco salvará automaticamente
         let nCliente = new Cliente({
             objetivo: dat.cliente.objetivo,
             sexo: dat.cliente.sexo,
@@ -24,31 +28,25 @@ exports.criarAnamneseCompleta = function(dat){
         let remedioList = [];
         let consumoList = [];
 
-
-        console.log("INICIO FOTO");
-        //Salva a imagem no servidor
+        //Salva a imagem no servidor se tiver
         if(dat.cliente.foto){
             console.log("tem fto");
             var base64Foto = dat.cliente.foto.replace(/^data:image\/jpeg;base64,/, "");
-            console.log("INICIO FOTO1");
+            console.log("upando foto");
+            //Prepara o endereço onde vai salvar a foto
             var urlPhoto = './uploads/'+nCliente._id+'.jpeg';
-            console.log("INICIO FOTO2");
+            //Adiciona o endereço do servidor
             var urlServer = serverInfo.serverUrl + '/uploads/'+nCliente._id+'.jpeg';
-            console.log("FIM FOTO");
+            //Grava a foto
             require("fs").writeFile(urlPhoto, base64Foto, 'base64', function(err) {
                 reject({"status":false, "message":"Erro ao salvar a foto", "error": err});
             });
-            console.log("-------------------------------------------------------");
             nCliente.foto = urlServer;
         }
         
-
-
         //Salva as doenças em uma array e adicionar o id na anamnese
         console.log(dat.doencas);
-        console.log("1" + Object.keys(dat.doencas).length);
         for(var i = 0; i< Object.keys(dat.doencas).length; i++){
-            console.log("2" + Object.keys(dat.doencas).length);
             nDoenca = new Doenca({
                 nome:       dat.doencas[i].nome,
                 descricao:  dat.doencas[i].descricao,
@@ -57,7 +55,7 @@ exports.criarAnamneseCompleta = function(dat){
             doencaList.push(nDoenca);
             nAnamnese.doenca.push(nDoenca._id);
         }
-        console.log("3" + Object.keys(dat.remedios).length);
+
         //Salva os remedios em uma array e adicionar o id na anamnese
         for(var i = 0; i< Object.keys(dat.remedios).length; i++){
             
@@ -116,7 +114,6 @@ exports.criarAnamneseCompleta = function(dat){
                 if(err) {
                     console.log("Erro ao salvar doenca "+ i); 
                     reject({"status":false, "message":"Erro ao salvar doenca", "error": err});
-
                 }
                 else{
                     console.log("Salvou Doenca");
@@ -160,7 +157,6 @@ exports.criarAnamneseCompleta = function(dat){
             remedio: remedioList,
             doenca: doencaList,
             consumo: consumoList
- 
         };
 
         
