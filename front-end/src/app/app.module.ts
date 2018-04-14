@@ -18,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AnamneseService } from './pages/anamnese/anamnese.service';
 import { ClientesService } from './pages/clientes/clientes.service';
+import { ConsultaService} from './pages/consulta/consulta.service';
 import { HttpModule } from '@angular/http';
 
 @NgModule({
@@ -38,6 +39,7 @@ import { HttpModule } from '@angular/http';
     { provide: APP_BASE_HREF, useValue: '/' },
     [ AnamneseService ],
     [ ClientesService ],
+    [ ConsultaService ],
 
   ],
 })
