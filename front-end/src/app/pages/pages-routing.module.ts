@@ -37,6 +37,11 @@ const routes: Routes = [{
     path: 'clientes',
     loadChildren: './clientes/clientes.module#ClientesModule',
   },
+  {
+    path: 'consulta',
+    loadChildren: './consulta/consulta.module#ConsultaModule',
+  },
+
    {
     path: '',
     redirectTo: 'dashboard',

@@ -13,16 +13,15 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/clientes', // menu icon
   },
   {
+    title: 'Consulta', // menu title
+    icon: 'nb-compose',
+    link: '/pages/consulta', // menu icon
+  },
+  {
     title: 'Postagens', // menu title
     icon: 'nb-layout-centre',
     link: '/pages/222', // menu icon
   },
-  {
-    title: 'Consulta', // menu title
-    icon: 'nb-compose',
-    link: '/pages/1', // menu icon
-  },
-
   {
     title: 'Configuração', // menu title
     icon: 'nb-gear',
