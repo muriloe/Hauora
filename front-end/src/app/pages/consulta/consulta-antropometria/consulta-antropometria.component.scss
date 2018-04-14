@@ -2,6 +2,7 @@
 @import '~bootstrap/scss/mixins/breakpoints';
 @import '~@nebular/theme/styles/global/bootstrap/breakpoints';
 
+
 @include nb-install-component() {
 
   nb-card-body {

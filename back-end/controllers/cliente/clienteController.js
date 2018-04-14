@@ -45,4 +45,26 @@ module.exports = function(app) {
         });
     });
 
+     //Obtem todos os paciêntes. acesso = true;
+     app.get('/api/clientes/autocomplete/:nome', function(req, res){
+        console.log("GET CLIENTES");
+        nameSearch = '/'+req.params.nome+'/i';
+        console.log(nameSearch);
+        Cliente.find({'nome': { '$regex' : req.params.nome, '$options' : 'i' }} , function (err, clientes) {
+            console.log(clientes);
+            if (err){
+                return res.status(500).json({
+                    title: 'Ocorreu um erro',
+                    error: err
+                })
+            }
+            else{
+                res.status(200).json({
+                    message: 'Success',
+                    obj: clientes
+                });
+            }          
+        });
+    });
+
 }
