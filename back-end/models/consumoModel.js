@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
+var mongoose =  require('mongoose');
+var Schema =    mongoose.Schema;
+var ObjectId =  Schema.Types.ObjectId;
 
 var consumoSchema = new Schema({
     //TODO: adicionar tipo

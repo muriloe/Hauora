@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-extend = require('mongoose-schema-extend'),
-Schema = mongoose.Schema;
-PessoaSchema = require('./pessoaModel');
+var mongoose =  require('mongoose');
+extend =        require('mongoose-schema-extend'),
+Schema =        mongoose.Schema;
+PessoaSchema =  require('./pessoaModel');
 
 var clientSchema = PessoaSchema.discriminator('Clientes', new Schema({
     objetivo:       { type : String },

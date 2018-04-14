@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-extend = require('mongoose-schema-extend');
-var Schema = mongoose.Schema;
+var mongoose =  require('mongoose');
+extend =        require('mongoose-schema-extend');
+var Schema =    mongoose.Schema;
 
 var pessoaSchema = new Schema({
     nome:               { type: String},

@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ObjectId = Schema.Types.ObjectId;
+var mongoose =  require('mongoose');
+var Schema =    mongoose.Schema;
+var ObjectId =  Schema.Types.ObjectId;
 
 var anamneseSchema = new Schema({
     data:       {type: Date, default:Date.now()},
