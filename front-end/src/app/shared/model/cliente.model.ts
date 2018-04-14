@@ -23,4 +23,5 @@ export class Cliente {
       this.objetivo = objetivo;
       this.acesso = acesso;
     }
+
   }
