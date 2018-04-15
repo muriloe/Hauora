@@ -7,8 +7,6 @@ import { Component, OnInit} from '@angular/core';
   templateUrl: './consulta.component.html',
 })
 export class ConsultaComponent implements OnInit {
-  text: string;
-  results: string[];
 
   ngOnInit() {}
 
@@ -17,14 +15,4 @@ export class ConsultaComponent implements OnInit {
     this.clienteGenerico = new Cliente('Selecione um paciênte', '', '', '', '', null, '', '', true);
   }
 
-
-
-  search(event) {
-    this.consultaService.getResults(event.query)
-            .subscribe(
-                (results: string[]) => {
-                    this.results = results;
-                },
-            );
-  }
 }

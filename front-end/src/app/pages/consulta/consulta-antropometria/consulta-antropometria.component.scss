@@ -5,6 +5,10 @@
 
 @include nb-install-component() {
 
+  p-autoComplete{
+    margin-bottom: 1rem;
+  }
+  
   nb-card-body {
     overflow: visible;
   }

@@ -6,9 +6,12 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="input-group">
-                                    <input type="text" placeholder="Paciente" class="form-control input-group"/>
-
-                                    
+                                    <!--<input type="text" placeholder="Paciente" class="form-control input-group"/> -->
+                                    <p-autoComplete [(ngModel)]="pacienteSelecionado" placeholder="Paciente" 
+                                                    [suggestions]="results" 
+                                                    (completeMethod)="search($event)" 
+                                                    (onSelect)="usuarioSelecionado()" >
+                                    </p-autoComplete>
                                     <div class="row full-name-inputs">
                                         <div class="col-sm-4 input-group">
                                             <input type="text" placeholder="Peso (kg)" class="form-control"/>
