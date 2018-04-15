@@ -47,7 +47,8 @@ module.exports = function(app) {
 
      //Obtem todos os paciêntes. acesso = true;
      app.get('/api/clientes/autocomplete/:nome', function(req, res){
-        console.log("GET CLIENTES");
+        console.log("Auto complete busca:");
+        console.log(req.params.nome);
         nameSearch = '/'+req.params.nome+'/i';
         console.log(nameSearch);
         Cliente.find({'nome': { '$regex' : req.params.nome, '$options' : 'i' }} , function (err, clientes) {
