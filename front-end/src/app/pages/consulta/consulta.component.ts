@@ -20,7 +20,7 @@ export class ConsultaComponent implements OnInit {
 
 
   search(event) {
-    this.consultaService.getResults(event)
+    this.consultaService.getResults(event.query)
             .subscribe(
                 (results: string[]) => {
                     this.results = results;

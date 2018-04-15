@@ -49,10 +49,7 @@ module.exports = function(app) {
      app.get('/api/clientes/autocomplete/:nome', function(req, res){
         console.log("Auto complete busca:");
         console.log(req.params.nome);
-        nameSearch = '/'+req.params.nome+'/i';
-        console.log(nameSearch);
         Cliente.find({'nome': { '$regex' : req.params.nome, '$options' : 'i' }} , function (err, clientes) {
-            console.log(clientes);
             if (err){
                 return res.status(500).json({
                     title: 'Ocorreu um erro',
