@@ -48,6 +48,7 @@
     "angular-material": "^1.1.8",
     "angular2-chartjs": "0.4.1",
     "angular2-toaster": "4.0.1",
+    "autocomplete-module": "^0.1.8",
     "bootstrap": "4.0.0",
     "chart.js": "2.7.1",
     "ckeditor": "4.7.3",
