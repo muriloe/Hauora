@@ -4,6 +4,7 @@ var Schema =    mongoose.Schema;
 
 var pessoaSchema = new Schema({
     nome:               { type: String},
+    nome_mae:           { type: String},
     email:              { type: String, unique: true, required: true },
     senha:              { type: String},
     telefone:           { type: String},

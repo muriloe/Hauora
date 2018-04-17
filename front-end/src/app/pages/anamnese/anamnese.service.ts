@@ -30,7 +30,7 @@ export class AnamneseService {
                         enderecoCompletoFoto = fotoCliente;
                     }
 
-                    nCli.push(new Cliente(cli.nome, cli.email, '', cli.telefone,
+                    nCli.push(new Cliente(cli.nome, cli.nome_mae, cli.email, '', cli.telefone,
                     cli.sexo, null, enderecoCompletoFoto, cli.objetivo, false));
                 }
                 this.clientesEmAnamnese = nCli;

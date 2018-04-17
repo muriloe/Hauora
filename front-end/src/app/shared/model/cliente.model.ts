@@ -1,6 +1,7 @@
 export class Cliente {
     public _id: string;
     public nome: string;
+    public nome_mae: string;
     public email: string;
     public senha: string;
     public telefone: string;
@@ -11,10 +12,11 @@ export class Cliente {
     public acesso: boolean;
 
 
-    constructor(nome: string, email: string, senha: string,
+    constructor(nome: string, nome_mae: string, email: string, senha: string,
                 telefone: string, sexo: string, data_nascimento: Date,
                 foto: string, objetivo: string, acesso: boolean) {
       this.nome = nome;
+      this.nome_mae = nome_mae;
       this.email = email;
       this.senha = senha;
       this.sexo = sexo;

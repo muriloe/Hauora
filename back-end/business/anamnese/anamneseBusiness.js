@@ -19,6 +19,7 @@ exports.criarAnamneseCompleta = function(dat){
             telefone: dat.cliente.telefone,
             email: dat.cliente.email,
             nome: dat.cliente.nome,
+            nome_mae: dat.cliente.nome_mae,
             data_nascimento: new Date(dat.cliente.data_nascimento),
         });
         console.log("novo cliente");
