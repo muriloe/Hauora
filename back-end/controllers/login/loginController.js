@@ -8,7 +8,7 @@ module.exports = function(app) {
         loginBusiness.logar(req.body).then(function(response){
             res.end(JSON.stringify(response));
         }).catch(function(err){
-            res.end(JSON.stringify(err));
+            res.status(404).end(JSON.stringify(err));
         });
     });
 }

@@ -3,8 +3,9 @@ var bodyParser =    require('body-parser');
 let Cliente =       require("../../models/clienteModel");
 
 exports.logar = function(data){
-    return new Promise(function(resolve,reject){
+    return new Promise(function(resolve, reject){
         console.log("Conferir a senha");
+
         Cliente.find({email: data.email, senha: data.senha}, function (err, clientes) {
             console.log(clientes);  
             if (err){
@@ -12,7 +13,7 @@ exports.logar = function(data){
             }
             else{
                 if (clientes.length == 1){
-                    resolve({"anamnese": clientes[0] });
+                    resolve(clientes[0]);
                 }
                 else{
                     reject({"status":false, "message":"Error, email ou senha inválida", "error": err});
