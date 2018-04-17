@@ -12,7 +12,7 @@ export class ConsultaComponent implements OnInit {
 
   clienteGenerico: Cliente;
   constructor(private consultaService: ConsultaService) {
-    this.clienteGenerico = new Cliente('Selecione um paciênte', '', '', '', '', null, '', '', true);
+    this.clienteGenerico = new Cliente('Selecione um paciênte', '','', '', '', '', null, '', '', true);
   }
 
 }

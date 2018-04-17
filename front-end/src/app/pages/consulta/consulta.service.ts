@@ -23,7 +23,7 @@ export class ConsultaService {
                 for (const cli of cliAnm) {
 
 
-                    nCli.push(new Cliente(cli.nome, cli.email, '', cli.telefone,
+                    nCli.push(new Cliente(cli.nome, cli.nome_mae, cli.email, '', cli.telefone,
                     cli.sexo, null, 'erro 002a5', cli.objetivo, false));
                     rCli.push(cli.nome);
                 }
@@ -48,7 +48,7 @@ export class ConsultaService {
                         const fotoCliente = cli.foto.replace('/uploads', '/uploads/min');
                         enderecoCompletoFoto = fotoCliente;
                     }
-                    const cliTemp = new Cliente(cli.nome, cli.email, '', cli.telefone,
+                    const cliTemp = new Cliente(cli.nome, cli.nome_mae, cli.email, '', cli.telefone,
                     cli.sexo, null, enderecoCompletoFoto, cli.objetivo, false);
                     cliTemp._id = cli._id;
                     nCli.push(cliTemp);
