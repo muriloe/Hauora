@@ -12,7 +12,7 @@ exports.logar = function(data){
             }
             else{
                 if (clientes.length == 1){
-                    resolve({"anamnese": clientes.first() });
+                    resolve({"anamnese": clientes[0] });
                 }
                 else{
                     reject({"status":false, "message":"Error, email ou senha inválida", "error": err});
