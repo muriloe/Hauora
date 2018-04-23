@@ -1,4 +1,3 @@
-
 /**
  * @license
  * Copyright Akveo. All Rights Reserved.
@@ -19,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AnamneseService } from './pages/anamnese/anamnese.service';
 import { ClientesService } from './pages/clientes/clientes.service';
 import { ConsultaService} from './pages/consulta/consulta.service';
+import { ServerInfo} from './shared/server';
 import { HttpModule } from '@angular/http';
 
 @NgModule({
@@ -40,6 +40,7 @@ import { HttpModule } from '@angular/http';
     [ AnamneseService ],
     [ ClientesService ],
     [ ConsultaService ],
+    [ ServerInfo ],
 
   ],
 })

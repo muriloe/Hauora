@@ -7,12 +7,11 @@ import { Component, OnInit} from '@angular/core';
   templateUrl: './consulta.component.html',
 })
 export class ConsultaComponent implements OnInit {
-
   ngOnInit() {}
 
   clienteGenerico: Cliente;
   constructor(private consultaService: ConsultaService) {
-    this.clienteGenerico = new Cliente('Selecione um paciênte', '','', '', '', '', null, '', '', true);
+    this.clienteGenerico = new Cliente({nome: 'Selecione um paciente'});
   }
 
 }

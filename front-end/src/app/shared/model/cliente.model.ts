@@ -12,19 +12,21 @@ export class Cliente {
     public acesso: boolean;
 
 
-    constructor(nome: string, nome_mae: string, email: string, senha: string,
-                telefone: string, sexo: string, data_nascimento: Date,
-                foto: string, objetivo: string, acesso: boolean) {
+    constructor(cliente: any) {
+      this.nome = cliente.nome;
+      this.nome_mae = cliente.nome_mae;
+      this.email = cliente.email;
+      this.senha = cliente.senha;
+      this.sexo = cliente.sexo;
+      this.data_nascimento = cliente.data_nascimento;
+      this.telefone = cliente.telefone;
+      this.foto = cliente.foto;
+      this.objetivo = cliente.objetivo;
+      this.acesso = cliente.acesso;
+    }
+
+    setNome(nome: string) {
       this.nome = nome;
-      this.nome_mae = nome_mae;
-      this.email = email;
-      this.senha = senha;
-      this.sexo = sexo;
-      this.data_nascimento = data_nascimento;
-      this.telefone = telefone;
-      this.foto = foto;
-      this.objetivo = objetivo;
-      this.acesso = acesso;
     }
 
   }

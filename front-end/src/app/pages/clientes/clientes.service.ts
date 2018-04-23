@@ -4,16 +4,19 @@ import 'rxjs/Rx';
 // tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs';
 import { Cliente } from '../../shared/model/cliente.model';
+import { ServerInfo } from './../../shared/server';
 
 @Injectable()
 export class ClientesService {
 
     constructor(private http: Http) {}
-
+    // Variável utilizada para salva a lista de cliente
     private clientesPacientes: Cliente[] = [];
+    // Variável utlizada para armazena o endereço do servidor
+    private serverUrl = new ServerInfo().getServerName();
 
     getClientesPacientes () {
-        return this.http.get('http://ec2-54-191-75-41.us-west-2.compute.amazonaws.com:3000/api/clientes')
+        return this.http.get(this.serverUrl + '/api/clientes')
             .map((response: Response) => {
                 const cliAnm = response.json().obj;
                 const nCli: Cliente[] = [];
@@ -27,8 +30,7 @@ export class ClientesService {
                         enderecoCompletoFoto = fotoCliente;
                     }
 
-                    nCli.push(new Cliente(cli.nome, cli.nome_mae, cli.email, '', cli.telefone,
-                    cli.sexo, null, enderecoCompletoFoto, cli.objetivo, false));
+                    nCli.push(new Cliente(cli));
                 }
                 this.clientesPacientes = nCli;
                 return nCli;

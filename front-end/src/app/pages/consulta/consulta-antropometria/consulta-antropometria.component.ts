@@ -15,9 +15,7 @@ import { ConsultaService } from '../consulta.service';
 
     constructor(private consultaService: ConsultaService) { }
 
-    ngOnInit() {
-     this.cliente.nome = 'Selecione um paciente';
-    }
+    ngOnInit() {}
 
     search(event) {
       this.consultaService.getResultsAutoComplete(event.query)
