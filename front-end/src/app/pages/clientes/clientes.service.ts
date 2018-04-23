@@ -10,30 +10,28 @@ import { ServerInfo } from './../../shared/server';
 export class ClientesService {
 
     constructor(private http: Http) {}
-    // Variável utilizada para salva a lista de cliente
-    private clientesPacientes: Cliente[] = [];
+    // Variável utilizada para salvar a lista de cliente (pessoas que já fizeram anamense)
+    private clientes: Cliente[] = [];
     // Variável utlizada para armazena o endereço do servidor
     private serverUrl = new ServerInfo().getServerName();
 
+    // Obtem a lisa de clientes (pacientes que já fizeram a anamnese, pré-consulta)
     getClientesPacientes () {
         return this.http.get(this.serverUrl + '/api/clientes')
             .map((response: Response) => {
-                const cliAnm = response.json().obj;
-                const nCli: Cliente[] = [];
+                const clinetesResponse = response.json().obj;
+                this.clientes = [];
 
-                for (const cli of cliAnm) {
-                    let enderecoCompletoFoto;
+                for (const cliente of clinetesResponse) {
 
-                    if (cli.foto) {
+                    if (cliente.foto) {
                         // tslint:disable-next-line:max-line-length
-                        const fotoCliente = cli.foto.replace('/uploads', '/uploads/min');
-                        enderecoCompletoFoto = fotoCliente;
+                        cliente.foto = cliente.foto.replace('/uploads', '/uploads/min');
                     }
 
-                    nCli.push(new Cliente(cli));
+                    this.clientes.push(new Cliente(cliente));
                 }
-                this.clientesPacientes = nCli;
-                return nCli;
+                return this.clientes;
             })
             .catch((error: Response) => Observable.throw(error.json()));
     }

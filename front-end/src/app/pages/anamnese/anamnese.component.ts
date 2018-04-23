@@ -7,15 +7,16 @@ import { Cliente } from '../../shared/model/cliente.model';
   templateUrl: './anamnese.component.html',
 })
 export class AnamneseComponent implements OnInit {
-  listaClientesEmAnaminese: Cliente[];
+  // Armazena a lista das consultas pendentes (anamneses)
+  consultasPendentes: Cliente[];
 
   constructor(private anamneseService: AnamneseService) {}
 
   ngOnInit() {
     this.anamneseService.getClienteEmAnamnese()
             .subscribe(
-                (listaClientesEmAnaminese: Cliente[]) => {
-                    this.listaClientesEmAnaminese = listaClientesEmAnaminese;
+                (consultasPendentes: Cliente[]) => {
+                    this.consultasPendentes = consultasPendentes;
                 },
             );
   }

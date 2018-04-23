@@ -10,12 +10,15 @@ import { ConsultaService } from '../consulta.service';
   export class ConsultaAntropometriaComponent implements OnInit {
     pacienteSelecionado: any;
     pacienteSelecionado2: any;
+    selecionouPaciente: Boolean;
     @Input() cliente: Cliente;
     results: string[];
 
     constructor(private consultaService: ConsultaService) { }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.selecionouPaciente = true;
+    }
 
     search(event) {
       this.consultaService.getResultsAutoComplete(event.query)
@@ -27,6 +30,7 @@ import { ConsultaService } from '../consulta.service';
     }
 
     usuarioSelecionado() {
+        this.selecionouPaciente = false;
         this.consultaService.getCliente(this.pacienteSelecionado)
               .subscribe(
                   (results: Cliente) => {

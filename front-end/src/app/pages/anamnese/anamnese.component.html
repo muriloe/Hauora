@@ -6,8 +6,8 @@
         </div>
     </div>
     <div class="row">
-            <ngx-anamnese-card
-                *ngFor="let cliAnam of listaClientesEmAnaminese"
-                [clienteAnamnese]="cliAnam"></ngx-anamnese-card>
+            <ngx-anamnese-card  *ngFor="let cliAnam of consultasPendentes"
+                                [clienteAnamnese]="cliAnam">
+            </ngx-anamnese-card>
     </div>
 </div>

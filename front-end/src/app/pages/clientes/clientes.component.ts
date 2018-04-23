@@ -9,15 +9,15 @@ import { Cliente } from '../../shared/model/cliente.model';
 })
 
 export class ClientesComponent implements OnInit {
-  listaClientesPacientes: Cliente[];
+  listaClientes: Cliente[];
 
   constructor(private clientesService: ClientesService) {}
 
   ngOnInit() {
     this.clientesService.getClientesPacientes()
             .subscribe(
-                (listaClientesPacientes: Cliente[]) => {
-                    this.listaClientesPacientes = listaClientesPacientes;
+                (listaClientes: Cliente[]) => {
+                    this.listaClientes = listaClientes;
                 },
             );
   }

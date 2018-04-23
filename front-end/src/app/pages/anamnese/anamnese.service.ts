@@ -17,26 +17,23 @@ export class AnamneseService {
     // Variável utlizada para armazena o endereço do servidor
     private serverUrl = new ServerInfo().getServerName();
 
+    // Obtem a lista de cliente que estão na etapa de anamnese( aqueles que não fizeram a consulta )
     getClienteEmAnamnese () {
-
         return this.http.get( this.serverUrl + '/api/clientes/anamnese')
             .map((response: Response) => {
-                const cliAnm = response.json().obj;
-                const nCli: Cliente[] = [];
+                const consultasPendentesResponse = response.json().obj;
+                this.clientesEmAnamnese = [];
 
-                for (const cli of cliAnm) {
-                    let enderecoCompletoFoto;
+                for (const cliente of consultasPendentesResponse) {
 
-                    if (cli.foto) {
-                        // tslint:disable-next-line:max-line-length
-                        const fotoCliente = cli.foto.replace('/uploads', '/uploads/min');
-                        enderecoCompletoFoto = fotoCliente;
+                    // Se o cliente tiver uma url de foto, converte para uma url que gera uma versão menor
+                    if (cliente.foto) {
+                        cliente.foto = cliente.foto.replace('/uploads', '/uploads/min');
                     }
 
-                    nCli.push(new Cliente(cli));
+                    this.clientesEmAnamnese.push(new Cliente(cliente));
                 }
-                this.clientesEmAnamnese = nCli;
-                return nCli;
+                return this.clientesEmAnamnese;
             })
             .catch((error: Response) => Observable.throw(error.json()));
     }

@@ -5,8 +5,7 @@
             </div>
         </div>
         <div class="row">
-                <ngx-cliente-card
-                    *ngFor="let cliAnam of listaClientesPacientes"
-                    [cliente]="cliAnam"></ngx-cliente-card>
+                <ngx-cliente-card   *ngFor="let cliente of listaClientes"
+                                    [cliente]="cliente"></ngx-cliente-card>
         </div>
     </div>

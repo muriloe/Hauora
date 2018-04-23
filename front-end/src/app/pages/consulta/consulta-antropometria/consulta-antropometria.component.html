@@ -1,5 +1,5 @@
 <div class="row">
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-md-10">
                 <nb-card>
                     <nb-card-header>Paciente</nb-card-header>
                     <nb-card-body>
@@ -10,7 +10,8 @@
                                     <p-autoComplete [(ngModel)]="pacienteSelecionado" placeholder="Paciente" 
                                                     [suggestions]="results" 
                                                     (completeMethod)="search($event)" 
-                                                    (onSelect)="usuarioSelecionado()" >
+                                                    (onSelect)="usuarioSelecionado()" 
+                                                    *ngIf="selecionouPaciente">
                                     </p-autoComplete>
                                     <div class="row full-name-inputs">
                                         <div class="col-sm-4 input-group">
