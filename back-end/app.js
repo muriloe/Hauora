@@ -1,6 +1,7 @@
 var express =                       require('express');
 var app =                           express();
 var mongoose =                      require('mongoose');
+var cors =                          require('cors');
 var config =                        require('./config');
 var setupController =               require('./controllers/setupController');
 var apiController =                 require('./controllers/apiController');
@@ -12,6 +13,11 @@ var bodyParser =                    require('body-parser');
 var port = process.env.port || 3000;
 
 
+
+app.use(cors())
+app.listen(3000, function () {
+    console.log('CORS-enabled web server listening on port 80')
+})
 app.use('/assets', express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.json({limit: '50mb'}));
