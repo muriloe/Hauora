@@ -14,10 +14,7 @@ var port = process.env.port || 3000;
 
 
 
-app.use(cors())
-app.listen(3000, function () {
-    console.log('CORS-enabled web server listening on port 80')
-})
+app.use(cors());
 app.use('/assets', express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.json({limit: '50mb'}));
