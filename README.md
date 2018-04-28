@@ -58,6 +58,9 @@ Para instala o angular devemos navegar pelo terminal até a pasta /Haoura/front-
 npm install -g @angular/cli
 ou
 sudo npm install -g @angular/cli
+
+Caso apresente erros de permissão do npm:
+sudo npm install -g @angular/cli --unsafe-perm
 ````
 
 Após instalar o angular, devemos instalar os pacotes:
