@@ -9,34 +9,39 @@ import { ConsultaService } from '../consulta.service';
   })
   export class ConsultaAntropometriaComponent implements OnInit {
     pacienteSelecionado: any;
-    pacienteSelecionado2: any;
     selecionouPaciente: Boolean;
     @Input() cliente: Cliente;
     results: string[];
+    listaDeClientesBusca: Cliente[];
 
     constructor(private consultaService: ConsultaService) { }
 
     ngOnInit() {
-        this.selecionouPaciente = true;
+        this.selecionouPaciente = false;
     }
 
-    search(event) {
-      this.consultaService.getResultsAutoComplete(event.query)
+    buscarPacientes(nomePaciente) {
+      this.consultaService.getClientes(nomePaciente)
               .subscribe(
-                  (results: string[]) => {
-                      this.results = results;
+                  (listaDeClientesBusca: Cliente[]) => {
+                      this.listaDeClientesBusca = listaDeClientesBusca;
                   },
               );
     }
 
-    usuarioSelecionado() {
+    usuarioSelecionado(id) {
         this.selecionouPaciente = false;
-        this.consultaService.getCliente(this.pacienteSelecionado)
+        this.consultaService.getCliente(id)
               .subscribe(
                   (results: Cliente) => {
                       this.cliente = results;
+                      this.selecionouPaciente = true;
                   },
               );
+    }
+
+    cancelaAnamnese() {
+        this.selecionouPaciente = false;
     }
 
 }

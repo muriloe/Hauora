@@ -1,53 +1,101 @@
 <div class="row">
-        <div class="col-12 col-md-10">
-                <nb-card>
-                    <nb-card-header>Paciente</nb-card-header>
-                    <nb-card-body>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <!--<input type="text" placeholder="Paciente" class="form-control input-group"/> -->
-                                    <p-autoComplete [(ngModel)]="pacienteSelecionado" placeholder="Paciente" 
-                                                    [suggestions]="results" 
-                                                    (completeMethod)="search($event)" 
-                                                    (onSelect)="usuarioSelecionado()" 
-                                                    *ngIf="selecionouPaciente">
-                                    </p-autoComplete>
-                                    <div class="row full-name-inputs">
-                                        <div class="col-sm-4 input-group">
-                                            <input type="text" placeholder="Peso (kg)" class="form-control"/>
-                                        </div>
-                                        <div class="col-sm-4 input-group">
-                                            <input type="text" placeholder="Altura (m)" class="form-control"/>
-                                        </div>
-                                        <div class="col-sm-4 input-group">
-                                            <input type="text" placeholder="% de gordura" class="form-control"/>
-                                        </div>
+    <div class="col-12 col-md-10">
+        <div class="row">
+            <div>
+                <h1>Consulta</h1>
+            </div>
+        </div>
+       
+        <nb-card *ngIf="!selecionouPaciente">
+            <nb-card-body>
+                <div class="input-group">
+                    <label>Para iniciar a consulta selecione um paciente: </label>
+                    <div class="input-group">
+                        <input type="text" [(ngModel)]="pacienteSelecionado" class="form-control" placeholder="Insira o nome do paciente">
+                            <span class="input-group-append">
+                                <button class="btn btn-success btn-demo" (click)="buscarPacientes(pacienteSelecionado)">
+                                    Buscar
+                                </button>
+                            </span>
+                    </div>
+                    <div class="col-md-12">
+                        <nb-tabset fullWidth>  
+                            <nb-tab tabTitle="Resultados">   
+                                <div class="contact" *ngFor="let c of listaDeClientesBusca">
+                                    <nb-user [picture]="c.foto" [name]="c.nome" [title]="c.email" size="large"></nb-user>
+                                    <button class="btn btn-success btn-demo"  (click)="usuarioSelecionado(c.nome)">Selecionar</button>
+                                </div>   
+                            </nb-tab>    
+                        </nb-tabset> 
+                    </div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+
+        <nb-card *ngIf="selecionouPaciente">
+            <nb-card-body>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <!--<input type="text" placeholder="Paciente" class="form-control input-group"/> -->
+                            <div class="form-group">
+                                
+                                <!--<p-autoComplete [(ngModel)]="pacienteSelecionado" placeholder="Buscar por nome" [suggestions]="results" (completeMethod)="search($event)"(onSelect)="usuarioSelecionado()"*ngIf="selecionouPaciente"></p-autoComplete>-->
+                            </div>                 
+                            <div class="row full-name-inputs">
+                                <div class="col-sm-4 input-group">
+                                    <div class="form-group">
+                                        <label>Peso (kg)</label>
+                                        <input type="number" placeholder="KG" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 input-group">
+                                    <div class="form-group">
+                                        <label>Altura (m)</label>
+                                        <input type="number" placeholder="metros" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4 input-group">
+                                    <div class="form-group">
+                                        <label>% de gordura</label>
+                                        <input type="number" placeholder="%" class="form-control"/>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <nb-card>
-                                    <div class="separa">
-                                        <nb-user [picture]="cliente.foto" [name]="cliente.nome" [title]="cliente.email" size="xlarge"></nb-user>
-                                        <br>
-                                        <button class="btn btn-success btn-semi-round btn-demo">Ver Anamnese</button>
-                                    </div>
-                                </nb-card>
-                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12 input-group">
-                                <input type="text" placeholder="Deficiências" class="form-control"/>
+                    </div>
+                    <div class="col-md-6">
+                        <nb-card>
+                            <div>
+                                <nb-user [picture]="cliente.foto" [name]="cliente.nome" [title]="cliente.email" size="xlarge"></nb-user>
+                                <br>
+                                <button class="btn btn-success btn-semi-round btn-demo">Ver Anamnese</button>
+                                <button class="btn btn-warning btn-semi-round btn-demo" (click)="cancelaAnamnese()">Cancelar</button>
                             </div>
-                            <div class="col-md-12 input-group">
-                                <input type="text" placeholder="Excessos" class="form-control"/>
-                            </div>
-                            <div class="col-md-12 input-group">
-                                <input type="text" placeholder="Observações" class="form-control"/>
-                            </div>
+                        </nb-card>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 input-group">
+                        <div class="col">
+                            <label>Deficiências</label>
+                            <input type="text" placeholder="Ex: Vitamina C" class="form-control"/>
                         </div>
-                    </nb-card-body>
-                </nb-card>
-            </div>
+                    </div>
+                    <div class="col-md-12 input-group">
+                        <div class="col">
+                            <label>Excessos</label>
+                            <input type="text" placeholder="Excessos" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-md-12 input-group">
+                        <div class="col">
+                            <label>Observações</label>
+                            <input type="text" placeholder="Observações" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+            </nb-card-body>
+        </nb-card>
     </div>
+</div>
