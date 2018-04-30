@@ -41,7 +41,10 @@ import { ConsultaService } from '../consulta.service';
     }
 
     cancelaAnamnese() {
-        this.selecionouPaciente = false;
+        if (confirm('Fazendo isso você perdera todos os dados da consulta')) {
+            this.selecionouPaciente = false;
+        } else {
+        }
     }
 
 }
