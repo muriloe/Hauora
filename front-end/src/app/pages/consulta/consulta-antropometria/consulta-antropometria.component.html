@@ -6,6 +6,7 @@
             </div>
         </div>
        
+        <!-- Caso não tenho selecionado o paciente exibe este card que é usado para busca o paciente-->
         <nb-card *ngIf="!selecionouPaciente">
             <nb-card-body>
                 <div class="input-group">
@@ -32,49 +33,59 @@
             </nb-card-body>
         </nb-card>
 
+        <!-- Informações da antropometria-->
         <nb-card *ngIf="selecionouPaciente">
             <nb-card-body>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <!--<input type="text" placeholder="Paciente" class="form-control input-group"/> -->
-                            <div class="form-group">
-                                
-                                <!--<p-autoComplete [(ngModel)]="pacienteSelecionado" placeholder="Buscar por nome" [suggestions]="results" (completeMethod)="search($event)"(onSelect)="usuarioSelecionado()"*ngIf="selecionouPaciente"></p-autoComplete>-->
-                            </div>                 
+                    <div class="col-md-8">
+                        <div class="input-group">               
                             <div class="row full-name-inputs">
-                                <div class="col-sm-4 input-group">
-                                    <div class="form-group">
+                                <div class="col-md-4">
+                                    <div class="">
                                         <label>Peso (kg)</label>
                                         <input type="number" placeholder="KG" class="form-control"/>
                                     </div>
                                 </div>
-                                <div class="col-sm-4 input-group">
-                                    <div class="form-group">
+                                <div class="col-md-4">
+                                    <div class="">
                                         <label>Altura (m)</label>
                                         <input type="number" placeholder="metros" class="form-control"/>
                                     </div>
                                 </div>
-                                <div class="col-sm-4 input-group">
-                                    <div class="form-group">
+                                <div class="col-md-4">
+                                    <div class="">
                                         <label>% de gordura</label>
                                         <input type="number" placeholder="%" class="form-control"/>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6 input-group">
+                                <div class="col">
+                                    <label>Peso Ideal (kg)</label>
+                                    <input type="number" placeholder="KG" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6 input-group">
+                                <div class="col">
+                                    <label>IMC</label>
+                                    <input type="number" placeholder="KG" class="form-control"/>
+                                </div>
+                            </div>   
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <nb-card>
+                    <div class="col-md-4"> 
                             <div>
                                 <nb-user [picture]="cliente.foto" [name]="cliente.nome" [title]="cliente.email" size="xlarge"></nb-user>
                                 <br>
-                                <button class="btn btn-success btn-semi-round btn-demo">Ver Anamnese</button>
+                                <button class="btn btn-success btn-semi-round btn-demo" (click)="showModelAnamnese()">Ver Anamnese</button>
                                 <button class="btn btn-danger btn-semi-round btn-demo" (click)="cancelaAnamnese()">Cancelar</button>
-                            </div>
-                        </nb-card>
+                            </div>          
                     </div>
                 </div>
+
+
                 <div class="row">
                     <div class="col-md-12 input-group">
                         <div class="col">

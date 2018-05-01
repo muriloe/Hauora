@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Cliente } from '../../../shared/model/cliente.model';
 import { ConsultaService } from '../consulta.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConsultaAnamneseViewComponent } from './consulta-anamnese-view/consulta-anamnese-view.component';
 
 @Component({
     selector: 'ngx-consulta-antropometria',
@@ -14,7 +16,7 @@ import { ConsultaService } from '../consulta.service';
     results: string[];
     listaDeClientesBusca: Cliente[];
 
-    constructor(private consultaService: ConsultaService) { }
+    constructor(private consultaService: ConsultaService, private modalService: NgbModal) { }
 
     ngOnInit() {
         this.selecionouPaciente = false;
@@ -45,6 +47,13 @@ import { ConsultaService } from '../consulta.service';
             this.selecionouPaciente = false;
         } else {
         }
+    }
+
+    showModelAnamnese() {
+        // tslint:disable-next-line:max-line-length
+        const activeModal = this.modalService.open(ConsultaAnamneseViewComponent, { size: 'lg', container: 'nb-layout' });
+
+        activeModal.componentInstance.modalHeader = 'Large Modal';
     }
 
 }
