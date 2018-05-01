@@ -7,7 +7,13 @@
   <div class="modal-body">
     <div class="row">
       <div class="col-lg-6">
-        INFORMAÇÕES DE USUÁRIO E REMÉDIOS
+        <div *ngIf="cliente">
+          <p><nb-user [picture]="cliente.foto" [name]="cliente.nome" [title]="cliente.email" size="xlarge"></nb-user></p>
+          <p><label>Data de Nascimento: {{cliente.data_nascimento | date: 'dd/MM/yyyy'}}</label></p>
+          <p><label>Sexo: {{cliente.sexo}}</label></p>
+          <p><label>Objetivo: {{cliente.objetivo}}</label></p>
+          <p><label>Telefone: {{cliente.telefone}}</label></p>    
+        </div>
       </div>
       <div class="col-lg-6">
         INFORMAÇÕES DE ALIMENTAÇÃO

@@ -58,18 +58,17 @@ export class ConsultaService {
             .catch((error: Response) => Observable.throw(error.json()));
     }
 
-    getAnamnese(userId: string){
+    getAnamnese(userId: string) {
         return this.http.get(this.serverUrl + '/api/anamnese/' + userId)
             .map((response: Response) => {
                 const cliAnm = response.json().obj;
                 const anamneseResponse = response.json().anamnese;
-                const anamnese: Anamnese = new Anamnese(null);
-
-                anamnese._id = anamneseResponse._id;
-                anamnese.consumo = anamneseResponse.consumo;
-                anamnese.doenca = anamneseResponse.doenca;
-                anamnese.remedio = anamneseResponse.remedio;
-                anamnese.data = anamneseResponse.data;
+                const anamnese: Anamnese = new Anamnese('');
+                anamnese._id = anamneseResponse[0]._id;
+                anamnese.consumo = anamneseResponse[0].consumo;
+                anamnese.doenca = anamneseResponse[0].doenca;
+                anamnese.remedio = anamneseResponse[0].remedio;
+                anamnese.data = anamneseResponse[0].data;
 
                 return anamnese;
             })
