@@ -36,6 +36,7 @@ export class ConsultaAnamneseModalComponent implements OnInit {
               .subscribe(
                   (anamnese: Anamnese) => {
                       this.anamnese = anamnese;
+                      this.getConsumos();
                   },
               );
     }
@@ -47,6 +48,10 @@ export class ConsultaAnamneseModalComponent implements OnInit {
                       this.cliente = results;
                   },
             );
+    }
+
+    getConsumos() {
+
     }
 
 }

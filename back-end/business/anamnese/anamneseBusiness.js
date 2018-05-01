@@ -182,3 +182,51 @@ exports.obterAnamnesePeloUserId = function(dat){
     });
 }
 
+//Obtem os remedios a partir do id da anamnese
+exports.getRemedios = function(dat){
+    console.log("obtendo:");
+    return new Promise(function(resolve,reject){
+        Remedio.find({'anamnese': dat}, function(err, remedios){
+            if (err){
+                reject({"status":false, "message":"Erro ao obter remedios pelo id anamnese", "error": err});
+            }
+            else{
+                console.log("sucesso ao obter remedios");
+                resolve({ "status":true,"remedio":remedios });       
+            }
+        });
+    });
+}
+
+//Obtem os doenca a partir do id da anamnese
+exports.getDoencas = function(dat){
+    console.log("obtendo:");
+    return new Promise(function(resolve,reject){
+        Doenca.find({'anamnese': dat}, function(err, doenca){
+            if (err){
+                reject({"status":false, "message":"Erro ao obter doenca pelo id anamnese", "error": err});
+            }
+            else{
+                console.log("sucesso ao obter doenca");
+                resolve({ "status":true,"doenca":doenca });       
+            }
+        });
+    });
+}
+
+
+//Obtem os consumo a partir do id da anamnese
+exports.getConsumos = function(dat){
+    console.log("obtendo:");
+    return new Promise(function(resolve,reject){
+        Consumo.find({'anamnese': dat}, function(err, consumo){
+            if (err){
+                reject({"status":false, "message":"Erro ao obter consumo pelo id anamnese", "error": err});
+            }
+            else{
+                console.log("sucesso ao obter consumo");
+                resolve({ "status":true,"consumo":consumo });       
+            }
+        });
+    });
+}

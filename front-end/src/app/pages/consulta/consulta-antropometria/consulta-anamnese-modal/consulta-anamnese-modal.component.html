@@ -16,7 +16,9 @@
         </div>
       </div>
       <div class="col-lg-6">
-        INFORMAÇÕES DE ALIMENTAÇÃO
+        <div  *ngIf="consumos" *ngFor="let consumo of consumos">
+          <ngx-consumo-card></ngx-consumo-card>
+        </div>
       </div>
     </div>
   </div>

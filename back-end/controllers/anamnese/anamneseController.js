@@ -30,6 +30,39 @@ module.exports = function(app) {
         });  
     });
 
+    //Obtem a lista de remedios com o id da anamnese
+    app.get('/api/anamnese/remedios/:id', function(req, res, next){
+        console.log("Busca por remedio de id da anamnese");
+        console.log(req.params.id);
+        anamneseBusiness.getRemedios(req.params.id).then(function(response){          
+            res.end(JSON.stringify(response));
+        }).catch(function(err){
+            res.end(JSON.stringify(err));
+        });  
+    });
+
+    //Obtem a lista de doenca com o id da anamnese
+    app.get('/api/anamnese/doencas/:id', function(req, res, next){
+        console.log("Busca por doencas de id da anamnese");
+        console.log(req.params.id);
+        anamneseBusiness.getDoencas(req.params.id).then(function(response){          
+            res.end(JSON.stringify(response));
+        }).catch(function(err){
+            res.end(JSON.stringify(err));
+        });  
+    });
+
+    //Obtem a lista de consumo com o id da anamnese
+    app.get('/api/anamnese/consumos/:id', function(req, res, next){
+        console.log("Busca por consumos de id da anamnese");
+        console.log(req.params.id);
+        anamneseBusiness.getConsumos(req.params.id).then(function(response){          
+            res.end(JSON.stringify(response));
+        }).catch(function(err){
+            res.end(JSON.stringify(err));
+        });  
+    });
+
 
 
 }
