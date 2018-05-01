@@ -219,7 +219,7 @@ exports.getDoencas = function(dat){
 exports.getConsumos = function(dat){
     console.log("obtendo:");
     return new Promise(function(resolve,reject){
-        Consumo.find({'anamnese': dat}, function(err, consumo){
+        Consumo.find({'anamnese': dat}, {sort: '-date'}, function(err, consumo){
             if (err){
                 reject({"status":false, "message":"Erro ao obter consumo pelo id anamnese", "error": err});
             }
