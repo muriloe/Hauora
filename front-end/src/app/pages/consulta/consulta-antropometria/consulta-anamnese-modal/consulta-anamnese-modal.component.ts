@@ -18,7 +18,7 @@ export class ConsultaAnamneseModalComponent implements OnInit {
     anamnese: Anamnese
     consumos: Consumo[];
     remedios: Remedio[];
-    doenca: Doenca[];
+    doencas: Doenca[];
 
     constructor(private activeModal: NgbActiveModal, private consultaService: ConsultaService) { }
 
@@ -36,6 +36,8 @@ export class ConsultaAnamneseModalComponent implements OnInit {
               .subscribe(
                   (anamnese: Anamnese) => {
                       this.anamnese = anamnese;
+                      this.getRemedios();
+                      this.getDoencas();
                       this.getConsumos();
                   },
               );
@@ -50,8 +52,31 @@ export class ConsultaAnamneseModalComponent implements OnInit {
             );
     }
 
-    getConsumos() {
+    getRemedios() {
+        this.consultaService.getRemedios(this.anamnese._id)
+        .subscribe(
+            (results: Remedio[]) => {
+                this.remedios = results;
+            },
+      );
+    }
 
+    getDoencas() {
+        this.consultaService.getDoencas(this.anamnese._id)
+        .subscribe(
+            (results: Doenca[]) => {
+                this.doencas = results;
+            },
+      );
+    }
+
+    getConsumos() {
+        this.consultaService.getConsumos(this.anamnese._id)
+        .subscribe(
+            (results: Consumo[]) => {
+                this.consumos = results;
+            },
+      );
     }
 
 }

@@ -1,3 +1,4 @@
+import { Remedio } from './../../shared/model/remedio.model';
 import { Doenca } from './../../shared/model/doenca.model';
 import { Anamnese } from './../../shared/model/anamnese.model';
 import { Injectable } from '@angular/core';
@@ -61,7 +62,6 @@ export class ConsultaService {
     getAnamnese(userId: string) {
         return this.http.get(this.serverUrl + '/api/anamnese/' + userId)
             .map((response: Response) => {
-                const cliAnm = response.json().obj;
                 const anamneseResponse = response.json().anamnese;
                 const anamnese: Anamnese = new Anamnese('');
                 anamnese._id = anamneseResponse[0]._id;
@@ -71,6 +71,36 @@ export class ConsultaService {
                 anamnese.data = anamneseResponse[0].data;
 
                 return anamnese;
+            })
+            .catch((error: Response) => Observable.throw(error.json()));
+    }
+
+    getRemedios(anamneseId: string) {
+        return this.http.get(this.serverUrl + '/api/anamnese/remedios/' + anamneseId)
+            .map((response: Response) => {
+                const remedioResponse = response.json().remedio;
+                const remedios = remedioResponse;
+                return remedios;
+            })
+            .catch((error: Response) => Observable.throw(error.json()));
+    }
+
+    getDoencas(anamneseId: string) {
+        return this.http.get(this.serverUrl + '/api/anamnese/doencas/' + anamneseId)
+            .map((response: Response) => {
+                const doencaResponse = response.json().doenca;
+                const doenca = doencaResponse;
+                return doenca;
+            })
+            .catch((error: Response) => Observable.throw(error.json()));
+    }
+
+    getConsumos(anamneseId: string) {
+        return this.http.get(this.serverUrl + '/api/anamnese/consumos/' + anamneseId)
+            .map((response: Response) => {
+                const consumoResponse = response.json().consumo;
+                const consumo = consumoResponse;
+                return consumo;
             })
             .catch((error: Response) => Observable.throw(error.json()));
     }
