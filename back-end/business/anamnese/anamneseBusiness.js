@@ -76,12 +76,13 @@ exports.criarAnamneseCompleta = function(dat){
             console.log("5 " + Object.keys(dat.consumos).length);
             nConsumo = new Consumo({
                 texto:          dat.consumos[i].texto,
-                data:           new Date(dat.consumos[i].data),
+                data:           new Date((dat.consumos[i].data)*1000),
                 sentimento:     dat.consumos[i].sentimento,
                 observacao:     dat.consumos[i].observacao,
                 tipo:           dat.consumos[i].tipo,
                 anamnese:       nAnamnese._id
             });
+            console.log(nConsumo);
             consumoList.push(nConsumo);
             nAnamnese.consumo.push(nConsumo._id);
         }
@@ -219,7 +220,7 @@ exports.getDoencas = function(dat){
 exports.getConsumos = function(dat){
     console.log("obtendo:");
     return new Promise(function(resolve,reject){
-        Consumo.find({'anamnese': dat}, {sort: '-date'}, function(err, consumo){
+        Consumo.find({'anamnese': dat}).sort({data: 'desc'}).exec(function(err, consumo) { 
             if (err){
                 reject({"status":false, "message":"Erro ao obter consumo pelo id anamnese", "error": err});
             }
@@ -227,6 +228,7 @@ exports.getConsumos = function(dat){
                 console.log("sucesso ao obter consumo");
                 resolve({ "status":true,"consumo":consumo });       
             }
-        });
+         });
+        
     });
 }
