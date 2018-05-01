@@ -19,6 +19,17 @@ module.exports = function(app) {
         }
     });
 
+    //obtem a anamnese a partir do id de usuário
+    app.get('/api/anamnese/:id', function(req, res, next){
+        console.log("Busca por anamnese de usuário pelo iduser:");
+        console.log(req.params.id);
+        anamneseBusiness.obterAnamnesePeloUserId(req.params.id).then(function(response){          
+            res.end(JSON.stringify(response));
+        }).catch(function(err){
+            res.end(JSON.stringify(err));
+        });  
+    });
+
 
 
 }

@@ -1,3 +1,5 @@
+import { Doenca } from './../../shared/model/doenca.model';
+import { Anamnese } from './../../shared/model/anamnese.model';
 import { Injectable } from '@angular/core';
 import { Http, Response  } from '@angular/http';
 import 'rxjs/Rx';
@@ -54,7 +56,24 @@ export class ConsultaService {
                 return nCli[0];
             })
             .catch((error: Response) => Observable.throw(error.json()));
+    }
 
+    getAnamnese(userId: string){
+        return this.http.get(this.serverUrl + '/api/anamnese/' + userId)
+            .map((response: Response) => {
+                const cliAnm = response.json().obj;
+                const anamneseResponse = response.json().anamnese;
+                const anamnese: Anamnese = new Anamnese(null);
+
+                anamnese._id = anamneseResponse._id;
+                anamnese.consumo = anamneseResponse.consumo;
+                anamnese.doenca = anamneseResponse.doenca;
+                anamnese.remedio = anamneseResponse.remedio;
+                anamnese.data = anamneseResponse.data;
+
+                return anamnese;
+            })
+            .catch((error: Response) => Observable.throw(error.json()));
     }
 
 }

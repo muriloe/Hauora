@@ -79,6 +79,7 @@ exports.criarAnamneseCompleta = function(dat){
                 data:           new Date(dat.consumos[i].data),
                 sentimento:     dat.consumos[i].sentimento,
                 observacao:     dat.consumos[i].observacao,
+                tipo:           dat.consumos[i].tipo,
                 anamnese:       nAnamnese._id
             });
             consumoList.push(nConsumo);
@@ -161,6 +162,23 @@ exports.criarAnamneseCompleta = function(dat){
         };
 
         resolve({ "status":true,"anamnese":anamnseSend });       
+    });
+}
+
+exports.obterAnamnesePeloUserId = function(dat){
+    console.log("obtendo:");
+    return new Promise(function(resolve,reject){
+
+        
+        Anamnese.find({'cliente': dat}, function(err, anamnese){
+            if (err){
+                reject({"status":false, "message":"Erro ao obter anamense pelo id", "error": err});
+            }
+            else{
+                console.log("sucesso anam");
+                resolve({ "status":true,"anamnese":anamnese });       
+            }
+        });
     });
 }
 

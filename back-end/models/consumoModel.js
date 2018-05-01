@@ -8,6 +8,7 @@ var consumoSchema = new Schema({
     data:           {type: Date, default:Date.now()},
     sentimento:     {type: String},
     observacao:     {type: String},
+    tipo:           {type: String},
     anamnese:       {type: ObjectId, ref: 'Anamneses'} 
 });
 

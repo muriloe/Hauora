@@ -49,11 +49,12 @@ import { ConsultaAnamneseModalComponent } from './consulta-anamnese-modal/consul
         }
     }
 
-    showModelAnamnese() {
+    showModelAnamnese(id) {
         // tslint:disable-next-line:max-line-length
         const activeModal = this.modalService.open(ConsultaAnamneseModalComponent, { size: 'lg', container: 'nb-layout' });
 
         activeModal.componentInstance.modalHeader = 'Large Modal';
+        activeModal.componentInstance.userId = id;
     }
 
 }
