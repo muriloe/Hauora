@@ -13,6 +13,7 @@ export class Cliente {
 
 
     constructor(cliente: any) {
+      this._id = cliente._id;
       this.nome = cliente.nome;
       this.nome_mae = cliente.nome_mae;
       this.email = cliente.email;

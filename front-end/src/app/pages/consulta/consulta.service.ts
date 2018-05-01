@@ -31,9 +31,10 @@ export class ConsultaService {
             .catch((error: Response) => Observable.throw(error.json()));
     }
 
-    getCliente (nomeCliente: string) {
+    // Obtem o cliente pelo id
+    getCliente (id: string) {
         // tslint:disable-next-line:max-line-length
-        return this.http.get(this.serverUrl + '/api/clientes/autocomplete/' + nomeCliente)
+        return this.http.get(this.serverUrl + '/api/cliente/' + id)
             .map((response: Response) => {
                 const cliAnm = response.json().obj;
                 const nCli: Cliente[] = [];

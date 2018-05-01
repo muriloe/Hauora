@@ -45,7 +45,7 @@ module.exports = function(app) {
         });
     });
 
-     //Obtem todos os paciêntes. acesso = true;
+     //Obtem todos os paciêntes com o nome do autocomplete
      app.get('/api/clientes/autocomplete/:nome', function(req, res, next){
         console.log("Auto complete busca:");
         console.log(req.params.nome);
@@ -64,5 +64,26 @@ module.exports = function(app) {
             }          
         });
     });
+
+    //Obtem o todas os clientes pelo id
+    app.get('/api/cliente/:id', function(req, res, next){
+        console.log("Busca por id de usuário:");
+        console.log(req.params.id);
+        Cliente.find({'_id': req.params.id} , function (err, cliente) {
+            if (err){
+                return res.status(500).json({
+                    title: 'Ocorreu um erro',
+                    error: err
+                })
+            }
+            else{
+                res.status(200).json({
+                    message: 'Success',
+                    obj: cliente
+                });
+            }          
+        });
+    });
+
 
 }
