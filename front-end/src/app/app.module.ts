@@ -21,10 +21,10 @@ import { ConsultaService} from './pages/consulta/consulta.service';
 import { ServerInfo} from './shared/server';
 import { HttpModule } from '@angular/http';
 // tslint:disable-next-line:max-line-length
-import { ConsultaAnamneseViewComponent } from './pages/consulta/consulta-antropometria/consulta-anamnese-view/consulta-anamnese-view.component';
+import { ConsultaAnamneseModalComponent } from './pages/consulta/consulta-antropometria/consulta-anamnese-modal/consulta-anamnese-modal.component';
 
 @NgModule({
-  declarations: [AppComponent, ConsultaAnamneseViewComponent],
+  declarations: [AppComponent, ConsultaAnamneseModalComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -45,7 +45,7 @@ import { ConsultaAnamneseViewComponent } from './pages/consulta/consulta-antropo
     [ ServerInfo ],
 
   ],
-  entryComponents: [ConsultaAnamneseViewComponent],
+  entryComponents: [ConsultaAnamneseModalComponent],
 })
 export class AppModule {
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Cliente } from '../../../shared/model/cliente.model';
 import { ConsultaService } from '../consulta.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ConsultaAnamneseViewComponent } from './consulta-anamnese-view/consulta-anamnese-view.component';
+import { ConsultaAnamneseModalComponent } from './consulta-anamnese-modal/consulta-anamnese-modal.component';
 
 @Component({
     selector: 'ngx-consulta-antropometria',
@@ -51,7 +51,7 @@ import { ConsultaAnamneseViewComponent } from './consulta-anamnese-view/consulta
 
     showModelAnamnese() {
         // tslint:disable-next-line:max-line-length
-        const activeModal = this.modalService.open(ConsultaAnamneseViewComponent, { size: 'lg', container: 'nb-layout' });
+        const activeModal = this.modalService.open(ConsultaAnamneseModalComponent, { size: 'lg', container: 'nb-layout' });
 
         activeModal.componentInstance.modalHeader = 'Large Modal';
     }

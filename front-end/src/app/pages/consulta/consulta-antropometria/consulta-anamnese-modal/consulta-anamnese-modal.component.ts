@@ -3,10 +3,10 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'ngx-consulta-anamnese-model',
-    templateUrl: './consulta-anamnese-view.component.html',
+    templateUrl: './consulta-anamnese-modal.component.html',
   })
 
-export class ConsultaAnamneseViewComponent {
+export class ConsultaAnamneseModalComponent {
     constructor(private activeModal: NgbActiveModal) { }
 
     closeModal() {
