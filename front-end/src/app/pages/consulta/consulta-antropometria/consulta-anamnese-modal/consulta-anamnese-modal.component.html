@@ -8,17 +8,19 @@
     <div class="row">
       <div class="col-lg-6">
         <div *ngIf="cliente">
-          <p><nb-user [picture]="cliente.foto" [name]="cliente.nome" [title]="cliente.email" size="xlarge"></nb-user></p>
-          <p><label>Data de Nascimento: {{cliente.data_nascimento | date: 'dd/MM/yyyy'}}</label></p>
-          <p><label>Sexo: {{cliente.sexo}}</label></p>
-          <p><label>Objetivo: {{cliente.objetivo}}</label></p>
-          <p><label>Telefone: {{cliente.telefone}}</label></p>    
+          <div><nb-user [picture]="cliente.foto" [name]="cliente.nome" [title]="cliente.email" size="xlarge"></nb-user></div>
+          <br>
+          <div><label>Data de Nascimento<div class="detail font-w-light">{{cliente.data_nascimento | date: 'dd/MM/yyyy'}}</div></label></div>
+          <div><label>Sexo <div class="detail font-w-light">{{cliente.sexo}}</div></label></div>
+          <div><label>Objetivo <div class="detail font-w-light">{{cliente.objetivo}}</div></label></div>
+          <div><label>Telefone: <div class="detail font-w-light">{{cliente.telefone}}</div></label></div>    
         </div>
       </div>
       <div class="col-lg-6">
         <div  *ngIf="consumos" >
+          <h3>Alimentos consumidos</h3>
           <div *ngFor="let consumo of consumos">
-              <ngx-consumo-card [tipo]="consumo.tipo" [sentimento]="consumo.sentimento"></ngx-consumo-card>
+              <ngx-consumo-card [tipo]="consumo.tipo" [sentimento]="consumo.sentimento" [descricao]="consumo.texto" [comentario]="consumo.observacao" [data]="consumo.data"></ngx-consumo-card>
           </div>
           
         </div>
