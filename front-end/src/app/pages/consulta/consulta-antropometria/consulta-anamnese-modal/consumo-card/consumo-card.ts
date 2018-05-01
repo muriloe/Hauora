@@ -7,7 +7,15 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
       <div>
         <nb-card>
           <nb-card-body>
-            <nb-user [picture]="tipoIcon" [name]="tipo" [title]="sentimento" size="large"></nb-user>
+            <div class="col">
+              <div class="row">
+                <div><img [src]="tipoIcon" height="40" width="40"></div>
+                <div class="col">
+                  <h6>{{tipo}}</h6>
+                  {{sentimento}}
+                </div>
+              </div>
+            </div>
             <br>
             <h6 *ngIf="descricao">Descrição</h6>
             <p *ngIf="descricao">{{descricao}}</p>
