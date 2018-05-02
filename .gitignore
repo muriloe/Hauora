@@ -1,6 +1,7 @@
 # Created by Muriloe
 back-end/uploads/*.jpeg
 back-end/uploads/min/*.jpeg
+!front-end/node_modules/@nebular/theme/styles/themes/*
 
 # Logs
 logs
