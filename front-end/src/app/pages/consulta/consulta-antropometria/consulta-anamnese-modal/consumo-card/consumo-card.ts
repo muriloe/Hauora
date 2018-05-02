@@ -11,15 +11,15 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
               <div class="row">
                 <div><img [src]="tipoIcon" height="40" width="40"></div>
                 <div class="col">
-                  <h6>{{tipo}}</h6>
+                  <h6 class="text-info"><b>{{tipo}}</b></h6>
                   {{sentimento}}
                 </div>
               </div>
             </div>
             <br>
-            <h6 *ngIf="descricao">Descrição</h6>
+            <h6 *ngIf="descricao"><b>Descrição</b></h6>
             <p *ngIf="descricao">{{descricao}}</p>
-            <h6 *ngIf="comentario">Comentário</h6>
+            <h6 *ngIf="comentario"><b>Comentário</b></h6>
             <p *ngIf="comentario">{{comentario}}</p>
             <div class="detail font-w-light">{{data | date: 'dd/MM/yyyy hh:mm'}} </div>
           </nb-card-body>

@@ -23,9 +23,14 @@ import { HttpModule } from '@angular/http';
 // tslint:disable-next-line:max-line-length
 import { ConsultaAnamneseModalComponent } from './pages/consulta/consulta-antropometria/consulta-anamnese-modal/consulta-anamnese-modal.component';
 import { ConsumoCardComponent } from './pages/consulta/consulta-antropometria/consulta-anamnese-modal/consumo-card/consumo-card';
+// tslint:disable-next-line:max-line-length
+import { RemedioDoencaCardComponent } from './pages/consulta/consulta-antropometria/consulta-anamnese-modal/remedioDoenca-card/remedioDoenca-card';
 
 @NgModule({
-  declarations: [AppComponent, ConsultaAnamneseModalComponent, ConsumoCardComponent],
+  declarations: [AppComponent,
+                ConsultaAnamneseModalComponent,
+                ConsumoCardComponent,
+                RemedioDoencaCardComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -46,7 +51,7 @@ import { ConsumoCardComponent } from './pages/consulta/consulta-antropometria/co
     [ ServerInfo ],
 
   ],
-  entryComponents: [ConsultaAnamneseModalComponent, ConsumoCardComponent],
+  entryComponents: [ConsultaAnamneseModalComponent, ConsumoCardComponent, RemedioDoencaCardComponent],
 })
 export class AppModule {
 }

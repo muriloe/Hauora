@@ -18,6 +18,19 @@
               <div><label>Telefone: <div class="detail font-w-light">{{cliente.telefone}}</div></label></div>    
             </nb-card-body>
           </nb-card>
+          <div  *ngIf="remedios" >
+              <h3>Remédios</h3>
+              <div *ngFor="let remedio of remedios">
+                  <ngx-remedio-doenca-card [icon]="remedioIcon" [nome]="remedio.nome" [descricao]="remedio.descricao"></ngx-remedio-doenca-card>
+              </div>
+          </div>
+          <div  *ngIf="doencas" >
+              <h3>Doenças</h3>
+              <div *ngFor="let doenca of doencas">
+                  <ngx-remedio-doenca-card [icon]="doencaIcon" [nome]="doenca.nome" [descricao]="doenca.descricao"></ngx-remedio-doenca-card>
+              </div>
+          </div>
+
         </div>
       </div>
       <div class="col-lg-6">
@@ -26,7 +39,6 @@
           <div *ngFor="let consumo of consumos">
               <ngx-consumo-card [tipo]="consumo.tipo" [sentimento]="consumo.sentimento" [descricao]="consumo.texto" [comentario]="consumo.observacao" [data]="consumo.data"></ngx-consumo-card>
           </div>
-          
         </div>
       </div>
     </div>

@@ -19,6 +19,10 @@ export class ConsultaAnamneseModalComponent implements OnInit {
     consumos: Consumo[];
     remedios: Remedio[];
     doencas: Doenca[];
+    // tslint:disable-next-line:quotemark
+    remedioIcon = "assets/images/othersIcons/remedyIcon.png";
+    // tslint:disable-next-line:quotemark
+    doencaIcon = "assets/images/othersIcons/diseaseIcon.png";
 
     constructor(private activeModal: NgbActiveModal, private consultaService: ConsultaService) { }
 
