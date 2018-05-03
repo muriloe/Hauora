@@ -29,5 +29,6 @@ export class RemedioDoencaCardComponent implements OnInit {
     @Input() descricao: string;
 
     ngOnInit(): void {
+        
     }
 }

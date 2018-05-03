@@ -17,6 +17,7 @@ export class ConsultaService {
     private clientesAutoComplete: Cliente[] = [];
 
     private serverUrl = new ServerInfo().getServerName();
+    
 
     getClientes (query: string) {
         // tslint:disable-next-line:max-line-length

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-12 col-md-10">
+    <div class="col-md-12">
         <div class="row">
             <div>
                 <h1>Consulta</h1>
@@ -35,24 +35,27 @@
 
         <!-- Informações da antropometria-->
         <nb-card *ngIf="selecionouPaciente">
+            <nb-card-header>
+                Antropometria
+            </nb-card-header>    
             <nb-card-body>
                 <div class="row">
                     <div class="col-md-8">
-                        <div class="input-group">               
-                            <div class="row full-name-inputs">
-                                <div class="col-md-4">
+                        <div class="col">               
+                            <div class="row">
+                                <div class="col-md-4 bottom-spacing">
                                     <div class="">
                                         <label>Peso (kg) {{peso}}</label>
                                         <input [(ngModel)]="peso" (keyup)="calculaIMC()" type="number" placeholder="KG" class="form-control"/>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 bottom-spacing">
                                     <div class="">
                                         <label>Altura (m)</label>
                                         <input [(ngModel)]="altura" (keyup)="calculaIMC()" type="number" placeholder="metros" class="form-control"/>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 bottom-spacing">
                                     <div class="">
                                         <label>% de gordura</label>{{gordura}}
                                         <input [(ngModel)]="gordura" (keyup)="calculaIMC()" type="number" placeholder="%" class="form-control"/>
@@ -108,5 +111,24 @@
                 </div>
             </nb-card-body>
         </nb-card>
+        
+        <!-- Informações do cardápio-->
+        <nb-card *ngIf="selecionouPaciente">
+            <nb-card-header>
+                Cardápio
+            </nb-card-header> 
+            <nb-card-body>
+                <div class="row">
+                    <div class="col-md-1"><!-- gambiarra de espaçamento--></div>
+                    <div class="col-md-2"><div class="col"><img src="assets/images/mealIcons/breakfastIcon.png"  height="40" width="40"><br><label>Café da manhã</label></div></div>
+                    <div class="col-md-2 input-group"><div class="col"><img src="assets/images/mealIcons/snackIcon.png"  height="40" width="40"><br><label>Lanche da manhã</label></div></div>
+                    <div class="col-md-2 input-group"><div class="col"><img src="assets/images/mealIcons/lunchIcon.png"  height="40" width="40"><br><label>Almoço</label></div></div>
+                    <div class="col-md-2 input-group"><div class="col"><img src="assets/images/mealIcons/dinnerIcon.png"  height="40" width="40"><br><label>Lanche</label></div></div>
+                    <div class="col-md-2 input-group"><div class="col"><img src="assets/images/mealIcons/snackIcon.png"  height="40" width="40"><br><label>Janta</label></div></div>
+                    <div class="col-md-1"><!-- gambiarra de espaçamento--></div>
+                </div>    
+            </nb-card-body>
+        </nb-card>
+        
     </div>
 </div>
