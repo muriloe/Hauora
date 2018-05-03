@@ -42,20 +42,20 @@
                             <div class="row full-name-inputs">
                                 <div class="col-md-4">
                                     <div class="">
-                                        <label>Peso (kg)</label>
-                                        <input type="number" placeholder="KG" class="form-control"/>
+                                        <label>Peso (kg) {{peso}}</label>
+                                        <input [(ngModel)]="peso" (keyup)="calculaIMC()" type="number" placeholder="KG" class="form-control"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="">
                                         <label>Altura (m)</label>
-                                        <input type="number" placeholder="metros" class="form-control"/>
+                                        <input [(ngModel)]="altura" (keyup)="calculaIMC()" type="number" placeholder="metros" class="form-control"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="">
-                                        <label>% de gordura</label>
-                                        <input type="number" placeholder="%" class="form-control"/>
+                                        <label>% de gordura</label>{{gordura}}
+                                        <input [(ngModel)]="gordura" (keyup)="calculaIMC()" type="number" placeholder="%" class="form-control"/>
                                     </div>
                                 </div>
                             </div>
@@ -64,13 +64,13 @@
                             <div class="col-md-6 input-group">
                                 <div class="col">
                                     <label>Peso Ideal (kg)</label>
-                                    <input type="number" placeholder="KG" class="form-control"/>
+                                    <input readonly [(ngModel)]="pesoIdeal" type="number" placeholder="KG" class="form-control"/>
                                 </div>
                             </div>
                             <div class="col-md-6 input-group">
                                 <div class="col">
                                     <label>IMC</label>
-                                    <input type="number" placeholder="KG" class="form-control"/>
+                                    <input readonly [(ngModel)]="imc" type="number" placeholder="KG" class="form-control"/>
                                 </div>
                             </div>   
                         </div>

@@ -16,6 +16,12 @@ import { ConsultaAnamneseModalComponent } from './consulta-anamnese-modal/consul
     results: string[];
     listaDeClientesBusca: Cliente[];
 
+    peso: number;
+    altura: number;
+    gordura: number;
+    imc: number;
+    pesoIdeal: number;
+
     constructor(private consultaService: ConsultaService, private modalService: NgbModal) { }
 
     ngOnInit() {
@@ -55,6 +61,14 @@ import { ConsultaAnamneseModalComponent } from './consulta-anamnese-modal/consul
 
         activeModal.componentInstance.modalHeader = 'Large Modal';
         activeModal.componentInstance.userId = id;
+    }
+
+    calculaIMC() {
+        if (this.peso != null) {
+            if (this.altura != null) {
+               this.imc = this.peso / ( this.altura * this.altura );
+            }
+        }
     }
 
 }
