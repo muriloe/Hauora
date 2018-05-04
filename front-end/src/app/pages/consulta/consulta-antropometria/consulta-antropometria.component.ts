@@ -22,6 +22,13 @@ import { ConsultaAnamneseModalComponent } from './consulta-anamnese-modal/consul
     imc: number;
     pesoIdeal: number;
 
+    refeicaoSelecionada: string;
+    imagem_cafe_da_manha = 'assets/images/mealIcons/breakfastIcon.png';
+    imagem_lanche_da_manha = 'assets/images/mealIcons/snackIcon.png';
+    imagem_almoco = 'assets/images/mealIcons/lunchIcon.png';
+    imagem_lanche = 'assets/images/mealIcons/snackIcon.png';
+    imagem_janta = 'assets/images/mealIcons/dinnerIcon.png';
+
     constructor(private consultaService: ConsultaService, private modalService: NgbModal) { }
 
     ngOnInit() {
@@ -68,6 +75,36 @@ import { ConsultaAnamneseModalComponent } from './consulta-anamnese-modal/consul
             if (this.altura != null) {
                this.imc = this.peso / ( this.altura * this.altura );
             }
+        }
+    }
+
+    seleciouTipoRefeicao(tipoRefeicao) {
+        this.alterarIconeRefeicao(tipoRefeicao);
+        this.refeicaoSelecionada = tipoRefeicao;
+    }
+
+    // Pega o tipo de refeição, seta todos os icones para a cor padrão e 
+    // coloca somente o item selecionado na cor
+    alterarIconeRefeicao(tipoRefeicao) {
+        this.imagem_cafe_da_manha = 'assets/images/mealIcons/breakfastIcon.png';
+        this.imagem_lanche_da_manha = 'assets/images/mealIcons/snackIcon.png';
+        this.imagem_almoco = 'assets/images/mealIcons/lunchIcon.png';
+        this.imagem_lanche = 'assets/images/mealIcons/snackIcon.png';
+        this.imagem_janta = 'assets/images/mealIcons/dinnerIcon.png';
+        if (tipoRefeicao === 'CAFE_DA_MANHA') {
+            this.imagem_cafe_da_manha = 'assets/images/mealIcons/breakfastIconBlue.png';
+        }
+        if (tipoRefeicao === 'LANCHE_DA_MANHA') {
+            this.imagem_lanche_da_manha = 'assets/images/mealIcons/snackIconBlue.png';
+        }
+        if (tipoRefeicao === 'ALMOCO') {
+            this.imagem_almoco = 'assets/images/mealIcons/lunchIconBlue.png';
+        }
+        if (tipoRefeicao === 'LANCHE') {
+            this.imagem_lanche = 'assets/images/mealIcons/snackIconBlue.png';
+        }
+        if (tipoRefeicao === 'JANTA') {
+            this.imagem_janta = 'assets/images/mealIcons/dinnerIconBlue.png';
         }
     }
 

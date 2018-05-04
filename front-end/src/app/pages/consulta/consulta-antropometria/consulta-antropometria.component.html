@@ -120,11 +120,11 @@
             <nb-card-body>
                 <div class="row">
                     <div class="col-md-1"><!-- gambiarra de espaçamento--></div>
-                    <div class="col-md-2"><div class="col"><img src="assets/images/mealIcons/breakfastIcon.png"  height="40" width="40"><br><label>Café da manhã</label></div></div>
-                    <div class="col-md-2 input-group"><div class="col"><img src="assets/images/mealIcons/snackIcon.png"  height="40" width="40"><br><label>Lanche da manhã</label></div></div>
-                    <div class="col-md-2 input-group"><div class="col"><img src="assets/images/mealIcons/lunchIcon.png"  height="40" width="40"><br><label>Almoço</label></div></div>
-                    <div class="col-md-2 input-group"><div class="col"><img src="assets/images/mealIcons/dinnerIcon.png"  height="40" width="40"><br><label>Lanche</label></div></div>
-                    <div class="col-md-2 input-group"><div class="col"><img src="assets/images/mealIcons/snackIcon.png"  height="40" width="40"><br><label>Janta</label></div></div>
+                    <div class="col-md-2" (click)="seleciouTipoRefeicao('CAFE_DA_MANHA')"><div class="col"><img [src]="imagem_cafe_da_manha"  height="40" width="40"><br><label>Café da manhã</label></div></div>
+                    <div class="col-md-2" (click)="seleciouTipoRefeicao('LANCHE_DA_MANHA')"><div class="col"><img [src]="imagem_lanche_da_manha"  height="40" width="40"><br><label>Lanche da manhã</label></div></div>
+                    <div class="col-md-2" (click)="seleciouTipoRefeicao('ALMOCO')"><div class="col"><img [src]="imagem_almoco"  height="40" width="40"><br><label>Almoço</label></div></div>
+                    <div class="col-md-2" (click)="seleciouTipoRefeicao('LANCHE')"><div class="col"><img [src]="imagem_lanche"  height="40" width="40"><br><label>Lanche</label></div></div>
+                    <div class="col-md-2" (click)="seleciouTipoRefeicao('JANTA')"><div class="col"><img [src]="imagem_janta"  height="40" width="40"><br><label>Janta</label></div></div>
                     <div class="col-md-1"><!-- gambiarra de espaçamento--></div>
                 </div>    
             </nb-card-body>
