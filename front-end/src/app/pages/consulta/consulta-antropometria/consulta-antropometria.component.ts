@@ -83,7 +83,7 @@ import { ConsultaAnamneseModalComponent } from './consulta-anamnese-modal/consul
         this.refeicaoSelecionada = tipoRefeicao;
     }
 
-    // Pega o tipo de refeição, seta todos os icones para a cor padrão e 
+    // Pega o tipo de refeição, seta todos os icones para a cor padrão e
     // coloca somente o item selecionado na cor
     alterarIconeRefeicao(tipoRefeicao) {
         this.imagem_cafe_da_manha = 'assets/images/mealIcons/breakfastIcon.png';
