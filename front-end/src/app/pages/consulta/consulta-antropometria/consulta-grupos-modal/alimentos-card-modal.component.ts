@@ -8,7 +8,7 @@ import { ConsultaService } from '../../consulta.service';
     template: `
       <div *ngFor="let alimento of alimentos" >
         <label>{{alimento.nome}}</label>
-        <label style="float:right;; ">{{alimento.porcao}}</label>
+        <label style="float:right; ">{{alimento.porcao}}</label>
       </div>
     `,
 

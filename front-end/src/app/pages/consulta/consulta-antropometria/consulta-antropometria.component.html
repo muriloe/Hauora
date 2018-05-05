@@ -46,19 +46,19 @@
                                 <div class="col-md-4 bottom-spacing">
                                     <div class="">
                                         <label>Peso (kg) {{peso}}</label>
-                                        <input [(ngModel)]="peso" (keyup)="calculaIMC()" type="number" placeholder="KG" class="form-control"/>
+                                        <input [(ngModel)]="peso" (keyup)="calculaIMC()" type="number" min="0" placeholder="KG" class="form-control"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4 bottom-spacing">
                                     <div class="">
                                         <label>Altura (m)</label>
-                                        <input [(ngModel)]="altura" (keyup)="calculaIMC()" type="number" placeholder="metros" class="form-control"/>
+                                        <input [(ngModel)]="altura" (keyup)="calculaIMC()" type="number" min="0" placeholder="metros" class="form-control"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4 bottom-spacing">
                                     <div class="">
                                         <label>% de gordura</label>{{gordura}}
-                                        <input [(ngModel)]="gordura" (keyup)="calculaIMC()" type="number" placeholder="%" class="form-control"/>
+                                        <input [(ngModel)]="gordura" (keyup)="calculaIMC()" type="number" min="0" placeholder="%" class="form-control"/>
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@
                             <div class="col-md-6 input-group">
                                 <div class="col">
                                     <label>Peso Ideal (kg)</label>
-                                    <input readonly [(ngModel)]="pesoIdeal" type="number" placeholder="KG" class="form-control"/>
+                                    <input readonly [(ngModel)]="pesoIdeal" type="number" min="0" placeholder="KG" class="form-control"/>
                                 </div>
                             </div>
                             <div class="col-md-6 input-group">
@@ -105,7 +105,7 @@
                     <div class="col-md-12 input-group">
                         <div class="col">
                             <label>Observações</label>
-                            <input type="text" placeholder="Observações" class="form-control"/>
+                            <textarea rows="2" placeholder="Observações" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>
@@ -133,15 +133,57 @@
                         <div class="header">
                             <div class="bold margemUsuario"><h5>Componentes</h5></div>
         
-                            <div class="variants">
+                            <div>
                                 <button class="btn btn-success btn-semi-round btn-demo" (click)="showGruposModal()">Ver grupos</button>
                             </div>
                         </div>
-                        <p>
-                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts.
-                            Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-                        </p>
+                        
+                        <nb-card>
+                            <nb-card-body>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <label>Porções:</label> 
+                                        <input class="form-control" type="number" min="0" [(ngModel)]="porcoes" >   
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-4">
+                                        <label>Grupo:</label>
+                                        <select class="form-control" [(ngModel)]="grupoSelecionadoId">
+                                            <option *ngFor="let grupo of grupos" id={{grupo._id}} [ngValue]="grupo._id">{{grupo.titulo}}</option>
+                                        </select>   
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-2" >
+                                            <button class="btn btn-success btn-semi-round btn-demo margemComposicaoBtn" style="float:right;" (click)="addComposicao()">Adicionar</button> 
+                                    </div>
+                                </div>
+
+                                
+
+                            </nb-card-body>
+                        </nb-card>
+                        
+
+                        <nb-card *ngFor="let composicao of lista_composicao_selecionada">
+                            <nb-card-body>
+                                <div class="row">
+                                    <div class="col-md-4 margemTopzera">
+                                        <label>Quantidade de porções:</label> 
+                                        {{composicao.quantidade}}  
+                                    </div>
+                                    <div class="col-md-4 margemTopzera">
+                                        <label>Grupo:</label>
+                                        {{getTituloGrupoPorId(composicao.grupo)}}  
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-2">
+                                        <button class="btn btn-danger btn-semi-round btn-demo" style="float:right;">X</button> 
+                                    </div>
+                                </div>
+                            </nb-card-body>
+                        </nb-card>
+
+
                     </div>
                 </div>  
                   
