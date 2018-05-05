@@ -79,11 +79,11 @@
                         </div>
                     </div>
                     <div class="col-md-4"> 
-                            <div>
+                            <div class="margemUsuario">
                                 <nb-user [picture]="cliente.foto" [name]="cliente.nome" [title]="cliente.email" size="xlarge"></nb-user>
                                 <br>
-                                <button class="btn btn-success btn-semi-round btn-demo" (click)="showModelAnamnese(cliente._id)">Ver Anamnese</button>
-                                <button class="btn btn-danger btn-semi-round btn-demo" (click)="cancelaAnamnese()">Cancelar</button>
+                                <button class="btn btn-success btn-semi-round btn-demo margemUsuario" (click)="showModelAnamnese(cliente._id)">Ver Anamnese</button>
+                                <button class="btn btn-danger btn-semi-round btn-demo margemUsuario" (click)="cancelaAnamnese()">Cancelar</button>
                             </div>          
                     </div>
                 </div>

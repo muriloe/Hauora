@@ -4,7 +4,7 @@ var ObjectId =  Schema.Types.ObjectId;
 
 var composicaoSchema = new Schema({
     quantidade: {type: Number},
-    grupo:      [{type: ObjectId, ref: 'Grupos'}],
+    grupo:      {type: ObjectId, ref: 'Grupos'},
     cardapio:   {type: ObjectId, ref: 'Cardapios'}
 });
 
