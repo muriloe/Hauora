@@ -4,13 +4,13 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-    <nb-card *ngFor="let grupo of grupos">
+    <nb-card *ngFor="let grupo of grupos" style="margin:10px">
         <nb-card-header>
             {{grupo.titulo}}
         </nb-card-header>
         <nb-card-body>
-            <div class="row">
-                <ngx-alimentos-card [grupoId]="grupo._id"></ngx-alimentos-card>
+            <div class="row" >
+                <ngx-alimentos-card [grupoId]="grupo._id" style="width: 100%; height: 100%; margin: 20px; padding: 5px"></ngx-alimentos-card>
             </div>
         </nb-card-body>
     </nb-card>

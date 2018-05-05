@@ -6,10 +6,12 @@ import { ConsultaService } from '../../consulta.service';
 @Component({
     selector: 'ngx-alimentos-card',
     template: `
-      <div *ngFor="let alimento of alimentos">
-        {{alimento.nome}}{{alimento.porcao}}
+      <div *ngFor="let alimento of alimentos" >
+        <label>{{alimento.nome}}</label>
+        <label style="float:right;; ">{{alimento.porcao}}</label>
       </div>
     `,
+
 })
 export class AlimentosCardComponent implements OnInit {
     @Input() grupoId: string;
