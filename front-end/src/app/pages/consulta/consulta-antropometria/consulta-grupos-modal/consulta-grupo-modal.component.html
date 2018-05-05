@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <span>Grupos de alimentos</span>
+    <button class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+    <nb-card *ngFor="let grupo of grupos">
+        <nb-card-header>
+            {{grupo.titulo}}
+        </nb-card-header>
+        <nb-card-body>
+            <div class="row">
+                <ngx-alimentos-card [grupoId]="grupo._id"></ngx-alimentos-card>
+            </div>
+        </nb-card-body>
+    </nb-card>

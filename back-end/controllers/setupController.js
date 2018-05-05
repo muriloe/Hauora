@@ -33,8 +33,8 @@ module.exports = function(app){
                             {nome: 'Café Infusão', porcao: '(10% 1 X. café (80ml)', grupo: grupoBaixaCaloria._id},
                             {nome: 'Café Mate, infusão', porcao: '(5% 1 X. café (180ml)', grupo: grupoBaixaCaloria._id},
                             
-                            {nome: 'Acelga', porcao: '1 porção(ões) ()50g', grupo: grupoVegetaisA._id},
-                            {nome: 'Agrião', porcao: '1 porção(ões) ()50g', grupo: grupoVegetaisA._id},
+                            {nome: 'Acelga', porcao: '1 porção(ões) (50g)', grupo: grupoVegetaisA._id},
+                            {nome: 'Agrião', porcao: '1 porção(ões) (50g)', grupo: grupoVegetaisA._id},
                         
                             {nome: 'Abobrinha italiana, cozida', porcao: '2 Col. A. (135g)', grupo: grupoVegetaisB._id}];
 

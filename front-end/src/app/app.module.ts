@@ -26,6 +26,8 @@ import { ConsumoCardComponent } from './pages/consulta/consulta-antropometria/co
 // tslint:disable-next-line:max-line-length
 import { RemedioDoencaCardComponent } from './pages/consulta/consulta-antropometria/consulta-anamnese-modal/remedioDoenca-card/remedioDoenca-card';
 import { ConsultaGruposModalComponent } from './pages/consulta/consulta-antropometria/consulta-grupos-modal/consulta-grupo-modal.component';
+// tslint:disable-next-line:max-line-length
+import { AlimentosCardComponent } from './pages/consulta/consulta-antropometria/consulta-grupos-modal/alimentos-card-modal.component';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { ConsultaGruposModalComponent } from './pages/consulta/consulta-antropom
                 ConsultaAnamneseModalComponent,
                 ConsumoCardComponent,
                 RemedioDoencaCardComponent,
-                ConsultaGruposModalComponent],
+                ConsultaGruposModalComponent,
+                AlimentosCardComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -57,7 +60,8 @@ import { ConsultaGruposModalComponent } from './pages/consulta/consulta-antropom
   entryComponents: [ConsultaAnamneseModalComponent,
                     ConsumoCardComponent,
                     RemedioDoencaCardComponent,
-                    ConsultaGruposModalComponent],
+                    ConsultaGruposModalComponent,
+                    AlimentosCardComponent],
 })
 export class AppModule {
 }

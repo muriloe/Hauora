@@ -17,7 +17,6 @@ export class ConsultaService {
     private clientesAutoComplete: Cliente[] = [];
 
     private serverUrl = new ServerInfo().getServerName();
-    
 
     getClientes (query: string) {
         // tslint:disable-next-line:max-line-length
@@ -104,6 +103,22 @@ export class ConsultaService {
                 return consumo;
             })
             .catch((error: Response) => Observable.throw(error.json()));
+    }
+
+    getGrupos() {
+        return this.http.get(this.serverUrl + '/api/grupos')
+        .map((response: Response) => {
+            return response.json().grupos;
+        })
+        .catch((error: Response) => Observable.throw(error.json()));
+    }
+
+    getAlimentos(grupoId: string) {
+        return this.http.get(this.serverUrl + '/api/alimentos/' + grupoId)
+        .map((response: Response) => {
+            return response.json().alimentos;
+        })
+        .catch((error: Response) => Observable.throw(error.json()));
     }
 
 }
