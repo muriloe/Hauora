@@ -3,6 +3,8 @@ import { Cliente } from '../../../shared/model/cliente.model';
 import { ConsultaService } from '../consulta.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConsultaAnamneseModalComponent } from './consulta-anamnese-modal/consulta-anamnese-modal.component';
+import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-grupo-modal.component';
+
 
 @Component({
     selector: 'ngx-consulta-antropometria',
@@ -62,12 +64,20 @@ import { ConsultaAnamneseModalComponent } from './consulta-anamnese-modal/consul
         }
     }
 
-    showModelAnamnese(id) {
+    showModalAnamnese(id) {
         // tslint:disable-next-line:max-line-length
         const activeModal = this.modalService.open(ConsultaAnamneseModalComponent, { size: 'lg', container: 'nb-layout' });
 
         activeModal.componentInstance.modalHeader = 'Large Modal';
         activeModal.componentInstance.userId = id;
+    }
+
+    showGruposModal() {
+        // tslint:disable-next-line:max-line-length
+        const activeModal = this.modalService.open(ConsultaGruposModalComponent, { size: 'lg', container: 'nb-layout' });
+
+        activeModal.componentInstance.modalHeader = 'Large Modal';
+
     }
 
     calculaIMC() {

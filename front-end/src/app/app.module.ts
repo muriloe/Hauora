@@ -25,12 +25,15 @@ import { ConsultaAnamneseModalComponent } from './pages/consulta/consulta-antrop
 import { ConsumoCardComponent } from './pages/consulta/consulta-antropometria/consulta-anamnese-modal/consumo-card/consumo-card';
 // tslint:disable-next-line:max-line-length
 import { RemedioDoencaCardComponent } from './pages/consulta/consulta-antropometria/consulta-anamnese-modal/remedioDoenca-card/remedioDoenca-card';
+import { ConsultaGruposModalComponent } from './pages/consulta/consulta-antropometria/consulta-grupos-modal/consulta-grupo-modal.component';
+
 
 @NgModule({
   declarations: [AppComponent,
                 ConsultaAnamneseModalComponent,
                 ConsumoCardComponent,
-                RemedioDoencaCardComponent],
+                RemedioDoencaCardComponent,
+                ConsultaGruposModalComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -51,7 +54,10 @@ import { RemedioDoencaCardComponent } from './pages/consulta/consulta-antropomet
     [ ServerInfo ],
 
   ],
-  entryComponents: [ConsultaAnamneseModalComponent, ConsumoCardComponent, RemedioDoencaCardComponent],
+  entryComponents: [ConsultaAnamneseModalComponent,
+                    ConsumoCardComponent,
+                    RemedioDoencaCardComponent,
+                    ConsultaGruposModalComponent],
 })
 export class AppModule {
 }

@@ -82,7 +82,7 @@
                             <div class="margemUsuario">
                                 <nb-user [picture]="cliente.foto" [name]="cliente.nome" [title]="cliente.email" size="xlarge"></nb-user>
                                 <br>
-                                <button class="btn btn-success btn-semi-round btn-demo margemUsuario" (click)="showModelAnamnese(cliente._id)">Ver Anamnese</button>
+                                <button class="btn btn-success btn-semi-round btn-demo margemUsuario" (click)="showModalAnamnese(cliente._id)">Ver Anamnese</button>
                                 <button class="btn btn-danger btn-semi-round btn-demo margemUsuario" (click)="cancelaAnamnese()">Cancelar</button>
                             </div>          
                     </div>
@@ -134,7 +134,7 @@
                             <div class="bold margemUsuario"><h5>Componentes</h5></div>
         
                             <div class="variants">
-                                <button class="btn btn-success btn-semi-round btn-demo">Ver grupos</button>
+                                <button class="btn btn-success btn-semi-round btn-demo" (click)="showGruposModal()">Ver grupos</button>
                             </div>
                         </div>
                         <p>
