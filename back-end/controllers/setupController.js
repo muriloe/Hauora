@@ -70,7 +70,7 @@ module.exports = function(app){
         let nutricionista = new Nutricionista({
             sexo: 'FEMININO',
             telefone: '4196833605',
-            email: 'nutri@gmail.com',
+            email: 'nutri@email.com',
             nome: 'Caroline Erhardt',
             senha: '123456',
             data_nascimento: new Date(),

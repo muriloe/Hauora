@@ -46,7 +46,7 @@
                                 <div class="col-md-4 bottom-spacing">
                                     <div class="">
                                         <label>Peso (kg) {{peso}}</label>
-                                        <input [(ngModel)]="peso" (keyup)="calculaIMC()" type="number" min="0" placeholder="KG" class="form-control"/>
+                                        <input  [(ngModel)]="peso" (keyup)="calculaIMC()" type="number" min="0" placeholder="KG" class="form-control"/>
                                     </div>
                                 </div>
                                 <div class="col-md-4 bottom-spacing">
@@ -82,7 +82,7 @@
                             <div class="margemUsuario">
                                 <nb-user [picture]="cliente.foto" [name]="cliente.nome" [title]="cliente.email" size="xlarge"></nb-user>
                                 <br>
-                                <button class="btn btn-success btn-semi-round btn-demo margemUsuario" (click)="showModalAnamnese(cliente._id)">Ver Anamnese</button>
+                                <button class="btn btn-info btn-semi-round btn-demo margemUsuario" (click)="showModalAnamnese(cliente._id)">Ver Anamnese</button>
                                 <button class="btn btn-danger btn-semi-round btn-demo margemUsuario" (click)="cancelaAnamnese()">Cancelar</button>
                             </div>          
                     </div>
@@ -134,7 +134,7 @@
                             <div class="bold margemUsuario"><h5>Componentes</h5></div>
         
                             <div>
-                                <button class="btn btn-success btn-semi-round btn-demo" (click)="showGruposModal()">Ver grupos</button>
+                                <button class="btn btn-info btn-semi-round btn-demo" (click)="showGruposModal()">Ver grupos</button>
                             </div>
                         </div>
                         
@@ -182,14 +182,21 @@
                                                 (click)="deletarComposicao(composicao)">X</button> 
                                     </div>
                                 </div>
+                                <br>
                             </nb-card-body>
                         </nb-card>
+                        <br>
 
 
                     </div>
+                    <button class="btn btn-success btn-semi-round btn-demo" 
+                            style="float:right;"
+                            (click)="finalizarConsulta()">Finalizar consulta</button> 
+
                 </div>  
                   
             </nb-card-body>
+            <br>
         </nb-card>
         
     </div>

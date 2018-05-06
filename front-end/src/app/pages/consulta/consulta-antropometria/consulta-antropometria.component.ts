@@ -181,25 +181,64 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
 
     deletarComposicao(composicao) {
         if (this.refeicaoSelecionada === 'CAFE_DA_MANHA') {
-            const index: number = (this.composicao_cafe_da_manha.indexOf(composicao)) - 1;
+            const index: number = (this.composicao_cafe_da_manha.indexOf(composicao));
             this.composicao_cafe_da_manha.splice(index, 1);
         }
         if (this.refeicaoSelecionada === 'LANCHE_DA_MANHA') {
-            const index: number = (this.composicao_lanche_da_manha.indexOf(composicao)) - 1;
+            const index: number = (this.composicao_lanche_da_manha.indexOf(composicao));
             this.composicao_lanche_da_manha.splice(index, 1);
         }
         if (this.refeicaoSelecionada === 'ALMOCO') {
-            const index: number = (this.composicao_almoco.indexOf(composicao)) - 1;
+            const index: number = (this.composicao_almoco.indexOf(composicao));
             this.composicao_almoco.splice(index, 1);
         }
         if (this.refeicaoSelecionada === 'LANCHE') {
-            const index: number = (this.composicao_lanche.indexOf(composicao)) - 1;
+            const index: number = (this.composicao_lanche.indexOf(composicao));
             this.composicao_lanche.splice(index, 1);
         }
         if (this.refeicaoSelecionada === 'JANTA') {
-            const index: number = (this.composicao_janta.indexOf(composicao)) - 1;
+            const index: number = (this.composicao_janta.indexOf(composicao));
             this.composicao_janta.splice(index, 1);
         }
+    }
+
+    finalizarConsulta() {
+        this.validarCampos() ;
+    }
+
+    validarCampos() {
+        //TODO: preencher os campos defiencias, excessos, observacoes com o texto Nenhuma
+        let contadorDeComposicao = 0;
+        let mensagemErro = 'Para finalizar uma consulta você deve preencher: \n';
+        if (this.peso == null) {
+            mensagemErro += '-Peso\n';
+        }
+        if (this.altura == null) {
+            mensagemErro += '-Altura\n';
+        }
+        if (this.gordura == null) {
+            mensagemErro += '-Gordura\n';
+        }
+
+        if (this.composicao_cafe_da_manha.length > 0) {
+            contadorDeComposicao++;
+        }
+        if (this.composicao_lanche_da_manha.length > 0) {
+            contadorDeComposicao++;
+        }
+        if (this.composicao_almoco.length > 0) {
+            contadorDeComposicao++;
+        }
+        if (this.composicao_lanche.length > 0) {
+            contadorDeComposicao++;
+        }
+        if (this.composicao_janta.length > 0) {
+            contadorDeComposicao++;
+        }
+        if (contadorDeComposicao < 3) {
+            mensagemErro += '- É necessário criar pelo menos três refeições diárias\n';
+        }
+        alert(mensagemErro);
     }
 
 }
