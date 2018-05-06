@@ -28,7 +28,8 @@ import { RemedioDoencaCardComponent } from './pages/consulta/consulta-antropomet
 import { ConsultaGruposModalComponent } from './pages/consulta/consulta-antropometria/consulta-grupos-modal/consulta-grupo-modal.component';
 // tslint:disable-next-line:max-line-length
 import { AlimentosCardComponent } from './pages/consulta/consulta-antropometria/consulta-grupos-modal/alimentos-card-modal.component';
-
+import { NB_AUTH_TOKEN_CLASS, NbAuthJWTToken } from '@nebular/auth';
+import { AuthGuard } from './auth-guard.service';
 
 @NgModule({
   declarations: [AppComponent,
@@ -51,10 +52,12 @@ import { AlimentosCardComponent } from './pages/consulta/consulta-antropometria/
   bootstrap: [AppComponent],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
+    { provide: NB_AUTH_TOKEN_CLASS, useValue: NbAuthJWTToken },
     [ AnamneseService ],
     [ ClientesService ],
     [ ConsultaService ],
     [ ServerInfo ],
+    [ AuthGuard ],
 
   ],
   entryComponents: [ConsultaAnamneseModalComponent,

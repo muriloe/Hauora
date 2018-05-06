@@ -6,6 +6,7 @@ var Consumos =      require('../models/consumoModel');
 var Remedios =      require('../models/remedioModel');
 var Alimento =      require('../models/alimentoModel');
 var Grupo =         require('../models/grupoModel');
+var Nutricionista = require('../models/nutricionistaModel');
 var mongoose =      require('mongoose');
 
 module.exports = function(app){
@@ -63,6 +64,28 @@ module.exports = function(app){
                 }
             });
         });
+    });
+
+    app.get('/api/iniciaNutricionista', function(req, res){
+        let nutricionista = new Nutricionista({
+            sexo: 'FEMININO',
+            telefone: '4196833605',
+            email: 'nutri@gmail.com',
+            nome: 'Caroline Erhardt',
+            senha: '123456',
+            data_nascimento: new Date(),
+        });
+        nutricionista.save(function (err, results) {
+            console.log("iniciando salvção de nutri");
+            if(err) {
+                console.log("Erro ao salvar nutri"); 
+                reject({"status":false, "message":"Erro ao salvar nutri", "error": err});
+            }
+            else{
+                console.log("Salvou nutri");
+            }
+        });
+        res.send(nutricionista);
     });
 
     /*

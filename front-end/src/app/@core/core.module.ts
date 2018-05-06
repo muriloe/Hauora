@@ -1,12 +1,13 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbAuthModule, NbDummyAuthProvider } from '@nebular/auth';
+import { NbAuthModule, NbDummyAuthProvider, NbEmailPassAuthProvider } from '@nebular/auth';
 import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs/observable/of';
 
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import { DataModule } from './data/data.module';
 import { AnalyticsService } from './utils/analytics.service';
+
 
 const socialLinks = [
   {
@@ -21,11 +22,14 @@ const NB_CORE_PROVIDERS = [
   ...NbAuthModule.forRoot({
     providers: {
       email: {
-        service: NbDummyAuthProvider,
+        service: NbEmailPassAuthProvider,
         config: {
-          delay: 3000,
+          baseEndpoint: 'http://ec2-54-191-75-41.us-west-2.compute.amazonaws.com:3000',
           login: {
-            rememberMe: true,
+            endpoint: '/api/nutricionista/login',
+          },
+          token: {
+            key: 'token', // this parameter tells Nebular where to look for the token
           },
         },
       },

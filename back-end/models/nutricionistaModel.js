@@ -5,8 +5,8 @@ var ObjectId =  Schema.Types.ObjectId;
 PessoaSchema = require('./pessoaModel');
 
 var nutricionistaSchema = PessoaSchema.discriminator('Nutricionista', new Schema({
-    consulta:      [{type: ObjectId, ref: 'Nutricionistas'}]
+    consulta:      [{type: ObjectId, ref: 'Nutricionista'}]
 }));
 
-var Nutricionista = mongoose.model('Nutricionistas');
+var Nutricionista = mongoose.model('Nutricionista');
 module.exports = Nutricionista;
