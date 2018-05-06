@@ -179,4 +179,27 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
         return this.grupos.find(x => x._id === grupoId).titulo;
     }
 
+    deletarComposicao(composicao) {
+        if (this.refeicaoSelecionada === 'CAFE_DA_MANHA') {
+            const index: number = (this.composicao_cafe_da_manha.indexOf(composicao)) - 1;
+            this.composicao_cafe_da_manha.splice(index, 1);
+        }
+        if (this.refeicaoSelecionada === 'LANCHE_DA_MANHA') {
+            const index: number = (this.composicao_lanche_da_manha.indexOf(composicao)) - 1;
+            this.composicao_lanche_da_manha.splice(index, 1);
+        }
+        if (this.refeicaoSelecionada === 'ALMOCO') {
+            const index: number = (this.composicao_almoco.indexOf(composicao)) - 1;
+            this.composicao_almoco.splice(index, 1);
+        }
+        if (this.refeicaoSelecionada === 'LANCHE') {
+            const index: number = (this.composicao_lanche.indexOf(composicao)) - 1;
+            this.composicao_lanche.splice(index, 1);
+        }
+        if (this.refeicaoSelecionada === 'JANTA') {
+            const index: number = (this.composicao_janta.indexOf(composicao)) - 1;
+            this.composicao_janta.splice(index, 1);
+        }
+    }
+
 }
