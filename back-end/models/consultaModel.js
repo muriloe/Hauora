@@ -13,8 +13,8 @@ var consultaSchema = new Schema({
     linkExames:         [{type: String}],
     observacoes:        {type: String},
     linkRelatorio:      [{type: String}],
-    nutricionista:      {type: ObjectId, ref: 'Nutricionistas'}
-
+    nutricionista:      {type: ObjectId, ref: 'Nutricionistas'},
+    cliente:            {type: ObjectId, ref: 'Cliente'}
 });
 
 var Consulta = mongoose.model('Consultas', consultaSchema);

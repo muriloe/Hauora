@@ -2,6 +2,7 @@ import { Grupo } from './../../../shared/model/grupo.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { Cliente } from '../../../shared/model/cliente.model';
 import { Composicao } from './../../../shared/model/composicao.model';
+import { Consulta } from './../../../shared/model/consulta.model';
 import { ConsultaService } from '../consulta.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConsultaAnamneseModalComponent } from './consulta-anamnese-modal/consulta-anamnese-modal.component';
@@ -25,7 +26,17 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
     gordura: number;
     imc: number;
     pesoIdeal: number;
-
+    deficiencias: string;
+    excessos: string;
+    observacoes: string;
+    composicao_cafe_da_manha: Composicao[] = [];
+    composicao_lanche_da_manha: Composicao[] = [];
+    composicao_almoco: Composicao[] = [];
+    composicao_lanche: Composicao[] = [];
+    composicao_janta: Composicao[] = [];
+    lista_composicao_selecionada: Composicao[] = [];
+    
+    
     refeicaoSelecionada: string;
     imagem_cafe_da_manha = 'assets/images/mealIcons/breakfastIcon.png';
     imagem_lanche_da_manha = 'assets/images/mealIcons/snackIcon.png';
@@ -33,12 +44,6 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
     imagem_lanche = 'assets/images/mealIcons/snackIcon.png';
     imagem_janta = 'assets/images/mealIcons/dinnerIcon.png';
 
-    composicao_cafe_da_manha: Composicao[] = [];
-    composicao_lanche_da_manha: Composicao[] = [];
-    composicao_almoco: Composicao[] = [];
-    composicao_lanche: Composicao[] = [];
-    composicao_janta: Composicao[] = [];
-    lista_composicao_selecionada: Composicao[] = [];
 
     grupos: Grupo[];
     porcoes: string;
@@ -149,12 +154,15 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
 
     addComposicao() {
         // tslint:disable-next-line:prefer-const
-        let composicaoTemp = new Composicao({grupo: this.grupoSelecionadoId, quantidade: this.porcoes});
-        this.checkTipoRefeicaoEArmazena(composicaoTemp);
-
-
-        this.grupoSelecionadoId = null;
-        this.porcoes = null;
+        if((this.grupoSelecionadoId != null) && (this.porcoes != null)){
+            let composicaoTemp = new Composicao({grupo: this.grupoSelecionadoId, quantidade: this.porcoes});
+            this.checkTipoRefeicaoEArmazena(composicaoTemp);
+            this.grupoSelecionadoId = null;
+            this.porcoes = null;
+        }
+        else{
+            alert("Preencher os campos corretamente");
+        }
     }
 
     checkTipoRefeicaoEArmazena(composicao) {
@@ -209,15 +217,19 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
     validarCampos() {
         //TODO: preencher os campos defiencias, excessos, observacoes com o texto Nenhuma
         let contadorDeComposicao = 0;
+        let hasErrors: Boolean;
         let mensagemErro = 'Para finalizar uma consulta você deve preencher: \n';
         if (this.peso == null) {
             mensagemErro += '-Peso\n';
+            hasErrors = true;
         }
         if (this.altura == null) {
             mensagemErro += '-Altura\n';
+            hasErrors = true;
         }
         if (this.gordura == null) {
             mensagemErro += '-Gordura\n';
+            hasErrors = true;
         }
 
         if (this.composicao_cafe_da_manha.length > 0) {
@@ -237,8 +249,15 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
         }
         if (contadorDeComposicao < 3) {
             mensagemErro += '- É necessário criar pelo menos três refeições diárias\n';
+            hasErrors = true;
         }
-        alert(mensagemErro);
+        if(hasErrors){
+            alert(mensagemErro);
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
 }
