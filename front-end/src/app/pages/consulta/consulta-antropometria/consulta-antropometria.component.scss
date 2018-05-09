@@ -5,6 +5,24 @@
 
 @include nb-install-component() {
 
+  #parent {
+    text-align:center;
+  }
+  .block {
+      height:40px;
+      width:40px;
+      text-align:left;
+      padding:5px;
+  }
+  .blockmax {
+      height:40px;
+      width:60px;
+      text-align:left;
+      padding:5px;
+  }
+  .center {
+      margin:auto;
+  }
   .margemUsuario{
     margin-top: 20px;
     margin-right: 20px;

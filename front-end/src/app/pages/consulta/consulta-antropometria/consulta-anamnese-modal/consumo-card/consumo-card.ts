@@ -11,7 +11,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
               <div class="row">
                 <div><img [src]="tipoIcon" height="40" width="40"></div>
                 <div class="col">
-                  <h6 class="text-info"><b>{{tipo}}</b></h6>
+                  <h6 class="text-success"><b>{{tipo}}</b></h6>
                   {{sentimento}}
                 </div>
               </div>

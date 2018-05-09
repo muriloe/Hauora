@@ -11,7 +11,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
                     <div class="row">
                         <div><img [src]="icon"  max-height="60" max-width="60" width="40"></div>
                         <div class="col center">
-                            <h6 class="text-info"><b>{{nome}}</b></h6>
+                            <h6 class="text-success"><b>{{nome}}</b></h6>
                         </div>
                     </div>
                 </div>
