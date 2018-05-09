@@ -207,7 +207,7 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
     }
 
     validarCampos() {
-        //TODO: preencher os campos defiencias, excessos, observacoes com o texto Nenhuma
+        // TODO: preencher os campos defiencias, excessos, observacoes com o texto Nenhuma
         let contadorDeComposicao = 0;
         let mensagemErro = 'Para finalizar uma consulta você deve preencher: \n';
         if (this.peso == null) {

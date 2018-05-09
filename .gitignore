@@ -2,6 +2,7 @@
 back-end/uploads/*.jpeg
 back-end/uploads/min/*.jpeg
 !front-end/node_modules/@nebular/theme/styles/themes/*
+!front-end/node_modules/@nebular/auth/components/login/*
 
 # Logs
 logs
