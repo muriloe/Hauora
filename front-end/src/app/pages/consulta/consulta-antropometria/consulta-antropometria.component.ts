@@ -35,8 +35,7 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
     composicao_lanche: Composicao[] = [];
     composicao_janta: Composicao[] = [];
     lista_composicao_selecionada: Composicao[] = [];
-    
-    
+
     refeicaoSelecionada: string;
     imagem_cafe_da_manha = 'assets/images/mealIcons/breakfastIcon.png';
     imagem_lanche_da_manha = 'assets/images/mealIcons/snackIcon.png';
@@ -154,14 +153,13 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
 
     addComposicao() {
         // tslint:disable-next-line:prefer-const
-        if((this.grupoSelecionadoId != null) && (this.porcoes != null)){
-            let composicaoTemp = new Composicao({grupo: this.grupoSelecionadoId, quantidade: this.porcoes});
+        if ((this.grupoSelecionadoId != null) && (this.porcoes != null)) {
+            const composicaoTemp = new Composicao({grupo: this.grupoSelecionadoId, quantidade: this.porcoes});
             this.checkTipoRefeicaoEArmazena(composicaoTemp);
             this.grupoSelecionadoId = null;
             this.porcoes = null;
-        }
-        else{
-            alert("Preencher os campos corretamente");
+        }else {
+            alert('Preencher os campos corretamente');
         }
     }
 
@@ -251,11 +249,10 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
             mensagemErro += '- É necessário criar pelo menos três refeições diárias\n';
             hasErrors = true;
         }
-        if(hasErrors){
+        if (hasErrors) {
             alert(mensagemErro);
             return false;
-        }
-        else{
+        }else {
             return true;
         }
     }
