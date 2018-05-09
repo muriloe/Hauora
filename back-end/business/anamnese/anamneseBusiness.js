@@ -74,6 +74,23 @@ exports.criarAnamneseCompleta = function(dat){
         console.log("4" + Object.keys(dat.consumos).length);
         for(var i = 0; i< Object.keys(dat.consumos).length; i++){
             console.log("5 " + Object.keys(dat.consumos).length);
+
+            novoTipo = dat.consumos[i].tipo;
+            if(dat.consumos[i].tipo === "Café da manhã"){
+                dat.consumos[i].tipo='CAFE_DA_MANHA';
+            }
+            if(dat.consumos[i].tipo === "Lanche da manhã"){
+                dat.consumos[i].tipo='LANCHE_DA_MANHA';
+            }
+            if(dat.consumos[i].tipo === "Almoço"){
+                dat.consumos[i].tipo='ALMOCO';
+            }
+            if(dat.consumos[i].tipo === "Lanche"){
+                dat.consumos[i].tipo='LANCHE';
+            }
+            if(dat.consumos[i].tipo === "Janta"){
+                dat.consumos[i].tipo='JANTA';
+            }
             nConsumo = new Consumo({
                 texto:          dat.consumos[i].texto,
                 data:           new Date((dat.consumos[i].data)*1000),

@@ -51,7 +51,8 @@ export class ConsultaAnamneseModalComponent implements OnInit {
         this.consultaService.getCliente(this.userId)
               .subscribe(
                   (results: Cliente) => {
-                      this.cliente = results;
+                        this.cliente = results;
+                        this.cliente.foto = this.cliente.foto.replace('/uploads', '/uploads/min');
                   },
             );
     }

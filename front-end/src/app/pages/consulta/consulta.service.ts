@@ -26,6 +26,7 @@ export class ConsultaService {
                 const nCli: Cliente[] = [];
 
                 for (const cli of cliAnm) {
+                    cli.foto = cli.foto.replace('/uploads', '/uploads/min');
                     nCli.push(new Cliente(cli));
                 }
                 this.clientesAutoComplete = nCli;

@@ -71,6 +71,7 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
               .subscribe(
                   (results: Cliente) => {
                       this.cliente = results;
+                      this.cliente.foto = this.cliente.foto.replace('/uploads', '/uploads/min');
                       this.selecionouPaciente = true;
                   },
               );

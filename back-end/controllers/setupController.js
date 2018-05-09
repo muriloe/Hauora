@@ -56,8 +56,11 @@ module.exports = function(app){
         alimentos.forEach(alimento => {
             var ali = new Alimento({nome: alimento.nome, porcao: alimento.porcao, grupo: alimento.grupo });
             ali.save(function (err) {
-                console.log('Erro ao salvar grupo de alimento');
-                if (err) return handleError(err);
+
+                if (err){
+                    console.log('Erro ao salvar grupo de alimento');
+                    return handleError(err);
+                } 
                 contador++; 
                 if (contador === alimentos.length) {
                     res.send('criou alimentos');
@@ -73,6 +76,7 @@ module.exports = function(app){
             email: 'nutri@email.com',
             nome: 'Caroline Erhardt',
             senha: '123456',
+            foto: 'https://scontent.fbfh3-1.fna.fbcdn.net/v/t1.0-9/149206_1659326998012_5031848_n.jpg?_nc_cat=0&_nc_eui2=v1%3AAeG6lm5CJss3-yEmUZOE5w9EwxBFrNezNldEoHci1XBctaOl8bYkYi3ri9F_QS-670BMOQ4_lnutg9o-1TYUuwoM0ggapTOKypCDOUeMcK46-Q&oh=d0bc8d40c5833ed8a40e067c933ffbce&oe=5B90AA85',
             data_nascimento: new Date(),
         });
         nutricionista.save(function (err, results) {
