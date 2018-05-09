@@ -82,8 +82,8 @@
                             <div class="margemUsuario">
                                 <nb-user [picture]="cliente.foto" [name]="cliente.nome" [title]="cliente.email" size="xlarge"></nb-user>
                                 <br>
-                                <button class="btn btn-info btn-semi-round btn-demo margemUsuario" (click)="showModalAnamnese(cliente._id)">Ver Anamnese</button>
-                                <button class="btn btn-danger btn-semi-round btn-demo margemUsuario" (click)="cancelaAnamnese()">Cancelar</button>
+                                <button class="btn btn-success btn-semi-round btn-demo margemUsuario" (click)="showModalAnamnese(cliente._id)">Ver Anamnese</button>
+                                <button class="btn btn-danger btn-semi-round btn-demo margemUsuario" (click)="cancelaAnamnese()">X</button>
                             </div>          
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                             <div class="bold margemUsuario"><h5>Componentes</h5></div>
         
                             <div>
-                                <button class="btn btn-info btn-semi-round btn-demo" (click)="showGruposModal()">Ver grupos</button>
+                                <button class="btn btn-success btn-semi-round btn-demo" (click)="showGruposModal()">Ver grupos</button>
                             </div>
                         </div>
                         
@@ -154,7 +154,7 @@
                                     </div>
                                     <div class="col-md-2"></div>
                                     <div class="col-md-2" >
-                                            <button class="btn btn-success btn-semi-round btn-demo margemComposicaoBtn" style="float:right;" (click)="addComposicao()">Adicionar</button> 
+                                            <button class="btn btn-info btn-semi-round btn-demo margemComposicaoBtn" style="float:right;" (click)="addComposicao()">Adicionar</button> 
                                     </div>
                                 </div>
 

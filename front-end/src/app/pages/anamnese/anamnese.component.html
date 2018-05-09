@@ -1,13 +1,22 @@
-
-<div class="col">
-    <div class="row">
-        <div>
-            <h1>Consultas Pendentes</h1>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div>
+                <h1>Pacientess</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="row">
+                    <ngx-anamnese-card  *ngFor="let cliAnam of consultasPendentes"
+                                    [clienteAnamnese]="cliAnam">
+                    </ngx-anamnese-card>
+                </div>
+            </div>
+            <div class="col-md-2">
+                filtros
+            </div>
         </div>
     </div>
-    <div class="row">
-            <ngx-anamnese-card  *ngFor="let cliAnam of consultasPendentes"
-                                [clienteAnamnese]="cliAnam">
-            </ngx-anamnese-card>
-    </div>
 </div>
+

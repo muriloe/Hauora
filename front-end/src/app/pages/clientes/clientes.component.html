@@ -1,17 +1,21 @@
 <div class="row">
-    <div>
-        <h1>Pacientes</h1>
-    </div>
-  
-    <div class="row">
-        <div class="col-md-9">
-            <div class="row">
-                <ngx-cliente-card   *ngFor="let cliente of listaClientes"
-                                    [cliente]="cliente"></ngx-cliente-card>
+    <div class="col-md-12">
+        <div class="row">
+            <div>
+                <h1>Pacientess</h1>
             </div>
         </div>
-        <div class="col-md-3">
-            asdasdas filtros
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <ngx-cliente-card   *ngFor="let cliente of listaClientes"
+                                        [cliente]="cliente">
+                    </ngx-cliente-card>
+                </div>
+            </div>
+            <div class="col-md-3">
+                filtros
+            </div>
         </div>
     </div>
 </div>
