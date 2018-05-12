@@ -25,29 +25,103 @@ module.exports = function(app){
     app.get('/api/iniciaAlimentos', function(req, res){
      
         //criação dos grupos
-        var grupoBaixaCaloria = new Grupo({titulo: 'Baixa Caloria'});
-        var grupoVegetaisA = new Grupo({titulo: 'Vegetais A ou Folhosos'});
-        var grupoVegetaisB = new Grupo({titulo: 'Vegetais B ou Hortaliças'});  
+        var carboidratos = new Grupo({titulo: 'Carboidratos'});
+        var carnesEOvos = new Grupo({titulo: 'Carnes e ovos'});
+        var frutas = new Grupo({titulo: 'Frutas'});  
 
         //criacao dos alimentos
-        var alimentos = [   {nome: 'Cacau', porcao: '1 Col. S. Ras. (10g)', grupo: grupoBaixaCaloria._id},
-                            {nome: 'Café Infusão', porcao: '(10% 1 X. café (80ml)', grupo: grupoBaixaCaloria._id},
-                            {nome: 'Café Mate, infusão', porcao: '(5% 1 X. café (180ml)', grupo: grupoBaixaCaloria._id},
+        var alimentos = [   {nome: 'Arroz Branco Cozido', porcao: '4 Col. Sopa (125g/ml)', grupo: carboidratos._id},
+                            {nome: 'Arroz Integral Cozido', porcao: '4 Col. Sopa (140g/ml)', grupo: carboidratos._id},
+                            {nome: 'Batata Doce Cozida', porcao: '1 Col. De Servir e Meia(150g/ml)', grupo: carboidratos._id},
+                            {nome: 'Batata Inglesa Cozida Picada', porcao: '2 Col. De Sopa (90g/ml)', grupo: carboidratos._id},
+                            {nome: 'Bolo de Cenoura', porcao: '1 Pedaço Peq (90g/ml)', grupo: carboidratos._id},
+                            {nome: 'Farinha de Aveia', porcao: '2 Col. de Sopa (30g/ml)', grupo: carboidratos._id},
+                            {nome: 'Farinha de Mandioca', porcao: '2 Col. de Sopa (30g/ml)', grupo: carboidratos._id},
+                            {nome: 'Inhame Cozido', porcao: '3 Col. De Servir e Meia (126g/ml)', grupo: carboidratos._id},
+                            {nome: 'Macarrão Cozido', porcao: '3 Col. De Servir e Meia (105g/ml)', grupo: carboidratos._id},
+                            {nome: 'Mandioca Cozida', porcao: '3 Col. De Sopa (96g/ml)', grupo: carboidratos._id},
+                            {nome: 'Pão de Batata', porcao: '1 Unidade Média (50g/ml)', grupo: carboidratos._id},
+                            {nome: 'Pão de Centeio', porcao: '2 Fatias (50g/ml)', grupo: carboidratos._id},
+                            {nome: 'Pão de Forma Tradicional', porcao: '2 Fatias (50g/ml)', grupo: carboidratos._id},
+                            {nome: 'Pão de Queijo', porcao: '2 Unidades Médias (40g/ml)', grupo: carboidratos._id},
+                            {nome: 'Pão Francês', porcao: '1 Unidade Média (50g/ml)', grupo: carboidratos._id},
+                            {nome: 'Polenta Frita', porcao: '2 Unidades Médias (80g/ml)', grupo: carboidratos._id},
+                            {nome: 'Purê de Batata', porcao: '2 Colheres de Servir (135g/ml)', grupo: carboidratos._id},
                             
-                            {nome: 'Acelga', porcao: '1 porção(ões) (50g)', grupo: grupoVegetaisA._id},
-                            {nome: 'Agrião', porcao: '1 porção(ões) (50g)', grupo: grupoVegetaisA._id},
+                            {nome: 'Atum em Lata', porcao: '2 Col. de Sopa (90g/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Bife de Fígado Frito', porcao: '1 Unidade Média (110g/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Bife Grelhado', porcao: '1 Unidade Média (90g/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Camarão Frito', porcao: '10 Unidades (80g/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Carne Assada', porcao: '1 Fatia Pequena (75g/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Carne Moída Refogada', porcao: '5 Colheres de Sopa (90g/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Carne Seca', porcao: '2 Unidades Pequenas (40g/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Costela Bovina Assada', porcao: '1 Pedaço Pequeno (40g/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Filé de Frango à Milanesa', porcao: '1 Filé Pequeno (80g/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Filé de Frango Grelhado', porcao: '1 Filé Médio (100h/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Frango Assado', porcao: '1 Pedaço de Peito ou 1 Coxa (100g)', grupo: carnesEOvos._id},
+                            {nome: 'Hamburguer Grelhado', porcao: '1 Unidade (100g)', grupo: carnesEOvos._id},
+                            {nome: 'Linguiça de Porco Cozida', porcao: '1 Gomo (50g/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Lombo de Porco Assado', porcao: '1 Fatia (80g/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Merluza Cozida', porcao: '2 Filés (200g/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Mortadela', porcao: '3 Fatias (45g/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Omelete Simples', porcao: '1 Unidade (75g/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Ovo Cozido ', porcao: '2 Unidade (100g/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Ovo Frito', porcao: '1 Unidade (50g/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Salsicha', porcao: '1 Unidade e meia (60g/ml)', grupo: carnesEOvos._id},
+                            {nome: 'Sardinha em Conserva', porcao: '1 Unidade (40g/ml)', grupo: carnesEOvos._id},
+
                         
-                            {nome: 'Abobrinha italiana, cozida', porcao: '2 Col. A. (135g)', grupo: grupoVegetaisB._id}];
+                            {nome: 'Abacate', porcao: '1 Colher de Sopa  (32g/ml)', grupo: frutas._id},
+                            {nome: 'Abacaxi', porcao: '1 Fatia Grande (130g/ml)', grupo: frutas._id},
+                            {nome: 'Acerola', porcao: '32  (224g/ml)', grupo: frutas._id},
+                            {nome: 'Ameixa-preta Seca ', porcao: '3 Unidades (30g/ml)', grupo: frutas._id},
+                            {nome: 'Ameixa-vermelha ', porcao: '4 Unidades (130g/ml)', grupo: frutas._id},
+                            {nome: 'Banana Nanica', porcao: '1 Unidade (80g/ml)', grupo: frutas._id},
+                            {nome: 'Banana Prata ', porcao: '1 Unidade (86g/ml)', grupo: frutas._id},
+                            {nome: 'Caju', porcao: '2 Unidades e Meia (147g/ml)', grupo: frutas._id},
+                            {nome: 'Caqui', porcao: '1 Unidade (113g/ml)', grupo: frutas._id},
+                            {nome: 'Carambola', porcao: '2 Unidades (220g/ml)', grupo: frutas._id},
+                            {nome: 'Cereja ', porcao: '24 Unidades (96g/ml)', grupo: frutas._id},
+                            {nome: 'Damasco Seco ', porcao: '4 Unidades  (30g/ml)', grupo: frutas._id},
+                            {nome: 'Fruta do Conde ', porcao: 'Meia Unidade (75g/ml)', grupo: frutas._id},
+                            {nome: 'Goiaba  ', porcao: 'Meia Unidade (95g/ml)', grupo: frutas._id},
+                            {nome: 'Jabuticaba ', porcao: '20 Unidades (140g/ml)', grupo: frutas._id},
+                            {nome: 'Jaca  ', porcao: '4 Bagos (132g/ml)', grupo: frutas._id},
+                            {nome: 'Kiwi  ', porcao: '2 Unidades (154g/ml)', grupo: frutas._id},
+                            {nome: 'Laranja Baia ', porcao: '8 Gomos (144g/ml)', grupo: frutas._id},
+                            {nome: 'Laranja-pêra ', porcao: '1 Unidade (137g/ml)', grupo: frutas._id},
+                            {nome: 'Limão ', porcao: '4 Unidades (252g/ml)', grupo: frutas._id},
+                            {nome: 'Maçã ', porcao: '1 Unidade (130g/ml)', grupo: frutas._id},
+                            {nome: 'Mamão Formosa  ', porcao: '1 Fatia (160g/ml)', grupo: frutas._id},
+                            {nome: 'Mamão Papaia  ', porcao: '1/2 Unidade  (140g/ml)', grupo: frutas._id},
+                            {nome: 'Manga ', porcao: '1 Unidade (110g/ml)', grupo: frutas._id},
+                            {nome: 'Maracujá (Suco Puro) ', porcao: '1/2 Xícara de Chá  (94g/ml)', grupo: frutas._id},
+                            {nome: 'Melancia ', porcao: '2 Fatias (296g/ml)', grupo: frutas._id},
+                            {nome: 'Melão ', porcao: '2 Fatias (230g/ml)', grupo: frutas._id},
+                            {nome: 'Morango ', porcao: '10 Unidades (240g/ml)', grupo: frutas._id},
+                            {nome: 'Nectarina ', porcao: '2 Unidades (184g/ml)', grupo: frutas._id},
+                            {nome: 'Pêra ', porcao: '1 Unidade (133g/ml)', grupo: frutas._id},
+                            {nome: 'Pêssego ', porcao: '2 Unidades (266g/ml)', grupo: frutas._id},
+                            {nome: 'Salada de Frutas (Banana, Maçã, Laranja e Mamão)', porcao: '1/2 Xícara de Chá (125g/ml)', grupo: frutas._id},
+                            {nome: 'Suco de Abacaxi  ', porcao: '1/2 Copo de Requeijão (125g/ml)', grupo: frutas._id},
+                            {nome: 'Suco de Laranja (Puro)  ', porcao: '3/4 de Copo de Requeijão (187g/ml)', grupo: frutas._id},
+                            {nome: 'Suco de Melão (Puro)  ', porcao: '3/4 de Copo de Requeijão (187g/ml)', grupo: frutas._id},
+                            {nome: 'Suco de Tangerina ', porcao: '3/4 de Copo de Requeijão (187g/ml)', grupo: frutas._id},
+                            {nome: 'Tangerina ', porcao: '1 Unidade (148g/ml)', grupo: frutas._id},
+                            {nome: 'Uva Comum  ', porcao: '22 Unidades (100g/ml)', grupo: frutas._id},
+                            {nome: 'Uva Itália  ', porcao: '8 Uvas (100g/ml)', grupo: frutas._id},
+                            {nome: 'Uva Passa ', porcao: '1 Colher de Sopa (17g/ml)', grupo: frutas._id},
+                            {nome: 'Uva Rubi  ', porcao: '8 Uvas (100g/ml)', grupo: frutas._id},];
 
-        grupoBaixaCaloria.save(function (err) {
+        carboidratos.save(function (err) {
             if (err) return handleError(err);
         });
 
-        grupoVegetaisA.save(function (err) {
+        carnesEOvos.save(function (err) {
             if (err) return handleError(err);
         });
 
-        grupoVegetaisB.save(function (err) {
+        frutas.save(function (err) {
             if (err) return handleError(err);
         });
 
