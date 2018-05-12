@@ -22,7 +22,7 @@ module.exports = function(app) {
         });
     });
 
-    app.delete('/auth/logout', function(req, res){
+    app.delete('/api/auth/logout', function(req, res){
         console.log('logout');
         res.end('true');
     });
