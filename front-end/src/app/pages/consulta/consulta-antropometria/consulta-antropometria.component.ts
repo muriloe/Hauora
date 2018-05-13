@@ -92,6 +92,7 @@ import { Router } from '@angular/router';
     cancelaAnamnese() {
         if (confirm('Fazendo isso você perdera todos os dados da consulta')) {
             this.selecionouPaciente = false;
+            //this.router.navigate(['pages/consulta']);
         } else {
         }
     }
@@ -251,7 +252,7 @@ import { Router } from '@angular/router';
                                                     (results: string[]) => {
                                                         console.log ('asdas  ' + results);
                                                         if (confirm('Consulta realizada com sucesso!\n Em breve o paciente recebera uma email com a nova senha')) {
-                                                            this.router.navigate(['#/pages/clientes'])
+                                                            this.router.navigate(['pages/clientes']);
                                                         } else {
                                                         }
                                                     },
