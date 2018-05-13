@@ -10,6 +10,7 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
 import { NbTokenService, NbAuthJWTToken } from '@nebular/auth';
 import { Nutricionista } from '../../../shared/model/nutricionista.model';
 import { Cardapio } from '../../../shared/model/cardapio.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -54,7 +55,8 @@ import { Cardapio } from '../../../shared/model/cardapio.model';
 
     constructor(private consultaService: ConsultaService,
                 private modalService: NgbModal,
-                private service: NbTokenService ) {
+                private service: NbTokenService,
+                private router: Router ) {
                     // tslint:disable-next-line:no-shadowed-variable
                     service.get().subscribe((token: NbAuthJWTToken) => {
                         this.nutricionista = token.getPayload();
@@ -249,7 +251,7 @@ import { Cardapio } from '../../../shared/model/cardapio.model';
                                                     (results: string[]) => {
                                                         console.log ('asdas  ' + results);
                                                         if (confirm('Consulta realizada com sucesso!\n Em breve o paciente recebera uma email com a nova senha')) {
-                                                            this.selecionouPaciente = false;
+                                                            this.router.navigate(['#/pages/clientes'])
                                                         } else {
                                                         }
                                                     },

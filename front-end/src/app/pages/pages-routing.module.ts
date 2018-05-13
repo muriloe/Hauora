@@ -44,7 +44,7 @@ const routes: Routes = [{
 
    {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'clientes',
     pathMatch: 'full',
   }],
 }];
