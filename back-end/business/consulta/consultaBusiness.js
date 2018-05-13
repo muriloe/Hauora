@@ -242,7 +242,7 @@ exports.salvarConsulta = function(data){
             }
             else{
                 console.log("-------------consulta Salvo");  
-                enviarEmail();
+                enviarEmail(dadosConsulta.consulta.cliente);
                 resolve({ "status":true,"consumo":consulta }); 
             }
         });
@@ -253,28 +253,46 @@ exports.salvarConsulta = function(data){
 }
 
 //
-function enviarEmail() {
+function enviarEmail(clienteId) {
     console.log("------------------enviando email ");
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'hauoranutri@gmail.com',
-          pass: 'S0uMongo'
+    let senha = '123456';
+    const novaSenha = {
+        senha: senha,
+        acesso: true,
+    };
+    Cliente.update({_id: clienteId}, novaSenha, function(err, raw) {
+        if (err) {
+          console.log("erro ao mudar senha: " + err);
         }
-      });
-      
-      var mailOptions = {
-        from: 'hauoraNutri@gmail.com',
-        to: 'murilo0121@gmail.com',
-        subject: 'Sua conta está ativa!!!',
-        text: 'Obrigado por fazer uma consulta com o Hauora, sua senha de acesso para o aplicativo é: '
-      };
-      
-      transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      });
+        console.log("informações de usuário atualizadas: " + raw);
+    });
+
+    Cliente.findById({_id: clienteId }, 
+        function (err, pessoa){
+            var transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                  user: 'hauoranutri@gmail.com',
+                  pass: 'S0uMongo'
+                }
+              });
+              
+              var mailOptions = {
+                from: 'hauoraNutri@gmail.com',
+                to: pessoa.email,
+                subject: 'Sua conta está ativa!!!',
+                html: '<font color="black">Obrigado por fazer uma consulta com o <font color="#3b5998"><b><i>Hauora</i><b></font>, '+
+                       'sua senha de acesso no aplicativo é: <b>'+senha + '<b><br><br>Vamos juntos atingir seu objetivo!</font>'
+              };
+              
+              transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log('Email sent: ' + info.response);
+                }
+              });
+    } );
+
+    
 }
