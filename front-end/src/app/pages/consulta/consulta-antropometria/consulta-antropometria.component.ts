@@ -92,7 +92,7 @@ import { Router } from '@angular/router';
     cancelaAnamnese() {
         if (confirm('Fazendo isso você perdera todos os dados da consulta')) {
             this.selecionouPaciente = false;
-            //this.router.navigate(['pages/consulta']);
+            // this.router.navigate(['pages/consulta']);
         } else {
         }
     }
@@ -224,10 +224,8 @@ import { Router } from '@angular/router';
 
     finalizarConsulta() {
 
-        console.log('entrou finaliza consulta');
 
         if (this.validarCampos() === true) {
-            console.log('entrou validar campos');
             const consulta = new Consulta('');
             consulta.peso = this.peso.toString();
             consulta.pesoIdeal = this.pesoIdeal.toString();
@@ -250,7 +248,8 @@ import { Router } from '@angular/router';
                                                 this.composicao_lanche,
                                                 this.composicao_janta).subscribe(
                                                     (results: string[]) => {
-                                                        console.log ('asdas  ' + results);
+                                                        // tslint:disable-next-line:max-line-length
+                                                        console.log(results);
                                                         if (confirm('Consulta realizada com sucesso!\n Em breve o paciente recebera uma email com a nova senha')) {
                                                             this.router.navigate(['pages/clientes']);
                                                         } else {

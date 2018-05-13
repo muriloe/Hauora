@@ -1,9 +1,10 @@
-var mongoose =      require('mongoose');
-var bodyParser =    require('body-parser');
-let Cliente =       require("../../models/clienteModel");
-let Consulta =       require("../../models/consultaModel");
-let Cardapio =       require("../../models/cardapioModel");
-let Composicao =       require("../../models/composicaoModel");
+var mongoose =          require('mongoose');
+var bodyParser =        require('body-parser');
+let Cliente =           require("../../models/clienteModel");
+let Consulta =          require("../../models/consultaModel");
+let Cardapio =          require("../../models/cardapioModel");
+let Composicao =        require("../../models/composicaoModel");
+var nodemailer =        require('nodemailer');
 
 
 exports.salvarConsulta = function(data){
@@ -240,10 +241,40 @@ exports.salvarConsulta = function(data){
                 reject({"status":false, "message":"Erro ao salvar consulta", "error": err});
             }
             else{
-                console.log("consulta Salvo");  
+                console.log("-------------consulta Salvo");  
+                enviarEmail();
                 resolve({ "status":true,"consumo":consulta }); 
             }
         });
 
+        
+
     });
+}
+
+//
+function enviarEmail() {
+    console.log("------------------enviando email ");
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'hauoranutri@gmail.com',
+          pass: 'S0uMongo'
+        }
+      });
+      
+      var mailOptions = {
+        from: 'hauoraNutri@gmail.com',
+        to: 'murilo0121@gmail.com',
+        subject: 'Sua conta está ativa!!!',
+        text: 'Obrigado por fazer uma consulta com o Hauora, sua senha de acesso para o aplicativo é: '
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
 }

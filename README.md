@@ -88,6 +88,10 @@ Estamos utilizando o banco de dados mongodb, para facilitar a vida estou utiliza
 login: murilo0121
 senha: S0uMongo
 
+### Email
+Criei o seguinte email para utilizar no projeto, para enviar email para os clientes:
+login: login: hauoranutri@gmail.com
+senha: S0uMongo
 
 ## Extras
 
