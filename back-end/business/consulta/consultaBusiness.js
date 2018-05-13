@@ -107,17 +107,6 @@ exports.salvarConsulta = function(data){
             });
         }
 
-        consulta.save(function (err, results) {
-            console.log("iniciando salvção da consulta");
-            if(err) {
-                console.log("Erro ao salvar consulta");  
-                reject({"status":false, "message":"Erro ao salvar consulta", "error": err});
-            }
-            else{
-                console.log("consulta Salvo");  
-            }
-        });
-
         cardapioCafeDaManha.save(function (err, results) {
             console.log("iniciando salvção da cardapioCafeDaManha");
             if(err) {
@@ -239,10 +228,22 @@ exports.salvarConsulta = function(data){
                 }
                 else{
                     console.log("Salvou listaComposicaoJanta");
-                    resolve({ "status":true,"consumo":consulta });     
+                        
                 }
             });
         }
+
+        consulta.save(function (err, results) {
+            console.log("iniciando salvção da consulta");
+            if(err) {
+                console.log("Erro ao salvar consulta");  
+                reject({"status":false, "message":"Erro ao salvar consulta", "error": err});
+            }
+            else{
+                console.log("consulta Salvo");  
+                resolve({ "status":true,"consumo":consulta }); 
+            }
+        });
 
     });
 }
