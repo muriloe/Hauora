@@ -1,3 +1,7 @@
+import { Composicao } from './../../shared/model/composicao.model';
+import { Cardapio } from './../../shared/model/cardapio.model';
+import { Cliente } from './../../shared/model/cliente.model';
+import { Consulta } from './../../shared/model/consulta.model';
 import { Remedio } from './../../shared/model/remedio.model';
 import { Doenca } from './../../shared/model/doenca.model';
 import { Anamnese } from './../../shared/model/anamnese.model';
@@ -6,8 +10,8 @@ import { Http, Response  } from '@angular/http';
 import 'rxjs/Rx';
 // tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs';
-import { Cliente } from '../../shared/model/cliente.model';
 import { ServerInfo } from './../../shared/server';
+import { Headers } from '@angular/http';
 
 @Injectable()
 export class ConsultaService {
@@ -120,6 +124,28 @@ export class ConsultaService {
             return response.json().alimentos;
         })
         .catch((error: Response) => Observable.throw(error.json()));
+    }
+
+    postConsulta(   consultaCompleta: Consulta,
+                    cafeDaManha: Composicao[],
+                    lancheDaManha: Composicao[],
+                    almoco: Composicao[],
+                    lanche: Composicao[],
+                    janta: Composicao[]) {
+
+    let json = JSON.stringify({   consulta: consultaCompleta,
+                                    composicoesCafeDaManha: cafeDaManha,
+                                    composicoesLancheDaManha: lancheDaManha,
+                                    composicoesAlmoco: almoco,
+                                    composicoesLanche: lanche,
+                                    composicoesJanta: janta});
+        json = 'json=' + json;
+        const cabe = new Headers();
+        cabe.append('Content-Type', 'application/x-www-form-urlencoded');
+        return this.http.post(this.serverUrl + '/api/consulta',
+        json, {headers : cabe})
+                .map(res => res.json());
+
     }
 
 }

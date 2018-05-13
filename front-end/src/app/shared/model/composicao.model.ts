@@ -1,8 +1,10 @@
+import { Cardapio } from './cardapio.model';
+
 export class Composicao {
     public _id: string;
     public quantidade: string;
     public grupo: string;
-    public cardapio: string;
+    public cardapio: Cardapio;
 
     constructor(composicao: any) {
         this._id = composicao._id;

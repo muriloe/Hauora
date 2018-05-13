@@ -3,6 +3,7 @@ export class Consulta {
     public data: Date;
     public peso: string;
     public pesoIdeal: string;
+    public altura: string;
     public percentualGordura: string;
     public imc: string;
     public deficiencias: string;
@@ -11,13 +12,15 @@ export class Consulta {
     public observacoes: string;
     public linkRelatorio: string;
     public nutricionista: string;
+    public cliente: string;
 
     constructor(consulta: any) {
         this._id = consulta._id;
         this.data = consulta.data;
         this.peso = consulta.peso;
         this.pesoIdeal = consulta.pesoIdeal;
-        this. percentualGordura = consulta.percentualGordura;
+        this.altura = consulta.altura;
+        this.percentualGordura = consulta.percentualGordura;
         this.imc = consulta.imc;
         this.deficiencias = consulta.deficiencias;
         this.excessos = consulta.excessos;
@@ -25,5 +28,6 @@ export class Consulta {
         this.observacoes = consulta.observacoes;
         this.linkRelatorio = consulta.linkRelatorio;
         this.nutricionista = consulta.nutricionista;
+        this.cliente = consulta.cliente;
     }
 }

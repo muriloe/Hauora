@@ -1,3 +1,4 @@
+import { Consulta } from './../../../shared/model/consulta.model';
 import { Grupo } from './../../../shared/model/grupo.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { Cliente } from '../../../shared/model/cliente.model';
@@ -6,6 +7,9 @@ import { ConsultaService } from '../consulta.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConsultaAnamneseModalComponent } from './consulta-anamnese-modal/consulta-anamnese-modal.component';
 import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-grupo-modal.component';
+import { NbTokenService, NbAuthJWTToken } from '@nebular/auth';
+import { Nutricionista } from '../../../shared/model/nutricionista.model';
+import { Cardapio } from '../../../shared/model/cardapio.model';
 
 
 @Component({
@@ -24,7 +28,7 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
     altura: number;
     gordura: number;
     imc: number;
-    pesoIdeal: number;
+    pesoIdeal: number = 0;
     deficiencias: string;
     excessos: string;
     observacoes: string;
@@ -34,8 +38,7 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
     composicao_lanche: Composicao[] = [];
     composicao_janta: Composicao[] = [];
     lista_composicao_selecionada: Composicao[] = [];
-    
-    
+
     refeicaoSelecionada: string;
     imagem_cafe_da_manha = 'assets/images/mealIcons/breakfastIcon.png';
     imagem_lanche_da_manha = 'assets/images/mealIcons/snackIcon.png';
@@ -43,12 +46,20 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
     imagem_lanche = 'assets/images/mealIcons/snackIcon.png';
     imagem_janta = 'assets/images/mealIcons/dinnerIcon.png';
 
-
     grupos: Grupo[];
     porcoes: string;
     grupoSelecionadoId: string;
 
-    constructor(private consultaService: ConsultaService, private modalService: NgbModal) { }
+    nutricionista: Nutricionista;
+
+    constructor(private consultaService: ConsultaService,
+                private modalService: NgbModal,
+                private service: NbTokenService ) {
+                    // tslint:disable-next-line:no-shadowed-variable
+                    service.get().subscribe((token: NbAuthJWTToken) => {
+                        this.nutricionista = token.getPayload();
+                    });
+                }
 
     ngOnInit() {
         this.selecionouPaciente = false;
@@ -153,14 +164,13 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
 
     addComposicao() {
         // tslint:disable-next-line:prefer-const
-        if((this.grupoSelecionadoId != null) && (this.porcoes != null)){
-            let composicaoTemp = new Composicao({grupo: this.grupoSelecionadoId, quantidade: this.porcoes});
+        if ((this.grupoSelecionadoId != null) && (this.porcoes != null)) {
+            const composicaoTemp = new Composicao({grupo: this.grupoSelecionadoId, quantidade: this.porcoes});
             this.checkTipoRefeicaoEArmazena(composicaoTemp);
             this.grupoSelecionadoId = null;
             this.porcoes = null;
-        }
-        else{
-            alert("Preencher os campos corretamente");
+        }else {
+            alert('Preencher os campos corretamente');
         }
     }
 
@@ -210,13 +220,45 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
     }
 
     finalizarConsulta() {
-        if(this.validarCampos() == true){
-            
+
+        console.log('entrou finaliza consulta');
+
+        if (this.validarCampos() === true) {
+            console.log('entrou validar campos');
+            const consulta = new Consulta('');
+            consulta.peso = this.peso.toString();
+            consulta.pesoIdeal = this.pesoIdeal.toString();
+            consulta.altura = this.altura.toString();
+            consulta.percentualGordura = this.gordura.toString();
+            consulta.imc = this.imc.toString();
+            consulta.deficiencias = this.deficiencias;
+            consulta.excessos = this.excessos;
+            // consulta.linkExames = this.linkExames;
+            // consulta.linkRelatorio = this.linkRelatorio;
+            consulta.observacoes = this.observacoes;
+            consulta.cliente = this.cliente._id;
+            consulta.nutricionista = this.nutricionista._id;
+
+
+            this.consultaService.postConsulta(  consulta,
+                                                this.composicao_cafe_da_manha,
+                                                this.composicao_lanche_da_manha,
+                                                this.composicao_almoco,
+                                                this.composicao_lanche,
+                                                this.composicao_janta).subscribe(
+                                                    (results: string[]) => {
+                                                        console.log ('asdas  ' + results);
+                                                        if (confirm('Consulta realizada com sucesso!\n Em breve o paciente recebera uma email com a nova senha')) {
+                                                            this.selecionouPaciente = false;
+                                                        } else {
+                                                        }
+                                                    },
+                                                );
         }
     }
 
     validarCampos() {
-        //TODO: preencher os campos defiencias, excessos, observacoes com o texto Nenhuma
+        // TODO: preencher os campos defiencias, excessos, observacoes com o texto Nenhuma
         let contadorDeComposicao = 0;
         let hasErrors: Boolean;
         let mensagemErro = 'Para finalizar uma consulta você deve preencher: \n';
@@ -252,11 +294,10 @@ import { ConsultaGruposModalComponent } from './consulta-grupos-modal/consulta-g
             mensagemErro += '- É necessário criar pelo menos três refeições diárias\n';
             hasErrors = true;
         }
-        if(hasErrors){
+        if (hasErrors) {
             alert(mensagemErro);
             return false;
-        }
-        else{
+        }else {
             return true;
         }
     }

@@ -5,7 +5,8 @@ var ObjectId =  Schema.Types.ObjectId;
 var cardapioSchema = new Schema({
     tipo:       {type: String},
     usuario_id: {type: ObjectId, ref: 'Clientes'},
-    data:       {type: Date}
+    data:       {type: Date},
+    composicao: [{type: ObjectId, ref: 'Composicoes'}]
 });
 
 var Cardapio = mongoose.model('Cardapios', cardapioSchema);

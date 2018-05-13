@@ -10,6 +10,7 @@ var fotoController =                require('./controllers/foto/fotoController')
 var clienteController =             require('./controllers/cliente/clienteController');
 var loginController =               require('./controllers/login/loginController');
 var alimentosController =           require('./controllers/alimentos/alimentosController');
+var consultaController =            require('./controllers/consulta/consultaController');
 var bodyParser =                    require('body-parser');
 var port = process.env.port || 3000;
 
@@ -30,6 +31,7 @@ anamneseController(app);
 fotoController(app);
 loginController(app);
 alimentosController(app);
+consultaController(app);
 
 //Fim: Inicia as API's
 
