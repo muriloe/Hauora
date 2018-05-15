@@ -41,6 +41,10 @@ const routes: Routes = [{
     path: 'consulta',
     loadChildren: './consulta/consulta.module#ConsultaModule',
   },
+  {
+    path: 'postagens',
+    loadChildren: './postagens/postagens.module#PostagensModule',
+  },
 
    {
     path: '',

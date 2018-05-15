@@ -20,7 +20,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Postagens', // menu title
     icon: 'nb-layout-centre',
-    link: '/pages/222', // menu icon
+    link: '/pages/postagens', // menu icon
   },
   {
     title: 'Configuração', // menu title

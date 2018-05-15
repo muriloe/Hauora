@@ -25,13 +25,13 @@ module.exports = function(app){
     app.get('/api/iniciaAlimentos', function(req, res){
      
         //criação dos grupos
-        var carboidratos = new Grupo({titulo: 'Carboidratos Média (150 Kcal)'});
-        var carnesEOvos = new Grupo({titulo: 'Carnes e ovos Média (190 Kcal)'});
-        var frutas = new Grupo({titulo: 'Frutas Média (70 Kcal)'});  
-        var legumesVerduras = new Grupo({titulo: 'Legumes e Verduras Média (15 Kcal)'});  
-        var leguminosas = new Grupo({titulo: 'Leguminosas Média (55 Kcal)'});  
-        var leiteQueijoIogurte = new Grupo({titulo: 'Leites, Queijos e Iogurtes Média (120 Kcal)'});
-        var oleosGorduras = new Grupo({titulo: 'Óleos e Gorduras Média (73 Kcal)'});
+        var carboidratos = new Grupo({titulo: 'Carboidratos'});
+        var carnesEOvos = new Grupo({titulo: 'Carnes e ovos'});
+        var frutas = new Grupo({titulo: 'Frutas Média'});  
+        var legumesVerduras = new Grupo({titulo: 'Legumes e Verduras'});  
+        var leguminosas = new Grupo({titulo: 'Leguminosas'});  
+        var leiteQueijoIogurte = new Grupo({titulo: 'Leites, Queijos e Iogurtes'});
+        var oleosGorduras = new Grupo({titulo: 'Óleos e Gorduras Média'});
         
 
         //criacao dos alimentos
