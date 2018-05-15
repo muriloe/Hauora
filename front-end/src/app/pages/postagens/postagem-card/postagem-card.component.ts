@@ -10,13 +10,11 @@ export class PostagemCardComponent implements OnInit {
      
   constructor() { }
 
-    nome='teste';
-    data='testesss';
+    nome='Murilo Erhardt';
+    data='15/03/2018 15:30';
     imagem='http://icons.iconarchive.com/icons/paomedia/small-n-flat/512/user-male-icon.png';
+    imagemPost="assets/images/examples/food.jpg";
   ngOnInit() {
-    this.nome='teste';
-    this.data='testesss';
-    this.imagem='http://icons.iconarchive.com/icons/paomedia/small-n-flat/512/user-male-icon.png';
   }
 
 }
