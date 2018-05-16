@@ -53,6 +53,11 @@ import { Router } from '@angular/router';
 
     nutricionista: Nutricionista;
 
+    validadorPeso: boolean = false;
+    validadorAltura: boolean = false;
+    validadorGordura: boolean = false;
+    validadorCardapio: boolean = false;
+
     constructor(private consultaService: ConsultaService,
                 private modalService: NgbModal,
                 private service: NbTokenService,
@@ -265,14 +270,17 @@ import { Router } from '@angular/router';
         let hasErrors: Boolean;
         let mensagemErro = 'Para finalizar uma consulta você deve preencher: \n';
         if (this.peso == null) {
+            this.validadorPeso = true;
             mensagemErro += '-Peso\n';
             hasErrors = true;
         }
         if (this.altura == null) {
+            this.validadorAltura = true;
             mensagemErro += '-Altura\n';
             hasErrors = true;
         }
         if (this.gordura == null) {
+            this.validadorGordura = true;
             mensagemErro += '-Gordura\n';
             hasErrors = true;
         }

@@ -14,7 +14,14 @@
                 </div>
             </div>
             <div class="col-md-2">
-                filtros
+                <div class="row">
+                    <label><img src="assets/images/mealIcons/breakfastIcon.png"  max-height="60" max-width="60" width="40"> </label>
+                    <h2><label style="padding-left: 20px;">Filtro</label></h2>
+                </div>
+                <div class="row">
+                    <button [class.btn-success]="filtroHomem" class="btn btn-success" (click)="filtrarHomem()">Homem</button>  
+                    <button [class.btn-success]="filtroMulher" class="btn btn-success" (click)="filtrarMulher()" style="margin-left: 5px;">Mulher</button>
+                </div>
             </div>
         </div>
     </div>
