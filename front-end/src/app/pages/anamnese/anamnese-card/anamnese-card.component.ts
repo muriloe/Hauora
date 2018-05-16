@@ -17,7 +17,6 @@ export class AnamneseCardComponent implements OnInit {
   }
   
   iniciarConsulta(clienteId){
-    console.log(clienteId);
     const urlRedirect = 'pages/consulta?cliente='+clienteId;
     this.router.navigate(['pages/consulta'], { queryParams: { cliente: clienteId } });
   }

@@ -53,6 +53,21 @@ export class ConsultaAnamneseModalComponent implements OnInit {
                   (results: Cliente) => {
                         this.cliente = results;
                         this.cliente.foto = this.cliente.foto.replace('/uploads', '/uploads/min');
+                        if(this.cliente.sexo === "MASCULINO"){
+                            this.cliente.sexo = "Masculino";
+                        }
+                        if(this.cliente.sexo === "FEMININO"){
+                            this.cliente.sexo = "Feminino";
+                        }
+                        if(this.cliente.objetivo === "GANHAR_PESO"){
+                            this.cliente.objetivo = "Ganha peso";
+                        }
+                        if(this.cliente.objetivo === "PERDER_PESO"){
+                            this.cliente.objetivo = "Perder peso";
+                        }
+                        if(this.cliente.objetivo === "FICAR_SAUDAVEL"){
+                            this.cliente.objetivo = "Ficou saudavel";
+                        }
                   },
             );
     }
