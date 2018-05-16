@@ -30,6 +30,7 @@ import { ConsultaGruposModalComponent } from './pages/consulta/consulta-antropom
 import { AlimentosCardComponent } from './pages/consulta/consulta-antropometria/consulta-grupos-modal/alimentos-card-modal.component';
 import { NB_AUTH_TOKEN_CLASS, NbAuthJWTToken } from '@nebular/auth';
 import { AuthGuard } from './auth-guard.service';
+import { PostagemModalComponent } from './pages/postagens/postagem-card/postagem-modal/postagem-modal.component';
 
 @NgModule({
   declarations: [AppComponent,
@@ -37,7 +38,8 @@ import { AuthGuard } from './auth-guard.service';
                 ConsumoCardComponent,
                 RemedioDoencaCardComponent,
                 ConsultaGruposModalComponent,
-                AlimentosCardComponent],
+                AlimentosCardComponent,
+                PostagemModalComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -64,7 +66,8 @@ import { AuthGuard } from './auth-guard.service';
                     ConsumoCardComponent,
                     RemedioDoencaCardComponent,
                     ConsultaGruposModalComponent,
-                    AlimentosCardComponent],
+                    AlimentosCardComponent,
+                    PostagemModalComponent],
 })
 export class AppModule {
 }
