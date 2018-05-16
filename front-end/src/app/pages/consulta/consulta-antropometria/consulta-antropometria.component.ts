@@ -20,7 +20,7 @@ import { Router } from '@angular/router';
   })
   export class ConsultaAntropometriaComponent implements OnInit {
     pacienteSelecionado: any;
-    selecionouPaciente: Boolean;
+    @Input() selecionouPaciente: Boolean;
     @Input() cliente: Cliente;
     results: string[];
     listaDeClientesBusca: Cliente[];

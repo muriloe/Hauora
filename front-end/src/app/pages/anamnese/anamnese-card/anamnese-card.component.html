@@ -3,7 +3,7 @@
         <nb-card-body>
             <nb-user [picture]="clienteAnamnese.foto" [name]="clienteAnamnese.nome" [title]="clienteAnamnese.email" size="xlarge"></nb-user>
             <br>
-            <p>Telefone: {{clienteAnamnese.telefone}}</p>
+            <button class="btn btn-success btn-tn" (click)="iniciarConsulta(clienteAnamnese._id)">Iniciar consulta</button>
         </nb-card-body>
     </nb-card>
 </div>

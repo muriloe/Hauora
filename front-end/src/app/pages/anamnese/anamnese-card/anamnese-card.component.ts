@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Cliente } from '../../../shared/model/cliente.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-anamnese-card',
@@ -9,10 +10,16 @@ import { Cliente } from '../../../shared/model/cliente.model';
 export class AnamneseCardComponent implements OnInit {
   @Input() clienteAnamnese: Cliente;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
 
+  }
+  
+  iniciarConsulta(clienteId){
+    console.log(clienteId);
+    const urlRedirect = 'pages/consulta?cliente='+clienteId;
+    this.router.navigate(['pages/consulta'], { queryParams: { cliente: clienteId } });
   }
 
 }
