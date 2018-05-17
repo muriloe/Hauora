@@ -113,7 +113,7 @@
         </nb-card>
         
         <!-- Informações do cardápio-->
-        <nb-card *ngIf="selecionouPaciente">
+        <nb-card *ngIf="selecionouPaciente" [class.nb-card-teste]="validadorCardapio">
             <nb-card-header>
                 Cardápio
             </nb-card-header> 

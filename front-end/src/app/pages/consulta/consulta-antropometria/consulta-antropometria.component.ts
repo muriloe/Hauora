@@ -265,7 +265,6 @@ import { Router } from '@angular/router';
     }
 
     validarCampos() {
-        // TODO: preencher os campos defiencias, excessos, observacoes com o texto Nenhuma
         let contadorDeComposicao = 0;
         let hasErrors: Boolean;
         let mensagemErro = 'Para finalizar uma consulta você deve preencher: \n';
@@ -301,6 +300,7 @@ import { Router } from '@angular/router';
             contadorDeComposicao++;
         }
         if (contadorDeComposicao < 3) {
+            this.validadorCardapio = true;
             mensagemErro += '- É necessário criar pelo menos três refeições diárias\n';
             hasErrors = true;
         }
