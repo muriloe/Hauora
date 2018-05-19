@@ -3,7 +3,7 @@ var bodyParser =        require('body-parser');
 let Cliente =           require("../../models/clienteModel");
 var loginBusiness =     require("../../business/login/loginBusiness");
 var jwt =               require('jwt-simple');
-let serverInfo =        require("../../config/server");
+let jwtInfo =           require("../../config/jwt.json");
 
 module.exports = function(app) {
     app.post('/api/cliente/login', function(req, res){
