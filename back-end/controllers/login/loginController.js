@@ -2,7 +2,8 @@ var mongoose =          require('mongoose');
 var bodyParser =        require('body-parser');
 let Cliente =           require("../../models/clienteModel");
 var loginBusiness =     require("../../business/login/loginBusiness");
-let serverInfo =    require("../../config/server");
+var jwt =               require('jwt-simple');
+let serverInfo =        require("../../config/server");
 
 module.exports = function(app) {
     app.post('/api/cliente/login', function(req, res){
