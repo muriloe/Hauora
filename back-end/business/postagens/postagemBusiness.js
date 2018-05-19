@@ -17,9 +17,9 @@ exports.criarPostagem = function(clienteId, postagem){
             var base64Foto = postagem.linkFoto.replace(/^data:image\/jpeg;base64,/, "");
             console.log("upando foto");
             //Prepara o endereço onde vai salvar a foto
-            var urlPhoto = './uploads/postagem/'+nPostagem._id+'.jpeg';
+            var urlPhoto = './uploads/'+nPostagem._id+'.jpeg';
             //Adiciona o endereço do servidor
-            var urlServer = serverInfo.serverUrl + '/uploads/postagem/'+nPostagem._id+'.jpeg';
+            var urlServer = serverInfo.serverUrl + '/uploads/'+nPostagem._id+'.jpeg';
             //Grava a foto
             require("fs").writeFile(urlPhoto, base64Foto, 'base64', function(err) {
                 if (err){
