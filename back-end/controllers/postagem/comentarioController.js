@@ -24,5 +24,23 @@ module.exports = function(app) {
         });
     });
 
+    app.get('/api/comentarios/:idPostOuConsulta', function(req, res){
+        console.log("/api/comentarios");
+        jwt.verify(req.headers['jwt'], jwtInfo.secret, function(err, decoded) {
+            if(err){
+                res.end(JSON.stringify('token inválido bicho'));
+            }else {
+                let clienteId = decoded._id;
+                console.log("Token Valido, id_cliente:" + decoded._id);
+                comentarioBusiness.obterComentariosDePostagem(req.params.idPostOuConsulta).then(function(response){
+                    res.end(JSON.stringify(response));
+                }).catch(function(err){
+                    res.end(JSON.stringify(err));
+                });
+            }
+        });
+        
+    });
+
 
 }

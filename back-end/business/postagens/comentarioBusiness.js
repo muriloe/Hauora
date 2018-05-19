@@ -33,3 +33,33 @@ exports.criarComentario = function(clienteId, comentario) {
 
     });
 }
+
+exports.obterComentariosDePostagem = function(idPostOuConsulta) {
+
+    return new Promise(function(resolve,reject){
+        Comentario.find({postagem_id: idPostOuConsulta }, 
+            function (err, comentarioPost){
+                if (err){
+                    throw err;
+                    reject({"status":false, "message":"Erro ao obter comentario", "error": err});
+                } 
+                //Se for maior que zero significa que o comentário é de uma postagem
+                if(comentarioPost.length > 0){
+                    resolve(comentarioPost);   
+                }
+                else{
+                    Comentario.find({consulta_id: idPostOuConsulta }, 
+                        function (err, comentarioConsulta){
+                            if (err) throw err;
+                            //Se for maior que zero significa que o comentário é de uma consulta
+                            if(comentarioConsulta.length > 0){
+                                resolve(comentarioConsulta);   
+                            }
+                            else{
+                                reject({});
+                            }
+                        } );
+                }
+            } );
+    });
+}

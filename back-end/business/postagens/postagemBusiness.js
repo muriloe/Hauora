@@ -143,7 +143,10 @@ exports.obterPostagensUsuario = function(clienteId){
                 }
             },
         ],function (err, exercicios){
-            if (err) throw err;
+            if (err){
+                throw err;
+                reject({"status":false, "message":"Erro ao ovter postagem", "error": err});
+            } 
             this.listaExercicios = exercicios;
             console.log(this.listaExercicios);
             resolve(exercicios);   
