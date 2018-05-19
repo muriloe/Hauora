@@ -15,8 +15,8 @@ module.exports = function(app) {
             if(err){
                 res.end(JSON.stringify('token inválido bicho'));
             }else {
-                let clienteId = decoded.postagem.cliente._id;
-                console.log("Token Valido, id_cliente:" + decoded.postagem.cliente._id);
+                let clienteId = decoded._id;
+                console.log("Token Valido, id_cliente:" + decoded._id);
                 postagemBusiness.criarPostagem(clienteId, req.body).then(function(response){
                     res.end(JSON.stringify(response));
                 }).catch(function(err){
