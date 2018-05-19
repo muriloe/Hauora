@@ -129,6 +129,19 @@ exports.obterPostagensUsuario = function(clienteId){
                     as: 'consumo'
                 }
             },
+
+            {
+                //Project é usado para montar o resultado da query
+                //Nela eu coloquei para pegar apenas o primeiro eleamento da array das listas de exercicio, consumo e duvida
+                //e para indicar que quero os outros elementos de um posto temos que colocar nomeElemento: 1
+                $project: {
+                    exercicio: {$arrayElemAt:["$exercicio",0]},
+                    consumo: {$arrayElemAt:["$consumo",0]},
+                    duvida: {$arrayElemAt:["$duvida",0]},
+                    linkFoto: 1,
+                    usuario_id: 1,
+                }
+            },
         ],function (err, exercicios){
             if (err) throw err;
             this.listaExercicios = exercicios;
