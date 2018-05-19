@@ -12,6 +12,7 @@ var loginController =               require('./controllers/login/loginController
 var alimentosController =           require('./controllers/alimentos/alimentosController');
 var consultaController =            require('./controllers/consulta/consultaController');
 var postagemController =            require('./controllers/postagem/postagemController');
+var comentarioController =          require('./controllers/postagem/comentarioController');
 var bodyParser =                    require('body-parser');
 var port = process.env.port || 3000;
 
@@ -34,6 +35,7 @@ loginController(app);
 alimentosController(app);
 consultaController(app);
 postagemController(app);
+comentarioController(app);
 
 
 //Fim: Inicia as API's

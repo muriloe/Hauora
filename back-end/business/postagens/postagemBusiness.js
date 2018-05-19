@@ -110,7 +110,7 @@ exports.obterPostagensUsuario = function(clienteId){
                 from: 'exercicios',
                 localField: 'exercicio_id',
                 foreignField: '_id',
-                as: 'exercicios'
+                as: 'exercicio'
             }
             },
             { $lookup:
@@ -118,7 +118,7 @@ exports.obterPostagensUsuario = function(clienteId){
                     from: 'duvidas',
                     localField: 'duvida_id',
                     foreignField: '_id',
-                    as: 'duvidas'
+                    as: 'duvida'
                 }
             },
             { $lookup:
@@ -126,7 +126,7 @@ exports.obterPostagensUsuario = function(clienteId){
                     from: 'consumos',
                     localField: 'consumo_id',
                     foreignField: '_id',
-                    as: 'consumos'
+                    as: 'consumo'
                 }
             },
         ],function (err, exercicios){
