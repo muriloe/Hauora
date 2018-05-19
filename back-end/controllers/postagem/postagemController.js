@@ -9,8 +9,6 @@ module.exports = function(app) {
 
     app.post('/api/postagens/save', function(req, res){
         console.log("/api/postagens/save");
-        console.log(req.headers['jwt']);
-        console.log(req.body);
         jwt.verify(req.headers['jwt'], jwtInfo.secret, function(err, decoded) {
             if(err){
                 res.end(JSON.stringify('token inválido bicho'));
@@ -18,6 +16,24 @@ module.exports = function(app) {
                 let clienteId = decoded._id;
                 console.log("Token Valido, id_cliente:" + decoded._id);
                 postagemBusiness.criarPostagem(clienteId, req.body).then(function(response){
+                    res.end(JSON.stringify(response));
+                }).catch(function(err){
+                    res.end(JSON.stringify(err));
+                });
+            }
+        });
+        
+    });
+
+    app.get('/api/postagens', function(req, res){
+        console.log("/api/postagens");
+        jwt.verify(req.headers['jwt'], jwtInfo.secret, function(err, decoded) {
+            if(err){
+                res.end(JSON.stringify('token inválido bicho'));
+            }else {
+                let clienteId = decoded._id;
+                console.log("Token Valido, id_cliente:" + decoded._id);
+                postagemBusiness.obterPostagensUsuario(clienteId).then(function(response){
                     res.end(JSON.stringify(response));
                 }).catch(function(err){
                     res.end(JSON.stringify(err));
