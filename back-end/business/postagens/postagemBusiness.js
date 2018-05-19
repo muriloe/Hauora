@@ -133,7 +133,7 @@ exports.obterPostagensUsuario = function(clienteId){
             if (err) throw err;
             this.listaExercicios = exercicios;
             console.log(this.listaExercicios);
-            resolve({ "status":true,"postagem":exercicios });   
+            resolve(exercicios);   
         } );
 
     });
