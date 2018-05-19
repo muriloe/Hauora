@@ -2,11 +2,13 @@ var mongoose =          require('mongoose');
 var bodyParser =        require('body-parser');
 let Cliente =           require("../../models/clienteModel");
 var loginBusiness =     require("../../business/login/loginBusiness");
+let serverInfo =    require("../../config/server");
 
 module.exports = function(app) {
     app.post('/api/cliente/login', function(req, res){
         console.log(req.body);
         loginBusiness.logar(req.body).then(function(response){
+            res.header('jwt', [jwt.encode(response, jwtInfo.secret)]);
             res.end(JSON.stringify(response));
         }).catch(function(err){
             res.status(404).end(JSON.stringify(err));
