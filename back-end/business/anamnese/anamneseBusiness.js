@@ -6,6 +6,7 @@ let Consumo =       require("../../models/consumoModel");
 let serverInfo =    require("../../config/server");
 
 
+
 //Cria um anamnese completa salvando cliente, anamnese e (remedio, doença, consumos)
 exports.criarAnamneseCompleta = function(dat){
     return new Promise(function(resolve,reject){
@@ -40,7 +41,9 @@ exports.criarAnamneseCompleta = function(dat){
             var urlServer = serverInfo.serverUrl + '/uploads/'+nCliente._id+'.jpeg';
             //Grava a foto
             require("fs").writeFile(urlPhoto, base64Foto, 'base64', function(err) {
-                reject({"status":false, "message":"Erro ao salvar a foto", "error": err});
+                if (err){
+                    reject({"status":false, "message":"Erro ao salvar a foto", "error": err});
+                }
             });
             nCliente.foto = urlServer;
         }

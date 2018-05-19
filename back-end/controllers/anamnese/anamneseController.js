@@ -2,6 +2,8 @@ var bodyParser =        require('body-parser');
 var mongoose =          require('mongoose');
 var anamneseBusiness =  require('../../business/anamnese/anamneseBusiness');
 const ObjectId =        mongoose.Types.ObjectId;
+var jwt =               require('jwt-simple');
+let jwtInfo =           require("../../config/jwt.json");
 
 module.exports = function(app) {
 
@@ -12,6 +14,7 @@ module.exports = function(app) {
         }
         else{
             anamneseBusiness.criarAnamneseCompleta(req.body).then(function(response){          
+                res.header('jwt', [jwt.encode(response, jwtInfo.secret)]);
                 res.end(JSON.stringify(response));
             }).catch(function(err){
                 res.end(JSON.stringify(err));
