@@ -9,6 +9,8 @@ module.exports = function(app) {
 
     app.post('/api/postagens/save', function(req, res){
         console.log("/api/postagens/save");
+        console.log(req.headers['jwt']);
+        console.log(req.body);
         jwt.verify(req.headers['jwt'], jwtInfo.secret, function(err, decoded) {
             if(err){
                 res.end(JSON.stringify('token inválido bicho'));
