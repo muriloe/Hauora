@@ -35,9 +35,37 @@ exports.criarComentario = function(clienteId, comentario) {
 }
 
 exports.obterComentariosDePostagem = function(idPostOuConsulta) {
+    console.log(idPostOuConsulta);
+    /*return new Promise(function(resolve,reject){
+        Comentario.aggregate([
+            { $match : {postagem_id: ObjectId(idPostOuConsulta)}
+        },
+
+
+        ],function (err, comentario){
+            if (err){
+                throw err;
+                reject({"status":false, "message":"Erro ao ovter postagem", "error": err});
+            } 
+
+            console.log(comentario);
+            resolve(comentario);   
+        } );
+    });*/
 
     return new Promise(function(resolve,reject){
-        Comentario.find({postagem_id: idPostOuConsulta }, 
+        
+        Comentario.aggregate([
+            { $match : {postagem_id: ObjectId(idPostOuConsulta)}},
+            { $lookup:
+                {
+                    from: 'pessoas',
+                    localField: 'usuario_id',
+                    foreignField: '_id',
+                    as: 'cliente'
+                }
+            },
+        ],
             function (err, comentarioPost){
                 if (err){
                     throw err;
@@ -48,7 +76,17 @@ exports.obterComentariosDePostagem = function(idPostOuConsulta) {
                     resolve(comentarioPost);   
                 }
                 else{
-                    Comentario.find({consulta_id: idPostOuConsulta }, 
+                    Comentario.aggregate([
+                        { $match : {consulta_id: ObjectId(idPostOuConsulta)}},
+                        { $lookup:
+                            {
+                                from: 'pessoas',
+                                localField: 'usuario_id',
+                                foreignField: '_id',
+                                as: 'cliente'
+                            }
+                        },
+                    ], 
                         function (err, comentarioConsulta){
                             if (err) throw err;
                             //Se for maior que zero significa que o comentário é de uma consulta
@@ -56,7 +94,7 @@ exports.obterComentariosDePostagem = function(idPostOuConsulta) {
                                 resolve(comentarioConsulta);   
                             }
                             else{
-                                reject({});
+                                reject({"status":false, "message":"Erro ao obter comentario(2)", "error": err});
                             }
                         } );
                 }

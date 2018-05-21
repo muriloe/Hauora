@@ -5,6 +5,7 @@ let Consulta =          require("../../models/consultaModel");
 let Cardapio =          require("../../models/cardapioModel");
 let Composicao =        require("../../models/composicaoModel");
 var nodemailer =        require('nodemailer');
+const ObjectId = mongoose.Types.ObjectId;
 
 
 exports.salvarConsulta = function(data){
@@ -299,7 +300,17 @@ function enviarEmail(clienteId) {
 
 exports.obterConsultas = function(clienteId){
     return new Promise(function(resolve, reject){
-        Consulta.find({cliente: clienteId }, 
+        Consulta.aggregate([
+            { $match : {cliente: ObjectId(clienteId)}},
+            { $lookup:
+                {
+                    from: 'pessoas',
+                    localField: 'nutricionista',
+                    foreignField: '_id',
+                    as: 'nutricionista'
+                }
+            },
+        ], 
             function (err, consulta){
                 if (err){
                     throw err;
