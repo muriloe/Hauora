@@ -296,3 +296,18 @@ function enviarEmail(clienteId) {
 
     
 }
+
+exports.obterConsultas = function(clienteId){
+    return new Promise(function(resolve, reject){
+        Consulta.find({cliente: clienteId }, 
+            function (err, consulta){
+                if (err){
+                    throw err;
+                    reject({"status":false, "message":"Erro ao obter consultas", "error": err});
+                } 
+                else{
+                    resolve(consulta);
+                }
+            } );
+    });
+}
