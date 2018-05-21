@@ -49,6 +49,18 @@ exports.obterComentariosDePostagem = function(idPostOuConsulta) {
                     as: 'cliente'
                 }
             },
+            {
+                $project: {
+                    _id: 1,
+                    data: 1,
+                    postagem_id: 1,
+                    texto: 1,
+                    usuario_id: 1,
+                    __v: 1,
+                    cliente: {$arrayElemAt:["$cliente",0]},
+                }
+            }
+            
         ],
             function (err, comentarioPost){
                 if (err){

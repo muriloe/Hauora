@@ -331,7 +331,7 @@ exports.obterConsultas = function(clienteId){
                     percentualGordura: 1,
                     imc: 1,
                     deficiencias: 1,
-                    nutricionista: 1,
+                    nutricionista: {$arrayElemAt:["$nutricionista",0]},
                     cliente: 1,
                     totalComentarios : {$size:"$comentarios"},
                 }
