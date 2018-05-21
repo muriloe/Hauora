@@ -299,6 +299,8 @@ function enviarEmail(clienteId) {
 }
 
 exports.obterConsultas = function(clienteId){
+    var totalComentarios;
+    
     return new Promise(function(resolve, reject){
         Consulta.aggregate([
             { $match : {cliente: ObjectId(clienteId)}},
@@ -310,6 +312,30 @@ exports.obterConsultas = function(clienteId){
                     as: 'nutricionista'
                 }
             },
+            { $lookup:
+                {
+                    from: 'comentarios',
+                    localField: '_id',
+                    foreignField: 'consulta_id',
+                    as: 'comentarios'
+                }
+            },
+            {
+                $project: {
+                    _id: 1,
+                    data: 1,
+                    linkExames: 1,
+                    linkRelatorio: 1,
+                    peso: 1,
+                    pesoIdeal: 1,
+                    percentualGordura: 1,
+                    imc: 1,
+                    deficiencias: 1,
+                    nutricionista: 1,
+                    cliente: 1,
+                    totalComentarios : {$size:"$comentarios"},
+                }
+            }
         ], 
             function (err, consulta){
                 if (err){

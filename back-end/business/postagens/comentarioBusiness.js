@@ -36,22 +36,6 @@ exports.criarComentario = function(clienteId, comentario) {
 
 exports.obterComentariosDePostagem = function(idPostOuConsulta) {
     console.log(idPostOuConsulta);
-    /*return new Promise(function(resolve,reject){
-        Comentario.aggregate([
-            { $match : {postagem_id: ObjectId(idPostOuConsulta)}
-        },
-
-
-        ],function (err, comentario){
-            if (err){
-                throw err;
-                reject({"status":false, "message":"Erro ao ovter postagem", "error": err});
-            } 
-
-            console.log(comentario);
-            resolve(comentario);   
-        } );
-    });*/
 
     return new Promise(function(resolve,reject){
         

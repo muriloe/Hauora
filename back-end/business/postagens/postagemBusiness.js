@@ -3,6 +3,7 @@ let Postagem =      require("../../models/postagemModel");
 let Consumo =       require("../../models/consumoModel");   
 let Exercicio =     require("../../models/exercicioModel");
 let Duvida =        require("../../models/duvidaModel");
+let Comentario =    require("../../models/comentarioModel");
 let serverInfo =    require("../../config/server");
 var mongoose =      require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
@@ -100,7 +101,7 @@ exports.criarPostagem = function(clienteId, postagem){
 exports.obterPostagensUsuario = function(clienteId){
     
     return new Promise(function(resolve,reject){
-        var listaExercicios;
+        var listaPostagem;
         
         Postagem.aggregate([
             { $match : {usuario_id: ObjectId(clienteId)}
@@ -129,6 +130,14 @@ exports.obterPostagensUsuario = function(clienteId){
                     as: 'consumo'
                 }
             },
+            { $lookup:
+                {
+                    from: 'comentarios',
+                    localField: '_id',
+                    foreignField: 'postagem_id',
+                    as: 'comentarios'
+                }
+            },
 
             {
                 //Project é usado para montar o resultado da query
@@ -140,17 +149,25 @@ exports.obterPostagensUsuario = function(clienteId){
                     duvida: {$arrayElemAt:["$duvida",0]},
                     linkFoto: 1,
                     usuario_id: 1,
+                    totalComentarios : {$size:"$comentarios"},
                 }
             },
-        ],function (err, exercicios){
+        ],function (err, postagem){
             if (err){
                 throw err;
                 reject({"status":false, "message":"Erro ao ovter postagem", "error": err});
             } 
-            this.listaExercicios = exercicios;
-            console.log(this.listaExercicios);
-            resolve(exercicios);   
+            console.log(this.postagem);
+            resolve(postagem);   
         } );
 
     });
+
+    function testes (idPostagem){
+        console.log(idPostagem);
+        Comentario.count({postagem_id: idPostagem}, function(err, c) {
+            console.log('Count is ' + c);
+            return c;
+       });
+    }
 }
