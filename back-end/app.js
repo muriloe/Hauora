@@ -40,5 +40,5 @@ comentarioController(app);
 
 //Fim: Inicia as API's
 
-app.listen(port);
+app.listen(process.env.PORT, process.env.IP);
 

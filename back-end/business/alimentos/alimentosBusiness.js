@@ -29,4 +29,28 @@ exports.getAlimentos = function(dat) {
     });
 }
 
+exports.getGruposAlimentos = function(dat) {
+    return new Promise(function(resolve,reject){
+        Grupo.aggregate([
+            { $match : {}},
+            { $lookup:
+                {
+                    from: 'alimentos',
+                    localField: '_id',
+                    foreignField: 'grupo',
+                    as: 'alimento'
+                }
+            },
 
+            
+        ], function(err, grupo){
+            if (err){
+                reject({"status":false, "message":"Erro ao obter grupos", "error": err});
+            }
+            else{
+                console.log("sucesso ao obter grupo da bussiness");
+                resolve({ grupo });       
+            }
+        });
+    });
+}

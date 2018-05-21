@@ -26,5 +26,15 @@ module.exports = function(app) {
         });  
         
     });
+    
+    app.get('/api/grupos/mobile', function(req, res, next){
+        console.log("Buscando por alimentos e gruposo");
+        alimentosBusiness.getGruposAlimentos(req.params.grupoId).then(function(response){          
+            res.end(JSON.stringify(response));
+        }).catch(function(err){
+            res.end(JSON.stringify(err));
+        });  
+        
+    });
 
 }
