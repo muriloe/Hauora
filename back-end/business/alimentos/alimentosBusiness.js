@@ -38,7 +38,7 @@ exports.getGruposAlimentos = function(dat) {
                     from: 'alimentos',
                     localField: '_id',
                     foreignField: 'grupo',
-                    as: 'alimento'
+                    as: 'alimentos'
                 }
             },
 

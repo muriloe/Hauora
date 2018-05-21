@@ -19,13 +19,13 @@ exports.criarComentario = function(clienteId, comentario) {
             nutricionista_id: comentario.nutricionista_id,
         });
 
-        /*
-        if(comentario.postagem.id !== null){
+        
+        if(comentario.postagem.id){
             nComentario.postagem_id = comentario.postagem.id;
         }
-        if(comentario.consulta.id !== null){
+        if(comentario.consulta.id){
             nComentario.consulta_id = comentario.consulta.id;
-        }*/
+        }
 
         nComentario.save(function (err, results) {
             console.log("iniciando salvação de comentario");
