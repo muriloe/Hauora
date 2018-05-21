@@ -19,13 +19,13 @@ exports.criarComentario = function(clienteId, comentario) {
             nutricionista_id: comentario.nutricionista_id,
         });
 
-        // Mobile manda assim:
+        /*
         if(comentario.postagem.id !== null){
             nComentario.postagem_id = comentario.postagem.id;
         }
         if(comentario.consulta.id !== null){
             nComentario.consulta_id = comentario.consulta.id;
-        }
+        }*/
 
         nComentario.save(function (err, results) {
             console.log("iniciando salvação de comentario");
