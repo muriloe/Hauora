@@ -19,7 +19,7 @@ exports.criarComentario = function(clienteId, comentario) {
             nutricionista_id: comentario.nutricionista_id,
         });
 
-        
+        console.log(comentario);
         if(comentario.hasOwnProperty('postagem')){
             console.log('tem atributo postagem.id');
             nComentario.postagem_id = comentario.postagem.id;
