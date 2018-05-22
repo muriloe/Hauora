@@ -19,7 +19,7 @@ exports.criarComentario = function(clienteId, comentario) {
             nutricionista_id: comentario.nutricionista_id,
         });
 
-        console.log(comentario);
+        
         if(comentario.hasOwnProperty('postagem')){
             console.log('tem atributo postagem.id');
             nComentario.postagem_id = comentario.postagem._id;
@@ -39,6 +39,7 @@ exports.criarComentario = function(clienteId, comentario) {
             }
             else{
                 console.log("Salvou comentario");
+                console.log(results);
                 resolve({ "comentario":results });   
             }
         });
