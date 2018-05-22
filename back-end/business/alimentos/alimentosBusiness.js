@@ -49,7 +49,7 @@ exports.getGruposAlimentos = function(dat) {
             }
             else{
                 console.log("sucesso ao obter grupo da bussiness");
-                resolve({ grupo });       
+                resolve(grupo);       
             }
         });
     });
