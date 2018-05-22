@@ -19,19 +19,17 @@ exports.criarComentario = function(clienteId, comentario) {
             nutricionista_id: comentario.nutricionista_id,
         });
 
-        console.log('comentario');
-        console.log(comentario);
-        console.log('comentario.postagem');
-        console.log(comentario.postagem);
-        console.log('comentario.postagem.id');
-        console.log(comentario.postagem.id);
         
-        if(comentario.postagem.id){
+        if(comentario.hasOwnProperty('postagem.id')){
+            console.log('tem atributo postagem.id');
             nComentario.postagem_id = comentario.postagem.id;
         }
-        if(comentario.consulta.id){
+        if(comentario.hasOwnProperty('consulta.id')){
+            console.log('tem atributo consulta.id');
             nComentario.consulta_id = comentario.consulta.id;
         }
+
+        console.log('a3');
 
         nComentario.save(function (err, results) {
             console.log("iniciando salvação de comentario");
