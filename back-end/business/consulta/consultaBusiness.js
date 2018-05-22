@@ -346,6 +346,7 @@ exports.obterConsultas = function(clienteId){
                     linkRelatorio: 1,
                     peso: 1,
                     pesoIdeal: 1,
+                    altura: 1,
                     percentualGordura: 1,
                     imc: 1,
                     deficiencias: 1,

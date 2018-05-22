@@ -92,7 +92,7 @@ exports.criarPostagem = function(clienteId, postagem){
             }
             else{
                 console.log("Salvou postagem");
-                resolve({ "status":true,"postagem":results });   
+                resolve(results);   
             }
         });
     });
