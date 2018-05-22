@@ -19,6 +19,12 @@ exports.criarComentario = function(clienteId, comentario) {
             nutricionista_id: comentario.nutricionista_id,
         });
 
+        console.log('comentario');
+        console.log(comentario);
+        console.log('comentario.postagem');
+        console.log(comentario.postagem);
+        console.log('comentario.postagem.id');
+        console.log(comentario.postagem.id);
         
         if(comentario.postagem.id){
             nComentario.postagem_id = comentario.postagem.id;
