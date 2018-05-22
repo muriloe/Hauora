@@ -78,7 +78,7 @@ exports.obterComentariosDePostagem = function(idPostOuConsulta) {
             function (err, comentarioPost){
                 if (err){
                     throw err;
-                    reject({"status":false, "message":"Erro ao obter comentario", "error": err});
+                    reject(comentarioPost);
                 } 
                 //Se for maior que zero significa que o comentário é de uma postagem
                 if(comentarioPost.length > 0){
@@ -103,7 +103,7 @@ exports.obterComentariosDePostagem = function(idPostOuConsulta) {
                                 resolve(comentarioConsulta);   
                             }
                             else{
-                                reject({"status":false, "message":"Erro ao obter comentario(2)", "error": err});
+                                reject(comentarioConsulta);
                             }
                         } );
                 }
