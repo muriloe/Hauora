@@ -28,7 +28,7 @@ exports.salvarConsulta = function(data){
 
         consulta.data = dataConsulta;
 
-        if(dadosConsulta.composicoesCafeDaManha != null){
+        if(dadosConsulta.composicoesCafeDaManha.length > 0){
             console.log("Criando café da manhã"); 
             cardapioCafeDaManha.data = dataConsulta;
             cardapioCafeDaManha.usuario_id = dadosConsulta.consulta.cliente;
@@ -45,7 +45,7 @@ exports.salvarConsulta = function(data){
             });
         }
 
-        if(dadosConsulta.composicoesLancheDaManha != null){
+        if(dadosConsulta.composicoesLancheDaManha.length > 0){
             console.log("Criando composicoesLancheDaManha:"); 
             cardapioLancheDaManha.data = dataConsulta;
             cardapioLancheDaManha.usuario_id = dadosConsulta.consulta.cliente;
@@ -61,7 +61,7 @@ exports.salvarConsulta = function(data){
             });
         }
 
-        if(dadosConsulta.composicoesAlmoco != null){
+        if(dadosConsulta.composicoesAlmoco.length > 0){
             console.log("Criando composicoesAlmoco:"); 
             cardapioAlmoco.data = dataConsulta;
             cardapioAlmoco.usuario_id = dadosConsulta.consulta.cliente;
@@ -77,7 +77,7 @@ exports.salvarConsulta = function(data){
             });
         }
 
-        if(dadosConsulta.composicoesLanche != null){
+        if(dadosConsulta.composicoesLanche.length > 0){
             console.log("Criando composicoesLanche:"); 
             cardapioLanche.data = dataConsulta;
             cardapioLanche.usuario_id = dadosConsulta.consulta.cliente;
@@ -93,7 +93,7 @@ exports.salvarConsulta = function(data){
             });
         }
 
-        if(dadosConsulta.composicoesJanta != null){
+        if(dadosConsulta.composicoesJanta.length > 0){
             console.log("Criando composicoesJanta:"); 
             cardapioJanta.data = dataConsulta;
             cardapioJanta.usuario_id = dadosConsulta.consulta.cliente;
@@ -109,60 +109,70 @@ exports.salvarConsulta = function(data){
             });
         }
 
-        cardapioCafeDaManha.save(function (err, results) {
-            console.log("iniciando salvção da cardapioCafeDaManha");
-            if(err) {
-                console.log("Erro ao salvar cardapioCafeDaManha");  
-                reject({"status":false, "message":"Erro ao salvar cardapioCafeDaManha", "error": err});
-            }
-            else{
-                console.log("cardapioCafeDaManha Salvo");  
-            }
-        });
+        if(dadosConsulta.composicoesCafeDaManha.length > 0){
+            cardapioCafeDaManha.save(function (err, results) {
+                console.log("iniciando salvção da cardapioCafeDaManha");
+                if(err) {
+                    console.log("Erro ao salvar cardapioCafeDaManha");  
+                    reject({"status":false, "message":"Erro ao salvar cardapioCafeDaManha", "error": err});
+                }
+                else{
+                    console.log("cardapioCafeDaManha Salvo");  
+                }
+            });
+        }
 
-        cardapioLancheDaManha.save(function (err, results) {
-            console.log("iniciando salvção da cardapioLancheDaManha");
-            if(err) {
-                console.log("Erro ao salvar cardapioLancheDaManha");  
-                reject({"status":false, "message":"Erro ao salvar cardapioLancheDaManha", "error": err});
-            }
-            else{
-                console.log("cardapioLancheDaManha Salvo");  
-            }
-        });
+        if(dadosConsulta.composicoesLancheDaManha.length > 0){
+            cardapioLancheDaManha.save(function (err, results) {
+                console.log("iniciando salvção da cardapioLancheDaManha");
+                if(err) {
+                    console.log("Erro ao salvar cardapioLancheDaManha");  
+                    reject({"status":false, "message":"Erro ao salvar cardapioLancheDaManha", "error": err});
+                }
+                else{
+                    console.log("cardapioLancheDaManha Salvo");  
+                }
+            });
+        }
 
-        cardapioAlmoco.save(function (err, results) {
-            console.log("iniciando salvção da cardapioAlmoco");
-            if(err) {
-                console.log("Erro ao salvar cardapioAlmoco");  
-                reject({"status":false, "message":"Erro ao salvar cardapioAlmoco", "error": err});
-            }
-            else{
-                console.log("cardapioAlmoco Salvo");  
-            }
-        });
+        if(dadosConsulta.composicoesAlmoco.length > 0){
+            cardapioAlmoco.save(function (err, results) {
+                console.log("iniciando salvção da cardapioAlmoco");
+                if(err) {
+                    console.log("Erro ao salvar cardapioAlmoco");  
+                    reject({"status":false, "message":"Erro ao salvar cardapioAlmoco", "error": err});
+                }
+                else{
+                    console.log("cardapioAlmoco Salvo");  
+                }
+            });
+        }
 
-        cardapioLanche.save(function (err, results) {
-            console.log("iniciando salvção da cardapioLanche");
-            if(err) {
-                console.log("Erro ao salvar cardapioLanche");  
-                reject({"status":false, "message":"Erro ao salvar cardapioLanche", "error": err});
-            }
-            else{
-                console.log("cardapioLanche Salvo");  
-            }
-        });
+        if(dadosConsulta.composicoesLanche.length > 0){
+            cardapioLanche.save(function (err, results) {
+                console.log("iniciando salvção da cardapioLanche");
+                if(err) {
+                    console.log("Erro ao salvar cardapioLanche");  
+                    reject({"status":false, "message":"Erro ao salvar cardapioLanche", "error": err});
+                }
+                else{
+                    console.log("cardapioLanche Salvo");  
+                }
+            });
+        }
 
-        cardapioJanta.save(function (err, results) {
-            console.log("iniciando salvção da cardapioJanta");
-            if(err) {
-                console.log("Erro ao salvar cardapioJanta");  
-                reject({"status":false, "message":"Erro ao salvar cardapioJanta", "error": err});
-            }
-            else{
-                console.log("cardapioJanta Salvo");  
-            }
-        });
+        if(dadosConsulta.composicoesJanta.length > 0){
+            cardapioJanta.save(function (err, results) {
+                console.log("iniciando salvção da cardapioJanta");
+                if(err) {
+                    console.log("Erro ao salvar cardapioJanta");  
+                    reject({"status":false, "message":"Erro ao salvar cardapioJanta", "error": err});
+                }
+                else{
+                    console.log("cardapioJanta Salvo");  
+                }
+            });
+        }
 
         for(var i = 0; i< listaComposicaoCafeDaManha.length; i++){
             console.log("iniciando salvção de listaComposicaoCafeDaManha");
@@ -178,61 +188,69 @@ exports.salvarConsulta = function(data){
             });
         }
 
-        for(var i = 0; i< listaComposicaoLancheDaManha.length; i++){
-            console.log("iniciando salvção de listaComposicaoLancheDaManha");
-            composicao = new Composicao(listaComposicaoLancheDaManha[i]);
-            composicao.save(function (err, results) {
-                if(err) {
-                    console.log("Erro ao salvar listaComposicaoLancheDaManha "+ i); 
-                    reject({"status":false, "message":"Erro ao salvar listaComposicaoLancheDaManha", "error": err});
-                }
-                else{
-                    console.log("Salvou listaComposicaoLancheDaManha");
-                }
-            });
+        if(dadosConsulta.composicoesLancheDaManha.length > 0){
+            for(var i = 0; i< listaComposicaoLancheDaManha.length; i++){
+                console.log("iniciando salvção de listaComposicaoLancheDaManha");
+                composicao = new Composicao(listaComposicaoLancheDaManha[i]);
+                composicao.save(function (err, results) {
+                    if(err) {
+                        console.log("Erro ao salvar listaComposicaoLancheDaManha "+ i); 
+                        reject({"status":false, "message":"Erro ao salvar listaComposicaoLancheDaManha", "error": err});
+                    }
+                    else{
+                        console.log("Salvou listaComposicaoLancheDaManha");
+                    }
+                });
+            }
         }
 
-        for(var i = 0; i< listaComposicaoAlmoco.length; i++){
-            console.log("iniciando salvção de listaComposicaoAlmoco");
-            composicao = new Composicao(listaComposicaoAlmoco[i]);
-            composicao.save(function (err, results) {
-                if(err) {
-                    console.log("Erro ao salvar listaComposicaoAlmoco "+ i); 
-                    reject({"status":false, "message":"Erro ao salvar listaComposicaoAlmoco", "error": err});
-                }
-                else{
-                    console.log("Salvou listaComposicaoAlmoco");
-                }
-            });
+        if(dadosConsulta.composicoesAlmoco.length > 0){
+            for(var i = 0; i< listaComposicaoAlmoco.length; i++){
+                console.log("iniciando salvção de listaComposicaoAlmoco");
+                composicao = new Composicao(listaComposicaoAlmoco[i]);
+                composicao.save(function (err, results) {
+                    if(err) {
+                        console.log("Erro ao salvar listaComposicaoAlmoco "+ i); 
+                        reject({"status":false, "message":"Erro ao salvar listaComposicaoAlmoco", "error": err});
+                    }
+                    else{
+                        console.log("Salvou listaComposicaoAlmoco");
+                    }
+                });
+            }
         }
 
-        for(var i = 0; i< listaComposicaoLanche.length; i++){
-            console.log("iniciando salvção de listaComposicaoLanche");
-            composicao = new Composicao(listaComposicaoLanche[i]);
-            composicao.save(function (err, results) {
-                if(err) {
-                    console.log("Erro ao salvar listaComposicaoLanche "+ i); 
-                    reject({"status":false, "message":"Erro ao salvar listaComposicaoLanche", "error": err});
-                }
-                else{
-                    console.log("Salvou listaComposicaoLanche");
-                }
-            });
+        if(dadosConsulta.composicoesLanche.length > 0){
+            for(var i = 0; i< listaComposicaoLanche.length; i++){
+                console.log("iniciando salvção de listaComposicaoLanche");
+                composicao = new Composicao(listaComposicaoLanche[i]);
+                composicao.save(function (err, results) {
+                    if(err) {
+                        console.log("Erro ao salvar listaComposicaoLanche "+ i); 
+                        reject({"status":false, "message":"Erro ao salvar listaComposicaoLanche", "error": err});
+                    }
+                    else{
+                        console.log("Salvou listaComposicaoLanche");
+                    }
+                });
+            }
         }
 
-        for(var i = 0; i< listaComposicaoJanta.length; i++){
-            console.log("iniciando salvção de listaComposicaoJanta");
-            composicao = new Composicao(listaComposicaoJanta[i]);
-            composicao.save(function (err, results) {
-                if(err) {
-                    console.log("Erro ao salvar listaComposicaoJanta "+ i); 
-                    reject({"status":false, "message":"Erro ao salvar listaComposicaoJanta", "error": err});
-                }
-                else{
-                    console.log("Salvou listaComposicaoJanta");
-                        
-                }
-            });
+        if(dadosConsulta.composicoesJanta.length > 0){
+            for(var i = 0; i< listaComposicaoJanta.length; i++){
+                console.log("iniciando salvção de listaComposicaoJanta");
+                composicao = new Composicao(listaComposicaoJanta[i]);
+                composicao.save(function (err, results) {
+                    if(err) {
+                        console.log("Erro ao salvar listaComposicaoJanta "+ i); 
+                        reject({"status":false, "message":"Erro ao salvar listaComposicaoJanta", "error": err});
+                    }
+                    else{
+                        console.log("Salvou listaComposicaoJanta");
+                            
+                    }
+                });
+            }
         }
 
         consulta.save(function (err, results) {
