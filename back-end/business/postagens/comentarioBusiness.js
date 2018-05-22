@@ -22,11 +22,11 @@ exports.criarComentario = function(clienteId, comentario) {
         console.log(comentario);
         if(comentario.hasOwnProperty('postagem')){
             console.log('tem atributo postagem.id');
-            nComentario.postagem_id = comentario.postagem.id;
+            nComentario.postagem_id = comentario.postagem._id;
         }
         if(comentario.hasOwnProperty('consulta')){
             console.log('tem atributo consulta.id');
-            nComentario.consulta_id = comentario.consulta.id;
+            nComentario.consulta_id = comentario.consulta._id;
         }
 
         console.log('a3');
