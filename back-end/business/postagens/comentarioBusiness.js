@@ -20,11 +20,11 @@ exports.criarComentario = function(clienteId, comentario) {
         });
 
         
-        if(comentario.hasOwnProperty('postagem.id')){
+        if(comentario.hasOwnProperty('postagem')){
             console.log('tem atributo postagem.id');
             nComentario.postagem_id = comentario.postagem.id;
         }
-        if(comentario.hasOwnProperty('consulta.id')){
+        if(comentario.hasOwnProperty('consulta')){
             console.log('tem atributo consulta.id');
             nComentario.consulta_id = comentario.consulta.id;
         }
