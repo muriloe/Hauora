@@ -16,6 +16,7 @@ exports.criarComentario = function(clienteId, comentario) {
             link_arquivo: comentario.link_arquivo,
             usuario_id: clienteId,
             consulta_id: comentario.consulta_id,
+            data: Date.now(),
             nutricionista_id: comentario.nutricionista_id,
         });
 
