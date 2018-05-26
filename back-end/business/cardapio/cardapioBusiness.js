@@ -22,6 +22,36 @@ exports.obterCardapioPorIdUsuario = function(clienteId){
                     as: "composicoes"
                   }
             },
+            { $unwind: "$composicoes" },
+            {
+                $lookup:
+                  {
+                    from: "grupos",
+                    localField: "composicoes.grupo",
+                    foreignField: "_id",
+                    as: "composicoes.grupo"
+                  }
+            },
+            {
+                $group : {
+                   _id :  "$_id" ,
+                   data : {$first: "$data"},
+                   tipo : {$first: "$tipo"},
+                   composicoes : {$push: "$composicoes"}
+                }
+            },
+            {
+                $project : {
+                    _id: 1,
+                    data: 1,
+                    tipo: 1,
+                    composicoes: {
+                        quantidade: 1,
+                        grupo: 1
+                    }
+                }
+            }
+
             
 
            
