@@ -33,34 +33,31 @@ exports.obterCardapioPorIdUsuario = function(clienteId){
                   }
             },
             {
-                $group : {
-                   _id :  "$_id" ,
-                   data : {$first: "$data"},
-                   tipo : {$first: "$tipo"},
-                   composicoes : {$push: "$composicoes"}
-                }
-            },
-            {
                 $project : {
                     _id: 1,
                     data: 1,
                     tipo: 1,
                     composicoes: {
                         quantidade: 1,
-                        grupo: 1
+                        grupo: {$arrayElemAt:["$composicoes.grupo",0]}
                     }
                 }
-            }
-
-            
-
+            },
+            {
+                $group : {
+                   _id :  "$_id" ,
+                   data : {$first: "$data"},
+                   tipo : {$first: "$tipo"},
+                   composicoes : {$push: "$composicoes"},
+                }
+            },
            
         ],function (err, cardapio){
             if (err){
                 throw err;
                 reject({"status":false, "message":"Erro ao ovter cardapio", "error": err});
             } 
-            console.log(this.cardapio);
+
             resolve(cardapio);   
         } );
     });
