@@ -25,4 +25,22 @@ module.exports = function(app) {
         
     });
 
+    app.get('/api/cardapios/novo', function(req, res){
+        console.log("/api/cardapios/novo");
+        jwt.verify(req.headers['jwt'], jwtInfo.secret, function(err, decoded) {
+            if(err){
+                res.end(JSON.stringify('token inválido bicho'));
+            }else {
+                let clienteId = decoded._id;
+                console.log("Token Valido, id_cliente:" + decoded._id);
+                cardapioBusiness.novoCardapio(clienteId).then(function(response){
+                    res.end(JSON.stringify(response));
+                }).catch(function(err){
+                    res.end(JSON.stringify(err));
+                });
+            }
+        });
+        
+    });
+
 }

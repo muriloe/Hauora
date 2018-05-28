@@ -4,6 +4,7 @@ let Composicao =    require("../../models/composicaoModel");
 let Grupo =         require("../../models/grupoModel");
 let Alimento =      require("../../models/alimentoModel");
 let serverInfo =    require("../../config/server");
+let Notificacao =      require("../../models/notificaoModel");
 var mongoose =      require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
@@ -60,5 +61,37 @@ exports.obterCardapioPorIdUsuario = function(clienteId){
 
             resolve(cardapio);   
         } );
+    });
+}
+
+
+exports.novoCardapio = function(clienteId){
+
+    return new Promise(function(resolve,reject){
+        Cliente.findById({_id: clienteId }, 
+            function (err, cliente){
+                if (err){
+                    throw err;
+                    reject({"status":false, "message":"Erro ao ovter cardapio", "error": err});
+                }
+                else{
+                    var mensagem = 'Usuário '+cliente.nome+ ' do email ' +cliente.email+ ' solicitou um novo cardápio';
+                    var notificacao = new Notificacao({
+                        texto: mensagem,
+                        cliente: cliente._id
+                    });
+                    notificacao.save(function (err, results) {
+                        console.log("iniciando salvção de notificacao");
+                        if(err) {
+                            console.log("Erro ao salvar notificacao");  
+                            reject({"status":false, "message":"Erro ao salvar notificacao", "error": err});
+                        }
+                        else{
+                            resolve(notificacao);  
+                        }
+                    });
+                    
+                }
+            });
     });
 }

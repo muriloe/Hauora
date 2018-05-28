@@ -54,50 +54,9 @@ exports.recuperarSenha = function(email){
           });
 
 
-        resolve('nhasjkadghaskj');   
-    });
-}
-
-function enviarEmail(clienteId) {
-    console.log("------------------enviando email ");
-    let senha = '123456';
-    const novaSenha = {
-        senha: senha,
-        acesso: true,
-    };
-    Cliente.update({_id: clienteId}, novaSenha, function(err, raw) {
-        if (err) {
-          console.log("erro ao mudar senha: " + err);
+        const retorno = {
+          retorno: "deu boa rapaiz do ceu me deus eu não acredito nisso!"
         }
-        console.log("informações de usuário atualizadas: " + raw);
+        resolve(retorno);   
     });
-
-    Cliente.findById({_id: clienteId }, 
-        function (err, pessoa){
-            var transporter = nodemailer.createTransport({
-                service: 'gmail',
-                auth: {
-                  user: 'hauoranutri@gmail.com',
-                  pass: 'S0uMongo'
-                }
-              });
-              
-              var mailOptions = {
-                from: 'hauoraNutri@gmail.com',
-                to: pessoa.email,
-                subject: 'Sua conta está ativa!!!',
-                html: '<font color="black">Obrigado por fazer uma consulta com o <font color="#3b5998"><b><i>Hauora</i><b></font>, '+
-                       'sua senha de acesso no aplicativo é: <b>'+senha + '<b><br><br>Vamos juntos atingir seu objetivo!</font>'
-              };
-              
-              transporter.sendMail(mailOptions, function(error, info){
-                if (error) {
-                  console.log(error);
-                } else {
-                  console.log('Email sent: ' + info.response);
-                }
-              });
-    } );
-
-    
 }
