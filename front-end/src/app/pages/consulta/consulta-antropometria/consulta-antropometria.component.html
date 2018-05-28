@@ -45,7 +45,7 @@
                             <div class="row">
                                 <div class="col-md-4 bottom-spacing">
                                     <div class="">
-                                        <label>Peso (kg) {{peso}}</label>
+                                        <label>Peso (kg)</label>
                                         <input  [(ngModel)]="peso" [class.form-control-danger]="validadorPeso" (keyup)="calculaIMC(); validadorPeso=false" type="number" min="0" placeholder="KG" class="form-control"/>
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="col-md-4 bottom-spacing">
                                     <div class="">
-                                        <label>% de gordura</label>{{gordura}}
+                                        <label>% de gordura</label>
                                         <input [(ngModel)]="gordura" [class.form-control-danger]="validadorGordura" (keyup)="calculaIMC(); validadorGordura=false" type="number" min="0" placeholder="%" class="form-control"/>
                                     </div>
                                 </div>

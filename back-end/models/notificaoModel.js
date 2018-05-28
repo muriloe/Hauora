@@ -4,7 +4,8 @@ var ObjectId =  Schema.Types.ObjectId;
 
 var doencaSchema = new Schema({
     texto:       {type: String},
-    cliente:     {type: ObjectId, ref: 'Cliente', required: true}
+    cliente:     {type: ObjectId, ref: 'Cliente', required: true},
+    data:        {type: Date, default: Date.now}
 });
 
 var Notificacao = mongoose.model('Notificacoes', doencaSchema);

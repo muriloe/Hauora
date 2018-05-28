@@ -52,8 +52,8 @@ export class ConsultaService {
 
                     if (cli.foto) {
                         // tslint:disable-next-line:max-line-length
-                        const fotoCliente = cli.foto.replace('/uploads', '/uploads/min');
-                        enderecoCompletoFoto = fotoCliente;
+                        cli.foto = cli.foto.replace('/uploads', '/uploads/min');
+                        nCli.push(new Cliente(cli));
                     }
                     const cliTemp = new Cliente(cli);
                     cliTemp._id = cli._id;

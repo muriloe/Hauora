@@ -72,6 +72,7 @@ import { Router } from '@angular/router';
         this.selecionouPaciente = false;
         this.seleciouTipoRefeicao('CAFE_DA_MANHA');
         this.getGrupos();
+        
     }
 
     buscarPacientes(nomePaciente) {
