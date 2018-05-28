@@ -2,6 +2,7 @@ var bodyParser =    require('body-parser');
 var mongoose =      require('mongoose');
 var Cliente =       require('../../models/clienteModel');
 const ObjectId =    mongoose.Types.ObjectId;
+var clienteBusiness=require('../../business/cliente/clienteBusiness');
 
 module.exports = function(app) {
     
@@ -82,6 +83,17 @@ module.exports = function(app) {
                     obj: cliente
                 });
             }          
+        });
+    });
+
+    //Obtem o todas os clientes pelo id
+    app.post('/api/cliente/recuperarSenha', function(req, res, next){
+        console.log("recuperarSenha de usuário:");
+        console.log(req.body);
+        clienteBusiness.recuperarSenha(req.body.email).then(function(response){
+            res.end(JSON.stringify(response));
+        }).catch(function(err){
+            res.end(JSON.stringify(err));
         });
     });
 
