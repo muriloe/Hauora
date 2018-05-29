@@ -237,11 +237,13 @@ exports.obterTodasPostagens = function(){
                         nome: 1,
                         foto: 1
                     },
+                    data: 1,
+                    visualizado: 1,
                    // dataTemp: "$exercicio.data" || "$consumo.data" || "$duvida.data",
 
                 }
             },
-            //{$sort: {dataTemp: -1} }
+            {$sort: {data: -1} }
         ],function (err, postagem){
             if (err){
                 throw err;

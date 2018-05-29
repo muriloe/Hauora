@@ -1,5 +1,8 @@
+import { PostagemService } from './postagem.service';
+import { Postagem } from './../../shared/model/postagem.model';
 import {OnInit, Component} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
+
 
 @Component({
   selector: 'ngx-postagens',
@@ -8,13 +11,15 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 })
 
 export class PostagensComponent implements OnInit {
-    constructor(private route: ActivatedRoute) {}
+    constructor(private postagemService: PostagemService) {}
+    listaPostagens: Postagem[];
 
     ngOnInit() {
-      // TESTE DE RECEBER PARAMETROS NA URL
-      this.route.params.subscribe((params: Params) => {
-          const param1 = this.route.snapshot.queryParams['param'];
-          // console.log(param1);
-        });
+        this.postagemService.getPostagens()
+        .subscribe(
+            (listaPostagens: Postagem[]) => {
+                this.listaPostagens = listaPostagens;
+            },
+        );
     }
 }
