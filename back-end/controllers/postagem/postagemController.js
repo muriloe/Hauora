@@ -39,7 +39,21 @@ module.exports = function(app) {
                     res.end(JSON.stringify(err));
                 });
             }
-        });
-        
+        });    
     });
+
+    //Utilizado para obter todas as postagens pelo frontend
+    app.get('/api/postagens/todas', function(req, res){
+        console.log("/api/postagens/todas");
+            postagemBusiness.obterTodasPostagens().then(function(response){
+                res.status(200).json({
+                    message: 'Success',
+                    obj: response
+                });
+            }).catch(function(err){
+                res.end(JSON.stringify(err));
+            });
+    });
+
+
 }
