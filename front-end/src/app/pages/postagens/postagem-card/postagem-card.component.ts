@@ -29,6 +29,7 @@ export class PostagemCardComponent implements OnInit {
     ngOnInit() {
       this.id = this.postagem._id;
       this.data = this.postagem.data;
+      this.visualizado = this.postagem.visualizado;
       if (this.visualizado === true) {
         this.visualizadoIcon = 'assets/images/othersIcons/checkedTrue.png';
       }

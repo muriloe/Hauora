@@ -6,12 +6,14 @@ import 'rxjs/Rx';
 import { Observable } from 'rxjs';
 import { ServerInfo } from './../../shared/server';
 import { Headers } from '@angular/http';
+import { Comentario } from '../../shared/model/comentario.model';
 @Injectable()
 export class PostagemService {
     constructor(private http: Http) {}
     // Variável utlizada para armazena o endereço do servidor
     private serverUrl = new ServerInfo().getServerName();
     private postagens: Postagem[] = [];
+    private comentarios: Comentario[] = [];
 
     getPostagens () {
         return this.http.get(this.serverUrl + '/api/postagens/todas')
@@ -37,6 +39,31 @@ export class PostagemService {
             return this.http.post(this.serverUrl + '/api/statusPostagem',
             json, {headers : cabe})
                 .map(res => res.json());
+    }
+
+    obterComentarios(id) {
+        return this.http.get(this.serverUrl + '/api/comentarios/web/' + id)
+        .map((response: Response) => {
+            const comentarioResponse = response.json();
+            this.comentarios = [];
+
+            for (const comentarios of comentarioResponse) {
+                this.comentarios.push(new Comentario(comentarios));
             }
+            return this.comentarios;
+        })
+        .catch((error: Response) => Observable.throw(error));
+    }
+
+    postarComentario(idPost, idNutricionista, comentario) {
+
+        let json = JSON.stringify({postagem_id: idPost, nutricionista_id: idNutricionista, texto: comentario});
+        json = 'json=' + json;
+        const cabe = new Headers();
+        cabe.append('Content-Type', 'application/x-www-form-urlencoded');
+        return this.http.post(this.serverUrl + '/api/comentarios/web/save',
+        json, {headers : cabe})
+            .map(res => res.json());
+    }
 
 }

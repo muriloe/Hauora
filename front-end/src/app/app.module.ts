@@ -32,6 +32,8 @@ import { AlimentosCardComponent } from './pages/consulta/consulta-antropometria/
 import { NB_AUTH_TOKEN_CLASS, NbAuthJWTToken } from '@nebular/auth';
 import { AuthGuard } from './auth-guard.service';
 import { PostagemModalComponent } from './pages/postagens/postagem-card/postagem-modal/postagem-modal.component';
+// tslint:disable-next-line:max-line-length
+import { ComentarioCardComponent } from './pages/postagens/postagem-card/postagem-modal/comentario-card/comentario-card.component';
 
 @NgModule({
   declarations: [AppComponent,
@@ -40,7 +42,8 @@ import { PostagemModalComponent } from './pages/postagens/postagem-card/postagem
                 RemedioDoencaCardComponent,
                 ConsultaGruposModalComponent,
                 AlimentosCardComponent,
-                PostagemModalComponent],
+                PostagemModalComponent,
+                ComentarioCardComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

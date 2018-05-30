@@ -1,7 +1,10 @@
+import { Comentario } from './../../../../shared/model/comentario.model';
 import { PostagemService } from './../../postagem.service';
 import { Postagem } from './../../../../shared/model/postagem.model';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Nutricionista } from '../../../../shared/model/nutricionista.model';
+import { NbTokenService, NbAuthJWTToken } from '@nebular/auth';
 
 @Component({
     selector: 'ngx-postagem-modal',
@@ -10,6 +13,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class PostagemModalComponent implements OnInit {
+    nutricionista: Nutricionista;
     postagem: Postagem;
     id;
     nome;
@@ -21,11 +25,23 @@ export class PostagemModalComponent implements OnInit {
     qtdComentarios;
     visualizado= false;
     visualizadoIcon;
-    constructor(private activeModal: NgbActiveModal, private postagemService: PostagemService) { }
+    listaComentarios: Comentario[];
+    comentario;
+    validadorComentario = false;
+
+    constructor(private activeModal: NgbActiveModal,
+                private postagemService: PostagemService,
+                private service: NbTokenService) {
+                  service.get().subscribe((token: NbAuthJWTToken) => {
+                    this.nutricionista = token.getPayload();
+                  });
+                }
 
     ngOnInit(): void {
         this.id = this.postagem._id;
+        this.obterComentarios();
         this.data = this.postagem.data;
+        this.visualizado = this.postagem.visualizado;
         if (this.visualizado === true) {
           this.visualizadoIcon = 'assets/images/othersIcons/checkedTrue.png';
         }
@@ -60,6 +76,15 @@ export class PostagemModalComponent implements OnInit {
 
     }
 
+    obterComentarios() {
+      this.postagemService.obterComentarios(this.id)
+      .subscribe(
+          (listaComentarios: Comentario[]) => {
+              this.listaComentarios = listaComentarios;
+          },
+      );
+    }
+
     visualizadoClick() {
         if (this.visualizado === true) {
             this.visualizado = false;
@@ -80,6 +105,27 @@ export class PostagemModalComponent implements OnInit {
 
     closeModal() {
         this.activeModal.close();
+    }
+
+    enviarComentario() {
+      if (this.comentario == null) {
+        this.validadorComentario = true;
+      }else {
+        this.postagemService.postarComentario(this.id, this.nutricionista._id, this.comentario).subscribe(
+          (results: string[]) => {
+            this.obterComentarios();
+            this.comentario = null;
+            // tslint:disable-next-line:radix
+            if (parseInt(this.qtdComentarios)) {
+              // tslint:disable-next-line:radix
+              this.qtdComentarios = parseInt(this.qtdComentarios) + 1;
+              this.qtdComentarios = this.qtdComentarios + ' comentários';
+            } else {
+              this.qtdComentarios = '1 comentário';
+            }
+          },
+        );
+      }
     }
 
 }

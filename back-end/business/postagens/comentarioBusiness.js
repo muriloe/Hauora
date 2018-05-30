@@ -63,6 +63,14 @@ exports.obterComentariosDePostagem = function(idPostOuConsulta) {
                     as: 'cliente'
                 }
             },
+            { $lookup:
+                {
+                    from: 'pessoas',
+                    localField: 'nutricionista_id',
+                    foreignField: '_id',
+                    as: 'nutricionista'
+                }
+            },
             {
                 $project: {
                     _id: 1,
@@ -72,6 +80,7 @@ exports.obterComentariosDePostagem = function(idPostOuConsulta) {
                     usuario_id: 1,
                     __v: 1,
                     cliente: {$arrayElemAt:["$cliente",0]},
+                    nutricionista: {$arrayElemAt:["$nutricionista",0]},
                 }
             }
             
@@ -109,5 +118,44 @@ exports.obterComentariosDePostagem = function(idPostOuConsulta) {
                         } );
                 }
             } );
+    });
+}
+
+exports.criarComentarioWeb = function(comentario) {
+    let coment = (JSON.parse(comentario.json));
+    return new Promise(function(resolve,reject){
+        var nComentario = new Comentario({
+            postagem_id: coment.postagem_id,
+            texto: coment.texto,
+            consulta_id: coment.consulta_id,
+            data: Date.now(),
+            nutricionista_id: coment.nutricionista_id,
+        });
+
+        
+        if(coment.hasOwnProperty('postagem')){
+            console.log('tem atributo postagem.id');
+            nComentario.postagem_id = coment.postagem._id;
+        }
+        if(coment.hasOwnProperty('consulta')){
+            console.log('tem atributo consulta.id');
+            nComentario.consulta_id = coment.consulta._id;
+        }
+
+        console.log('a3');
+
+        nComentario.save(function (err, results) {
+            console.log("iniciando salvação de comentario WEB");
+            if(err) {
+                console.log("Erro ao salvar comentario WEB"); 
+                reject({"status":false, "message":"Erro ao salvar comentario WEB", "error": err});
+            }
+            else{
+                console.log("Salvou comentario WEB");
+                console.log(results);
+                resolve({ "comentario":results });   
+            }
+        });
+
     });
 }
