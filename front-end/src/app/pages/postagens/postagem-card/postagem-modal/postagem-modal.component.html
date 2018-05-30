@@ -2,19 +2,19 @@
     <nb-card-body>
         <div class="row">
             <div class="col-md-10">
-                <nb-user [picture]="imagem" [name]="nome" [title]="data" size="large"></nb-user>
+                <nb-user [picture]="imagem" [name]="nome" [title]="data| date: 'dd/MM/yyyy hh:mm'" size="large"></nb-user>
             </div>
             <div class="col-md-2">
-                visualizado    
+                <img [src]="visualizadoIcon" height="20" width="20" (click)="visualizadoClick()" style="float:right;">         
             </div>
         </div>    
         <div class="row">
             <br>
             <div class="col-md-1">
-                icone    
+                <img [src]="tipoIcon" height="40" width="40">      
             </div>
             <div class="col-md-11">
-            Lorem ipsum dolor sit amet, mei affert oportere peris prodesset, an dicunt scripserit definitiones sea, malorum percipit praesent nec ea. Ad sit nusquam laboramus liberavisse. Per ut omittantur ullamcorper, at mea dicta laudem praesent, utroque vivendo signiferumque at sea. Suas cetero discere has an, eu dolorem nostrum dignissim vel.
+                {{texto}}
             </div>
         </div>
         <div class="row">
@@ -23,14 +23,10 @@
                     
             </div>
             <div class="col-md-11">
-                <img [src]="imagemPost" class="img">
+                <img *ngIf="imagemPost" [src]="imagemPost" class="img imgPost">
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-10"></div>
-            <div class="col-md-1"><br><label>comentários</label></div>
-            <div class="col-md-1"></div>
-        </div>
+
         <div class="row">
             <nb-user [picture]="imagem" [name]="nome"  size="tiny"></nb-user>
             

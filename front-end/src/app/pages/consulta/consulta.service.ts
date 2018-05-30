@@ -48,7 +48,6 @@ export class ConsultaService {
                 const nCli: Cliente[] = [];
 
                 for (const cli of cliAnm) {
-                    let enderecoCompletoFoto;
 
                     if (cli.foto) {
                         // tslint:disable-next-line:max-line-length

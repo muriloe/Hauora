@@ -68,6 +68,7 @@ export class PostagemCardComponent implements OnInit {
     const activeModal = this.modalService.open(PostagemModalComponent, { size: 'lg', container: 'nb-layout' });
 
     activeModal.componentInstance.modalHeader = 'Large Modal';
+    activeModal.componentInstance.postagem = this.postagem;
   }
 
   visualizadoClick() {

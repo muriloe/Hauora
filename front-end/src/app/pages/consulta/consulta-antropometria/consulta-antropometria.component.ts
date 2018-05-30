@@ -72,7 +72,6 @@ import { Router } from '@angular/router';
         this.selecionouPaciente = false;
         this.seleciouTipoRefeicao('CAFE_DA_MANHA');
         this.getGrupos();
-        
     }
 
     buscarPacientes(nomePaciente) {
@@ -255,7 +254,6 @@ import { Router } from '@angular/router';
                                                 this.composicao_janta).subscribe(
                                                     (results: string[]) => {
                                                         // tslint:disable-next-line:max-line-length
-                                                        console.log(results);
                                                         if (confirm('Consulta realizada com sucesso!\n Em breve o paciente recebera uma email com a nova senha')) {
                                                             this.router.navigate(['pages/clientes']);
                                                         } else {
