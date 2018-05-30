@@ -27,4 +27,16 @@ export class PostagemService {
             .catch((error: Response) => Observable.throw(error));
     }
 
+
+    atualizaStatus(idPost, status) {
+
+            let json = JSON.stringify({_id: idPost, visualizado: status});
+            json = 'json=' + json;
+            const cabe = new Headers();
+            cabe.append('Content-Type', 'application/x-www-form-urlencoded');
+            return this.http.post(this.serverUrl + '/api/statusPostagem',
+            json, {headers : cabe})
+                .map(res => res.json());
+            }
+
 }

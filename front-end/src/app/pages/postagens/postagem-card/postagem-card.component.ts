@@ -3,6 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Cliente } from '../../../shared/model/cliente.model';
 import { PostagemModalComponent } from './postagem-modal/postagem-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PostagemService } from '../postagem.service';
+
 
 @Component({
   selector: 'ngx-postagem-card',
@@ -11,19 +13,28 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class PostagemCardComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) { }
-
-    nome= 'Murilo Erhardt';
+  constructor(private modalService: NgbModal, private postagemService: PostagemService) { }
+    id;
+    nome;
     data;
     imagem= 'http://icons.iconarchive.com/icons/paomedia/small-n-flat/512/user-male-icon.png';
     imagemPost;
     tipoIcon;
     texto;
     qtdComentarios;
+    visualizado= false;
+    visualizadoIcon;
     @Input() postagem: Postagem;
 
     ngOnInit() {
+      this.id = this.postagem._id;
       this.data = this.postagem.data;
+      if (this.visualizado === true) {
+        this.visualizadoIcon = 'assets/images/othersIcons/checkedTrue.png';
+      }
+      if (this.visualizado === false) {
+        this.visualizadoIcon = 'assets/images/othersIcons/checkedFalse.png';
+      }
       if (this.postagem.linkFoto) {
         this.imagemPost = this.postagem.linkFoto;
       }
@@ -57,6 +68,24 @@ export class PostagemCardComponent implements OnInit {
     const activeModal = this.modalService.open(PostagemModalComponent, { size: 'lg', container: 'nb-layout' });
 
     activeModal.componentInstance.modalHeader = 'Large Modal';
+  }
+
+  visualizadoClick() {
+    if (this.visualizado === true) {
+        this.visualizado = false;
+        this.postagemService.atualizaStatus(this.id, this.visualizado).subscribe(
+          (results: string[]) => {
+            this.visualizadoIcon = 'assets/images/othersIcons/checkedFalse.png';
+          },
+        );
+    } else {
+        this.visualizado = true;
+        this.postagemService.atualizaStatus(this.id, this.visualizado).subscribe(
+          (results: string[]) => {
+            this.visualizadoIcon = 'assets/images/othersIcons/checkedTrue.png';
+          },
+        );
+    }
   }
 
 }

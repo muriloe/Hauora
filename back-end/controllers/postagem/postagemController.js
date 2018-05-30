@@ -55,5 +55,18 @@ module.exports = function(app) {
             });
     });
 
+    app.post('/api/statusPostagem', function(req, res){
+        console.log('statusPostagem');
+        console.log(req.body.json);
+        console.log(JSON.parse(req.body.json));
+
+        
+        postagemBusiness.alterarStatusPostagem(req.body).then(function(response){
+            res.end(JSON.stringify(response));
+        }).catch(function(err){
+            res.status(404).end(JSON.stringify(err));
+        });  
+    });
+
 
 }

@@ -255,3 +255,21 @@ exports.obterTodasPostagens = function(){
 
     });
 }
+
+exports.alterarStatusPostagem = function(data){
+    return new Promise(function(resolve, reject){
+        let dadosPostagem = (JSON.parse(data.json));
+        let id = dadosPostagem._id;
+        const atualizacao = {
+            visualizado: dadosPostagem.visualizado,
+        };
+        Postagem.update({_id: id}, atualizacao, function(err, raw) {
+            if (err) {
+              console.log("erro ao atualizar postagem: " + err);
+              reject({"status":false, "message":"Erro ao salvar atualizacao de psotagem", "error": err});
+            }
+            console.log("informações de postagem atualizadas: ");
+            resolve(raw);   
+        });
+    });
+}
