@@ -137,14 +137,8 @@ export class PostagensComponent implements OnInit {
                         // tslint:disable-next-line:no-shadowed-variable
                         Postagem => Postagem.duvida == null && Postagem.consumo == null);
                 }
-
-                
             },
         );
-       
-  
-
-
     }
 
 

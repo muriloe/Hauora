@@ -45,6 +45,10 @@ const routes: Routes = [{
     path: 'postagens',
     loadChildren: './postagens/postagens.module#PostagensModule',
   },
+  {
+    path: 'perfil',
+    loadChildren: './perfil/perfil.module#PerfilModule',
+  },
 
    {
     path: '',

@@ -23,8 +23,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/postagens', // menu icon
   },
   {
+    title: 'Perfis', // menu title
+    icon: 'nb-person',
+    link: '/pages/perfil', // menu icon
+  },
+  {
     title: 'Configuração', // menu title
     icon: 'nb-gear',
-    link: '/pages/3', // menu icon
+    link: '/pages/3', // menu iconnb-person
   },
 ];

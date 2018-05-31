@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div>
+                <h1>Busca Perfil</h1>
+            </div>
+        </div>
+
+        <nb-card>
+            <nb-card-body>
+                <div class="input-group">
+                    <label>Digite o nome de uma pessoa para ver seu perfil: </label>
+                    <div class="input-group">
+                        <input type="text" [(ngModel)]="pacienteSelecionado" class="form-control" placeholder="Insira o nome do paciente">
+                            <span class="input-group-append">
+                                <button class="btn btn-success btn-demo" (click)="buscarPacientes(pacienteSelecionado)">
+                                    Buscar
+                                </button>
+                            </span>
+                    </div>
+                    <div class="col-md-12">
+                        <nb-tabset fullWidth>  
+                            <nb-tab tabTitle="Resultados">   
+                                <div class="contact" *ngFor="let c of listaDeClientesBusca">
+                                    <nb-user [picture]="c.foto" [name]="c.nome" [title]="c.email" size="large"></nb-user>
+                                    <button class="btn btn-success btn-demo"  (click)="usuarioSelecionado(c._id)">Selecionar</button>
+                                </div>   
+                            </nb-tab>    
+                        </nb-tabset> 
+                    </div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+
+
+    </div>
+</div>
