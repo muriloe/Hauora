@@ -14,6 +14,7 @@ export class PostagemService {
     private serverUrl = new ServerInfo().getServerName();
     private postagens: Postagem[] = [];
     private comentarios: Comentario[] = [];
+    private postagem: Postagem;
 
     getPostagens () {
         return this.http.get(this.serverUrl + '/api/postagens/todas')
@@ -65,5 +66,18 @@ export class PostagemService {
         json, {headers : cabe})
             .map(res => res.json());
     }
+
+    atualizarPostagem(idPostagem) {
+        return this.http.get(this.serverUrl + '/api/postagens/' + idPostagem)
+        .map((response: Response) => {
+            const postagemResponse = response.json();
+            console.log(postagemResponse);
+            this.postagem = postagemResponse.obj[0];
+            console.log( this.postagem );
+            return this.postagem;
+        })
+        .catch((error: Response) => Observable.throw(error));
+    }
+
 
 }

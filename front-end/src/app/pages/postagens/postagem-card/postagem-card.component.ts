@@ -4,6 +4,7 @@ import { Cliente } from '../../../shared/model/cliente.model';
 import { PostagemModalComponent } from './postagem-modal/postagem-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostagemService } from '../postagem.service';
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -25,6 +26,8 @@ export class PostagemCardComponent implements OnInit {
     visualizado= false;
     visualizadoIcon;
     @Input() postagem: Postagem;
+    private timer;
+
 
     ngOnInit() {
       this.id = this.postagem._id;
@@ -61,6 +64,9 @@ export class PostagemCardComponent implements OnInit {
         this.nome = this.postagem.cliente[0].nome;
         this.imagem = this.postagem.cliente[0].foto;
       }
+      Observable.interval(10000).subscribe(x => {
+        this.onTimeOut();
+      });
 
 
     }
@@ -88,6 +94,25 @@ export class PostagemCardComponent implements OnInit {
           },
         );
     }
+  }
+
+  onTimeOut() {
+    this.postagemService.atualizarPostagem(this.id)
+      .subscribe(
+          (postagem: Postagem) => {
+              this.postagem = postagem;
+              this.visualizado = postagem.visualizado;
+              this.postagem.visualizado = postagem.visualizado;
+              if (this.visualizado === true) {
+                this.visualizadoIcon = 'assets/images/othersIcons/checkedTrue.png';
+              }
+              if (this.visualizado === false) {
+                this.visualizadoIcon = 'assets/images/othersIcons/checkedFalse.png';
+              }
+              this.postagem.totalComentarios = postagem.totalComentarios;
+              this.qtdComentarios = postagem.totalComentarios + ' comentários';
+          },
+      );
   }
 
 }

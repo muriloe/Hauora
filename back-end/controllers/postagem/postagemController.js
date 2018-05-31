@@ -69,4 +69,17 @@ module.exports = function(app) {
     });
 
 
+    //Utilizado para obter todas as postagens pelo frontend
+    app.get('/api/postagens/:idPostagem', function(req, res){
+        console.log("/api/postagem/:idPostagem");
+            postagemBusiness.obterPostagens(req.params.idPostagem).then(function(response){
+                res.status(200).json({
+                    message: 'Success',
+                    obj: response
+                });
+            }).catch(function(err){
+                res.end(JSON.stringify(err));
+            });
+    });
+
 }
