@@ -115,4 +115,5 @@ export class PostagemCardComponent implements OnInit {
       );
   }
 
+
 }
