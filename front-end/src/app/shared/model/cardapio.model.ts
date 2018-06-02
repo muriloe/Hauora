@@ -5,7 +5,7 @@ export class Cardapio {
     public tipo: string;
     public usuario_id: string;
     public data: string;
-    public composicoes: Composicao
+    public composicoes: Composicao[];
 
     constructor(cardapio: any) {
         this._id = cardapio._id;

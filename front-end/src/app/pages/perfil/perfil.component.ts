@@ -112,12 +112,12 @@ export class PerfilComponent implements OnInit {
             );
     }
 
-    alterarCardapio(clienteId) {
+    alterarCardapio() {
         // tslint:disable-next-line:max-line-length
         const activeModal = this.modalService.open(EditarCardapioModalComponent, { size: 'lg', container: 'nb-layout' });
 
         activeModal.componentInstance.modalHeader = 'Large Modal';
-        activeModal.componentInstance.postagem = clienteId;
+        activeModal.componentInstance.clienteId = this.cliente._id;
 
     }
 
