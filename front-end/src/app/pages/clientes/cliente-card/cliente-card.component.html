@@ -3,7 +3,7 @@
         <nb-card-body>
             <nb-user [picture]="cliente.foto" [name]="cliente.nome | slice:0:20" [title]="cliente.email" size="xlarge"></nb-user>
                 <br>
-            <p>Telefone: {{cliente.telefone}}</p>
+            <button class="btn btn-success btn-tn" (click)="visualizarPerfil(cliente._id)">Ver perfil</button>
         </nb-card-body>
     </nb-card>
 </div>

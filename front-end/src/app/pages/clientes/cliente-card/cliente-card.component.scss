@@ -10,9 +10,21 @@
         margin-bottom: 2rem;
     }
 
+    .card-attributes:hover {
+        margin-left: 2rem;
+        margin-right: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        background-color: #dfe3ea;
+    }
+
     .div-attributes {
         height: 150px;  
         width: 350px;  
+    }
+    
+    .btn {
+        width: 100%;
     }
 
 
