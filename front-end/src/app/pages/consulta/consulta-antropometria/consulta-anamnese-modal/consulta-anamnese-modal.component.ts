@@ -52,7 +52,7 @@ export class ConsultaAnamneseModalComponent implements OnInit {
               .subscribe(
                   (results: Cliente) => {
                         this.cliente = results;
-                        this.cliente.foto = this.cliente.foto.replace('/uploads', '/uploads/min');
+
                         if (this.cliente.sexo === 'MASCULINO') {
                             this.cliente.sexo = 'Masculino';
                         }
