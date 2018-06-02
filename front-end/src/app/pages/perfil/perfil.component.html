@@ -1,10 +1,11 @@
 <div class="row">
     <div class="col-md-12">
-        <div class="row">
-            <div>
-                <h1>{{title}}</h1>
-            </div>
+        
+        <div  class="row">
+            <div class="col-md-11"><h1>{{title}}</h1></div>
+            <div class="col-md-1" *ngIf="selecionouPaciente"><button class="btn btn-danger btn-semi-round btn-demo margemUsuario" (click)="cancelaAnamnese()">X</button></div>
         </div>
+        
 
         <nb-card *ngIf="!selecionouPaciente">
             <nb-card-body>
@@ -50,7 +51,65 @@
             </div>
 
             <div class="col-md-6">
+                <nb-card *ngIf="exibirCardCardapio">
+                    <nb-card-header>
+                        Cardapio
+                    </nb-card-header> 
+                    <nb-card-body >
+                        <div *ngIf="cardapioCafeManha" class="margemCardapios">
+                            <div class="row">
+                                <img src="assets/images/mealIcons/snackIcon.png" height="30" width="30">
+                                <h4 class="margemTopzera">{{cardapioCafeManha.tipo}}</h4>
+                            </div>
+                            <div class="row" *ngFor="let c of cardapioCafeManha.composicoes">
+                                    <label>Opte por até <b> {{c.quantidade}} </b> de alimentos do grupo <b> {{c.grupo.titulo}}</b> </label>
+                            </div>
+                        </div>
+                        
+                        <div *ngIf="cardapioLancheManha" class="margemCardapios">
+                            <div class="row">
+                                <img src="assets/images/mealIcons/snackIcon.png" height="30" width="30">
+                                <h4 class="margemTopzera">{{cardapioLancheManha.tipo}}</h4>
+                            </div>
+                            <div class="row" *ngFor="let c of cardapioLancheManha.composicoes">
+                                    <label>Opte por até <b> {{c.quantidade}} </b> de alimentos do grupo <b> {{c.grupo.titulo}}</b> </label>
+                            </div>
+                        </div> 
 
+                        <div *ngIf="cardapioAlmoco" class="margemCardapios">
+                            <div class="row">
+                                <img src="assets/images/mealIcons/snackIcon.png" height="30" width="30">
+                                <h4 class="margemTopzera">{{cardapioAlmoco.tipo}}</h4>
+                            </div>
+                            <div class="row" *ngFor="let c of cardapioAlmoco.composicoes">
+                                    <label>Opte por até <b> {{c.quantidade}} </b> de alimentos do grupo <b> {{c.grupo.titulo}}</b> </label>
+                            </div>
+                        </div> 
+
+                        <div *ngIf="cardapioLanche" class="margemCardapios">
+                            <div class="row">
+                                <img src="assets/images/mealIcons/snackIcon.png" height="30" width="30">
+                                <h4 class="margemTopzera">{{cardapioLanche.tipo}}</h4>
+                            </div>
+                            <div class="row" *ngFor="let c of cardapioLanche.composicoes">
+                                    <label>Opte por até <b> {{c.quantidade}} </b> de alimentos do grupo <b> {{c.grupo.titulo}}</b> </label>
+                            </div>
+                        </div> 
+
+                        <div *ngIf="cardapioJanta" class="margemCardapios">
+                            <div class="row">
+                                <img src="assets/images/mealIcons/snackIcon.png" height="30" width="30">
+                                <h4 class="margemTopzera">{{cardapioJanta.tipo}}</h4>
+                            </div>
+                            <div class="row" *ngFor="let c of cardapioJanta.composicoes">
+                                    <label>Opte por até <b> {{c.quantidade}} </b> de alimentos do grupo <b> {{c.grupo.titulo}}</b> </label>
+                            </div>
+                        </div> 
+
+                        <button class="btn btn-success btn-block" (click)="alterarCardapio(cliente._id)">Editar Cardápio</button>
+
+                    </nb-card-body>
+                </nb-card>
             </div>
         </div>
 

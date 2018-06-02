@@ -19,7 +19,7 @@ export class PerfilService {
     constructor(private http: Http) {}
 
     private clientesAutoComplete: Cliente[] = [];
-
+    private cardapios: Cardapio [] = [];
     private serverUrl = new ServerInfo().getServerName();
 
     getClientes (query: string) {
@@ -125,26 +125,18 @@ export class PerfilService {
         .catch((error: Response) => Observable.throw(error.json()));
     }
 
-    postConsulta(   consultaCompleta: Consulta,
-                    cafeDaManha: Composicao[],
-                    lancheDaManha: Composicao[],
-                    almoco: Composicao[],
-                    lanche: Composicao[],
-                    janta: Composicao[]) {
+    getCardapios(idCliente) {
+        return this.http.get(this.serverUrl + '/api/cardapios/web/' + idCliente)
+        .map((response: Response) => {
+            const cardapiosResponse = response.json().obj;
+            this.cardapios = [];
 
-    let json = JSON.stringify({   consulta: consultaCompleta,
-                                    composicoesCafeDaManha: cafeDaManha,
-                                    composicoesLancheDaManha: lancheDaManha,
-                                    composicoesAlmoco: almoco,
-                                    composicoesLanche: lanche,
-                                    composicoesJanta: janta});
-        json = 'json=' + json;
-        const cabe = new Headers();
-        cabe.append('Content-Type', 'application/x-www-form-urlencoded');
-        return this.http.post(this.serverUrl + '/api/consulta',
-        json, {headers : cabe})
-                .map(res => res.json());
-
+            for (const cardapio of cardapiosResponse) {
+                this.cardapios.push(new Cardapio(cardapio));
+            }
+            return this.cardapios;
+        })
+        .catch((error: Response) => Observable.throw(error.json()));
     }
 
 }

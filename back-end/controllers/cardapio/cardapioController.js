@@ -43,4 +43,16 @@ module.exports = function(app) {
         
     });
 
+    app.get('/api/cardapios/web/:clienteId', function(req, res){
+   
+        cardapioBusiness.obterCardapioPorIdUsuarioWeb(req.params.clienteId).then(function(response){
+            res.status(200).json({
+                message: 'Success',
+                obj: response
+            });
+        }).catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+    });
+
 }
