@@ -5,10 +5,10 @@
                 <nb-user [picture]="imagem" [name]="nome" [title]="data| date: 'dd/MM/yyyy hh:mm'" size="large"></nb-user>
             </div>
         </div>    
-        <div class="row">
+        <div class="row topBody">
             <br>
             <div class="col-md-1">
-                <img [src]="tipoIcon" height="40" width="40">      
+                <img [src]="tipoIcon" height="40" width="40">   
             </div>
             <div class="col-md-11">
                 {{texto}}
@@ -36,10 +36,10 @@
         <div class="row">
 
             <nb-user [picture]="nutricionista.foto" [name]="nutricionista.nome"  size="tiny"></nb-user>
-            
-                <div class="col-md-11"><textarea rows="2" [(ngModel)]="comentario" [class.form-control-danger]="validadorComentario" placeholder="Escreva um comentário" class="form-control"></textarea></div>
-                <div class="col-md-1"><img src="assets/images/othersIcons/send.png" height="40" width="40" (click)="enviarComentario()"> </div>
+        
+            <div class="col-md-11 topBody"><textarea rows="2" [(ngModel)]="comentario" [class.form-control-danger]="validadorComentario" placeholder="Escreva um comentário" class="form-control"></textarea></div>
+            <div class="col-md-1 topBody"><img class="topBody" src="assets/images/othersIcons/send.png" height="40" width="40" (click)="enviarComentario()"> </div>
             
         </div>
-    <nb-card-body>
-<nb-card>
+    </nb-card-body>
+</nb-card>
