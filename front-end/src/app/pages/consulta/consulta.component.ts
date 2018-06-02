@@ -13,17 +13,16 @@ export class ConsultaComponent implements OnInit {
   clienteGenerico: Cliente;
   selecionouPaciente: boolean = false;
   constructor(private consultaService: ConsultaService, private route: ActivatedRoute) {
-    
+
   }
-  
+
     ngOnInit() {
     this.route.params.subscribe((params: Params) => {
          const clienteId = this.route.snapshot.queryParams['cliente'];
-         console.log(clienteId);
          this.usuarioSelecionado(clienteId)
      });
   }
-  
+
   usuarioSelecionado(id) {
         this.selecionouPaciente = false;
         this.consultaService.getCliente(id)

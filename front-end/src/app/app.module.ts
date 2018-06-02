@@ -34,6 +34,8 @@ import { AuthGuard } from './auth-guard.service';
 import { PostagemModalComponent } from './pages/postagens/postagem-card/postagem-modal/postagem-modal.component';
 // tslint:disable-next-line:max-line-length
 import { ComentarioCardComponent } from './pages/postagens/postagem-card/postagem-modal/comentario-card/comentario-card.component';
+import { PerfilService } from './pages/perfil/perfil.service';
+
 
 @NgModule({
   declarations: [AppComponent,
@@ -63,6 +65,7 @@ import { ComentarioCardComponent } from './pages/postagens/postagem-card/postage
     [ ClientesService ],
     [ ConsultaService ],
     [ PostagemService ],
+    [ PerfilService ],
     [ ServerInfo ],
     [ AuthGuard ],
 

@@ -5,6 +5,7 @@ import { PostagemModalComponent } from './postagem-modal/postagem-modal.componen
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PostagemService } from '../postagem.service';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class PostagemCardComponent implements OnInit {
 
-  constructor(private modalService: NgbModal, private postagemService: PostagemService) { }
+  constructor(private modalService: NgbModal, private postagemService: PostagemService, private router: Router) { }
     id;
     nome;
     data;
@@ -27,6 +28,7 @@ export class PostagemCardComponent implements OnInit {
     visualizadoIcon;
     @Input() postagem: Postagem;
     private timer;
+    idCliente = 0;
 
 
     ngOnInit() {
@@ -63,6 +65,7 @@ export class PostagemCardComponent implements OnInit {
       if ( this.postagem.cliente[0]) {
         this.nome = this.postagem.cliente[0].nome;
         this.imagem = this.postagem.cliente[0].foto;
+        this.idCliente = this.postagem.cliente[0]._id;
       }
       Observable.interval(10000).subscribe(x => {
         this.onTimeOut();
@@ -113,6 +116,11 @@ export class PostagemCardComponent implements OnInit {
               this.qtdComentarios = postagem.totalComentarios + ' comentários';
           },
       );
+  }
+
+  iniciarConsulta(clienteId) {
+    const urlRedirect = 'pages/perfil?cliente=' + clienteId;
+    this.router.navigate(['pages/perfil'], { queryParams: { cliente: clienteId } });
   }
 
 
