@@ -35,6 +35,8 @@ import { PostagemModalComponent } from './pages/postagens/postagem-card/postagem
 // tslint:disable-next-line:max-line-length
 import { ComentarioCardComponent } from './pages/postagens/postagem-card/postagem-modal/comentario-card/comentario-card.component';
 import { PerfilService } from './pages/perfil/perfil.service';
+import { EditarCardapioModalComponent } from './pages/perfil/editar-cardapio-modal/editar-cardapio-modal.component';
+
 
 
 @NgModule({
@@ -45,7 +47,8 @@ import { PerfilService } from './pages/perfil/perfil.service';
                 ConsultaGruposModalComponent,
                 AlimentosCardComponent,
                 PostagemModalComponent,
-                ComentarioCardComponent],
+                ComentarioCardComponent,
+                EditarCardapioModalComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -75,7 +78,8 @@ import { PerfilService } from './pages/perfil/perfil.service';
                     RemedioDoencaCardComponent,
                     ConsultaGruposModalComponent,
                     AlimentosCardComponent,
-                    PostagemModalComponent],
+                    PostagemModalComponent,
+                    EditarCardapioModalComponent],
 })
 export class AppModule {
 }

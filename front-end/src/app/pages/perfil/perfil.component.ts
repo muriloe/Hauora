@@ -1,9 +1,11 @@
+import { EditarCardapioModalComponent } from './editar-cardapio-modal/editar-cardapio-modal.component';
 import { Cardapio } from './../../shared/model/cardapio.model';
 import { PerfilService } from './perfil.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Cliente } from '../../shared/model/cliente.model';
 import { ConsultaService } from '../consulta/consulta.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'ngx-perfil',
@@ -33,7 +35,7 @@ export class PerfilComponent implements OnInit {
     });
     }
 
-    constructor(private perfilService: PerfilService, private route: ActivatedRoute) {}
+    constructor(private modalService: NgbModal, private perfilService: PerfilService, private route: ActivatedRoute) {}
 
 
     buscarPacientes(nomePaciente) {
@@ -110,8 +112,14 @@ export class PerfilComponent implements OnInit {
             );
     }
 
-    alterarCardapio(idCliente) {
+    alterarCardapio(clienteId) {
+        // tslint:disable-next-line:max-line-length
+        const activeModal = this.modalService.open(EditarCardapioModalComponent, { size: 'lg', container: 'nb-layout' });
+
+        activeModal.componentInstance.modalHeader = 'Large Modal';
+        activeModal.componentInstance.postagem = clienteId;
 
     }
+
 
 }
