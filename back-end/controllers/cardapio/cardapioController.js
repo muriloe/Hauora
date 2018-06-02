@@ -55,4 +55,17 @@ module.exports = function(app) {
         });
     });
 
+    app.post('/api/cardapio/atualizar', function(req, res){
+        console.log('ASDASDASDASD');
+        console.log(req.body.json);
+        console.log(JSON.parse(req.body.json));
+
+        
+        cardapioBusiness.atualizarCardapio(req.body).then(function(response){
+            res.end(JSON.stringify(response));
+        }).catch(function(err){
+            res.status(404).end(JSON.stringify(err));
+        });  
+    });
+
 }

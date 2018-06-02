@@ -27,11 +27,13 @@ export class EditarCardapioModalComponent implements OnInit {
     composicao_lanche: Composicao[] = [];
     composicao_janta: Composicao[] = [];
     lista_composicao_selecionada: Composicao[] = [];
+    validadorCardapio: boolean = false;
+
 
     constructor(private activeModal: NgbActiveModal, private perfilService: PerfilService) { }
 
     ngOnInit(): void {
-       
+
         this.getGrupos();
         this.perfilService.getCardapios(this.clienteId)
             .subscribe(
@@ -101,6 +103,10 @@ export class EditarCardapioModalComponent implements OnInit {
         );
     }
 
+    closeModal() {
+        this.activeModal.close();
+    }
+
     seleciouTipoRefeicao(tipoRefeicao) {
         this.alterarIconeRefeicao(tipoRefeicao);
         this.refeicaoSelecionada = tipoRefeicao;
@@ -168,7 +174,7 @@ export class EditarCardapioModalComponent implements OnInit {
     }
 
     getTituloGrupoPorId(grupoId) {
-        if (grupoId != null) {
+        if (this.grupos != null) {
             return this.grupos.find(x => x._id === grupoId).titulo;
         }
     }
@@ -193,6 +199,58 @@ export class EditarCardapioModalComponent implements OnInit {
         if (this.refeicaoSelecionada === 'JANTA') {
             const index: number = (this.composicao_janta.indexOf(composicao));
             this.composicao_janta.splice(index, 1);
+        }
+    }
+
+    atualizarCardapio() {
+        if (this.validarCampos() === true) {
+            this.validadorCardapio = false;
+            this.perfilService.atualizaCardapio(  this.clienteId,
+                this.composicao_cafe_da_manha,
+                this.composicao_lanche_da_manha,
+                this.composicao_almoco,
+                this.composicao_lanche,
+                this.composicao_janta).subscribe(
+                    (results: string[]) => {
+                        // tslint:disable-next-line:max-line-length
+                        if (confirm('Cardápio atualizado')) {
+                            this.closeModal();
+                        } else {
+                        }
+                    },
+                );
+        }
+    }
+
+    validarCampos() {
+        let contadorDeComposicao = 0;
+        let hasErrors: Boolean;
+        let mensagemErro = 'Para finalizar uma consulta você deve preencher: \n';
+        if (this.composicao_cafe_da_manha.length > 0) {
+            contadorDeComposicao++;
+        }
+        if (this.composicao_lanche_da_manha.length > 0) {
+            contadorDeComposicao++;
+        }
+        if (this.composicao_almoco.length > 0) {
+            contadorDeComposicao++;
+        }
+        if (this.composicao_lanche.length > 0) {
+            contadorDeComposicao++;
+        }
+        if (this.composicao_janta.length > 0) {
+            contadorDeComposicao++;
+        }
+        if (contadorDeComposicao < 3) {
+            this.validadorCardapio = true;
+            mensagemErro += '- É necessário criar pelo menos três refeições diárias\n';
+            hasErrors = true;
+        }
+        if (hasErrors) {
+            alert(mensagemErro);
+            return false;
+        }else {
+            return true;
         }
     }
 }

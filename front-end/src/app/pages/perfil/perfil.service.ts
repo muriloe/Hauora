@@ -139,4 +139,27 @@ export class PerfilService {
         .catch((error: Response) => Observable.throw(error.json()));
     }
 
+    atualizaCardapio(clienteId,
+                    cafeDaManha: Composicao[],
+                    lancheDaManha: Composicao[],
+                    almoco: Composicao[],
+                    lanche: Composicao[],
+                    janta: Composicao[]) {
+
+        let json = JSON.stringify({   clienteId: clienteId,
+            composicoesCafeDaManha: cafeDaManha,
+            composicoesLancheDaManha: lancheDaManha,
+            composicoesAlmoco: almoco,
+            composicoesLanche: lanche,
+            composicoesJanta: janta});
+
+        json = 'json=' + json;
+        const cabe = new Headers();
+        cabe.append('Content-Type', 'application/x-www-form-urlencoded');
+        return this.http.post(this.serverUrl + '/api/cardapio/atualizar',
+        json, {headers : cabe})
+                .map(res => res.json());
+
+    }
+
 }
