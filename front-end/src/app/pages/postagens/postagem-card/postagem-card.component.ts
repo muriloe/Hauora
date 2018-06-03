@@ -1,5 +1,5 @@
 import { Postagem } from './../../../shared/model/postagem.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Cliente } from '../../../shared/model/cliente.model';
 import { PostagemModalComponent } from './postagem-modal/postagem-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   templateUrl: './postagem-card.component.html',
   styleUrls: ['./postagem-card.component.scss'],
 })
-export class PostagemCardComponent implements OnInit {
+export class PostagemCardComponent implements OnInit, OnDestroy {
 
   constructor(private modalService: NgbModal, private postagemService: PostagemService, private router: Router) { }
     id;
@@ -29,6 +29,7 @@ export class PostagemCardComponent implements OnInit {
     @Input() postagem: Postagem;
     private timer;
     idCliente = 0;
+    pararAtualizacao = false;
 
 
     ngOnInit() {
@@ -68,10 +69,18 @@ export class PostagemCardComponent implements OnInit {
         this.idCliente = this.postagem.cliente[0]._id;
       }
       Observable.interval(10000).subscribe(x => {
-        this.onTimeOut();
+        if (!this.pararAtualizacao) {
+          this.onTimeOut();
+        }
+
       });
 
 
+    }
+
+    // tslint:disable-next-line:use-life-cycle-interface
+    ngOnDestroy() {
+      this.pararAtualizacao = true;
     }
 
   abrirDetalhesDePostagem() {

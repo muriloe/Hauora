@@ -62,6 +62,7 @@ export class PerfilComponent implements OnInit {
 
     cancelaAnamnese() {
         this.selecionouPaciente = false;
+        this.title = 'Busca Perfil';
     }
 
     obterCardapios(idCliente) {
@@ -119,6 +120,11 @@ export class PerfilComponent implements OnInit {
         activeModal.componentInstance.modalHeader = 'Large Modal';
         activeModal.componentInstance.clienteId = this.cliente._id;
 
+        activeModal.result.then((result) => {
+            this.obterCardapios(this.cliente._id);
+          }, (reason) => {
+            this.obterCardapios(this.cliente._id);
+          });
     }
 
 
