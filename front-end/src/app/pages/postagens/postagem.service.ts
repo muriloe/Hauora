@@ -89,6 +89,20 @@ export class PostagemService {
             .map(res => res.json());
     }
 
+        getPostagensUsuario (idUsuario) {
+        return this.http.get(this.serverUrl + '/api/postagens/usuario/' + idUsuario)
+            .map((response: Response) => {
+                const postagensResponse = response.json().obj;
+                this.postagens = [];
+
+                for (const postagem of postagensResponse) {
+                    this.postagens.push(new Postagem(postagem));
+                }
+                return this.postagens;
+            })
+            .catch((error: Response) => Observable.throw(error));
+    }
+
 
 
 }

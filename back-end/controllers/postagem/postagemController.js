@@ -82,4 +82,17 @@ module.exports = function(app) {
             });
     });
 
+        //Utilizado para obter todas as postagens de um usuario pelo frontend
+        app.get('/api/postagens/usuario/:idUsuario', function(req, res){
+            console.log("/api/postagens/usuario//:idUsuario");
+                postagemBusiness.obterPostagensUsuarioWeb(req.params.idUsuario).then(function(response){
+                    res.status(200).json({
+                        message: 'Success',
+                        obj: response
+                    });
+                }).catch(function(err){
+                    res.end(JSON.stringify(err));
+                });
+        });
+
 }

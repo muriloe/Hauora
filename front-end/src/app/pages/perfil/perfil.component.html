@@ -48,6 +48,17 @@
                             <div><label>Telefone: <div class="detail font-w-light">{{cliente.telefone}}</div></label></div>    
                     </nb-card-body>
                 </nb-card>
+
+                <nb-card>
+                    <nb-card-header>
+                        Postagens de {{cliente.nome}}
+                    </nb-card-header> 
+                    <nb-card-body>
+                        <ngx-perfil-postagem-card *ngFor="let postagem of listaPostagens" [postagem]="postagem"></ngx-perfil-postagem-card> 
+                    </nb-card-body>
+                </nb-card>
+
+
             </div>
 
             <div class="col-md-6">

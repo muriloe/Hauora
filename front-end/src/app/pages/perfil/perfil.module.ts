@@ -5,6 +5,8 @@ import { ThemeModule } from '../../@theme/theme.module';
 
 import { routing } from './perfil.routing';
 import { PerfilComponent } from './perfil.component';
+import { PerfilPostagemCardComponent } from './perfil-postagem-card/perfil-postagem-card.component';
+
 
 
 @NgModule({
@@ -16,6 +18,7 @@ import { PerfilComponent } from './perfil.component';
   ],
   declarations: [
     PerfilComponent,
+    PerfilPostagemCardComponent,
   ],
 })
 export class PerfilModule {}

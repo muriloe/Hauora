@@ -8,6 +8,8 @@ import { Cliente } from '../../shared/model/cliente.model';
 import { ConsultaService } from '../consulta/consulta.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Postagem } from '../../shared/model/postagem.model';
+import { PostagemService } from '../postagens/postagem.service';
 
 @Component({
     selector: 'ngx-perfil',
@@ -29,16 +31,31 @@ export class PerfilComponent implements OnInit {
     cardapioJanta: Cardapio;
     exibirCardCardapio = false;
     consultas: Consulta[] = [];
+    listaPostagens: Postagem[];
+    listaPostagensOriginal: Postagem[];
 
 
     ngOnInit() {
       this.route.params.subscribe((params: Params) => {
         const clienteId = this.route.snapshot.queryParams['cliente'];
-        this.usuarioSelecionado(clienteId)
+        this.usuarioSelecionado(clienteId);
     });
     }
 
-    constructor(private modalService: NgbModal, private perfilService: PerfilService, private route: ActivatedRoute) {}
+    constructor(private modalService: NgbModal,
+                private perfilService: PerfilService,
+                private route: ActivatedRoute,
+                private postagemService: PostagemService) {}
+
+        getListaPostagem() {
+            this.postagemService.getPostagensUsuario(this.cliente._id)
+            .subscribe(
+                (listaPostagens: Postagem[]) => {
+                    this.listaPostagens = listaPostagens;
+                    this.listaPostagensOriginal = listaPostagens;
+                },
+            );
+        }
 
 
     buscarPacientes(nomePaciente) {
@@ -60,6 +77,7 @@ export class PerfilComponent implements OnInit {
                     this.title = this.cliente.nome;
                     this.obterCardapios(this.cliente._id);
                     this.obterConsultas(this.cliente._id);
+                    this.getListaPostagem();
                 },
             );
     }

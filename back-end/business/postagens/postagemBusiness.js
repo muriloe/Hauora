@@ -356,3 +356,87 @@ exports.obterPostagens = function(idPostagem){
 
     });
 }
+
+
+exports.obterPostagensUsuarioWeb= function(clienteId){
+    console.log(clienteId);
+    return new Promise(function(resolve,reject){
+        var listaPostagem;
+        
+        Postagem.aggregate([
+            { $match : {usuario_id: ObjectId(clienteId)}},
+            { $lookup:
+            {
+                from: 'exercicios',
+                localField: 'exercicio_id',
+                foreignField: '_id',
+                as: 'exercicio'
+            }
+            },
+            { $lookup:
+                {
+                    from: 'duvidas',
+                    localField: 'duvida_id',
+                    foreignField: '_id',
+                    as: 'duvida'
+                }
+            },
+            { $lookup:
+                {
+                    from: 'consumos',
+                    localField: 'consumo_id',
+                    foreignField: '_id',
+                    as: 'consumo'
+                }
+            },
+            { $lookup:
+                {
+                    from: 'comentarios',
+                    localField: '_id',
+                    foreignField: 'postagem_id',
+                    as: 'comentarios'
+                }
+            },
+            { $lookup:
+                {
+                    from: 'pessoas',
+                    localField: 'usuario_id',
+                    foreignField: '_id',
+                    as: 'cliente'
+                }
+            },
+
+
+            {
+                //Project é usado para montar o resultado da query
+                //Nela eu coloquei para pegar apenas o primeiro eleamento da array das listas de exercicio, consumo e duvida
+                //e para indicar que quero os outros elementos de um posto temos que colocar nomeElemento: 1
+                $project: {
+                    exercicio: {$arrayElemAt:["$exercicio",0]},
+                    consumo: {$arrayElemAt:["$consumo",0]},
+                    duvida: {$arrayElemAt:["$duvida",0]},
+                    linkFoto: 1,
+                    usuario_id: 1,
+                    totalComentarios : {$size:"$comentarios"},
+                    cliente: {
+                        _id: 1,
+                        nome: 1,
+                        foto: 1
+                    },
+                    data: 1,
+                    visualizado: 1,
+                   // dataTemp: "$exercicio.data" || "$consumo.data" || "$duvida.data",
+
+                }
+            },
+            {$sort: {data: -1} }
+        ],function (err, postagem){
+            if (err){
+                throw err;
+                reject({"status":false, "message":"Erro ao ovter postagem", "error": err});
+            } 
+            resolve(postagem);   
+        } );
+
+    });
+}
