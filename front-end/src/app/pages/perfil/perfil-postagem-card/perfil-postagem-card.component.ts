@@ -5,6 +5,7 @@ import { Cliente } from '../../../shared/model/cliente.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
+import { PerfilPostagemModalComponent } from './perfil-postagem-modal/perfil-postagem-modal.component';
 
 
 @Component({
@@ -83,10 +84,10 @@ export class PerfilPostagemCardComponent implements OnInit, OnDestroy {
     }
 
   abrirDetalhesDePostagem() {
-    //const activeModal = this.modalService.open(PostagemModalComponent, { size: 'lg', container: 'nb-layout' });
+    const activeModal = this.modalService.open(PerfilPostagemModalComponent, { size: 'lg', container: 'nb-layout' });
 
-    //activeModal.componentInstance.modalHeader = 'Large Modal';
-    //activeModal.componentInstance.postagem = this.postagem;
+    activeModal.componentInstance.modalHeader = 'Large Modal';
+    activeModal.componentInstance.postagem = this.postagem;
   }
 
   visualizadoClick() {

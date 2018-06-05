@@ -1,7 +1,11 @@
-<nb-card  [class.nb-card-teste]="validadorCardapio">
-        <nb-card-header>
-            Editar Cardápio
-        </nb-card-header> 
+<div class="modal-header">
+    <span>Editar cardápio</span>
+    <button class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <nb-card  [class.nb-card-teste]="validadorCardapio">
         <nb-card-body>
             <div class="row">
                 <div class="col-md-1"></div>
@@ -12,7 +16,7 @@
                 <div id="parent" class="col-md-2" (click)="seleciouTipoRefeicao('JANTA')"><div class="col"><img [src]="imagem_janta" class="blockmax center"   height="40" width="40"><br><label>Jantar</label></div></div>
                 <div class="col-md-1"><!-- gambiarra de espaçamento--></div>
             </div> 
-           
+            
             <div class="font-row font-main" style="background:#f8f8fd; margin: 10px">
                 <div style="margin: 20px">
                     <div class="header">
@@ -75,7 +79,8 @@
                         (click)="atualizarCardapio()">Atualizar cardápio</button> 
 
             </div>  
-              
+                
         </nb-card-body>
         <br>
     </nb-card>
+</div>

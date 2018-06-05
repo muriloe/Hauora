@@ -74,4 +74,8 @@ export class VisualizarCardapioModalComponent implements OnInit {
         }
       }
 
+      closeModal() {
+        this.activeModal.close();
+    }
+
 }
