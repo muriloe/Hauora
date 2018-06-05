@@ -116,9 +116,11 @@
                         Histórico de consultas
                     </nb-card-header> 
                     <nb-card-body >
-                        <div  *ngFor="let c of consultas" class="row">
-                            <label>{{c.data}}</label>
-                            <button class="btn btn-success" (click)="verConsulta(c)">Ver consulta</button>
+                        <div  *ngFor="let c of consultas" class="row espacinho">
+                            <div class="col-md-9"><label class="textoCentro">{{c.data | date: 'dd/MM/yyyy hh:mm'}}</label></div>
+                            
+                            <div class="col-md-3"> <button class="btn btn-success" (click)="verConsulta(c)" >Ver consulta</button></div>
+                            <hr>
                         </div> 
                     </nb-card-body>
                 </nb-card>

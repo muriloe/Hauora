@@ -36,7 +36,9 @@ import { PostagemModalComponent } from './pages/postagens/postagem-card/postagem
 import { ComentarioCardComponent } from './pages/postagens/postagem-card/postagem-modal/comentario-card/comentario-card.component';
 import { PerfilService } from './pages/perfil/perfil.service';
 import { EditarCardapioModalComponent } from './pages/perfil/editar-cardapio-modal/editar-cardapio-modal.component';
+// tslint:disable-next-line:max-line-length
 import { VisualizarCardapioModalComponent } from './pages/perfil/visualizar-consulta-modal/visualizar-consulta-modal.component';
+import { ComentarioConsultaCardComponent } from './pages/perfil/visualizar-consulta-modal/comentario-consulta-card/comentario-consulta-card.component';
 
 
 @NgModule({
@@ -49,7 +51,8 @@ import { VisualizarCardapioModalComponent } from './pages/perfil/visualizar-cons
                 PostagemModalComponent,
                 ComentarioCardComponent,
                 EditarCardapioModalComponent,
-                VisualizarCardapioModalComponent],
+                VisualizarCardapioModalComponent,
+                ComentarioConsultaCardComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -81,7 +84,8 @@ import { VisualizarCardapioModalComponent } from './pages/perfil/visualizar-cons
                     AlimentosCardComponent,
                     PostagemModalComponent,
                     EditarCardapioModalComponent,
-                    VisualizarCardapioModalComponent],
+                    VisualizarCardapioModalComponent,
+                    ComentarioConsultaCardComponent],
 })
 export class AppModule {
 }

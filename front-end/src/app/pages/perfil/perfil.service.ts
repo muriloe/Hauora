@@ -20,7 +20,7 @@ export class PerfilService {
 
     private clientesAutoComplete: Cliente[] = [];
     private cardapios: Cardapio [] = [];
-    private consultas: Consulta [] =[];
+    private consultas: Consulta [] = [];
     private serverUrl = new ServerInfo().getServerName();
 
     getClientes (query: string) {
@@ -139,7 +139,7 @@ export class PerfilService {
         })
         .catch((error: Response) => Observable.throw(error.json()));
     }
-    
+
     getConsultas(idCliente) {
         return this.http.get(this.serverUrl + '/api/consultas/' + idCliente)
         .map((response: Response) => {
@@ -147,7 +147,6 @@ export class PerfilService {
             this.consultas = [];
 
             for (const consulta of consultaResponse) {
-                consulta.data = new Date(consulta.data);
                 this.consultas.push(new Consulta(consulta));
             }
             return this.consultas;

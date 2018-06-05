@@ -78,6 +78,17 @@ export class PostagemService {
         .catch((error: Response) => Observable.throw(error));
     }
 
+    postarComentarioConsulta(idConsulta, idNutricionista, comentario) {
+
+        let json = JSON.stringify({consulta_id: idConsulta, nutricionista_id: idNutricionista, texto: comentario});
+        json = 'json=' + json;
+        const cabe = new Headers();
+        cabe.append('Content-Type', 'application/x-www-form-urlencoded');
+        return this.http.post(this.serverUrl + '/api/comentarios/web/save',
+        json, {headers : cabe})
+            .map(res => res.json());
+    }
+
 
 
 }

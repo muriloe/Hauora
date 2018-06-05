@@ -68,8 +68,8 @@ export class PerfilComponent implements OnInit {
         this.selecionouPaciente = false;
         this.title = 'Busca Perfil';
     }
-    
-    obterConsultas(idCliente){
+
+    obterConsultas(idCliente) {
         this.perfilService.getConsultas(idCliente)
             .subscribe(
                 (listaConsulta: Consulta[]) => {
@@ -140,11 +140,11 @@ export class PerfilComponent implements OnInit {
           });
     }
 
-    verConsulta(consulta){
+    verConsulta(consulta) {
+        // tslint:disable-next-line:max-line-length
         const activeModal = this.modalService.open(VisualizarCardapioModalComponent, { size: 'lg', container: 'nb-layout' });
         activeModal.componentInstance.modalHeader = 'Large Modal';
         activeModal.componentInstance.consulta = consulta;
-        
     }
 
 }

@@ -1,62 +1,82 @@
+<nb-card>
+    <nb-card-header>
+        Detalhe da consulta
+    </nb-card-header> 
+    <nb-card-body>
+        <div class="col-md-12">
+            <div class="col">               
+                <div class="row">
+                    <div class="col-md-4 bottom-spacing">
+                        <div class="">
+                            <label>Peso (kg)</label>
+                            <input   disabled placeholder="{{peso}}" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-md-4 bottom-spacing">
+                        <div class="">
+                            <label>Altura (m)</label>
+                            <input  disabled placeholder="{{altura}}" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-md-4 bottom-spacing">
+                        <div class="">
+                            <label>% de gordura</label>
+                            <input  disabled  placeholder="{{gordura}}" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 input-group">
+                    <div class="col">
+                        <label>Peso Ideal (kg)</label>
+                        <input disabled  placeholder="{{pesoIdeal}}"  disabled class="form-control"/>
+                    </div>
+                </div>
+                <div class="col-md-6 input-group">
+                    <div class="col">
+                        <label>IMC</label>
+                        <input disabled  placeholder="{{imc}}" disabled class="form-control"/>
+                    </div>
+                </div>   
+            </div>
+        </div>
 
-<div class="col-md-12">
-    <div class="col">               
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12 input-group">
+                    <div class="col">
+                        <label>Deficiências</label>
+                        <input [(ngModel)]="deficiencias" disabled type="text" placeholder="{{consulta.deficiencias}}" class="form-control"/>
+                    </div>
+                </div>
+                <div class="col-md-12 input-group">
+                    <div class="col">
+                        <label>Excessos</label>
+                        <input [(ngModel)]="excessos" disabled type="text" placeholder="{{consulta.excessos}}" class="form-control"/>
+                    </div>
+                </div>
+                <div class="col-md-12 input-group">
+                    <div class="col">
+                        <label>Observações</label>
+                        <textarea [(ngModel)]="observacoes" disabled rows="2" placeholder="{{consulta.observacoes}}" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <ngx-comentario-consulta-card *ngFor="let comentario of listaComentarios" [comentario]="comentario"></ngx-comentario-consulta-card>
+        
         <div class="row">
-            <div class="col-md-4 bottom-spacing">
-                <div class="">
-                    <label>Peso (kg)</label>
-                    <input   disabled placeholder="{{peso}}" class="form-control"/>
-                </div>
-            </div>
-            <div class="col-md-4 bottom-spacing">
-                <div class="">
-                    <label>Altura (m)</label>
-                    <input  disabled placeholder="{{altura}}" class="form-control"/>
-                </div>
-            </div>
-            <div class="col-md-4 bottom-spacing">
-                <div class="">
-                    <label>% de gordura</label>
-                    <input  disabled  placeholder="{{gordura}}" class="form-control"/>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 input-group">
-            <div class="col">
-                <label>Peso Ideal (kg)</label>
-                <input disabled  placeholder="{{pesoIdeal}}"  disabled class="form-control"/>
-            </div>
-        </div>
-        <div class="col-md-6 input-group">
-            <div class="col">
-                <label>IMC</label>
-                <input disabled  placeholder="{{imc}}" disabled class="form-control"/>
-            </div>
-        </div>   
-    </div>
-</div>
 
-<div class="col-md-12">
-    <div class="row">
-        <div class="col-md-12 input-group">
-            <div class="col">
-                <label>Deficiências</label>
-                <input [(ngModel)]="deficiencias" disabled type="text" placeholder="{{consulta.deficiencias}}" class="form-control"/>
-            </div>
+            <nb-user [picture]="nutricionista.foto" [name]="nutricionista.nome"  size="tiny"></nb-user>
+        
+            <div class="col-md-11 topBody"><textarea rows="2" [(ngModel)]="comentario" [class.form-control-danger]="validadorComentario" placeholder="Escreva um comentário" class="form-control"></textarea></div>
+            <div class="col-md-1 topBody"><img class="topBody" src="assets/images/othersIcons/send.png" height="40" width="40" (click)="enviarComentario()"> </div>
+            
         </div>
-        <div class="col-md-12 input-group">
-            <div class="col">
-                <label>Excessos</label>
-                <input [(ngModel)]="excessos" disabled type="text" placeholder="{{consulta.excessos}}" class="form-control"/>
-            </div>
-        </div>
-        <div class="col-md-12 input-group">
-            <div class="col">
-                <label>Observações</label>
-                <textarea [(ngModel)]="observacoes" disabled rows="2" placeholder="{{consulta.observacoes}}" class="form-control"></textarea>
-            </div>
-        </div>
-    </div>
-</div>
+
+    </nb-card-body>
+    <br>
+</nb-card>

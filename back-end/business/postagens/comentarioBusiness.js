@@ -105,6 +105,26 @@ exports.obterComentariosDePostagem = function(idPostOuConsulta) {
                                 as: 'cliente'
                             }
                         },
+                        { $lookup:
+                            {
+                                from: 'pessoas',
+                                localField: 'nutricionista_id',
+                                foreignField: '_id',
+                                as: 'nutricionista'
+                            }
+                        },
+                        {
+                            $project: {
+                                _id: 1,
+                                data: 1,
+                                postagem_id: 1,
+                                texto: 1,
+                                usuario_id: 1,
+                                __v: 1,
+                                cliente: {$arrayElemAt:["$cliente",0]},
+                                nutricionista: {$arrayElemAt:["$nutricionista",0]},
+                            }
+                        }
                     ], 
                         function (err, comentarioConsulta){
                             if (err) throw err;
