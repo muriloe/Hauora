@@ -146,5 +146,19 @@ export class ConsultaService {
                 .map(res => res.json());
 
     }
+    
+    criarPaciente( cliente: Cliente) {
+
+    let json = JSON.stringify({ cliente: cliente});
+        json = 'json=' + json;
+        const cabe = new Headers();
+        cabe.append('Content-Type', 'application/x-www-form-urlencoded');
+        return this.http.post(this.serverUrl + '/api/criarPaciente',
+        json, {headers : cabe})
+                .map(res => res.json());
+
+    }
+    
+
 
 }

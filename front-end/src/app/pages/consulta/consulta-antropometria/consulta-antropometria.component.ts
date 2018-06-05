@@ -57,6 +57,21 @@ import { Router } from '@angular/router';
     validadorAltura: boolean = false;
     validadorGordura: boolean = false;
     validadorCardapio: boolean = false;
+    
+    validadorCadastroNome: boolean = false;
+    validadorCadastroNascimento: boolean = false;
+    validadorCadastroEmail: boolean = false;
+    validadorCadastroTelefone: boolean = false;
+    validadorCadastroSexo: boolean = false;
+    validadorCadastroObjetivo: boolean = false;
+    
+    cadastroNome: string;
+    cadastroNascimento: string;
+    cadastroSexo: string;
+    cadastroObjetivo: string;
+    cadastroEmail: string;
+    cadastroTelefone: string;
+    
 
     constructor(private consultaService: ConsultaService,
                 private modalService: NgbModal,
@@ -305,6 +320,62 @@ import { Router } from '@angular/router';
         }
         if (hasErrors) {
             alert(mensagemErro);
+            return false;
+        }else {
+            return true;
+        }
+    }
+    
+    criarCliente() {
+        if(this.validarNovoCliente() === true){
+            var cliente = new Cliente('');
+            cliente.nome = this.cadastroNome;
+            cliente.data_nascimento = new Date(this.cadastroNascimento);
+            cliente.sexo = this.cadastroSexo;
+            cliente.objetivo = this.cadastroObjetivo;
+            cliente.email = this.cadastroEmail;
+            cliente.telefone = this.cadastroTelefone;
+            
+            this.consultaService.criarPaciente(cliente).subscribe(
+                (results: string[]) => {
+                    // tslint:disable-next-line:max-line-length
+                    if (confirm('Novo cliente foi craido com sucesso!\n Já é possível realizar uma consulta e após isso o cliente terá acesso ao aplicativo')) {
+                        this.router.navigate(['pages/consulta']);
+                    } else {
+                    }
+                },
+            );
+        }
+    }
+    
+    validarNovoCliente(){
+        let hasErrors: Boolean;
+        if(!this.cadastroNome){
+            this.validadorCadastroNome = true;
+            hasErrors = true;
+        }
+        if(!this.cadastroNascimento){
+            this.validadorCadastroNascimento = true;
+            hasErrors = true;
+        }
+        if(!this.cadastroEmail){
+            this.validadorCadastroEmail = true;
+            hasErrors = true;
+        }
+        if(!this.cadastroTelefone){
+            this.validadorCadastroTelefone = true;
+            hasErrors = true;
+        }
+        if(!this.cadastroSexo){
+            this.validadorCadastroSexo = true;
+            hasErrors = true;
+        }
+        if(!this.cadastroObjetivo){
+            this.validadorCadastroObjetivo = true;
+            hasErrors = true;
+        }
+        
+        if (hasErrors) {
             return false;
         }else {
             return true;

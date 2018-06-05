@@ -252,3 +252,30 @@ exports.getConsumos = function(dat){
         
     });
 }
+
+
+//salvar um novo cliente
+exports.criarPaciente = function(dat){
+    console.log("obtendo:");
+    return new Promise(function(resolve,reject){
+        let nCliente = new Cliente({
+            objetivo: dat.cliente.objetivo,
+            sexo: dat.cliente.sexo,
+            telefone: dat.cliente.telefone,
+            email: dat.cliente.email,
+            nome: dat.cliente.nome,
+            data_nascimento: new Date(dat.cliente.data_nascimento),
+        });
+        
+        nCliente.save(function (err, results) {
+            console.log("iniciando salvção de cliente");
+            if(err) {
+                console.log("Erro ao salvar cliente");  
+                reject({"status":false, "message":"Erro ao salvar cliente", "error": err});
+            }
+            else{
+                resolve({ "status":true,"results":results });       
+            }
+        });
+    });
+}

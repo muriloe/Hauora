@@ -65,6 +65,18 @@ module.exports = function(app) {
             res.end(JSON.stringify(err));
         });  
     });
+    
+    app.post('/api/criarPaciente', function(req, res){
+        console.log('criar novo paciente');
+        console.log(req.body.json);
+        console.log(JSON.parse(req.body.json));
+
+        anamneseBusiness.criarPaciente(JSON.parse(req.body.json)).then(function(response){
+            res.end(JSON.stringify(response));
+        }).catch(function(err){
+            res.status(404).end(JSON.stringify(err));
+        }); 
+    });
 
 
 
