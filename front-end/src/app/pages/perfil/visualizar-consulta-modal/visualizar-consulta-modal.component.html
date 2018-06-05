@@ -1,0 +1,62 @@
+
+<div class="col-md-12">
+    <div class="col">               
+        <div class="row">
+            <div class="col-md-4 bottom-spacing">
+                <div class="">
+                    <label>Peso (kg)</label>
+                    <input   disabled placeholder="{{peso}}" class="form-control"/>
+                </div>
+            </div>
+            <div class="col-md-4 bottom-spacing">
+                <div class="">
+                    <label>Altura (m)</label>
+                    <input  disabled placeholder="{{altura}}" class="form-control"/>
+                </div>
+            </div>
+            <div class="col-md-4 bottom-spacing">
+                <div class="">
+                    <label>% de gordura</label>
+                    <input  disabled  placeholder="{{gordura}}" class="form-control"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 input-group">
+            <div class="col">
+                <label>Peso Ideal (kg)</label>
+                <input disabled  placeholder="{{pesoIdeal}}"  disabled class="form-control"/>
+            </div>
+        </div>
+        <div class="col-md-6 input-group">
+            <div class="col">
+                <label>IMC</label>
+                <input disabled  placeholder="{{imc}}" disabled class="form-control"/>
+            </div>
+        </div>   
+    </div>
+</div>
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12 input-group">
+            <div class="col">
+                <label>Deficiências</label>
+                <input [(ngModel)]="deficiencias" disabled type="text" placeholder="{{consulta.deficiencias}}" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-md-12 input-group">
+            <div class="col">
+                <label>Excessos</label>
+                <input [(ngModel)]="excessos" disabled type="text" placeholder="{{consulta.excessos}}" class="form-control"/>
+            </div>
+        </div>
+        <div class="col-md-12 input-group">
+            <div class="col">
+                <label>Observações</label>
+                <textarea [(ngModel)]="observacoes" disabled rows="2" placeholder="{{consulta.observacoes}}" class="form-control"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

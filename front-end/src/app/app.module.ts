@@ -36,7 +36,7 @@ import { PostagemModalComponent } from './pages/postagens/postagem-card/postagem
 import { ComentarioCardComponent } from './pages/postagens/postagem-card/postagem-modal/comentario-card/comentario-card.component';
 import { PerfilService } from './pages/perfil/perfil.service';
 import { EditarCardapioModalComponent } from './pages/perfil/editar-cardapio-modal/editar-cardapio-modal.component';
-
+import { VisualizarCardapioModalComponent } from './pages/perfil/visualizar-consulta-modal/visualizar-consulta-modal.component';
 
 
 @NgModule({
@@ -48,7 +48,8 @@ import { EditarCardapioModalComponent } from './pages/perfil/editar-cardapio-mod
                 AlimentosCardComponent,
                 PostagemModalComponent,
                 ComentarioCardComponent,
-                EditarCardapioModalComponent],
+                EditarCardapioModalComponent,
+                VisualizarCardapioModalComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -79,7 +80,8 @@ import { EditarCardapioModalComponent } from './pages/perfil/editar-cardapio-mod
                     ConsultaGruposModalComponent,
                     AlimentosCardComponent,
                     PostagemModalComponent,
-                    EditarCardapioModalComponent],
+                    EditarCardapioModalComponent,
+                    VisualizarCardapioModalComponent],
 })
 export class AppModule {
 }

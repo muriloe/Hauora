@@ -1,7 +1,7 @@
 import { Composicao } from './../../shared/model/composicao.model';
 import { Cardapio } from './../../shared/model/cardapio.model';
-import { Cliente } from './../../shared/model/cliente.model';
 import { Consulta } from './../../shared/model/consulta.model';
+import { Cliente } from './../../shared/model/cliente.model';
 import { Remedio } from './../../shared/model/remedio.model';
 import { Doenca } from './../../shared/model/doenca.model';
 import { Anamnese } from './../../shared/model/anamnese.model';
@@ -20,6 +20,7 @@ export class PerfilService {
 
     private clientesAutoComplete: Cliente[] = [];
     private cardapios: Cardapio [] = [];
+    private consultas: Consulta [] =[];
     private serverUrl = new ServerInfo().getServerName();
 
     getClientes (query: string) {
@@ -135,6 +136,21 @@ export class PerfilService {
                 this.cardapios.push(new Cardapio(cardapio));
             }
             return this.cardapios;
+        })
+        .catch((error: Response) => Observable.throw(error.json()));
+    }
+    
+    getConsultas(idCliente) {
+        return this.http.get(this.serverUrl + '/api/consultas/' + idCliente)
+        .map((response: Response) => {
+            const consultaResponse = response.json().obj;
+            this.consultas = [];
+
+            for (const consulta of consultaResponse) {
+                consulta.data = new Date(consulta.data);
+                this.consultas.push(new Consulta(consulta));
+            }
+            return this.consultas;
         })
         .catch((error: Response) => Observable.throw(error.json()));
     }

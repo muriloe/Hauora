@@ -1,7 +1,9 @@
 import { EditarCardapioModalComponent } from './editar-cardapio-modal/editar-cardapio-modal.component';
+import { VisualizarCardapioModalComponent } from './visualizar-consulta-modal/visualizar-consulta-modal.component';
 import { Cardapio } from './../../shared/model/cardapio.model';
 import { PerfilService } from './perfil.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { Consulta } from '../../shared/model/consulta.model';
 import { Cliente } from '../../shared/model/cliente.model';
 import { ConsultaService } from '../consulta/consulta.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
@@ -26,6 +28,7 @@ export class PerfilComponent implements OnInit {
     cardapioLanche: Cardapio;
     cardapioJanta: Cardapio;
     exibirCardCardapio = false;
+    consultas: Consulta[] = [];
 
 
     ngOnInit() {
@@ -56,6 +59,7 @@ export class PerfilComponent implements OnInit {
                     this.selecionouPaciente = true;
                     this.title = this.cliente.nome;
                     this.obterCardapios(this.cliente._id);
+                    this.obterConsultas(this.cliente._id);
                 },
             );
     }
@@ -63,6 +67,15 @@ export class PerfilComponent implements OnInit {
     cancelaAnamnese() {
         this.selecionouPaciente = false;
         this.title = 'Busca Perfil';
+    }
+    
+    obterConsultas(idCliente){
+        this.perfilService.getConsultas(idCliente)
+            .subscribe(
+                (listaConsulta: Consulta[]) => {
+                    this.consultas = listaConsulta;
+                },
+            );
     }
 
     obterCardapios(idCliente) {
@@ -127,5 +140,11 @@ export class PerfilComponent implements OnInit {
           });
     }
 
+    verConsulta(consulta){
+        const activeModal = this.modalService.open(VisualizarCardapioModalComponent, { size: 'lg', container: 'nb-layout' });
+        activeModal.componentInstance.modalHeader = 'Large Modal';
+        activeModal.componentInstance.consulta = consulta;
+        
+    }
 
 }

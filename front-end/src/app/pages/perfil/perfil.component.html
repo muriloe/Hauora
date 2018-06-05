@@ -110,7 +110,22 @@
 
                     </nb-card-body>
                 </nb-card>
+                
+                <nb-card *ngIf="exibirCardCardapio">
+                    <nb-card-header>
+                        Histórico de consultas
+                    </nb-card-header> 
+                    <nb-card-body >
+                        <div  *ngFor="let c of consultas" class="row">
+                            <label>{{c.data}}</label>
+                            <button class="btn btn-success" (click)="verConsulta(c)">Ver consulta</button>
+                        </div> 
+                    </nb-card-body>
+                </nb-card>
+                
             </div>
+
+            
         </div>
 
         
