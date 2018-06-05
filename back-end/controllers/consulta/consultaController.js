@@ -38,5 +38,19 @@ module.exports = function(app) {
         });
         
     });
+    
+    app.get('/api/consultas/:idCliente', function(req, res){
+    console.log("/api/consultas/clienteid");
+
+        consultaBusiness.obterConsultasWeb(req.params.idCliente).then(function(response){
+            res.status(200).json({
+                message: 'Success',
+                obj: response
+            });
+        }).catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+        
+    });
 
 }
