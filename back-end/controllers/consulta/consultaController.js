@@ -52,5 +52,19 @@ module.exports = function(app) {
         });
         
     });
+    
+    app.get('/api/consultas/web/todas/:indice', function(req, res){
+    console.log("/api/consultas/todas");
+
+        consultaBusiness.obterTodasConsultas(req.params.indice).then(function(response){
+            res.status(200).json({
+                message: 'Success',
+                obj: response
+            });
+        }).catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+        
+    });
 
 }

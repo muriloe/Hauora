@@ -31,7 +31,9 @@ export class PerfilService {
                 const nCli: Cliente[] = [];
 
                 for (const cli of cliAnm) {
-                    cli.foto = cli.foto.replace('/uploads', '/uploads/min');
+                    if(cli.foto){
+                        cli.foto = cli.foto.replace('/uploads', '/uploads/min');
+                    }                    
                     nCli.push(new Cliente(cli));
                 }
                 this.clientesAutoComplete = nCli;
@@ -52,7 +54,9 @@ export class PerfilService {
 
                     if (cli.foto) {
                         // tslint:disable-next-line:max-line-length
-                        cli.foto = cli.foto.replace('/uploads', '/uploads/min');
+                        if(cli.foto){
+                            cli.foto = cli.foto.replace('/uploads', '/uploads/min');
+                        }
                         nCli.push(new Cliente(cli));
                     }
                     const cliTemp = new Cliente(cli);

@@ -72,6 +72,9 @@ import { Router } from '@angular/router';
     cadastroEmail: string;
     cadastroTelefone: string;
     
+    listaDeConsulta: Consulta[] = [];
+    indice = 0;
+    
 
     constructor(private consultaService: ConsultaService,
                 private modalService: NgbModal,
@@ -87,6 +90,7 @@ import { Router } from '@angular/router';
         this.selecionouPaciente = false;
         this.seleciouTipoRefeicao('CAFE_DA_MANHA');
         this.getGrupos();
+        this.getConsultas();
     }
 
     buscarPacientes(nomePaciente) {
@@ -184,6 +188,18 @@ import { Router } from '@angular/router';
             },
         );
     }
+    
+    getConsultas() {
+        this.consultaService.buscarConsultas(this.indice)
+        .subscribe(
+            (consulta: Consulta[]) => {
+                this.listaDeConsulta = consulta;
+                this.indice = indice + 10;
+            },
+        );
+    }
+    
+    
 
     addComposicao() {
         // tslint:disable-next-line:prefer-const
@@ -366,14 +382,7 @@ import { Router } from '@angular/router';
             this.validadorCadastroTelefone = true;
             hasErrors = true;
         }
-        if(!this.cadastroSexo){
-            this.validadorCadastroSexo = true;
-            hasErrors = true;
-        }
-        if(!this.cadastroObjetivo){
-            this.validadorCadastroObjetivo = true;
-            hasErrors = true;
-        }
+
         
         if (hasErrors) {
             return false;

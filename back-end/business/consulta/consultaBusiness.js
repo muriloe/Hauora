@@ -434,3 +434,48 @@ exports.obterConsultasWeb = function(clienteId){
             } );
     });
 }
+
+exports.obterTodasConsultas = function(indice){
+    var totalComentarios;
+    
+    return new Promise(function(resolve, reject){
+        Consulta.aggregate([
+            { $lookup:
+                {
+                    from: 'comentarios',
+                    localField: '_id',
+                    foreignField: 'consulta_id',
+                    as: 'comentarios'
+                }
+            },
+            {
+                $project: {
+                    _id: 1,
+                    data: 1,
+                    linkExames: 1,
+                    linkRelatorio: 1,
+                    peso: 1,
+                    pesoIdeal: 1,
+                    altura: 1,
+                    percentualGordura: 1,
+                    imc: 1,
+                    deficiencias: 1,
+                    excessos: 1,
+                    observacoes: 1,
+                    cliente: 1,
+                    totalComentarios : {$size:"$comentarios"},
+                }
+            },
+            {$sort: {data: -1} }
+        ], 
+            function (err, consulta){
+                if (err){
+                    throw err;
+                    reject({"status":false, "message":"Erro ao obter consultas", "error": err});
+                } 
+                else{
+                    resolve(consulta);
+                }
+            } );
+    });
+}

@@ -30,7 +30,9 @@ export class ConsultaService {
                 const nCli: Cliente[] = [];
 
                 for (const cli of cliAnm) {
-                    cli.foto = cli.foto.replace('/uploads', '/uploads/min');
+                    if(cli.foto){
+                        cli.foto = cli.foto.replace('/uploads', '/uploads/min');
+                    }
                     nCli.push(new Cliente(cli));
                 }
                 this.clientesAutoComplete = nCli;
@@ -51,8 +53,10 @@ export class ConsultaService {
 
                     if (cli.foto) {
                         // tslint:disable-next-line:max-line-length
+                    if(cli.foto){
                         cli.foto = cli.foto.replace('/uploads', '/uploads/min');
-                        nCli.push(new Cliente(cli));
+                    } 
+                    nCli.push(new Cliente(cli));
                     }
                     const cliTemp = new Cliente(cli);
                     cliTemp._id = cli._id;
@@ -149,15 +153,26 @@ export class ConsultaService {
     
     criarPaciente( cliente: Cliente) {
 
-    let json = JSON.stringify({ cliente: cliente});
-        json = 'json=' + json;
-        const cabe = new Headers();
-        cabe.append('Content-Type', 'application/x-www-form-urlencoded');
-        return this.http.post(this.serverUrl + '/api/criarPaciente',
-        json, {headers : cabe})
-                .map(res => res.json());
+        let json = JSON.stringify({ cliente: cliente});
+            json = 'json=' + json;
+            const cabe = new Headers();
+            cabe.append('Content-Type', 'application/x-www-form-urlencoded');
+            return this.http.post(this.serverUrl + '/api/criarPaciente',
+            json, {headers : cabe})
+                    .map(res => res.json());
 
     }
+    
+    buscarConsultas(indice) {
+        return this.http.get(this.serverUrl + '/api/consultas/web/todas/'+indice)
+            .map((response: Response) => {
+                return response.json().obj;
+            })
+            .catch((error: Response) => Observable.throw(error.json()));
+        
+
+    }
+    
     
 
 

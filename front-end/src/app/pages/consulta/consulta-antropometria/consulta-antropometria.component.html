@@ -224,8 +224,8 @@
                             <div class="col">
                                 <label>Sexo:</label>
                                 <select class="form-control" [(ngModel)]="cadastroSexo" [class.form-control-danger]="validadorCadastroSexo">
-                                    <option id="MASCULINO" [ngValue]="MASCULINO">MASCULINO</option>
-                                    <option id="FEMININO" [ngValue]="FEMININO">FEMININO</option>
+                                    <option id="MASCULINO" >MASCULINO</option>
+                                    <option id="FEMININO" >FEMININO</option>
                                 </select>   
                             </div>
                         </div>
@@ -233,9 +233,9 @@
                             <div class="col">
                                 <label>Objetivo:</label>
                                 <select class="form-control" [(ngModel)]="cadastroObjetivo" [class.form-control-danger]="validadorCadastroObjetivo">
-                                    <option id="PERDER_PESO" [ngValue]="PERDER_PESO">Perder peso</option>
-                                    <option id="GANHAR_PESO" [ngValue]="GANHAR_PESO">GANHAR_PESO</option>
-                                    <option id="FICAR_SAUDAVEL" [ngValue]="FICAR_SAUDAVEL">FICAR_SAUDAVEL</option>
+                                    <option id="PERDER_PESO" >PERDER_PESO</option>
+                                    <option id="GANHAR_PESO" >GANHAR_PESO</option>
+                                    <option id="FICAR_SAUDAVEL" >FICAR_SAUDAVEL</option>
                                 </select>   
                             </div>
                         </div>
@@ -253,6 +253,18 @@
                         </div>
                         <button class="btn btn-success btn-semi-round btn-block" (click)="criarCliente()">Criar paciente</button> 
                     </div>
+                </nb-card-body>
+            </nb-card>
+        </div>
+    </nb-tab>
+    
+     <nb-tab tabTitle="Histórico de consultas">
+        <div class="col-md-12">
+            <nb-card>
+                <nb-card-body>
+                     <div *ngFor="let consultaTemp of listaDeConsulta">
+                             <h1>kjgsahdsalhuisa</h1>
+                     </div>
                 </nb-card-body>
             </nb-card>
         </div>
