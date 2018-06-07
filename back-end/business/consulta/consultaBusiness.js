@@ -437,6 +437,7 @@ exports.obterConsultasWeb = function(clienteId){
 
 exports.obterTodasConsultas = function(indice){
     var totalComentarios;
+    var pagina = parseInt(indice);
     
     return new Promise(function(resolve, reject){
         Consulta.aggregate([
@@ -466,7 +467,9 @@ exports.obterTodasConsultas = function(indice){
                     totalComentarios : {$size:"$comentarios"},
                 }
             },
-            {$sort: {data: -1} }
+            {$sort: {data: -1} },
+            { $skip : pagina },
+            { $limit : 10 }
         ], 
             function (err, consulta){
                 if (err){

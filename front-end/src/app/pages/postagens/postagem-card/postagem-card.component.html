@@ -1,11 +1,11 @@
 <nb-card>
     <nb-card-body>
         <div class="row">
-            <div class="col-md-10" (click)="iniciarConsulta(idCliente)">
+            <div class="col-md-10 pointer" (click)="iniciarConsulta(idCliente)">
                 <nb-user [picture]="imagem" [name]="nome" [title]="data| date: 'dd/MM/yyyy hh:mm'" size="large"></nb-user>
             </div>
             <div class="col-md-2">
-                <img [src]="visualizadoIcon" height="20" width="20" (click)="visualizadoClick()" style="float:right;">     
+                <img class="pointer" [src]="visualizadoIcon" height="20" width="20" (click)="visualizadoClick()" style="float:right;">     
             </div>
         </div> 
         <div class="row topBody">

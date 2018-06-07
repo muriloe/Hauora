@@ -74,6 +74,7 @@ import { Router } from '@angular/router';
     
     listaDeConsulta: Consulta[] = [];
     indice = 0;
+    ativarBotaoCarregarMais: boolean = true;
     
 
     constructor(private consultaService: ConsultaService,
@@ -193,8 +194,35 @@ import { Router } from '@angular/router';
         this.consultaService.buscarConsultas(this.indice)
         .subscribe(
             (consulta: Consulta[]) => {
+                
                 this.listaDeConsulta = consulta;
-                this.indice = indice + 10;
+                console.log(consulta.length);
+                if(consulta.length != 10){
+                    console.log('aaa');
+                    this.ativarBotaoCarregarMais = false;
+                }
+                else{
+                    this.indice = this.indice + 10;
+                }
+            },
+        );
+    }
+    
+    carregarMais(){
+        this.consultaService.buscarConsultas(this.indice)
+        .subscribe(
+            (consultas: Consulta[]) => {
+
+                for (const consulta of consultas) {
+                    this.listaDeConsulta.push(consulta);
+                }
+                console.log(consultas.length);
+                if(consultas.length != 11){
+                    this.ativarBotaoCarregarMais = false;
+                }
+                else{
+                    this.indice = this.indice + 10;
+                }
             },
         );
     }
