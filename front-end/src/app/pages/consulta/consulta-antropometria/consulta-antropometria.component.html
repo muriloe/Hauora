@@ -263,7 +263,7 @@
             <nb-card>
                 <nb-card-body>
                      <div *ngFor="let consultaTemp of listaDeConsulta">
-                         <h1>{{consultaTemp.data}}</h1>
+                         <ngx-historico-consulta-card [consulta]='consultaTemp' ></ngx-historico-consulta-card>
                      </div>
                      <button *ngIf="ativarBotaoCarregarMais" class="btn btn-success btn-semi-round btn-block" (click)="carregarMais()">Caregar mais...</button> 
 

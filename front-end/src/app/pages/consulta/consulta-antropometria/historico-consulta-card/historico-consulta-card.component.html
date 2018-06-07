@@ -1,0 +1,16 @@
+
+
+<nb-card  class="card-attributes">
+    <nb-card-body>
+        <div class="row">
+            <div class="col-md-6">
+                <nb-user  *ngIf="cliente" [picture]="cliente.foto" [name]="cliente.nome" [title]="cliente.email" size="xlarge"></nb-user>
+            </div>
+            <div class="col-md-6">
+                <label>Consulta realizada em:</label><br>
+                {{consulta.data | date: 'dd/MM/yyyy hh:mm'}}<br>
+                <button class="btn btn-success btn-tn" (click)="vetConsulta(consulta._id)">Ver consulta</button>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>
