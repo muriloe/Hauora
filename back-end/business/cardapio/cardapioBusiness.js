@@ -4,7 +4,7 @@ let Composicao =    require("../../models/composicaoModel");
 let Grupo =         require("../../models/grupoModel");
 let Alimento =      require("../../models/alimentoModel");
 let serverInfo =    require("../../config/server");
-let Notificacao =      require("../../models/notificaoModel");
+let Notificacao =   require("../../models/notificacaoModel");
 var mongoose =      require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 

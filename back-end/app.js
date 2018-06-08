@@ -14,6 +14,7 @@ var consultaController =            require('./controllers/consulta/consultaCont
 var postagemController =            require('./controllers/postagem/postagemController');
 var comentarioController =          require('./controllers/postagem/comentarioController');
 var cardapioController =            require('./controllers/cardapio/cardapioController');
+var notificacaoController =         require('./controllers/notificacao/notificacaoController');
 var bodyParser =                    require('body-parser');
 var port = process.env.port || 8081;
 
@@ -38,6 +39,7 @@ consultaController(app);
 postagemController(app);
 comentarioController(app);
 cardapioController(app);
+notificacaoController(app);
 
 
 //Fim: Inicia as API's

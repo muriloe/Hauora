@@ -127,7 +127,7 @@ export class PostagemCardComponent implements OnInit, OnDestroy {
       );
   }
 
-  iniciarConsulta(clienteId) {
+  verPerfil(clienteId) {
     const urlRedirect = 'pages/perfil?cliente=' + clienteId;
     this.router.navigate(['pages/perfil'], { queryParams: { cliente: clienteId } });
   }

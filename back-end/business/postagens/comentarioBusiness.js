@@ -4,7 +4,7 @@ let Nutricionista = require("../../models/nutricionistaModel");
 let Consulta =      require("../../models/consultaModel");
 let Comentario =    require("../../models/comentarioModel");
 let serverInfo =    require("../../config/server");
-let Notificacao =      require("../../models/notificaoModel");
+let Notificacao =   require("../../models/notificacaoModel");
 var mongoose =      require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
