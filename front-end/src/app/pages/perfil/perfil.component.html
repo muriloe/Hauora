@@ -3,7 +3,7 @@
         
         <div  class="row">
             <div class="col-md-11"><h1>{{title}}</h1></div>
-            <div class="col-md-1" *ngIf="selecionouPaciente"><button class="btn btn-danger btn-semi-round btn-demo margemUsuario" (click)="cancelaAnamnese()">X</button></div>
+            <div class="col-md-1" *ngIf="selecionouPaciente"><button class="btn btn-danger btn-semi-round btn-demo margemUsuario pointer" (click)="cancelaAnamnese()">X</button></div>
         </div>
         
 
@@ -14,7 +14,7 @@
                     <div class="input-group">
                         <input type="text" [(ngModel)]="pacienteSelecionado" class="form-control" placeholder="Insira o nome do paciente">
                             <span class="input-group-append">
-                                <button class="btn btn-success btn-demo" (click)="buscarPacientes(pacienteSelecionado)">
+                                <button class="btn btn-success btn-demo pointer" (click)="buscarPacientes(pacienteSelecionado)">
                                     Buscar
                                 </button>
                             </span>
@@ -24,7 +24,7 @@
                             <nb-tab tabTitle="Resultados">   
                                 <div class="contact" *ngFor="let c of listaDeClientesBusca">
                                     <nb-user [picture]="c.foto" [name]="c.nome" [title]="c.email" size="large"></nb-user>
-                                    <button class="btn btn-success btn-demo"  (click)="usuarioSelecionado(c._id)">Selecionar</button>
+                                    <button class="btn btn-success btn-demo pointer"  (click)="usuarioSelecionado(c._id)">Selecionar</button>
                                 </div>   
                             </nb-tab>    
                         </nb-tabset> 
@@ -117,7 +117,7 @@
                             </div>
                         </div> 
 
-                        <button class="btn btn-success btn-block" (click)="alterarCardapio()">Editar Cardápio</button>
+                        <button class="btn btn-success btn-block pointer" (click)="alterarCardapio()">Editar Cardápio</button>
 
                     </nb-card-body>
                 </nb-card>
@@ -130,7 +130,7 @@
                         <div  *ngFor="let c of consultas" class="row espacinho">
                             <div class="col-md-9"><label class="textoCentro">{{c.data | date: 'dd/MM/yyyy hh:mm'}}</label></div>
                             
-                            <div class="col-md-3"> <button class="btn btn-success" (click)="verConsulta(c)" >Ver consulta</button></div>
+                            <div class="col-md-3"> <button class="btn btn-success pointer" (click)="verConsulta(c)" >Ver consulta</button></div>
                             <hr>
                         </div> 
                     </nb-card-body>

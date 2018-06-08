@@ -5,6 +5,10 @@
 
 @include nb-install-component() {
 
+
+  .pointer{
+      cursor: pointer;
+  }
   #parent {
     text-align:center;
   }

@@ -6,6 +6,7 @@ import { Cliente } from '../../shared/model/cliente.model';
 @Component({
   selector: 'ngx-clientes',
   templateUrl: './clientes.component.html',
+  styleUrls: ['./clientes.component.scss'],
 })
 
 export class ClientesComponent implements OnInit {
