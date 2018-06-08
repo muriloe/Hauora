@@ -44,7 +44,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
+  { path: '', redirectTo: 'pages/notificacao', pathMatch: 'full' },
   { path: '**', redirectTo: 'pages' },
 
 ];

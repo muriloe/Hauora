@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ThemeModule } from '../../@theme/theme.module';
 
-import { routing } from './perfil.routing';
-import { PerfilComponent } from './perfil.component';
-import { PerfilPostagemCardComponent } from './perfil-postagem-card/perfil-postagem-card.component';
+import { routing } from './notificacao.routing';
+import { NotificacaoComponent } from './notificacao.component';
 
 @NgModule({
   imports: [
@@ -15,8 +14,7 @@ import { PerfilPostagemCardComponent } from './perfil-postagem-card/perfil-posta
     routing,
   ],
   declarations: [
-    PerfilComponent,
-    PerfilPostagemCardComponent,
+    NotificacaoComponent,
   ],
 })
-export class PerfilModule {}
+export class NotificacaoModule {}

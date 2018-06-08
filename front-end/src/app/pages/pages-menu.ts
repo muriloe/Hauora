@@ -1,6 +1,17 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
+
+  {
+    title: 'Menu',
+    group: true,
+  },
+  {
+    title: 'Notificações', // menu title
+    icon: 'fa fa fa-bell-o',
+    link: '/pages/notificacao', // menu icon
+    home: true
+  },
   {
     title: 'Pacientes', // menu title
     icon: 'fa fa fa-book',
@@ -10,7 +21,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Consultas Pendentes', // menu title
     icon: 'fa fa-users',
     link: '/pages/anamnese', // menu icon
-    home: true,
   },
   {
     title: 'Consulta', // menu title
@@ -32,4 +42,5 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'nb-gear',
     link: '/pages/3', // menu iconnb-person
   },
+
 ];
