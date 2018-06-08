@@ -4,10 +4,12 @@ let Nutricionista = require("../../models/nutricionistaModel");
 let Consulta =      require("../../models/consultaModel");
 let Comentario =    require("../../models/comentarioModel");
 let serverInfo =    require("../../config/server");
+let Notificacao =      require("../../models/notificaoModel");
 var mongoose =      require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
 exports.criarComentario = function(clienteId, comentario) {
+    var cli = clienteId;
 
     return new Promise(function(resolve,reject){
         var nComentario = new Comentario({
@@ -39,9 +41,62 @@ exports.criarComentario = function(clienteId, comentario) {
                 reject({"status":false, "message":"Erro ao salvar comentario", "error": err});
             }
             else{
-                console.log("Salvou comentario");
-                console.log(results);
-                resolve({ "comentario":results });   
+                console.log(cli);
+                Cliente.findById({_id: cli}, 
+                    function (err, cliente){
+                        if (err){
+                            throw err;
+                            reject({"status":false, "message":"Erro ao ovter cardapio", "error": err});
+                        }
+                        else{
+                            if(comentario.postagem_id){
+                                var mensagem = 'Usuário '+cliente.nome+ ' do email ' +cliente.email+ ' realizou um comentário em uma postagem';
+                                var notificacao = new Notificacao({
+                                    texto: mensagem,
+                                    cliente: cliente._id,
+                                    postagem: comentario.postagem_id
+                                });
+                                                            
+                                notificacao.save(function (err, results) {
+                                    console.log("iniciando salvção de notificacao");
+                                    if(err) {
+                                        console.log("Erro ao salvar notificacao");  
+                                        reject({"status":false, "message":"Erro ao salvar notificacao", "error": err});
+                                    }
+                                    else{
+                                        console.log(notificacao);
+                                        console.log("Salvou comentario");
+                                        console.log(results);
+                                        resolve({ "comentario":results });   
+                                    }
+                                });
+                            }
+                            if(comentario.consulta_id){
+                                var mensagem = 'Usuário '+cliente.nome+ ' do email ' +cliente.email+ ' realizou um comentário em uma consulta';
+                                var notificacao = new Notificacao({
+                                    texto: mensagem,
+                                    cliente: cliente._id,
+                                    consulta: comentario.consulta_id,
+                                });
+                                                            
+                                notificacao.save(function (err, results) {
+                                    console.log("iniciando salvção de notificacao");
+                                    if(err) {
+                                        console.log("Erro ao salvar notificacao");  
+                                        reject({"status":false, "message":"Erro ao salvar notificacao", "error": err});
+                                    }
+                                    else{
+                                        console.log(notificacao);
+                                        console.log("Salvou comentario");
+                                        console.log(results);
+                                        resolve({ "comentario":results });   
+                                    }
+                                });
+                            }
+                        }
+                });
+                
+
             }
         });
 

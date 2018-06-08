@@ -56,7 +56,7 @@ module.exports = function(app) {
     });
 
     app.post('/api/cardapio/atualizar', function(req, res){
-        console.log('ASDASDASDASD');
+        console.log('atualizar cardapio');
         console.log(req.body.json);
         console.log(JSON.parse(req.body.json));
 
