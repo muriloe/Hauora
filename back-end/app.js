@@ -15,7 +15,7 @@ var postagemController =            require('./controllers/postagem/postagemCont
 var comentarioController =          require('./controllers/postagem/comentarioController');
 var cardapioController =            require('./controllers/cardapio/cardapioController');
 var bodyParser =                    require('body-parser');
-var port = process.env.port || 8081;
+var port = process.env.port || 3000;
 
 
 
