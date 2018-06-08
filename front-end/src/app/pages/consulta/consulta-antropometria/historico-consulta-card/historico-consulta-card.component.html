@@ -3,13 +3,13 @@
 <nb-card  class="card-attributes">
     <nb-card-body>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 margemTop" (click)="verCliente(cliente._id)">
                 <nb-user  *ngIf="cliente" [picture]="cliente.foto" [name]="cliente.nome" [title]="cliente.email" size="xlarge"></nb-user>
             </div>
             <div class="col-md-6">
-                <label>Consulta realizada em:</label><br>
-                {{consulta.data | date: 'dd/MM/yyyy hh:mm'}}<br>
-                <button class="btn btn-success btn-tn" (click)="vetConsulta(consulta._id)">Ver consulta</button>
+                 <div class="row" style="display: flex; justify-content: flex-end;"><label>Consulta realizada em:</label><br></div>
+                 <div class="row" style="display: flex; justify-content: flex-end"><label>{{consulta.data | date: 'dd/MM/yyyy hh:mm'}}</label></div>
+                <div class="row" style="display: flex; justify-content: flex-end"><button class="btn btn-success btn-tn" (click)="verConsulta(consulta)">Ver consulta</button></div>
             </div>
         </div>
     </nb-card-body>

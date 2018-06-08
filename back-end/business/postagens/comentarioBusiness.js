@@ -79,6 +79,97 @@ exports.obterComentariosDePostagem = function(idPostOuConsulta) {
                     texto: 1,
                     usuario_id: 1,
                     __v: 1,
+                    escritor:  {$ifNull: [{$arrayElemAt:["$cliente",0]}, {$arrayElemAt:["$nutricionista",0]} ] },
+                }
+            }
+            
+        ],
+            function (err, comentarioPost){
+                if (err){
+                    throw err;
+                    reject(comentarioPost);
+                } 
+                //Se for maior que zero significa que o comentário é de uma postagem
+                if(comentarioPost.length > 0){
+                    resolve(comentarioPost);   
+                }
+                else{
+                    Comentario.aggregate([
+                        { $match : {consulta_id: ObjectId(idPostOuConsulta)}},
+                        { $lookup:
+                            {
+                                from: 'pessoas',
+                                localField: 'usuario_id',
+                                foreignField: '_id',
+                                as: 'cliente'
+                            }
+                        },
+                        { $lookup:
+                            {
+                                from: 'pessoas',
+                                localField: 'nutricionista_id',
+                                foreignField: '_id',
+                                as: 'nutricionista'
+                            }
+                        },
+                        {
+                            $project: {
+                                _id: 1,
+                                data: 1,
+                                postagem_id: 1,
+                                texto: 1,
+                                usuario_id: 1,
+                                __v: 1,
+                                escritor:  {$ifNull: [{$arrayElemAt:["$cliente",0]}, {$arrayElemAt:["$nutricionista",0]} ] },
+                            }
+                        }
+                    ], 
+                        function (err, comentarioConsulta){
+                            if (err) throw err;
+                            //Se for maior que zero significa que o comentário é de uma consulta
+                            if(comentarioConsulta.length > 0){
+                                resolve(comentarioConsulta);   
+                            }
+                            else{
+                                reject(comentarioConsulta);
+                            }
+                        } );
+                }
+            } );
+    });
+}
+
+exports.obterComentariosDePostagemWeb = function(idPostOuConsulta) {
+    console.log(idPostOuConsulta);
+
+    return new Promise(function(resolve,reject){
+        
+        Comentario.aggregate([
+            { $match : {postagem_id: ObjectId(idPostOuConsulta)}},
+            { $lookup:
+                {
+                    from: 'pessoas',
+                    localField: 'usuario_id',
+                    foreignField: '_id',
+                    as: 'cliente'
+                }
+            },
+            { $lookup:
+                {
+                    from: 'pessoas',
+                    localField: 'nutricionista_id',
+                    foreignField: '_id',
+                    as: 'nutricionista'
+                }
+            },
+            {
+                $project: {
+                    _id: 1,
+                    data: 1,
+                    postagem_id: 1,
+                    texto: 1,
+                    usuario_id: 1,
+                    __v: 1,
                     cliente: {$arrayElemAt:["$cliente",0]},
                     nutricionista: {$arrayElemAt:["$nutricionista",0]},
                 }

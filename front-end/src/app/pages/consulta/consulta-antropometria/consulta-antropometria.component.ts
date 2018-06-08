@@ -386,6 +386,7 @@ import { Router } from '@angular/router';
                     if (confirm('Novo cliente foi craido com sucesso!\n Já é possível realizar uma consulta e após isso o cliente terá acesso ao aplicativo')) {
                         this.router.navigate(['pages/consulta']);
                     } else {
+                        window.alert("Email já está sendo usado");
                     }
                 },
             );
@@ -394,22 +395,55 @@ import { Router } from '@angular/router';
     
     validarNovoCliente(){
         let hasErrors: Boolean;
+        const dataNasc = new Date(this.cadastroNascimento);
         if(!this.cadastroNome){
             this.validadorCadastroNome = true;
             hasErrors = true;
+        }else{
+            this.validadorCadastroNome = false;
         }
-        if(!this.cadastroNascimento){
+        console.log(dataNasc);
+        if(!dataNasc){
             this.validadorCadastroNascimento = true;
             hasErrors = true;
+        }else{
+            this.validadorCadastroNascimento = false;
         }
         if(!this.cadastroEmail){
             this.validadorCadastroEmail = true;
             hasErrors = true;
+        }else{
+            this.validadorCadastroEmail = false;
         }
         if(!this.cadastroTelefone){
             this.validadorCadastroTelefone = true;
             hasErrors = true;
+        }else{
+            this.validadorCadastroTelefone = false;
         }
+        if(this.cadastroSexo == null){
+            this.validadorCadastroSexo = true;
+            hasErrors = true;
+        }
+        else{
+            this.validadorCadastroSexo = false;
+        }
+        if(this.cadastroObjetivo == null){
+            this.validadorCadastroObjetivo = true;
+            hasErrors = true;
+        }
+        else{
+            this.validadorCadastroObjetivo = false;
+        }
+        const dataAgora = new Date();
+
+        if(dataNasc > dataAgora ){
+            this.validadorCadastroNascimento = true;
+            hasErrors = true;
+        }else{
+            this.validadorCadastroNascimento = false;
+        }
+        
 
         
         if (hasErrors) {
@@ -417,6 +451,10 @@ import { Router } from '@angular/router';
         }else {
             return true;
         }
+    }
+    
+    validarForm(){
+        this.validarNovoCliente();
     }
 
 }

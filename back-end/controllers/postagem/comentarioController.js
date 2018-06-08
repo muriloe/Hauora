@@ -45,7 +45,7 @@ module.exports = function(app) {
     app.get('/api/comentarios/web/:idPostOuConsulta', function(req, res){
         console.log("/api/comentarios/web");
        
-        comentarioBusiness.obterComentariosDePostagem(req.params.idPostOuConsulta).then(function(response){
+        comentarioBusiness.obterComentariosDePostagemWeb(req.params.idPostOuConsulta).then(function(response){
             res.end(JSON.stringify(response));
         }).catch(function(err){
             res.end(JSON.stringify(err));
