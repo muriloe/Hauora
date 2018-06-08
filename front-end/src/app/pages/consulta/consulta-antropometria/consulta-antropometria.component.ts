@@ -57,25 +57,26 @@ import { Router } from '@angular/router';
     validadorAltura: boolean = false;
     validadorGordura: boolean = false;
     validadorCardapio: boolean = false;
-    
+
     validadorCadastroNome: boolean = false;
     validadorCadastroNascimento: boolean = false;
     validadorCadastroEmail: boolean = false;
     validadorCadastroTelefone: boolean = false;
     validadorCadastroSexo: boolean = false;
     validadorCadastroObjetivo: boolean = false;
-    
+
     cadastroNome: string;
     cadastroNascimento: string;
     cadastroSexo: string;
     cadastroObjetivo: string;
     cadastroEmail: string;
     cadastroTelefone: string;
-    
+
     listaDeConsulta: Consulta[] = [];
     indice = 0;
     ativarBotaoCarregarMais: boolean = true;
-    
+
+
 
     constructor(private consultaService: ConsultaService,
                 private modalService: NgbModal,
@@ -189,26 +190,23 @@ import { Router } from '@angular/router';
             },
         );
     }
-    
+
     getConsultas() {
         this.consultaService.buscarConsultas(this.indice)
         .subscribe(
             (consulta: Consulta[]) => {
-                
+
                 this.listaDeConsulta = consulta;
-                console.log(consulta.length);
-                if(consulta.length != 10){
-                    console.log('aaa');
+                if (consulta.length !== 10) {
                     this.ativarBotaoCarregarMais = false;
-                }
-                else{
+                } else {
                     this.indice = this.indice + 10;
                 }
             },
         );
     }
-    
-    carregarMais(){
+
+    carregarMais() {
         this.consultaService.buscarConsultas(this.indice)
         .subscribe(
             (consultas: Consulta[]) => {
@@ -216,18 +214,14 @@ import { Router } from '@angular/router';
                 for (const consulta of consultas) {
                     this.listaDeConsulta.push(consulta);
                 }
-                console.log(consultas.length);
-                if(consultas.length != 11){
+                if (consultas.length !== 11) {
                     this.ativarBotaoCarregarMais = false;
-                }
-                else{
+                } else {
                     this.indice = this.indice + 10;
                 }
             },
         );
     }
-    
-    
 
     addComposicao() {
         // tslint:disable-next-line:prefer-const
@@ -369,91 +363,86 @@ import { Router } from '@angular/router';
             return true;
         }
     }
-    
+
     criarCliente() {
-        if(this.validarNovoCliente() === true){
-            var cliente = new Cliente('');
+        if (this.validarNovoCliente() === true) {
+            const cliente = new Cliente('');
             cliente.nome = this.cadastroNome;
             cliente.data_nascimento = new Date(this.cadastroNascimento);
             cliente.sexo = this.cadastroSexo;
             cliente.objetivo = this.cadastroObjetivo;
             cliente.email = this.cadastroEmail;
             cliente.telefone = this.cadastroTelefone;
-            
+
             this.consultaService.criarPaciente(cliente).subscribe(
                 (results: string[]) => {
                     // tslint:disable-next-line:max-line-length
                     if (confirm('Novo cliente foi craido com sucesso!\n Já é possível realizar uma consulta e após isso o cliente terá acesso ao aplicativo')) {
                         this.router.navigate(['pages/consulta']);
                     } else {
-                        window.alert("Email já está sendo usado");
+                        window.alert('Email já está sendo usado');
                     }
                 },
             );
         }
     }
-    
-    validarNovoCliente(){
+
+    validarNovoCliente() {
         let hasErrors: Boolean;
         const dataNasc = new Date(this.cadastroNascimento);
-        if(!this.cadastroNome){
+        if (!this.cadastroNome) {
             this.validadorCadastroNome = true;
             hasErrors = true;
-        }else{
+        }else {
             this.validadorCadastroNome = false;
         }
-        console.log(dataNasc);
-        if(!dataNasc){
+        if (!dataNasc) {
             this.validadorCadastroNascimento = true;
             hasErrors = true;
-        }else{
+        }else {
             this.validadorCadastroNascimento = false;
         }
-        if(!this.cadastroEmail){
+        if (!this.cadastroEmail) {
             this.validadorCadastroEmail = true;
             hasErrors = true;
-        }else{
+        }else {
             this.validadorCadastroEmail = false;
         }
-        if(!this.cadastroTelefone){
+        if (!this.cadastroTelefone) {
             this.validadorCadastroTelefone = true;
             hasErrors = true;
-        }else{
+        }else {
             this.validadorCadastroTelefone = false;
         }
-        if(this.cadastroSexo == null){
+        if (this.cadastroSexo == null) {
             this.validadorCadastroSexo = true;
             hasErrors = true;
-        }
-        else{
+        }else {
             this.validadorCadastroSexo = false;
         }
-        if(this.cadastroObjetivo == null){
+        if (this.cadastroObjetivo == null) {
             this.validadorCadastroObjetivo = true;
             hasErrors = true;
-        }
-        else{
+        }else {
             this.validadorCadastroObjetivo = false;
         }
         const dataAgora = new Date();
 
-        if(dataNasc > dataAgora ){
+        if (dataNasc > dataAgora ) {
             this.validadorCadastroNascimento = true;
             hasErrors = true;
-        }else{
+        }else {
             this.validadorCadastroNascimento = false;
         }
-        
 
-        
         if (hasErrors) {
             return false;
         }else {
             return true;
         }
     }
-    
-    validarForm(){
+
+    validarForm() {
         this.validarNovoCliente();
     }
 

@@ -44,6 +44,7 @@
     "@nebular/theme": "2.0.0-rc.6",
     "@ng-bootstrap/ng-bootstrap": "1.0.0",
     "@swimlane/ngx-charts": "7.0.1",
+    "angular-base64-upload": "^0.1.23",
     "angular-material": "^1.1.8",
     "angular2-chartjs": "0.4.1",
     "angular2-toaster": "4.0.1",

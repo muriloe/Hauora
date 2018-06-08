@@ -112,6 +112,12 @@
                                     <textarea [(ngModel)]="observacoes" rows="2" placeholder="Observações" class="form-control"></textarea>
                                 </div>
                             </div>
+                            <div class="col-md-12 input-group">
+                                <div class="col">
+                                    <label>Requisição de exames</label>
+                                    <input type="file" (change)="changeListener($event)">
+                                </div>
+                            </div>
                         </div>
                     </nb-card-body>
                 </nb-card>

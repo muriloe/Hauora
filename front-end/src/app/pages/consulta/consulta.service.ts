@@ -30,7 +30,7 @@ export class ConsultaService {
                 const nCli: Cliente[] = [];
 
                 for (const cli of cliAnm) {
-                    if(cli.foto){
+                    if (cli.foto) {
                         cli.foto = cli.foto.replace('/uploads', '/uploads/min');
                     }
                     nCli.push(new Cliente(cli));
@@ -53,9 +53,9 @@ export class ConsultaService {
 
                     if (cli.foto) {
                         // tslint:disable-next-line:max-line-length
-                    if(cli.foto){
+                    if (cli.foto) {
                         cli.foto = cli.foto.replace('/uploads', '/uploads/min');
-                    } 
+                    }
                     nCli.push(new Cliente(cli));
                     }
                     const cliTemp = new Cliente(cli);
@@ -150,7 +150,7 @@ export class ConsultaService {
                 .map(res => res.json());
 
     }
-    
+
     criarPaciente( cliente: Cliente) {
 
         let json = JSON.stringify({ cliente: cliente});
@@ -162,18 +162,15 @@ export class ConsultaService {
                     .map(res => res.json());
 
     }
-    
+
     buscarConsultas(indice) {
-        return this.http.get(this.serverUrl + '/api/consultas/web/todas/'+indice)
+        return this.http.get(this.serverUrl + '/api/consultas/web/todas/' + indice)
             .map((response: Response) => {
                 return response.json().obj;
             })
             .catch((error: Response) => Observable.throw(error.json()));
-        
 
     }
-    
-    
 
 
 }
