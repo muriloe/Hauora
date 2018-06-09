@@ -51,7 +51,7 @@ exports.criarComentario = function(clienteId, comentario) {
                             console.log(comentario);
                             console.log('-----------------');
                             console.log(cliente);
-                            if(comentario.postagem._id){
+                            if(comentario.hasOwnProperty('postagem')){
                                 console.log('111');
                                 var mensagem = 'Usuário '+cliente.nome+ ' do email ' +cliente.email+ ' realizou um comentário em uma postagem';
                                 var notificacao = new Notificacao({
@@ -75,7 +75,7 @@ exports.criarComentario = function(clienteId, comentario) {
                                     }
                                 });
                             }
-                            if(comentario.consulta._id){
+                            if(comentario.hasOwnProperty('consulta')){
                                 console.log('333');
                                 var mensagem = 'Usuário '+cliente.nome+ ' do email ' +cliente.email+ ' realizou um comentário em uma consulta';
                                 var notificacao = new Notificacao({
