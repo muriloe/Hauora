@@ -57,7 +57,7 @@ exports.criarComentario = function(clienteId, comentario) {
                                 var notificacao = new Notificacao({
                                     texto: mensagem,
                                     cliente: clienteId,
-                                    postagem: comentario.postagem_id
+                                    postagem: comentario.postagem._id
                                 });
                                 console.log('222');
                                                             
@@ -81,7 +81,7 @@ exports.criarComentario = function(clienteId, comentario) {
                                 var notificacao = new Notificacao({
                                     texto: mensagem,
                                     cliente: clienteId,
-                                    consulta: comentario.consulta_id,
+                                    consulta: comentario.consulta._id,
                                 });
                                 console.log('444');
                                                             
