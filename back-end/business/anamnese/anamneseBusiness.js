@@ -106,12 +106,14 @@ exports.criarAnamneseCompleta = function(dat){
             consumoList.push(nConsumo);
             nAnamnese.consumo.push(nConsumo._id);
         }
-
-        console.log("salva 1" + Object.keys(dat.consumos).length);
+        console.log('--------------------------');
+        console.log(nCliente);
+        
         nCliente.save(function (err, results) {
             console.log("iniciando salvção de cliente");
             if(err) {
                 console.log("Erro ao salvar cliente");  
+                console.log(err);
                 reject({"status":false, "message":"Erro ao salvar cliente", "error": err});
             }
             else{

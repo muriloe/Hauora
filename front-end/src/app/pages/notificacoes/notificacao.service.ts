@@ -25,7 +25,7 @@ export class NotificacaoService {
             .catch((error: Response) => Observable.throw(error.json()));
 
     }
-    
+
     obterPostagem(idPostagem) {
         return this.http.get(this.serverUrl + '/api/postagens/' + idPostagem)
         .map((response: Response) => {
