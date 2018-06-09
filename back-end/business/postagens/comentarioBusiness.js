@@ -48,9 +48,10 @@ exports.criarComentario = function(clienteId, comentario) {
                             reject({"status":false, "message":"Erro ao ovter ", "error": err});
                         }
                         else{
+                            console.log(comentario);
                             console.log('-----------------');
                             console.log(cliente);
-                            if(comentario.postagem_id){
+                            if(comentario.postagem._id){
                                 console.log('111');
                                 var mensagem = 'Usuário '+cliente.nome+ ' do email ' +cliente.email+ ' realizou um comentário em uma postagem';
                                 var notificacao = new Notificacao({
@@ -74,7 +75,7 @@ exports.criarComentario = function(clienteId, comentario) {
                                     }
                                 });
                             }
-                            if(comentario.consulta_id){
+                            if(comentario.consulta._id){
                                 console.log('333');
                                 var mensagem = 'Usuário '+cliente.nome+ ' do email ' +cliente.email+ ' realizou um comentário em uma consulta';
                                 var notificacao = new Notificacao({
