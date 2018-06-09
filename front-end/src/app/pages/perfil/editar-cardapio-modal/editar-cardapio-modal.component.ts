@@ -144,7 +144,10 @@ export class EditarCardapioModalComponent implements OnInit {
 
     addComposicao() {
         // tslint:disable-next-line:prefer-const
-        if ((this.grupoSelecionadoId != null) && (this.porcoes != null)) {
+        if ((this.grupoSelecionadoId != null) &&
+            (this.porcoes != null) &&
+            // tslint:disable-next-line:radix
+            (parseInt(this.porcoes) > 0)) {
             const composicaoTemp = new Composicao({grupo: this.grupoSelecionadoId, quantidade: this.porcoes});
             this.checkTipoRefeicaoEArmazena(composicaoTemp);
             this.grupoSelecionadoId = null;

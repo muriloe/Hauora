@@ -9,7 +9,7 @@
             <nb-card-body >
                 <div class="row" >
                      <div class="col-md-1">
-                        <i class="nb-compose" *ngIf="notificacao.consulta[0]" style="font-size: 30px; magin-top:5 px;"></i>
+                        <i class="nb-compose" *ngIf="notificacao.consulta[0]" style="font-size: 30px;"></i>
                         <i class="nb-layout-centre" *ngIf="notificacao.postagem[0]" style="font-size: 30px;"></i>
                         <i class="nb-arrow-retweet" *ngIf="!notificacao.postagem[0] && !notificacao.consulta[0]" style="font-size: 30px;"></i>
                     </div>
@@ -18,7 +18,10 @@
                         <label class="textoCentro">{{notificacao.texto}}</label>
                     </div>
                     
-                    <div class="col-md-3"> <button class="btn btn-success pointer" (click)="verDetalhe(notificacao)" style="float: right;">Ver</button></div>
+                    <div class="col-md-3">
+                        <button class="btn btn-success pointer" (click)="verDetalhe(notificacao)" style="float: right;">Ver</button>
+                        
+                    </div>
                     <div class="row"><hr></div>
                 </div> 
                 

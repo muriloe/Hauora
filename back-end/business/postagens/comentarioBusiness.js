@@ -41,12 +41,12 @@ exports.criarComentario = function(clienteId, comentario) {
                 reject({"status":false, "message":"Erro ao salvar comentario", "error": err});
             }
             else{
-                console.log(cli);
-                Cliente.findById({_id: cli}, 
+                console.log(clienteId);
+                Cliente.findById({_id: clienteId}, 
                     function (err, cliente){
                         if (err){
                             throw err;
-                            reject({"status":false, "message":"Erro ao ovter cardapio", "error": err});
+                            reject({"status":false, "message":"Erro ao ovter ", "error": err});
                         }
                         else{
                             if(comentario.postagem_id){
