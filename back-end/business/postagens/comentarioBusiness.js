@@ -9,7 +9,6 @@ var mongoose =      require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 
 exports.criarComentario = function(clienteId, comentario) {
-    var cli = clienteId;
 
     return new Promise(function(resolve,reject){
         var nComentario = new Comentario({
@@ -49,13 +48,17 @@ exports.criarComentario = function(clienteId, comentario) {
                             reject({"status":false, "message":"Erro ao ovter ", "error": err});
                         }
                         else{
+                            console.log('-----------------');
+                            console.log(cliente);
                             if(comentario.postagem_id){
+                                console.log('111');
                                 var mensagem = 'Usuário '+cliente.nome+ ' do email ' +cliente.email+ ' realizou um comentário em uma postagem';
                                 var notificacao = new Notificacao({
                                     texto: mensagem,
-                                    cliente: cliente._id,
+                                    cliente: clienteId,
                                     postagem: comentario.postagem_id
                                 });
+                                console.log('222');
                                                             
                                 notificacao.save(function (err, results) {
                                     console.log("iniciando salvção de notificacao");
@@ -72,12 +75,14 @@ exports.criarComentario = function(clienteId, comentario) {
                                 });
                             }
                             if(comentario.consulta_id){
+                                console.log('333');
                                 var mensagem = 'Usuário '+cliente.nome+ ' do email ' +cliente.email+ ' realizou um comentário em uma consulta';
                                 var notificacao = new Notificacao({
                                     texto: mensagem,
-                                    cliente: cliente._id,
+                                    cliente: clienteId,
                                     consulta: comentario.consulta_id,
                                 });
+                                console.log('444');
                                                             
                                 notificacao.save(function (err, results) {
                                     console.log("iniciando salvção de notificacao");
