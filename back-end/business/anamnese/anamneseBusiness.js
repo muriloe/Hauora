@@ -25,7 +25,7 @@ exports.criarAnamneseCompleta = function(dat){
         });
         console.log("novo cliente");
         console.log("dataNASC:");
-        console.log(data_nascimento);
+        console.log(dat.cliente.data_nascimento);
         let nAnamnese = new Anamnese();
         nAnamnese.cliente = nCliente._id;
         let doencaList = [];
