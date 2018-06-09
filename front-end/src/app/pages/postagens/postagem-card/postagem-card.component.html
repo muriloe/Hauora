@@ -10,11 +10,9 @@
         </div> 
         <div class="row topBody">
             <br>
-            <div class="col-md-1">
-                <img [src]="tipoIcon" height="40" width="40">   
-            </div>
-            <div class="col-md-11">
-                {{texto}}
+            <div class="col-md-12">
+                <img class="espacinho" [src]="tipoIcon" height="40" width="40">  
+                <label>{{texto}}</label>
             </div>
         </div>
         <div class="row">
@@ -27,8 +25,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-9"></div>
-            <div class="col-md-3 pointer" (click)="abrirDetalhesDePostagem()"><br><label style="float:right; ">{{qtdComentarios}}</label></div>
+            <div class="col-md-8"></div>
+            <div class="col-md-4 pointer" (click)="abrirDetalhesDePostagem()"><br><label style="float:right; ">{{qtdComentarios}}</label></div>
         </div>
     </nb-card-body>
 </nb-card>

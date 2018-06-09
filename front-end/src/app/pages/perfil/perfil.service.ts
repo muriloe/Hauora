@@ -31,9 +31,9 @@ export class PerfilService {
                 const nCli: Cliente[] = [];
 
                 for (const cli of cliAnm) {
-                    if(cli.foto){
+                    if (cli.foto) {
                         cli.foto = cli.foto.replace('/uploads', '/uploads/min');
-                    }                    
+                    }
                     nCli.push(new Cliente(cli));
                 }
                 this.clientesAutoComplete = nCli;
@@ -54,7 +54,7 @@ export class PerfilService {
 
                     if (cli.foto) {
                         // tslint:disable-next-line:max-line-length
-                        if(cli.foto){
+                        if (cli.foto) {
                             cli.foto = cli.foto.replace('/uploads', '/uploads/min');
                         }
                         nCli.push(new Cliente(cli));

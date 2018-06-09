@@ -19,9 +19,11 @@ import { Comentario } from '../../../../../shared/model/comentario.model';
     foto;
     nome;
     texto;
+    data;
 
     ngOnInit() {
         this.texto = this.comentario.texto;
+        this.data = this.comentario.data;
         if (this.comentario.nutricionista) {
             this.nome = this.comentario.nutricionista.nome;
             this.foto = this.comentario.nutricionista.foto;
