@@ -77,10 +77,15 @@ import { Router } from '@angular/router';
     indice = 0;
     ativarBotaoCarregarMais: boolean = true;
 
-    exameCompleto;
-    fileInput;
-    @ViewChild('fileInput')
-    myInputVariable: any;
+    reqExameCompleto;
+    reqExame;
+    @ViewChild('reqExame')
+    inputReqExame: any;
+
+    relatorioCompleto;
+    relComp;
+    @ViewChild('relComp')
+    inputExamCompleto: any;
 
 
 
@@ -110,7 +115,7 @@ import { Router } from '@angular/router';
               );
     }
 
-    onFileChange(event) {
+    onInserReqExame(event) {
         const reader = new FileReader();
         if (event.target.files && event.target.files.length > 0) {
             const file = event.target.files[0];
@@ -122,14 +127,35 @@ import { Router } from '@angular/router';
             });
             if (exema.filetype !== 'application/pdf') {
                 alert('Só é aceito formato PDF');
-                this.myInputVariable.nativeElement.value = '';
+                this.inputReqExame.nativeElement.value = '';
 
             }else {
-                this.exameCompleto = exema;
+                this.reqExameCompleto = exema;
             }
           };
         }
-      }
+    }
+
+    onInsertExameComp(event) {
+        const reader = new FileReader();
+        if (event.target.files && event.target.files.length > 0) {
+            const file = event.target.files[0];
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+            const exema = ({
+                filetype: file.type,
+                value: reader.result.split(',')[1],
+            });
+            if (exema.filetype !== 'application/pdf') {
+                alert('Só é aceito formato PDF');
+                this.inputExamCompleto.nativeElement.value = '';
+
+            }else {
+                this.relatorioCompleto = exema;
+            }
+          };
+        }
+    }
 
     usuarioSelecionado(id) {
         this.selecionouPaciente = false;
@@ -335,7 +361,8 @@ import { Router } from '@angular/router';
                                                 this.composicao_almoco,
                                                 this.composicao_lanche,
                                                 this.composicao_janta,
-                                                this.exameCompleto).subscribe(
+                                                this.reqExameCompleto,
+                                                this.relatorioCompleto).subscribe(
                                                     (results: string[]) => {
                                                         // tslint:disable-next-line:max-line-length
                                                         if (confirm('Consulta realizada com sucesso!\n Em breve o paciente recebera uma email com a nova senha')) {

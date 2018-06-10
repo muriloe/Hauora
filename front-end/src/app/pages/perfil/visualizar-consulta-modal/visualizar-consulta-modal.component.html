@@ -65,6 +65,18 @@
                         <textarea [(ngModel)]="observacoes" disabled rows="2" placeholder="{{consulta.observacoes}}" class="form-control"></textarea>
                     </div>
                 </div>
+
+                <div class="col-md-12 input-group">
+                    <div class="col">           
+                        <a *ngIf="linkRelatorioCompleto" href="{{linkRelatorioCompleto}}">Relatiorio Completo</a>
+                    </div>
+                </div>
+                <div class="col-md-12 input-group">
+                    <div class="col">           
+                        <a *ngIf="linkReqExame" href="{{linkReqExame}}">Requisição de Exames</a>
+                    </div>
+                </div>
+                
             </div>
         </div>
         <hr>

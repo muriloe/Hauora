@@ -135,7 +135,8 @@ export class ConsultaService {
                     almoco: Composicao[],
                     lanche: Composicao[],
                     janta: Composicao[],
-                    exameCompleto: any) {
+                    exameCompleto: any,
+                    relatorioCompleto: any) {
 
     const json = JSON.stringify({   consulta: consultaCompleta,
                                     composicoesCafeDaManha: cafeDaManha,
@@ -143,7 +144,8 @@ export class ConsultaService {
                                     composicoesAlmoco: almoco,
                                     composicoesLanche: lanche,
                                     composicoesJanta: janta,
-                                    exameCompleto: exameCompleto});
+                                    exameCompleto: exameCompleto,
+                                    relatorioCompleto: relatorioCompleto});
 
 
         const cabe = new Headers();

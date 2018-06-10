@@ -28,6 +28,8 @@ export class VisualizarCardapioModalComponent implements OnInit {
     listaComentarios: Comentario[];
     comentario;
     validadorComentario = false;
+    linkReqExame;
+    linkRelatorioCompleto;
 
     // tslint:disable-next-line:max-line-length
     constructor(private activeModal: NgbActiveModal,
@@ -47,6 +49,8 @@ export class VisualizarCardapioModalComponent implements OnInit {
         this.gordura = this.consulta.percentualGordura + '%';
         this.imc = this.consulta.imc + ' kg/m2';
         this.pesoIdeal = this.consulta.pesoIdeal + ' kg';
+        this.linkReqExame = this.consulta.linkExames;
+        this.linkRelatorioCompleto = this.consulta.linkRelatorio;
         this.obterComentarios();
 
     }

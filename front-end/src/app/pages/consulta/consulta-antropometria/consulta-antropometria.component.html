@@ -112,12 +112,22 @@
                                     <textarea [(ngModel)]="observacoes" rows="2" placeholder="Observações" class="form-control"></textarea>
                                 </div>
                             </div>
-                            <div class="col-md-12 input-group">
-                                <div class="col">
-                                    <form>
-                                        <input type="file" id="file" (change)="onFileChange($event)" #fileInput/>
-                                    </form>
-                                </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="col">
+                                            <label>Requisição de exames</label>
+                                            <input type="file" id="file" class="form-control" (change)="onInserReqExame($event)" #reqExame/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="col">
+                                            <label>Relatório completo</label>
+                                            <input type="file" id="file2" class="form-control" (change)="onInsertExameComp($event)" #relComp/>
+
+                                        </div>
+                                    </div>   
+                                </div> 
                             </div>
                         </div>
                     </nb-card-body>
