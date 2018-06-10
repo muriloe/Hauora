@@ -17,7 +17,7 @@ exports.criarAnamneseCompleta = function(dat){
                     console.log(anamnese);
 
                     listaIdDoenca = anamnese.doenca;
-                    listaIdConsumo = anamnese.consumo;
+                    listaIdConsumo = anamnese.consumo[0];
                     listaIdRemedio = anamnese.remedio;
                     console.log(listaIdConsumo);
                     
