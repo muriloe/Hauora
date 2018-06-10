@@ -57,7 +57,7 @@ exports.criarAnamneseCompleta = function(dat){
                             }
                         });
                     });
-                    Anamnese.remove({_id: minhaAnamenese.cliente}, function(err) {
+                    Anamnese.remove({cliente: minhaAnamenese.cliente}, function(err) {
                         if (!err) {
                             console.log('savlousdiahgsk');
                         }
