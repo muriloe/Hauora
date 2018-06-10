@@ -16,11 +16,8 @@ exports.criarAnamneseCompleta = function(dat){
                     console.log("entrou onde queria");
                     console.log(anamnese);
 
-                    listaIdDoenca = [];
                     listaIdDoenca = anamnese.doenca;
-                    listaIdConsumo = [];
                     listaIdConsumo = anamnese.consumo;
-                    listaIdRemedio = [];
                     listaIdRemedio = anamnese.remedio;
                     console.log(listaIdConsumo);
                     
