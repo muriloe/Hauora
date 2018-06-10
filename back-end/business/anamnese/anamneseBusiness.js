@@ -15,10 +15,10 @@ exports.criarAnamneseCompleta = function(dat){
                 if (!err) {
                     console.log("entrou onde queria");
                     console.log(anamnese);
-
-                    listaIdDoenca = anamnese.doenca;
-                    listaIdConsumo = anamnese.consumo[0];
-                    listaIdRemedio = anamnese.remedio;
+                    minhaAnamenese = new Anamnese(anamnese);
+                    listaIdDoenca = minhaAnamenese.doenca;
+                    listaIdConsumo = minhaAnamenese.consumo;
+                    listaIdRemedio = minhaAnamenese.remedio;
                     console.log(listaIdConsumo);
                     
                     listaIdDoenca.forEach(doenca => {
