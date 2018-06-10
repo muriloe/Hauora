@@ -15,84 +15,24 @@ exports.criarAnamneseCompleta = function(dat){
                 if (!err) {
                     console.log("entrou onde queria");
                     console.log(anamnese);
-                    minhaAnamenese = new Anamnese(anamnese);
-                    console.log('/././././.');
-                    console.log(typeof anamnese);
-                    console.log('/././././.');
-                    console.log(anamnese.doenca);
+
 
                     Doenca.remove({_id: {$in: anamnese.doenca}}, function(err) {
                         if (!err) {
                             console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+                            resolve({ "status":true,"anamnese":anamnseSend }); 
+
                         }
                         else{
                             console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaerro');
                             console.log(err);
+                            reject({"status":false, "message":"Erro ao salvar anamnese", "error": err});
+
 
                         }
-                    });
-
-
-
-                    listaIdDoenca = anamnese.doenca;
-                    listaIdConsumo: any = anamnese.consumo;
-                    listaIdRemedio: any = anamnese.remedio;
-                    console.log("--------------------------");
-                    console.log(listaIdConsumo);
-                    
-
-
-                    listaIdDoenca.forEach(doenca => {
-                        console.log("--------------------------");
-                        console.log("loop doencas");
-                        Doenca.remove({_id: doenca}, function(err) {
-                            if (!err) {
-                                console.log('savlousdiahgsk');
-                            }
-                            else{
-                                console.log('erro');
-                                console.log(err);
-
-                            }
-                        });
-                    });
-                    listaIdConsumo.forEach(consumo => {
-                        Consumo.remove({_id: consumo}, function(err) {
-                            if (!err) {
-                                console.log('savlousdiahgsk');
-                            }
-                            else{
-                                console.log('erro');
-                                console.log(err);
-
-                            }
-                        });
-                    });
-                    listaIdRemedio.forEach(remedio => {
-                        Remedio.remove({_id: remedio}, function(err) {
-                            if (!err) {
-                                console.log('savlousdiahgsk');
-                            }
-                            else{
-                                console.log('erro');
-                                console.log(err);
-
-                            }
-                        });
-                    });
-                    Anamnese.remove({_id: minhaAnamenese.cliente}, function(err) {
-                        if (!err) {
-                            console.log('savlousdiahgsk');
-                        }
-                        else{
-                            console.log('erro');
-                            console.log(err);
-
-                        }
-                    });
+                    })
                     
             
-                    resolve({ "status":true,"anamnese":anamnseSend }); 
                     
 
                 }
