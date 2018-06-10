@@ -25,15 +25,51 @@ exports.criarAnamneseCompleta = function(dat){
                     console.log(listaIdConsumo);
                     
                     listaIdDoenca.forEach(doenca => {
-                        Doenca.remove({_id: doenca});
+                        Doenca.remove({_id: doenca}, function(err) {
+                            if (!err) {
+                                console.log('savlousdiahgsk');
+                            }
+                            else{
+                                console.log('erro');
+                                console.log(err);
+
+                            }
+                        });
                     });
                     listaIdConsumo.forEach(consumo => {
-                        Consumo.remove({_id: consumo});
+                        Consumo.remove({_id: consumo}, function(err) {
+                            if (!err) {
+                                console.log('savlousdiahgsk');
+                            }
+                            else{
+                                console.log('erro');
+                                console.log(err);
+
+                            }
+                        });
                     });
                     listaIdRemedio.forEach(remedio => {
-                        Remedio.remove({_id: remedio});
+                        Remedio.remove({_id: remedio}, function(err) {
+                            if (!err) {
+                                console.log('savlousdiahgsk');
+                            }
+                            else{
+                                console.log('erro');
+                                console.log(err);
+
+                            }
+                        });
                     });
-                    Anamnese.remove({_id: anamnese._id});
+                    Anamnese.remove({_id: anamnese._id}, function(err) {
+                        if (!err) {
+                            console.log('savlousdiahgsk');
+                        }
+                        else{
+                            console.log('erro');
+                            console.log(err);
+
+                        }
+                    });
                     let nAnamnese = new Anamnese();
                     nAnamnese.cliente = dat.cliente._id
                     let doencaList = [];
