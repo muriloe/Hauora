@@ -21,12 +21,27 @@ exports.criarAnamneseCompleta = function(dat){
                     console.log('/././././.');
                     console.log(anamnese.doenca);
 
+                    Doenca.remove({_id: {$in: anamnese.doenca}}, function(err) {
+                        if (!err) {
+                            console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+                        }
+                        else{
+                            console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaerro');
+                            console.log(err);
+
+                        }
+                    });
+
+
+
                     listaIdDoenca = anamnese.doenca;
                     listaIdConsumo: any = anamnese.consumo;
                     listaIdRemedio: any = anamnese.remedio;
                     console.log("--------------------------");
                     console.log(listaIdConsumo);
                     
+
+
                     listaIdDoenca.forEach(doenca => {
                         console.log("--------------------------");
                         console.log("loop doencas");
