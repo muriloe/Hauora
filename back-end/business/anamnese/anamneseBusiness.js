@@ -14,9 +14,13 @@ exports.criarAnamneseCompleta = function(dat){
             Anamnese.find({cliente: dat.cliente._id}, function(err, anamnese) {
                 if (!err) {
                     console.log("entrou onde queria");
-                    listaIdDoenca: string[] = anamnese.doenca;
-                    listaIdConsumo: string[] = anamnese.consumo;
-                    listaIdRemedio:string[] = anamnese.remedio;
+                    listaIdDoenca = [];
+                    listaIdDoenca = anamnese.doenca;
+                    listaIdConsumo = [];
+                    listaIdConsumo = anamnese.consumo;
+                    listaIdRemedio = [];
+                    listaIdRemedio = anamnese.remedio;
+                    console.log(listaIdConsumo);
                     
                     listaIdDoenca.forEach(doenca => {
                         Doenca.remove({_id: doenca});
