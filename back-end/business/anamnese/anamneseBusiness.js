@@ -113,13 +113,13 @@ exports.criarAnamneseCompleta = function(dat){
                         if(dat.consumos[i].tipo === "Café da manhã"){
                             dat.consumos[i].tipo='CAFE_DA_MANHA';
                         }
-                        if(dat.consumos[i].tipo === "Lanche da manhã"){
-                            dat.consumos[i].tipo='LANCHE_DA_MANHA';
+                        if(dat.consumos[i].tipo === "LANCHE"){
+                            dat.consumos[i].tipo='LANCHE';
                         }
                         if(dat.consumos[i].tipo === "Almoço"){
                             dat.consumos[i].tipo='ALMOCO';
                         }
-                        if(dat.consumos[i].tipo === "Lanche"){
+                        if(dat.consumos[i].tipo === "LANCHE"){
                             dat.consumos[i].tipo='LANCHE';
                         }
                         if(dat.consumos[i].tipo === "Janta"){
