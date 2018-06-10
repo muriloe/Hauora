@@ -16,9 +16,12 @@ exports.criarAnamneseCompleta = function(dat){
                     console.log("entrou onde queria");
                     console.log(anamnese);
                     minhaAnamenese = new Anamnese(anamnese);
-                    listaIdDoenca = minhaAnamenese.doenca;
-                    listaIdConsumo = minhaAnamenese.consumo;
-                    listaIdRemedio = minhaAnamenese.remedio;
+                    console.log('/././././.');
+                    console.log(minhaAnamenese);
+
+                    listaIdDoenca: any = minhaAnamenese.doenca;
+                    listaIdConsumo: any = minhaAnamenese.consumo;
+                    listaIdRemedio: any = minhaAnamenese.remedio;
                     console.log("--------------------------");
                     console.log(listaIdConsumo);
                     
