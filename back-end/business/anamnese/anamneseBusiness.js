@@ -57,7 +57,7 @@ exports.criarAnamneseCompleta = function(dat){
                             }
                         });
                     });
-                    Anamnese.remove({_id: anamnese._id}, function(err) {
+                    Anamnese.remove({_id: minhaAnamenese.cliente}, function(err) {
                         if (!err) {
                             console.log('savlousdiahgsk');
                         }
@@ -68,7 +68,7 @@ exports.criarAnamneseCompleta = function(dat){
                         }
                     });
                     let nAnamnese = new Anamnese();
-                    nAnamnese.cliente = dat.cliente._id
+                    nAnamnese.cliente = minhaAnamenese.cliente;
                     let doencaList = [];
                     let remedioList = [];
                     let consumoList = [];
