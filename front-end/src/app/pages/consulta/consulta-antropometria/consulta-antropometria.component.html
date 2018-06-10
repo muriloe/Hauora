@@ -114,8 +114,9 @@
                             </div>
                             <div class="col-md-12 input-group">
                                 <div class="col">
-                                    <label>Requisição de exames</label>
-                                    <input type="file" (change)="changeListener($event)">
+                                    <form>
+                                        <input type="file" id="file" (change)="onFileChange($event)" #fileInput/>
+                                    </form>
                                 </div>
                             </div>
                         </div>

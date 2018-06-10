@@ -10,9 +10,7 @@ module.exports = function(app) {
 
     app.post('/api/consulta', function(req, res){
         console.log('ASDASDASDASD');
-        console.log(req.body.json);
-        console.log(JSON.parse(req.body.json));
-
+        console.log(req.body);
         
         consultaBusiness.salvarConsulta(req.body).then(function(response){
             res.end(JSON.stringify(response));

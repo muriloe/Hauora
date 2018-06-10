@@ -134,17 +134,20 @@ export class ConsultaService {
                     lancheDaManha: Composicao[],
                     almoco: Composicao[],
                     lanche: Composicao[],
-                    janta: Composicao[]) {
+                    janta: Composicao[],
+                    exameCompleto: any) {
 
-    let json = JSON.stringify({   consulta: consultaCompleta,
+    const json = JSON.stringify({   consulta: consultaCompleta,
                                     composicoesCafeDaManha: cafeDaManha,
                                     composicoesLancheDaManha: lancheDaManha,
                                     composicoesAlmoco: almoco,
                                     composicoesLanche: lanche,
-                                    composicoesJanta: janta});
-        json = 'json=' + json;
+                                    composicoesJanta: janta,
+                                    exameCompleto: exameCompleto});
+
+
         const cabe = new Headers();
-        cabe.append('Content-Type', 'application/x-www-form-urlencoded');
+        cabe.append('Content-Type', 'application/json');
         return this.http.post(this.serverUrl + '/api/consulta',
         json, {headers : cabe})
                 .map(res => res.json());

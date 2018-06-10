@@ -4,6 +4,7 @@ let Cliente =           require("../../models/clienteModel");
 let Consulta =          require("../../models/consultaModel");
 let Cardapio =          require("../../models/cardapioModel");
 let Composicao =        require("../../models/composicaoModel");
+let serverInfo =        require("../../config/server");
 var nodemailer =        require('nodemailer');
 const ObjectId = mongoose.Types.ObjectId;
 
@@ -11,8 +12,9 @@ const ObjectId = mongoose.Types.ObjectId;
 exports.salvarConsulta = function(data){
     return new Promise(function(resolve, reject){
         console.log("Salvando consulta");
+        console.log(data);
         const dataConsulta = new Date();
-        let dadosConsulta = (JSON.parse(data.json));
+        let dadosConsulta = data;
         let consulta = new Consulta(dadosConsulta.consulta);
         let listaComposicaoCafeDaManha = [];
         let listaComposicaoLancheDaManha = [];
@@ -254,7 +256,27 @@ exports.salvarConsulta = function(data){
                         });
                     }
                 }
-        
+
+                
+
+                //Prepara o endereço onde vai salvar a foto
+                var nomeArquivo = consulta._id;
+                //Adiciona o endereço do servidor
+                var urlCompletaLinkExames = serverInfo.serverUrl + '/uploads/reqExame'+nomeArquivo+'.pdf';
+                consulta.linkExames = urlCompletaLinkExames;
+                if(dadosConsulta.exameCompleto){
+                    var base64Foto = dadosConsulta.exameCompleto.value;
+                    var urlReqExame = './uploads/reqExame'+nomeArquivo+'.pdf';
+
+                    //Grava a foto
+                    console.log('chegou até aqui');
+                    require("fs").writeFile(urlReqExame, base64Foto, {encoding: 'base64'}, function(err) {
+                        if (err){
+                            console.log('erro182p37');
+                            reject({"status":false, "message":"Erro ao salvar a foto", "error": err});
+                        }
+                    });
+                }
                 consulta.save(function (err, results) {
                     console.log("iniciando salvção da consulta");
                     if(err) {

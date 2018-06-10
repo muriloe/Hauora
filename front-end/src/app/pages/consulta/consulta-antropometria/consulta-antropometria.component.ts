@@ -1,6 +1,6 @@
 import { Consulta } from './../../../shared/model/consulta.model';
 import { Grupo } from './../../../shared/model/grupo.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Cliente } from '../../../shared/model/cliente.model';
 import { Composicao } from './../../../shared/model/composicao.model';
 import { ConsultaService } from '../consulta.service';
@@ -11,6 +11,7 @@ import { NbTokenService, NbAuthJWTToken } from '@nebular/auth';
 import { Nutricionista } from '../../../shared/model/nutricionista.model';
 import { Cardapio } from '../../../shared/model/cardapio.model';
 import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -76,6 +77,11 @@ import { Router } from '@angular/router';
     indice = 0;
     ativarBotaoCarregarMais: boolean = true;
 
+    exameCompleto;
+    fileInput;
+    @ViewChild('fileInput')
+    myInputVariable: any;
+
 
 
     constructor(private consultaService: ConsultaService,
@@ -103,6 +109,27 @@ import { Router } from '@angular/router';
                   },
               );
     }
+
+    onFileChange(event) {
+        const reader = new FileReader();
+        if (event.target.files && event.target.files.length > 0) {
+            const file = event.target.files[0];
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+            const exema = ({
+                filetype: file.type,
+                value: reader.result.split(',')[1],
+            });
+            if (exema.filetype !== 'application/pdf') {
+                alert('Só é aceito formato PDF');
+                this.myInputVariable.nativeElement.value = '';
+
+            }else {
+                this.exameCompleto = exema;
+            }
+          };
+        }
+      }
 
     usuarioSelecionado(id) {
         this.selecionouPaciente = false;
@@ -307,7 +334,8 @@ import { Router } from '@angular/router';
                                                 this.composicao_lanche_da_manha,
                                                 this.composicao_almoco,
                                                 this.composicao_lanche,
-                                                this.composicao_janta).subscribe(
+                                                this.composicao_janta,
+                                                this.exameCompleto).subscribe(
                                                     (results: string[]) => {
                                                         // tslint:disable-next-line:max-line-length
                                                         if (confirm('Consulta realizada com sucesso!\n Em breve o paciente recebera uma email com a nova senha')) {

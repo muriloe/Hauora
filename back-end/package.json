@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/muriloe/Hauora#readme",
   "dependencies": {
+    "angular-base64-upload": "^0.1.23",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "ejs": "^2.5.7",
@@ -27,6 +28,7 @@
     "mongoose-paginate": "^5.0.3",
     "mongoose-schema-extend": "^0.2.2",
     "mongoose-unique-validator": "^2.0.0",
+    "multer": "^1.3.0",
     "nodemailer": "^4.6.4",
     "sharp": "^0.20.1"
   },
