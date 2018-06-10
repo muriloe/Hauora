@@ -10,6 +10,10 @@ let serverInfo =    require("../../config/server");
 //Cria um anamnese completa salvando cliente, anamnese e (remedio, doença, consumos)
 exports.criarAnamneseCompleta = function(dat){
     return new Promise(function(resolve,reject){
+        console.log('-----------------------------------------------------------------');
+        console.log(dat);
+        console.log('-----------------------------------------------------------------');
+
         if(dat.cliente._id){
             Anamnese.find({cliente: dat.cliente._id}, function(err, anamnese) {
                 if (!err) {
