@@ -14,6 +14,7 @@ exports.criarAnamneseCompleta = function(dat){
             Anamnese.find({cliente: dat.cliente._id}, function(err, anamnese) {
                 if (!err) {
                     console.log("entrou onde queria");
+                    console.log(dat);
                     console.log(dat.doenca);
                     listaIdDoenca = [];
                     listaIdDoenca = dat.doenca;
