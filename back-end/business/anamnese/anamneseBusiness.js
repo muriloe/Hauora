@@ -19,9 +19,12 @@ exports.criarAnamneseCompleta = function(dat){
                     listaIdDoenca = minhaAnamenese.doenca;
                     listaIdConsumo = minhaAnamenese.consumo;
                     listaIdRemedio = minhaAnamenese.remedio;
+                    console.log("--------------------------");
                     console.log(listaIdConsumo);
                     
                     listaIdDoenca.forEach(doenca => {
+                        console.log("--------------------------");
+                        console.log("loop doencas");
                         Doenca.remove({_id: doenca}, function(err) {
                             if (!err) {
                                 console.log('savlousdiahgsk');
@@ -67,134 +70,10 @@ exports.criarAnamneseCompleta = function(dat){
 
                         }
                     });
-                    let nAnamnese = new Anamnese();
-                    nAnamnese.cliente = minhaAnamenese.cliente;
-                    let doencaList = [];
-                    let remedioList = [];
-                    let consumoList = [];
-
-                    //Salva as doenças em uma array e adicionar o id na anamnese
-                    console.log(dat.doencas);
-                    for(var i = 0; i< Object.keys(dat.doencas).length; i++){
-                        nDoenca = new Doenca({
-                            nome:       dat.doencas[i].nome,
-                            descricao:  dat.doencas[i].descricao,
-                            anamnese:   nAnamnese._id
-                        });
-                        doencaList.push(nDoenca);
-                        nAnamnese.doenca.push(nDoenca._id);
-                    }
-
-                    //Salva os remedios em uma array e adicionar o id na anamnese
-                    for(var i = 0; i< Object.keys(dat.remedios).length; i++){
-                        
-
-                        nRemedio = new Remedio({
-                            nome:       dat.remedios[i].nome,
-                            descricao:  dat.remedios[i].descricao,
-                            anamnese:   nAnamnese._id
-                        });
-                        remedioList.push(nRemedio);
-                        nAnamnese.remedio.push(nRemedio._id);
-                    }
                     
-                    //Salva os consumos em uma array e adicionar o id na anamnese
-                    console.log("4" + Object.keys(dat.consumos).length);
-                    for(var i = 0; i< Object.keys(dat.consumos).length; i++){
-                        console.log("5 " + Object.keys(dat.consumos).length);
-
-                        novoTipo = dat.consumos[i].tipo;
-                        if(dat.consumos[i].tipo === "Café da manhã"){
-                            dat.consumos[i].tipo='CAFE_DA_MANHA';
-                        }
-                        if(dat.consumos[i].tipo === "Lanche da manhã"){
-                            dat.consumos[i].tipo='LANCHE_DA_MANHA';
-                        }
-                        if(dat.consumos[i].tipo === "Almoço"){
-                            dat.consumos[i].tipo='ALMOCO';
-                        }
-                        if(dat.consumos[i].tipo === "Lanche"){
-                            dat.consumos[i].tipo='LANCHE';
-                        }
-                        if(dat.consumos[i].tipo === "Janta"){
-                            dat.consumos[i].tipo='JANTA';
-                        }
-                        nConsumo = new Consumo({
-                            texto:          dat.consumos[i].texto,
-                            data:           new Date((dat.consumos[i].data)*1000),
-                            sentimento:     dat.consumos[i].sentimento,
-                            observacao:     dat.consumos[i].observacao,
-                            tipo:           dat.consumos[i].tipo,
-                            anamnese:       nAnamnese._id
-                        });
-                        console.log(nConsumo);
-                        consumoList.push(nConsumo);
-                        nAnamnese.consumo.push(nConsumo._id);
-                        nAnamnese.save(function (err, results) {
-                            console.log("iniciando salvção de atualizao anamnes");
-                            if(err) {
-                                console.log(err + "Erro ao atualizao anamnese"); 
-                                reject({"status":false, "message":"Erro ao salvar anamnese", "error": err});
-                            }
-                            else{
-                                console.log("Salvou anamnse")
-                            }
-                        });
             
-                        for(var i = 0; i< doencaList.length; i++){
-                            console.log("iniciando salvção de doebnca");
-                            nDoenca = new Doenca(doencaList[i]);
-                            nDoenca.save(function (err, results) {
-                                if(err) {
-                                    console.log("Erro ao salvar doenca "+ i); 
-                                    reject({"status":false, "message":"Erro ao salvar doenca", "error": err});
-                                }
-                                else{
-                                    console.log("Salvou Doenca");
-                                }
-                            });
-                        }
-            
-                        for(var i = 0; i< remedioList.length; i++){
-                            console.log("iniciando salvção de remedio");
-                            nRemedio = new Remedio(remedioList[i]);
-                            nRemedio.save(function (err, results) {
-                                if(err) {
-                                    console.log("Erro ao salvar Remedio "+ i); 
-                                    reject({"status":false, "message":"Erro ao salvar Remedio", "error": err});
-                                }
-                                else{
-                                    console.log("Salvou Remedio");
-                                }
-                            });
-                        }
-            
-                        for(var i = 0; i< consumoList.length; i++){
-                            console.log("iniciando salvção de consumo");
-                            nConsumo = new Consumo(consumoList[i]);
-                            nConsumo.save(function (err, results) {
-                                if(err) {
-                                    console.log("Erro ao salvar consumo "+ i); 
-                                    reject({"status":false, "message":"Erro ao salvar Consumo", "error": err});
-            
-                                }
-                                else{
-                                    console.log("Salvou consumo");
-                                }
-                            });
-                        }
-            
-                        var anamnseSend = {
-                            _id: nAnamnese._id,
-                            data: nAnamnese.data,
-                            cliente: dat.cliente._id,
-                            remedio: remedioList,
-                            doenca: doencaList,
-                            consumo: consumoList
-                        };
-            
-                        resolve({ "status":true,"anamnese":anamnseSend }); 
-                    }
+                    resolve({ "status":true,"anamnese":anamnseSend }); 
+                    
 
                 }
                 else {
