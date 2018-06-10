@@ -14,12 +14,12 @@ exports.criarAnamneseCompleta = function(dat){
             Anamnese.find({cliente: dat.cliente._id}, function(err, anamnese) {
                 if (!err) {
                     console.log("entrou onde queria");
-                    console.log(anamnese);
+                    console.log(anamnese[0]);
                     console.log("entrou onde queriaaaaaaaaaaaaaaa");
-                    console.log(anamnese.doenca);
+                    console.log(anamnese[0].doenca);
 
 
-                    Doenca.remove({_id: {$in: anamnese.doenca}}, function(err) {
+                    Doenca.remove({_id: {$in: anamnese[0].doenca}}, function(err) {
                         if (!err) {
                             console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
                             resolve({ "status":true,"anamnese":anamnseSend }); 
