@@ -15,6 +15,8 @@ exports.criarAnamneseCompleta = function(dat){
                 if (!err) {
                     console.log("entrou onde queria");
                     console.log(anamnese);
+                    console.log("entrou onde queriaaaaaaaaaaaaaaa");
+                    console.log(anamnese.doenca);
 
 
                     Doenca.remove({_id: {$in: anamnese.doenca}}, function(err) {
