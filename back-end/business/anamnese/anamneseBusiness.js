@@ -102,6 +102,8 @@ exports.criarAnamneseCompleta = function(dat){
                     console.log("4" + Object.keys(dat.consumos).length);
                     for(var i = 0; i< Object.keys(dat.consumos).length; i++){
                         console.log("5 " + Object.keys(dat.consumos).length);
+                        console.log('=-=-=-=-=-=-=-=-=-=-=-=-');
+                        console.log(dat.consumos[i].tipo);
 
                         novoTipo = dat.consumos[i].tipo;
                         if(dat.consumos[i].tipo === "Café da manhã"){
