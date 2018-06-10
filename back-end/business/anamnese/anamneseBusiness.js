@@ -133,7 +133,7 @@ exports.criarAnamneseCompleta = function(dat){
                         nAnamnese.save(function (err, results) {
                             console.log("iniciando salvção de atualizao anamnes");
                             if(err) {
-                                console.log("Erro ao atualizao anamnese"); 
+                                console.log(err + "Erro ao atualizao anamnese"); 
                                 reject({"status":false, "message":"Erro ao salvar anamnese", "error": err});
                             }
                             else{
