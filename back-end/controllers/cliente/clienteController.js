@@ -97,5 +97,15 @@ module.exports = function(app) {
         });
     });
 
+    app.post('/api/cliente/atualizar', function(req, res, next){
+        console.log("atualçização de usuário:");
+        console.log(req.body);
+        clienteBusiness.atualizarUsuário(req.body).then(function(response){
+            res.end(JSON.stringify(response));
+        }).catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+    });
+
 
 }
