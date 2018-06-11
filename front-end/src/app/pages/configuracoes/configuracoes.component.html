@@ -3,6 +3,7 @@
         <h1>Consulta</h1>
     </div>
 </div>
+<div class="row">
 <div class="col-md-6">
     <nb-card>
         <nb-card-header>
@@ -33,4 +34,39 @@
             </div>
         </nb-card-body>
     </nb-card>
+</div>
+
+<div class="col-md-6">
+    <nb-card>
+        <nb-card-header>
+            Informações pessoais
+        </nb-card-header>
+        <nb-card-body>
+            <div class="row">
+                <div class="col-md-12 input-group">
+                    <div class="col">
+                        <nb-user [picture]="nutricionista.foto" [name]="nutricionista.nome" [title]="nutricionista.email" size="large"></nb-user>
+                        <br>
+                        <label>Nova foto</label>
+                        <input type="file" id="file" class="form-control" (change)="onInserFoto($event)" #reqFoto/>
+                    </div>
+                </div>
+                <div class="col-md-12 input-group">
+                    <div class="col">
+                        <label>Nome:</label>
+                        <input [(ngModel)]="nome" [class.form-control-danger]="validadorNome" type="text" placeholder="Nome"  class="form-control"/>
+                    </div>
+                </div>
+                <div class="col-md-12 input-group">
+                    <div class="col">
+                        <label>Email:</label>
+                        <input [(ngModel)]="email" [class.form-control-danger]="validadorEmail" type="text" placeholder="Email" class="form-control"/>
+                    </div>
+                </div>
+                <br><br>
+                <button class="btn btn-success btn-semi-round btn-block pointer" (click)="alterarInformacoes()">Salvar</button> 
+            </div>
+        </nb-card-body>
+    </nb-card>
+</div>
 </div>

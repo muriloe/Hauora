@@ -160,3 +160,67 @@ exports.atualizarSenhaNutricionista= function(dat){
   
 }
 
+exports.atualizarInfoNutricionista= function(dat){
+  console.log(dat);
+
+  return new Promise(function(resolve,reject){
+      let nNuticionista = new Nutricionista({
+        email: dat.email,
+        nome: dat.nome,
+      });
+      var nomeArquivo = nNuticionista._id;
+      var linkFoto;
+      if(dat.foto){
+        var urlCompletaLinkExames = serverInfo.serverUrl + '/uploads/fotoNutri'+nomeArquivo+'.png';
+        linkFoto = urlCompletaLinkExames;
+        var base64Foto = dat.foto.value;
+        var urlReqExame = './uploads/fotoNutri'+nomeArquivo+'.png';
+    
+        console.log('chegou até aqui');
+        require("fs").writeFile(urlReqExame, base64Foto, {encoding: 'base64'}, function(err) {
+            if (err){
+                console.log('erro182p37');
+                console.log(err);
+                reject({"status":false, "message":"Erro ao salvar a reqExame", "error": err});
+            }else{
+              Nutricionista.findById(dat._id, function (err, cliente) {
+                if (err) return handleError(err);
+      
+                console.log("iniciando salvção de nutri");
+                cliente.email= dat.email;
+                cliente.nome= dat.nome;
+                cliente.foto = urlCompletaLinkExames;
+      
+                cliente.save(function (err, cliente) {
+                  if (err) return handleError(err);
+                  resolve(cliente);
+                });
+                
+      
+              });
+            } 
+        });
+        
+        
+    
+      }else{
+        Nutricionista.findById(dat._id, function (err, cliente) {
+          if (err) return handleError(err);
+
+          console.log("iniciando salvção de nutri");
+          cliente.email= dat.email;
+          cliente.nome= dat.nome;
+
+          cliente.save(function (err, cliente) {
+            if (err) return handleError(err);
+            resolve(cliente);
+          });
+          
+
+        });
+      }
+
+  });
+  
+}
+

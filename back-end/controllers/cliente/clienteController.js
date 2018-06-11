@@ -118,6 +118,18 @@ module.exports = function(app) {
             res.end(JSON.stringify(err));
         });
     });
+    
+    
+    //Atualizar senha nutricionista
+    app.post('/api/atualizar/info/nutricionista', function(req, res, next){
+        console.log("atualçização de senha nutricionista:");
+        console.log(req.body);
+        clienteBusiness.atualizarInfoNutricionista(req.body).then(function(response){
+            res.end(JSON.stringify(response));
+        }).catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+    });
 
 
 }
