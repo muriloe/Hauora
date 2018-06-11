@@ -97,10 +97,22 @@ module.exports = function(app) {
         });
     });
 
+    //Atualizar preconsulta
     app.post('/api/cliente/atualizar', function(req, res, next){
         console.log("atualçização de usuário:");
         console.log(req.body);
         clienteBusiness.atualizarUsuário(req.body).then(function(response){
+            res.end(JSON.stringify(response));
+        }).catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+    });
+    
+    //Atualizar senha nutricionista
+    app.post('/api/ataulizar/nutricionista', function(req, res, next){
+        console.log("atualçização de senha nutricionista:");
+        console.log(req.body);
+        clienteBusiness.atualizarSenhaNutricionista(req.body).then(function(response){
             res.end(JSON.stringify(response));
         }).catch(function(err){
             res.end(JSON.stringify(err));

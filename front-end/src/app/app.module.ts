@@ -20,6 +20,7 @@ import { ClientesService } from './pages/clientes/clientes.service';
 import { ConsultaService} from './pages/consulta/consulta.service';
 import { PostagemService } from './pages/postagens/postagem.service';
 import { NotificacaoService } from './pages/notificacoes/notificacao.service';
+import { ConfiguracoesService } from './pages/configuracoes/configuracoes.service';
 import { ServerInfo} from './shared/server';
 import { HttpModule } from '@angular/http';
 // tslint:disable-next-line:max-line-length
@@ -78,6 +79,7 @@ import { PerfilPostagemModalComponent } from './pages/perfil/perfil-postagem-car
     [ PostagemService ],
     [ NotificacaoService ],
     [ PerfilService ],
+    [ ConfiguracoesService ],
     [ ServerInfo ],
     [ AuthGuard ],
 

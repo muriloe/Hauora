@@ -40,7 +40,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Configuração', // menu title
     icon: 'nb-gear',
-    link: '/pages/3', // menu iconnb-person
+    link: '/pages/configuracoes', // menu iconnb-person
   },
 
 ];

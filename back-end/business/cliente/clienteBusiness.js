@@ -1,4 +1,5 @@
 let Cliente =       require("../../models/clienteModel");
+let Nutricionista =       require("../../models/nutricionistaModel");
 let serverInfo =    require("../../config/server");
 var mongoose =      require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
@@ -139,4 +140,23 @@ exports.atualizarUsuário = function(dat){
   });
 }
 
+
+exports.atualizarSenhaNutricionista= function(dat){
+  let nutricionistaTemp = (JSON.parse(dat.json));
+  return new Promise(function(resolve,reject){
+      Nutricionista.findById(nutricionistaTemp._id, function (err, nutricionista) {
+         if (!err) {
+            nutricionista.senha = nutricionistaTemp.senha;
+            nutricionista.save(function (err, nutricionista) {
+                 if (err) return handleError(err);
+                 resolve(nutricionista);
+            });
+         }else {
+          reject({"status":false, "message":"Erro ao salvar anamnese", "error": err});
+        }
+      });
+
+  });
+  
+}
 

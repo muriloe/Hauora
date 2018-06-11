@@ -32,6 +32,10 @@ const routes: Routes = [{
     path: 'notificacao',
     loadChildren: './notificacoes/notificacao.module#NotificacaoModule',
   },
+    {
+    path: 'configuracoes',
+    loadChildren: './configuracoes/configuracoes.module#ConfiguracoesModule',
+  },
 ],
 }];
 
