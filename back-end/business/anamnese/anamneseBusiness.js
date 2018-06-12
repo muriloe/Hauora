@@ -298,7 +298,7 @@ exports.criarAnamneseCompleta = function(dat){
                 }
                 nConsumo = new Consumo({
                     texto:          dat.consumos[i].texto,
-                    data:           new Date((dat.consumos[i].data)*1000),
+                    data:           new Date(dat.consumos[i].data),
                     sentimento:     dat.consumos[i].sentimento,
                     observacao:     dat.consumos[i].observacao,
                     tipo:           dat.consumos[i].tipo,
