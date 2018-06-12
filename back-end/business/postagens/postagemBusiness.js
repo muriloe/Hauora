@@ -37,7 +37,7 @@ exports.criarPostagem = function(clienteId, postagem){
             let duvida = new Duvida({
                 texto: postagem.duvida.texto,
             });
-            duvida.data = Date.now();
+            duvida.data = new Date.now();
             nPostagem.duvida_id = duvida._id;
             duvida.save(function (err, results) {
                 console.log("iniciando salvção de duvida da postagem");
@@ -55,7 +55,7 @@ exports.criarPostagem = function(clienteId, postagem){
             let exercicio = new Exercicio({
                 texto: postagem.exercicio.texto,
             });
-            exercicio.data = Date.now();
+            exercicio.data =new Date.now();
             nPostagem.exercicio_id = exercicio._id;
             exercicio.save(function (err, results) {
                 console.log("iniciando salvção de exercicio da postagem");
@@ -73,7 +73,7 @@ exports.criarPostagem = function(clienteId, postagem){
             let consumo = new Consumo({
                 texto: postagem.consumo.texto,
             });
-            consumo.data = Date.now();
+            consumo.data = new Date.now();
             nPostagem.consumo_id = consumo._id;
             consumo.save(function (err, results) {
                 console.log("iniciando salvção de consumo da postagem");
