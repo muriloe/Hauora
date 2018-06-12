@@ -481,8 +481,7 @@ import { Router } from '@angular/router';
     validarNovoCliente() {
         let hasErrors: Boolean;
         const dataNasc = new Date(this.cadastroNascimento);
-        console.log(this.cadastroNascimento);
-        console.log(dataNasc);
+
         if (!this.cadastroNome) {
             this.validadorCadastroNome = true;
             hasErrors = true;
@@ -538,7 +537,6 @@ import { Router } from '@angular/router';
 
         if (hasErrors) {
             return false;
-            
         }else {
             return true;
         }
