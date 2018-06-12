@@ -58,6 +58,7 @@ import { Router } from '@angular/router';
     validadorAltura: boolean = false;
     validadorGordura: boolean = false;
     validadorCardapio: boolean = false;
+    validadorPesoIdeal: boolean = false;
 
     validadorCadastroNome: boolean = false;
     validadorCadastroNascimento: boolean = false;
@@ -196,6 +197,8 @@ import { Router } from '@angular/router';
         if (this.peso != null) {
             if (this.altura != null) {
                this.imc = this.peso / ( this.altura * this.altura );
+               const tempImc = this.imc.toFixed(2);
+               this.imc = Number(tempImc);
             }
         }
     }
@@ -281,13 +284,15 @@ import { Router } from '@angular/router';
         if ((this.grupoSelecionadoId != null) &&
             (this.porcoes != null) &&
             // tslint:disable-next-line:radix
+            !(parseInt(this.porcoes) > 10) &&
+            // tslint:disable-next-line:radix
             (parseInt(this.porcoes) > 0)) {
             const composicaoTemp = new Composicao({grupo: this.grupoSelecionadoId, quantidade: this.porcoes});
             this.checkTipoRefeicaoEArmazena(composicaoTemp);
             this.grupoSelecionadoId = null;
             this.porcoes = null;
         }else {
-            alert('Preencher os campos corretamente');
+            alert('Preencher os campos corretamente\n Porção máxima 10');
         }
     }
 
@@ -383,14 +388,40 @@ import { Router } from '@angular/router';
             mensagemErro += '-Peso\n';
             hasErrors = true;
         }
+        if (this.peso > 500) {
+            this.validadorPeso = true;
+            mensagemErro += '-Peso limite 500kg\n';
+            hasErrors = true;
+        }
         if (this.altura == null) {
             this.validadorAltura = true;
             mensagemErro += '-Altura\n';
             hasErrors = true;
         }
+        if ( this.altura > 3) {
+            this.validadorAltura = true;
+            mensagemErro += '-Altura máxima 3m\n';
+            hasErrors = true;
+        }
         if (this.gordura == null) {
             this.validadorGordura = true;
             mensagemErro += '-Gordura\n';
+            hasErrors = true;
+        }
+        if (this.gordura > 100) {
+            this.validadorGordura = true;
+            mensagemErro += '-Percentual de gordura, máximo 100\n';
+            hasErrors = true;
+        }
+
+        if (this.pesoIdeal == null) {
+            this.validadorPesoIdeal = true;
+            mensagemErro += '-Peso Ideal\n';
+            hasErrors = true;
+        }
+        if (this.pesoIdeal > 500) {
+            this.validadorPesoIdeal = true;
+            mensagemErro += '-Peso Ideal máximo 500 kg\n';
             hasErrors = true;
         }
 

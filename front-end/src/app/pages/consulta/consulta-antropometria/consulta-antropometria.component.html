@@ -50,19 +50,19 @@
                                         <div class="col-md-4 bottom-spacing">
                                             <div class="">
                                                 <label>Peso (kg)</label>
-                                                <input  [(ngModel)]="peso" [class.form-control-danger]="validadorPeso" (keyup)="calculaIMC(); validadorPeso=false" type="number" min="0" placeholder="KG" class="form-control"/>
+                                                <input min="1" max="700" [(ngModel)]="peso" [class.form-control-danger]="validadorPeso" (keyup)="calculaIMC(); validadorPeso=false" type="number" placeholder="KG" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4 bottom-spacing">
                                             <div class="">
                                                 <label>Altura (m)</label>
-                                                <input [(ngModel)]="altura" [class.form-control-danger]="validadorAltura" (keyup)="calculaIMC(); validadorAltura=false" type="number" min="0" placeholder="metros" class="form-control"/>
+                                                <input min="1" max="700"  [(ngModel)]="altura" [class.form-control-danger]="validadorAltura" (keyup)="calculaIMC(); validadorAltura=false" type="number" placeholder="metros" class="form-control"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4 bottom-spacing">
                                             <div class="">
                                                 <label>% de gordura</label>
-                                                <input [(ngModel)]="gordura" [class.form-control-danger]="validadorGordura" (keyup)="calculaIMC(); validadorGordura=false" type="number" min="0" placeholder="%" class="form-control"/>
+                                                <input min="1" max="700"  [(ngModel)]="gordura" [class.form-control-danger]="validadorGordura" (keyup)="calculaIMC(); validadorGordura=false" type="number"  placeholder="%" class="form-control"/>
                                             </div>
                                         </div>
                                     </div>
@@ -71,13 +71,13 @@
                                     <div class="col-md-6 input-group">
                                         <div class="col">
                                             <label>Peso Ideal (kg)</label>
-                                            <input readonly [(ngModel)]="pesoIdeal" type="number" min="0" placeholder="KG" class="form-control"/>
+                                            <input [(ngModel)]="pesoIdeal" [class.form-control-danger]="validadorPesoIdeal" type="number" min="0" placeholder="KG" class="form-control"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6 input-group">
                                         <div class="col">
                                             <label>IMC</label>
-                                            <input readonly [(ngModel)]="imc" type="number" placeholder="KG" class="form-control"/>
+                                            <input readonly [(ngModel)]="imc" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" type="number" placeholder="KG" class="form-control"/>
                                         </div>
                                     </div>   
                                 </div>
