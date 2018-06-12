@@ -12,10 +12,10 @@ import { Comentario } from '../../shared/model/comentario.model';
 export class ConfiguracoesService {
     private serverUrl = new ServerInfo().getServerName();
 
-    
+
     constructor(private http: Http) {}
-    
-    atualizarSenha(idNutricionista, novaSenha){
+
+    atualizarSenha(idNutricionista, novaSenha) {
         let json = JSON.stringify({_id: idNutricionista, senha: novaSenha});
             json = 'json=' + json;
             const cabe = new Headers();
@@ -24,12 +24,12 @@ export class ConfiguracoesService {
             json, {headers : cabe})
                 .map(res => res.json());
     }
-    
-    atualizarInfo(_id, nome, email, foto){
+
+    atualizarInfo(_id, nome, email, foto) {
             const json = JSON.stringify({_id: _id,
                                         nome: nome,
                                         email: email,
-                                        foto: foto
+                                        foto: foto,
             });
 
 
@@ -39,5 +39,4 @@ export class ConfiguracoesService {
         json, {headers : cabe})
                 .map(res => res.json());
     }
-    
 }

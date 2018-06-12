@@ -22,9 +22,9 @@ export class ConsultaService {
 
     private serverUrl = new ServerInfo().getServerName();
 
-    getClientes (query: string) {
+    getClientes (nome: string) {
         // tslint:disable-next-line:max-line-length
-        return this.http.get(this.serverUrl + '/api/clientes/autocomplete/' + query)
+        return this.http.get(this.serverUrl + '/api/clientes/autocomplete/' + nome)
             .map((response: Response) => {
                 const cliAnm = response.json().obj;
                 const nCli: Cliente[] = [];
