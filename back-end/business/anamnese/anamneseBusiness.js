@@ -72,7 +72,7 @@ exports.criarAnamneseCompleta = function(dat){
                         }
                     });
                     let nAnamnese = new Anamnese();
-                    nAnamnese.cliente = minhaAnamenese.cliente._id;
+                    nAnamnese.cliente = minhaAnamenese.cliente;
                     let doencaList = [];
                     let remedioList = [];
                     let consumoList = [];
