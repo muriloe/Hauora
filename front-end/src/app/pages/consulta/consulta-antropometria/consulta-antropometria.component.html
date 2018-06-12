@@ -233,19 +233,19 @@
                         <div class="col-md-12 input-group">
                             <div class="col">
                                 <label>Nome</label>
-                                <input [(ngModel)]="cadastroNome" [class.form-control-danger]="validadorCadastroNome" type="text" placeholder="Nome" class="form-control" (keyup)="validarForm()"/>
+                                <input [(ngModel)]="cadastroNome" [class.form-control-danger]="validadorCadastroNome" type="text" placeholder="Nome" class="form-control" (keyup)="validarNovoCliente()"/>
                             </div>
                         </div>
                         <div class="col-md-12 input-group">
                             <div class="col">
                                 <label>Data de nascimento</label>
-                                <input [(ngModel)]="cadastroNascimento" [class.form-control-danger]="validadorCadastroNascimento" type="date" (change)="validarForm()" placeholder="Data de nascimento" (keyup)="validarForm()" class="form-control"/>
+                                <input [(ngModel)]="cadastroNascimento" [class.form-control-danger]="validadorCadastroNascimento" type="date" (change)="validarForm()" placeholder="Data de nascimento" (keyup)="validarNovoCliente()" class="form-control"/>
                             </div>
                         </div>
                         <div class="col-md-12 input-group">
                             <div class="col">
                                 <label>Sexo:</label>
-                                <select class="form-control" [(ngModel)]="cadastroSexo" [class.form-control-danger]="validadorCadastroSexo" (change)="validarForm()">
+                                <select class="form-control" [(ngModel)]="cadastroSexo" [class.form-control-danger]="validadorCadastroSexo" (change)="validarNovoCliente()">
                                     <option id="MASCULINO" >MASCULINO</option>
                                     <option id="FEMININO" >FEMININO</option>
                                 </select>   
@@ -254,7 +254,7 @@
                         <div class="col-md-12 input-group">
                             <div class="col">
                                 <label>Objetivo:</label>
-                                <select class="form-control" [(ngModel)]="cadastroObjetivo" [class.form-control-danger]="validadorCadastroObjetivo"  (change)="validarForm()">
+                                <select class="form-control" [(ngModel)]="cadastroObjetivo" [class.form-control-danger]="validadorCadastroObjetivo"  (change)="validarNovoCliente()">
                                     <option id="PERDER_PESO" >PERDER_PESO</option>
                                     <option id="GANHAR_PESO" >GANHAR_PESO</option>
                                     <option id="FICAR_SAUDAVEL" >FICAR_SAUDAVEL</option>
@@ -264,13 +264,13 @@
                         <div class="col-md-12 input-group">
                             <div class="col">
                                 <label>Email</label>
-                                <input type="email" [(ngModel)]="cadastroEmail" [class.form-control-danger]="validadorCadastroEmail"  placeholder="Email" (keyup)="validarForm()" class="form-control"/>
+                                <input type="email" [(ngModel)]="cadastroEmail" [class.form-control-danger]="validadorCadastroEmail"  placeholder="Email" (keyup)="validarNovoCliente()" class="form-control"/>
                             </div>
                         </div>
                         <div class="col-md-12 input-group">
                             <div class="col">
                                 <label>Telefone</label>
-                                <input type="number" placeholder="Telefone" [class.form-control-danger]="validadorCadastroTelefone" [(ngModel)]="cadastroTelefone" (keyup)="validarForm()" class="form-control"/>
+                                <input type="number" placeholder="Telefone" [class.form-control-danger]="validadorCadastroTelefone" [(ngModel)]="cadastroTelefone" (keyup)="validarNovoCliente()" class="form-control"/>
                             </div>
                         </div>
                         <button class="btn btn-success btn-semi-round btn-block pointer" (click)="criarCliente()">Criar paciente</button> 

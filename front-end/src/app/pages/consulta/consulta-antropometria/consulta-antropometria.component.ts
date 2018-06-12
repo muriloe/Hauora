@@ -466,19 +466,23 @@ import { Router } from '@angular/router';
             this.consultaService.criarPaciente(cliente).subscribe(
                 (results: string[]) => {
                     // tslint:disable-next-line:max-line-length
-                    if (confirm('Novo cliente foi craido com sucesso!\n Já é possível realizar uma consulta e após isso o cliente terá acesso ao aplicativo')) {
+                    if (confirm('Novo cliente foi criado com sucesso!\n Já é possível realizar uma consulta e após isso o cliente terá acesso ao aplicativo')) {
                         this.router.navigate(['pages/consulta']);
                     } else {
                         window.alert('Email já está sendo usado');
                     }
                 },
             );
+        }else {
+            window.alert('Um ou mais dados estão incorretos');
         }
     }
 
     validarNovoCliente() {
         let hasErrors: Boolean;
         const dataNasc = new Date(this.cadastroNascimento);
+        console.log(this.cadastroNascimento);
+        console.log(dataNasc);
         if (!this.cadastroNome) {
             this.validadorCadastroNome = true;
             hasErrors = true;
@@ -490,6 +494,14 @@ import { Router } from '@angular/router';
             hasErrors = true;
         }else {
             this.validadorCadastroNascimento = false;
+        }
+        if (dataNasc == null) {
+            this.validadorCadastroNascimento = true;
+            hasErrors = true;
+        }
+        if (this.cadastroNascimento == null) {
+            this.validadorCadastroNascimento = true;
+            hasErrors = true;
         }
         if (!this.cadastroEmail) {
             this.validadorCadastroEmail = true;
@@ -526,6 +538,7 @@ import { Router } from '@angular/router';
 
         if (hasErrors) {
             return false;
+            
         }else {
             return true;
         }
