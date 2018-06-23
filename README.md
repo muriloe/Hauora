@@ -1,8 +1,13 @@
 # Hauora
 Aplicação angular, com template ngx-admin. Para a matéria de Projeto final de sistemas de informação.
 
+![Consulta](https://github.com/muriloe/Hauora/blob/master/arquivosAuxiliares/ImagensWeb/13%20-%20consulta%20nova.png?raw=true)
+
 ## Sobre o sistema
 Esse sistema tem como objetivo auxiliar o processo de atendimento e acompanhamento de nutricionistas com seus pacientes, o acompanhamento será feito através do uso de um aplicativo móvel por parte do cliente, e através de uma versão web para o nutricionista. O sistema visa auxiliar o acompanhamento do cliente antes da consulta, a fim de entender seus hábitos e obter um pré-diagnóstico, durante a consulta, auxiliando o nutricionista na tomada de decisão com base nos dados coletados e também após a consulta, acompanhando o cliente e mantendo contato com o nutricionista.  
+
+## Visão geral do sistema
+![Visão geral do sistema](https://github.com/muriloe/Hauora/blob/master/arquivosAuxiliares/ImagensWeb/0%20-%20vis%C3%A3o%20geral.jpg?raw=true)
 
 ## Sobre o projeto
 O projeto esta divido em duas pastas:
