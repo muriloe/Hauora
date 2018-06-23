@@ -1,5 +1,5 @@
 # Hauora
-Aplicação angular, com template ngx-admin. Para a matéria de Projeto final de sistemas de informação.
+Aplicação angular (front-end) e nodejs (back-end), com template ngx-admin. Para a matéria de Projeto final de sistemas de informação.
 
 ![Consulta](https://github.com/muriloe/Hauora/blob/master/arquivosAuxiliares/ImagensWeb/13%20-%20consulta%20nova.png?raw=true)
 
