@@ -1,6 +1,10 @@
 # Hauora
-Projeto do TCC
+Aplicação angular, com template ngx-admin. Para a matéria de Projeto final de sistemas de informação.
 
+## Sobre o sistema
+Esse sistema tem como objetivo auxiliar o processo de atendimento e acompanhamento de nutricionistas com seus pacientes, o acompanhamento será feito através do uso de um aplicativo móvel por parte do cliente, e através de uma versão web para o nutricionista. O sistema visa auxiliar o acompanhamento do cliente antes da consulta, a fim de entender seus hábitos e obter um pré-diagnóstico, durante a consulta, auxiliando o nutricionista na tomada de decisão com base nos dados coletados e também após a consulta, acompanhando o cliente e mantendo contato com o nutricionista.  
+
+## Sobre o projeto
 O projeto esta divido em duas pastas:
 * Front-end
 * Back-end
@@ -83,45 +87,17 @@ Como já comentado o projeto node e angular funcionam de formas independentes. U
 Dessa maneira também o servidor node pode responder tanto para o app iOS quando para o web Angular.
 
 ### Banco de dados
-Estamos utilizando o banco de dados mongodb, para facilitar a vida estou utilizando o [mLab](https://mlab.com/home), nele o banco já está configurado, portanto a aplicação node aponta direto para ele, não precisando assim levantar o servidor localmente.
-
-login: murilo0121
-senha: S0uMongo
+Estamos utilizando o banco de dados mongodb, para facilitar a vida estou utilizando o [mLab](https://mlab.com/home), caso deseje rodar o projeto crie um banco no mlab e aponte na aplicação back-end, portanto a aplicação node aponta direto para ele, não precisando assim levantar o servidor localmente.
 
 ### Email
-Criei o seguinte email para utilizar no projeto, para enviar email para os clientes:
-login: login: hauoranutri@gmail.com
-senha: S0uMongo
+Para funcionamento correto criei um email, o qual realiza o envio de recuperação de senha, etc.
+Procure no projeto por nodemailer, e adicione o email e senha que você criou.
 
 ## Extras
 
 ### Postman
 https://www.getpostman.com/collections/c052fbbfbd59f8c50446
 
-
-### Amazon
-Para acessar a máquina amazon você pode utilzar o terminal para fazer um conexão ssh. Será necessário baixar o arquivo .pem o qual serve como um senha para conectar. O arquivo encontra-se na pasta raiz do projeto (druber.pem)
-
-Primeiro copie o arquivo druber.pem na pasta ~/.ssh
-````
-cd ~/.ssh
-ou 
-$ open ~/.ssh
-
-crie permissão para o arquivo
-sudo chmod 400 ~/.ssh/druber.pem
-````
-
-Então basta acessar a máquina:
-````
-sudo ssh -i ~/.ssh/druber.pem ubuntu@ec2-54-191-75-41.us-west-2.compute.amazonaws.com
-````
-### API
-
-A URL do servidor amazon é:
-````
-http://ec2-54-191-75-41.us-west-2.compute.amazonaws.com:3000/api/teste
-````
 
 ### Extensão de front
 Caso os dados não sejam exibidos usar a extensão:
