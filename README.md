@@ -9,6 +9,8 @@ Esse sistema tem como objetivo auxiliar o processo de atendimento e acompanhamen
 ## Visão geral do sistema
 ![Visão geral do sistema](https://github.com/muriloe/Hauora/blob/master/arquivosAuxiliares/ImagensWeb/0%20-%20vis%C3%A3o%20geral.jpg?raw=true)
 
+Para mais imagens veja a [Wiki](https://github.com/muriloe/Hauora/wiki) do projeto
+
 ## Sobre o projeto
 O projeto esta divido em duas pastas:
 * Front-end
