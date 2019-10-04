@@ -1,20 +1,24 @@
-import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NbAuthModule, NbDummyAuthProvider, NbEmailPassAuthProvider } from '@nebular/auth';
-import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
-import { of as observableOf } from 'rxjs/observable/of';
+import {ModuleWithProviders, NgModule, Optional, SkipSelf} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {
+  NbAuthModule,
+  NbDummyAuthProvider,
+  NbEmailPassAuthProvider
+} from '@nebular/auth';
+import {NbSecurityModule, NbRoleProvider} from '@nebular/security';
+import {of as observableOf} from 'rxjs/observable/of';
 
-import { throwIfAlreadyLoaded } from './module-import-guard';
-import { DataModule } from './data/data.module';
-import { AnalyticsService } from './utils/analytics.service';
-
+import {throwIfAlreadyLoaded} from './module-import-guard';
+import {DataModule} from './data/data.module';
+import {AnalyticsService} from './utils/analytics.service';
+import {environment} from '../../environments/environment';
 
 const socialLinks = [
   {
     url: 'https://github.com/muriloe/Hauora',
     target: '_blank',
-    icon: 'socicon-github',
-  },
+    icon: 'socicon-github'
+  }
 ];
 
 const NB_CORE_PROVIDERS = [
@@ -24,57 +28,53 @@ const NB_CORE_PROVIDERS = [
       email: {
         service: NbEmailPassAuthProvider,
         config: {
-          baseEndpoint: 'http://ec2-54-191-75-41.us-west-2.compute.amazonaws.com:3000',
+          baseEndpoint: environment.baseurl,
           login: {
-            endpoint: '/api/nutricionista/login',
+            endpoint: '/api/nutricionista/login'
           },
           token: {
-            key: 'token', // this parameter tells Nebular where to look for the token
-          },
-        },
-      },
+            key: 'token' // this parameter tells Nebular where to look for the token
+          }
+        }
+      }
     },
     forms: {
       login: {
-        socialLinks: socialLinks,
+        socialLinks: socialLinks
       },
       register: {
-        socialLinks: socialLinks,
-      },
-    },
+        socialLinks: socialLinks
+      }
+    }
   }).providers,
   NbSecurityModule.forRoot({
     accessControl: {
       guest: {
-        view: '*',
+        view: '*'
       },
       user: {
         parent: 'guest',
         create: '*',
         edit: '*',
-        remove: '*',
-      },
-    },
+        remove: '*'
+      }
+    }
   }).providers,
   {
     provide: NbRoleProvider,
     useValue: {
       getRole: () => {
         return observableOf('guest'); // here you could provide any role based on any auth flow
-      },
-    },
+      }
+    }
   },
-  AnalyticsService,
+  AnalyticsService
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-  ],
-  exports: [
-    NbAuthModule,
-  ],
-  declarations: [],
+  imports: [CommonModule],
+  exports: [NbAuthModule],
+  declarations: []
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
@@ -84,9 +84,7 @@ export class CoreModule {
   static forRoot(): ModuleWithProviders {
     return <ModuleWithProviders>{
       ngModule: CoreModule,
-      providers: [
-        ...NB_CORE_PROVIDERS,
-      ],
+      providers: [...NB_CORE_PROVIDERS]
     };
   }
 }
