@@ -268,17 +268,22 @@ module.exports = function(app){
             foto: 'https://scontent.fbfh3-1.fna.fbcdn.net/v/t1.0-9/149206_1659326998012_5031848_n.jpg?_nc_cat=0&_nc_eui2=v1%3AAeG6lm5CJss3-yEmUZOE5w9EwxBFrNezNldEoHci1XBctaOl8bYkYi3ri9F_QS-670BMOQ4_lnutg9o-1TYUuwoM0ggapTOKypCDOUeMcK46-Q&oh=d0bc8d40c5833ed8a40e067c933ffbce&oe=5B90AA85',
             data_nascimento: new Date(),
         });
+
+      let temp = Nutricionista.findOne({email: nutricionista.email});
+        if(temp){
+            res.send(nutricionista);
+            return;
+     } else{
         nutricionista.save(function (err, results) {
             console.log("iniciando salvção de nutri");
             if(err) {
-                console.log("Erro ao salvar nutri"); 
-                reject({"status":false, "message":"Erro ao salvar nutri", "error": err});
-            }
-            else{
+                console.log(err);  
+            }else{
                 console.log("Salvou nutri");
             }
         });
         res.send(nutricionista);
+    }
     });
 
     /*

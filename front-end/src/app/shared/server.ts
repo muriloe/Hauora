@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {environment} from '../../environments/environment';
 
 export class ServerInfo {
-
-    getServerName() {
-        return 'http://ec2-54-191-75-41.us-west-2.compute.amazonaws.com:3000';
-    }
+  getServerName() {
+    return environment.baseurl;
+  }
 }
