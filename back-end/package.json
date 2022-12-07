@@ -18,10 +18,10 @@
   "homepage": "https://github.com/muriloe/Hauora#readme",
   "dependencies": {
     "angular-base64-upload": "^0.1.23",
-    "body-parser": "^1.18.2",
+    "body-parser": "^1.20.1",
     "cors": "^2.8.4",
     "ejs": "^2.5.7",
-    "express": "^4.16.3",
+    "express": "^4.18.2",
     "jsonwebtoken": "^8.2.1",
     "jwt-simple": "^0.5.1",
     "mongoose": "^5.0.11",
