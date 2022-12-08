@@ -21,7 +21,7 @@
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "ejs": "^2.5.7",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "jsonwebtoken": "^8.2.1",
     "jwt-simple": "^0.5.1",
     "mongoose": "^5.0.11",
