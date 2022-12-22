@@ -22,7 +22,7 @@
     "cors": "^2.8.4",
     "ejs": "^2.5.7",
     "express": "^4.16.3",
-    "jsonwebtoken": "^8.2.1",
+    "jsonwebtoken": "^9.0.0",
     "jwt-simple": "^0.5.1",
     "mongoose": "^5.0.11",
     "mongoose-paginate": "^5.0.3",
