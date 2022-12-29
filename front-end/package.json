@@ -76,10 +76,10 @@
     "zone.js": "0.8.18"
   },
   "devDependencies": {
-    "@angular/cli": "1.7.1",
+    "@angular/cli": "15.0.4",
     "@angular/compiler-cli": "~5.2.6",
     "@angular/language-service": "~5.2.6",
-    "@compodoc/compodoc": "1.0.1",
+    "@compodoc/compodoc": "1.1.19",
     "@types/googlemaps": "3.30.4",
     "@types/d3-color": "1.0.5",
     "@types/jasmine": "2.5.54",
